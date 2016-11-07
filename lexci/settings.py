@@ -21,7 +21,9 @@ SECRET_KEY = 'g)l75z^&_t&(n8b6w+tke1u%o4j5f6m^dm)8!#qofw40dfz$_m'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'lexci-stage.herokuapp.com',
+]
 
 
 # Application definition
