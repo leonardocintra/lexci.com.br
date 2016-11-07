@@ -22,7 +22,7 @@ SECRET_KEY = 'g)l75z^&_t&(n8b6w+tke1u%o4j5f6m^dm)8!#qofw40dfz$_m'
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'lexci-stage.herokuapp.com',
+    '*',
 ]
 
 
