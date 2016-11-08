@@ -10,7 +10,7 @@ class Paciente(models.Model):
     cpf = models.CharField('CPF', unique=True, max_length=11)
     nacionalidade = models.CharField(max_length=100, default='brasileira')
     data_nascimento = models.DateField()
-    raca = models.CharField('Raça', choices=RACA, default='BRA')
+    raca = models.CharField('Raça', choices=RACA, default='BRA', max_length=3)
 
     class Meta:
         verbose_name = 'Paciente'
