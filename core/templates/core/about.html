@@ -1,5 +1,44 @@
-{% extends "core/base.html" %}
+{% extends "core/base.html" %} {% block content %}
+<div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12">
+        <p class="pull-right visible-xs">
+            <button type="button" class="btn btn-primary btn-xs" data-toggle="offcanvas">Toggle nav</button>
+        </p>
+        <div class="jumbotron">
+            <h1><img src="http://res.cloudinary.com/lexci/image/upload/v1479150739/logolexci_qldpxb.png" alt="logo Lexci"></h1>
+            <p>O Lexci é um laboratório de exames citológicos que emprega as mais modernas técnicas na busca por resultados
+                precisos.
+            </p>
+        </div>
+        <div>
+            <h2>Lexci</h2>
+            <p>O Lexci é um laboratório de exames citológicos que emprega as mais modernas técnicas na busca por resultados
+                precisos. Isso facilita muito na indicação do tratamento médico mais adequado a cada situação específica
+                do paciente.</p>
+            <p>
+                Seus profissionais são altamente capacitados e possuem grande experiência na área citológica. São mais de 15 anos buscando
+                inovações contemporâneas e tecnologia de ponta para eliminar qualquer possível viés em resultados apresentados.
+            </p>
+            <p>
+                O Lexci está estrategicamente instalado na cidade de Ibiraci-MG, atuando em toda região de Passos, no Sudoeste Mineiro, e
+                ainda está apto a levar os benefícios de seus serviços ao Noroeste Paulista e Triângulo Mineiro.
+            </p>
+            <hr />
+            <div class="alert alert-info" role="alert">
+                <p>
+                    <strong>Missão:</strong> “Criar, desenvolver e prover características mais completas em laboratório de
+                    citologia, visando o bem-estar das pessoas, com excelência, humanidade e sustentabilidade”.
+                </p>
+                <p>
+                    <strong> Visão: </strong>“Rapidez, qualidade e excelência nos resultados para o melhor diagnóstico possível”.
+                </p>
+                <p>
+                    <strong>  Valores: </strong> “Humanização, inovação, respeito, valorização para todos inseridos no processo
+                    geral do LEXCI”.
+                </p>
+            </div>
 
-{% block content %}
-    <h1>Teste</h1>
+        </div>
+    </div>
+</div>
 {% endblock %}
