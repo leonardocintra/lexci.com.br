@@ -55,7 +55,11 @@
                 <li class="active"><a href="{% url 'index' %}">Home</a></li>
                 <li><a href="{% url 'about' %}">Quem somos</a></li>
                 <li><a href="#contact">Contato</a></li>
-                <li><a href="#">Administrativo</a></li>
+                {% if user.is_authenticated %}
+                  <li><a href="/admin">Administrativo</a></li>
+                {% else %}
+                  <li><a href="#">Area Cliente</a></li>
+                {% endif %}
               </ul>
             </div>
           </div>
@@ -191,7 +195,7 @@
 
       <!-- FOOTER -->
       <footer>
-        <p>&copy; 2016 Lexi, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+        <p>&copy; 2016 Lexi Laboratorio de exames citológicos | Desenvolvido por <a href="https://twitter.com/leonardoncintra" target="_blank">Leonardo Nascimento Cintra</a></p>
       </footer>
 
     </div><!-- /.container -->
