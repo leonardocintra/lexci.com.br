@@ -10,3 +10,9 @@ O Lexci é um laboratório de exames citológicos que emprega as mais modernas t
 Seus profissionais são altamente capacitados e possuem grande experiência na área citológica. São mais de 15 anos buscando inovações contemporâneas e tecnologia de ponta para eliminar qualquer possível viés em resultados apresentados.
 
 O Lexci está estrategicamente instalado na cidade de Ibiraci-MG, atuando em toda região de Passos, no Sudoeste Mineiro, e ainda está apto a levar os benefícios de seus serviços ao Noroeste Paulista e Triângulo Mineiro.
+
+
+## Instalation
+Se o cloudinary estiver com pau, instalar
+
+pip install https://github.com/leonardocintra/pycloudinary/archive/1.4.1.zip
