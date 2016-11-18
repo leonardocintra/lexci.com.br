@@ -31,6 +31,7 @@ class Paciente(models.Model):
         else:
             return today.year - data_nascimento.year
 
+
 class PacienteEndereco(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     logradouro = models.CharField(max_length=100)

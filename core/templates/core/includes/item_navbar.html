@@ -1,0 +1,9 @@
+<li class="active"><a href="{% url 'index' %}">Home</a></li>
+<li><a href="{% url 'about' %}">Quem somos</a></li>
+<li><a href="#contact">Contato</a></li>
+
+{% if user.is_authenticated %}
+    <li><a href="/admin">Sair</a></li>
+{% else %}
+    <li><a href="{% url 'management' %}">Entrar</a></li>
+{% endif %}
