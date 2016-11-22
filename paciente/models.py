@@ -1,6 +1,9 @@
 from datetime import date, datetime
 from django.db import models
+from django.db.models import signals
+from django.dispatch import receiver
 from .constants import RACA
+
 
 class Paciente(models.Model):
     nome = models.CharField(max_length=200)
@@ -52,3 +55,9 @@ class PacienteEndereco(models.Model):
     class Meta:
         verbose_name = 'Endereço'
         verbose_name_plural = 'Endereços'
+
+
+# Signails
+@receiver(signals.pre_save, sender=Paciente)
+def paciente_pre_save(sender, instance, **kwargs):
+    pass
