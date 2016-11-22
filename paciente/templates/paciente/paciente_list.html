@@ -1,5 +1,41 @@
 {% extends "base.html" %}
 
 {% block content %}
-
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li class="active">Pacientes</li>
+    </ol>
+    <div class="page-header">
+            <h1>Pacientes <small>Exibindo pacientes cadastrados</small></h1>
+    </div>
+    <div class="row" style="padding-bottom: 20px;">
+        <a href="#" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+            Novo paciente
+        </a>
+    </div>
+    <div class="row">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Data do cadastro</th>
+                    <th>Ativo</th>
+                    <th><span class="glyphicon glyphicon-print" aria-hidden="true"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>1</th>
+                    <th><a href="#">Alguma pessoa aaqui</a></th>
+                    <th>29/08/1996</th>
+                    <th>
+                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                    </th>
+                    <th><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></th>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 {% endblock content %}
