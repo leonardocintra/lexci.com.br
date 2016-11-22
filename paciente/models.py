@@ -11,6 +11,9 @@ class Paciente(models.Model):
     nacionalidade = models.CharField(max_length=100, default='brasileira')
     data_nascimento = models.DateField()
     raca = models.CharField('Raça', choices=RACA, default='BRA', max_length=3)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
+    ativo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Paciente'
