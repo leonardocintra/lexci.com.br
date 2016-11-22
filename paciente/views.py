@@ -11,7 +11,7 @@ class ListPaciente(ListView):
 
 class CreatePaciente(CreateView):
     model = Paciente
-    fields = ['nome', 'cartao_sus', 'nome_mae', 'apelido', 'cpf', 'nacionalidade', 'data_nascimento', 'raca']
+    fields = ['nome', 'cartao_sus', 'nome_mae', 'apelido', 'cpf', 'nacionalidade', 'data_nascimento', 'raca', 'ativo']
 
 
 
