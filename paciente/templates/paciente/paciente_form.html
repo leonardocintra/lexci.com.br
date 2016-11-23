@@ -1,5 +1,51 @@
 {% extends "core/base.html" %}
 
+{% load widget_tweaks %}
+
 {% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
+        {% if nome %}
+            <li><a href="#">{{ nome }}</a></li>
+            <li class="active">Editar informações</li>
+        {% else %}
+            <li class="active">Novo paciente</li>
+        {% endif %}
+    </ol>
+
+    <div class="row">   
+        <div class="col-md-8 col-md-offset-2">
+            <div class="page-header">
+                {% if nome %}
+                    <h1><small> paciente </small> {{ nome }} </h1>
+                {% else %}
+                    <h1>Novo paciente</h1>
+                {% endif %}
+            </div>
+            <form class="form-horizontal" action="" method="POST">
+                {% csrf_token %}
+                <fieldset>
+                    {% for field in form %}
+                        <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <label for="{{ field.auto_id }}">{{ field.label }}</label>
+                            <div>
+                                {% render_field field class="form-control" %}
+                                {% for error in field.errors %}
+                                    <span class="help-block">{{ error }}</span>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endfor %}
+
+                    <div class="form-group">
+                        <div class="col-md-9 col-md-offset-3">
+                            <button type="submit" class="btn btn-success">Salvar</button>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
 
 {% endblock content %}
