@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # libs
     'cloudinary',
+    'widget_tweaks',
 
     # apps
     'core',
