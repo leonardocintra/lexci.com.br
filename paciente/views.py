@@ -16,3 +16,4 @@ class CreatePaciente(CreateView):
 
 
 paciente_list = ListPaciente.as_view()
+paciente_create = CreatePaciente.as_view()

@@ -13,6 +13,10 @@ deploy-stage:
 deploy-prod:
 	@git push prod master
 
+migrate:
+	@python manage.py makemigrations
+	@python manage.py migrate
+
 migrate-heroku-stage:
 	@heroku run python manage.py migrate --remote stage
 
