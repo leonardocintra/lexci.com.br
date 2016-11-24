@@ -58,6 +58,9 @@ class PacienteEndereco(models.Model):
 
 
 # Signails
-@receiver(signals.pre_save, sender=Paciente)
-def paciente_pre_save(sender, instance, **kwargs):
-    print('um teste qualquer')
+@receiver(signals.post_save, sender=Paciente)
+def salvar_endereco_apos_criacao_do_paciente(sender, instance, created, **kwargs):
+    if created:
+        paciente = instance   
+        print(paciente.id)
+        print(paciente.nome)
