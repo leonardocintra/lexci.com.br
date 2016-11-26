@@ -1,7 +1,10 @@
 from django.shortcuts import render
+from django.db import transaction
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView, CreateView
+
 from .models import Paciente
+from .forms import PacienteForm, EnderecoPacienteFormSet
 
 
 class ListPaciente(ListView):
@@ -12,8 +15,13 @@ class ListPaciente(ListView):
 
 class CreatePaciente(CreateView):
     model = Paciente
-    fields = ['nome', 'cartao_sus', 'nome_mae', 'apelido', 'cpf', 'nacionalidade', 'data_nascimento', 'raca', 'ativo']
+    template_name = 'paciente_endereco_new.html'
+    form_class = PacienteForm
     success_url = reverse_lazy('paciente:paciente_list')
+
+    def get(self, request, *args, **kwargs):
+        pass
+
 
 
 paciente_list = ListPaciente.as_view()
