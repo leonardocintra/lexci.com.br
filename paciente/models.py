@@ -41,15 +41,15 @@ class Paciente(models.Model):
 class PacienteEndereco(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     logradouro = models.CharField(max_length=100)
-    numero_casa = models.CharField('Nº',max_length=10, blank=True, null=True)
+    numero_casa = models.CharField('Nº casa',max_length=10, blank=True, null=True)
     complemento = models.CharField(max_length=50, blank=True, null=True)
     bairro = models.CharField(max_length=50)
     uf = models.CharField('UF', max_length=2)
     codigo_municipio = models.IntegerField('Codigo Municipio')
     municipio = models.CharField(max_length=100, blank=True, null=True)
-    cep = models.CharField(max_length=8)
-    fone_ddd = models.CharField(max_length=2)
-    fone_numero = models.CharField(max_length=11)
+    cep = models.CharField('CEP', max_length=8)
+    fone_ddd = models.CharField('DDD:', max_length=2)
+    fone_numero = models.CharField('Telefone:', max_length=11)
     ponto_de_referencia = models.CharField(max_length=100, blank=True, null=True)
 
     class Meta:
