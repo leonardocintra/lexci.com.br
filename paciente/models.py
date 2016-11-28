@@ -52,6 +52,9 @@ class PacienteEndereco(models.Model):
     fone_numero = models.CharField('Telefone:', max_length=11)
     ponto_de_referencia = models.CharField(max_length=100, blank=True, null=True)
 
+    def __str__(self):
+        return self.paciente.nome + ' - ' + self.municipio
+
     class Meta:
         verbose_name = 'Endereço'
         verbose_name_plural = 'Endereços'
