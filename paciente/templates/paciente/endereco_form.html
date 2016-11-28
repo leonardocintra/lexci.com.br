@@ -18,7 +18,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="page-header">
                 {% if nome %}
-                    <h1><small> paciente </small> {{ nome }} </h1>
+                    <h1><small> endereço paciente </small> {{ nome }} </h1>
                 {% else %}
                     <h1>Novo paciente</h1>
                 {% endif %}
@@ -36,10 +36,6 @@
                                 {% endfor %}
                             </div>
                         </div>
-                    {% endfor %}
-                    {{ endereco_form.management_form }}
-                    {% for field in endereco_form %}
-                        {{ field.as_p}}
                     {% endfor %}
                 </fieldset>
                 <div class="form-group">
