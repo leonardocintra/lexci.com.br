@@ -7,16 +7,20 @@
     <script>
         $(document).ready(function(){
             $("#btnBuscaCep").click(function(){
-                var cep = $('#id_pacienteendereco_set-0-cep').val();
+                var cep = $('#id_pacienteendereco_set-0-cep').val().replace("-", "");
+                var urlCep = 'https://viacep.com.br/ws/' + cep + '/json/';
 
                 $.ajax({
-                    url: 'https://viacep.com.br/ws/' + cep + '/json/',
+                    url: urlCep,
                     success: function(result){
-                        $('#id_pacienteendereco_set-0-cep').val(result.cep);
-                        $('#id_pacienteendereco_set-0-logradouro').val(result.localidade);
+                        $('#id_pacienteendereco_set-0-cep').val(cep);
+                        $('#id_pacienteendereco_set-0-logradouro').val(result.logradouro);
+                        $('#id_pacienteendereco_set-0-bairro').val(result.bairro);
+                        $('#id_pacienteendereco_set-0-uf').val(result.uf);
+                        $('#id_pacienteendereco_set-0-codigo_municipio').val(result.ibge);
+                        $('#id_pacienteendereco_set-0-municipio').val(result.localidade);
                     }
-                })
-                
+                });
             });
         });
     </script>
@@ -54,7 +58,7 @@
                             <div class="form-group{% if field.errors %} has-error{% endif %}">
                                 <label for="{{ field.auto_id }}">{{ field.label }}</label>
                                 <div>
-                                    {% render_field field class="form-control input-sm" %}
+                                    {% render_field field class="form-control input-sm" placeholder=field.label %}
                                     {% for error in field.errors %}
                                         <span class="help-block">{{ error }}</span>
                                     {% endfor %}
@@ -73,51 +77,59 @@
                         {{ endereco_form.management_form }}
 
                         {% for field in endereco_form %}
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.cep.label }}</label>
-                                <div class="input-group">
-                                    <input id="{{ field.cep.auto_id }}" type="text" class="form-control" placeholder="digite o cep">
+                                <div class="input-group col-md-5">
+                                    {% render_field field.cep class="form-control" placeholder="informe CEP" %}
                                     <span class="input-group-btn">
                                         <button id="btnBuscaCep" name="btnBuscaCep" class="btn btn-default" type="button">Buscar CEP</button>
                                     </span>
                                 </div>
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.logradouro.label }}</label>
-                                {% render_field field.logradouro class="form-control input-sm" %}
+                                {% render_field field.logradouro class="form-control input-sm" placeholder="Nome da rua" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.numero_casa.label }}</label>
-                                {% render_field field.numero_casa class="form-control input-sm" %}
+                                {% render_field field.numero_casa class="form-control input-sm" placeholder="Casa nº" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.complemento.label }}</label>
-                                {% render_field field.complemento class="form-control input-sm" %}
+                                {% render_field field.complemento class="form-control input-sm" placeholder="Complemento" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.bairro.label }}</label>
-                                {% render_field field.bairro class="form-control input-sm" %}
+                                {% render_field field.bairro class="form-control input-sm" placeholder="nome do bairro" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.uf.label }}</label>
-                                {% render_field field.uf class="form-control input-sm" %}
+                                {% render_field field.uf class="form-control input-sm" placeholder="unidade federativa" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
+                                <label>{{ field.municipio.label }}</label>
+                                {% render_field field.municipio class="form-control input-sm" placeholder="nome da cidade" %}
+                            </div>
+                            <div class="form-group">
                                 <label>{{ field.codigo_municipio.label }}</label>
-                                {% render_field field.codigo_municipio class="form-control input-sm" %}
+                                {% render_field field.codigo_municipio class="form-control input-sm" placeholder="codigo municipio" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.fone_ddd.label }}</label>
-                                {% render_field field.fone_ddd class="form-control input-sm" %}
+                                {% render_field field.fone_ddd class="form-control input-sm" placeholder="DDD" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.fone_numero.label }}</label>
-                                {% render_field field.fone_numero class="form-control input-sm" %}
+                                {% render_field field.fone_numero class="form-control input-sm" placeholder="Telefone (sem o ddd)" %}
                             </div>
-                            <div class="form-group{% if field.errors %} has-error{% endif %}">
+                            <div class="form-group">
                                 <label>{{ field.ponto_de_referencia.label }}</label>
-                                {% render_field field.ponto_de_referencia class="form-control input-sm" %}
+                                {% render_field field.ponto_de_referencia class="form-control input-sm" placeholder="ponto de referencia, dica, etc" %}
                             </div>
+
+                            {% if field.errors %}
+                                <strong style="color: red;" >{{ field.errors.as_text }}</strong>
+                            {% endif %}
                         {% endfor %}
                     </div>
                 </div>
