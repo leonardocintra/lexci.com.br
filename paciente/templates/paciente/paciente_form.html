@@ -2,6 +2,26 @@
 
 {% load widget_tweaks %}
 
+{% block script_header %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#btnBuscaCep").click(function(){
+                var cep = $('#id_pacienteendereco_set-0-cep').val();
+
+                $.ajax({
+                    url: 'https://viacep.com.br/ws/' + cep + '/json/',
+                    success: function(result){
+                        $('#id_pacienteendereco_set-0-cep').val(result.cep);
+                        $('#id_pacienteendereco_set-0-logradouro').val(result.localidade);
+                    }
+                })
+                
+            });
+        });
+    </script>
+{% endblock script_header %}
+
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'index' %}">Home</a></li>
@@ -55,7 +75,12 @@
                         {% for field in endereco_form %}
                             <div class="form-group{% if field.errors %} has-error{% endif %}">
                                 <label>{{ field.cep.label }}</label>
-                                {% render_field field.cep class="form-control input-sm" %}
+                                <div class="input-group">
+                                    <input id="{{ field.cep.auto_id }}" type="text" class="form-control" placeholder="digite o cep">
+                                    <span class="input-group-btn">
+                                        <button id="btnBuscaCep" name="btnBuscaCep" class="btn btn-default" type="button">Buscar CEP</button>
+                                    </span>
+                                </div>
                             </div>
                             <div class="form-group{% if field.errors %} has-error{% endif %}">
                                 <label>{{ field.logradouro.label }}</label>
