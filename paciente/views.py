@@ -16,7 +16,6 @@ class ListPaciente(ListView):
 
 class CreatePaciente(CreateView):
     form_class = PacienteForm
-    success_url = 'paciente:paciente_list'
     model = Paciente
 
     def get(self, request, *args, **kwargs):
@@ -50,6 +49,9 @@ class CreatePaciente(CreateView):
     def get_context_data(self, **kwargs):
         kwargs.update({})
         return kwargs
+    
+    def get_success_url(self):
+        return reverse_lazy('paciente:paciente_list')
 
 
 
