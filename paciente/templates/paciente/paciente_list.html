@@ -20,39 +20,29 @@
                 <tr>
                     <th>#</th>
                     <th>Nome</th>
-                    <th>Data do cadastro</th>
+                    <th>Data de nascimento</th>
                     <th>Ativo</th>
                     <th><span class="glyphicon glyphicon-print" aria-hidden="true"></span></th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <th>100</th>
-                    <th><a href="#">Alguma pessoa aaqui</a></th>
-                    <th>29/08/1996</th>
-                    <th>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </th>
-                    <th><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></th>
-                </tr>
-                <tr>
-                    <th>101</th>
-                    <th><a href="#">Alguma pessoa aaqui</a></th>
-                    <th>29/08/1996</th>
-                    <th>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </th>
-                    <th><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></th>
-                </tr>
-                <tr>
-                    <th>102</th>
-                    <th><a href="#">Alguma pessoa aaqui</a></th>
-                    <th>29/08/1996</th>
-                    <th>
-                        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                    </th>
-                    <th><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></th>
-                </tr>                                
+                {% for paciente in paciente_list  %}
+                    <tr>
+                        <th>{{ paciente.id }}</th>
+                        <th><a href="#">{{ paciente.nome }}</a></th>
+                        <th>{{ paciente.data_nascimento }}</th>
+                        <th>
+                            {% if paciente.ativo %}
+                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                            {% else %}
+                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+                            {% endif %}
+                        </th>
+                        <th><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></th>
+                    </tr>  
+                {% empty %}
+                    <h2>Nenhum paciente cadastrado ainda</h2>
+                {% endfor %}          
             </tbody>
         </table>
     </div>
