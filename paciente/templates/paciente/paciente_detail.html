@@ -2,10 +2,10 @@
 <ol class="breadcrumb">
     <li><a href="{% url 'index' %}">Home</a></li>
     <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
-    <li class="active">{{ object.nome }}</li>
+    <li class="active">{{ form_paciente.nome }}</li>
 </ol>
 <div class="page-header">
-    <h1>{{ object.nome }} <small> ({% get_idade_paciente object.data_nascimento %} anos) </small></h1>
+    <h1>{{ form_paciente.nome }} <small> ({% get_idade_paciente form_paciente.data_nascimento %} anos) </small></h1>
 </div>
 
 <div class="row">
@@ -19,62 +19,65 @@
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Nome:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.nome }}</p>
+                            <p class="form-control-static">{{ form_paciente.nome }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Apelido:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.apelido }}</p>
+                            <p class="form-control-static">{{ form_paciente.apelido }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">CPF:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.cpf }}</p>
+                            <p class="form-control-static">{{ form_paciente.cpf }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Mãe:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.nome_mae }}</p>
+                            <p class="form-control-static">{{ form_paciente.nome_mae }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Cartão SUS:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.cartao_sus }}</p>
+                            <p class="form-control-static">{{ form_paciente.cartao_sus }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Nascimento:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.data_nascimento|date:"d/m/Y" }} ({% get_idade_paciente object.data_nascimento %} anos)</p>
+                            <p class="form-control-static">{{ form_paciente.data_nascimento|date:"d/m/Y" }} ({% get_idade_paciente form_paciente.data_nascimento
+                                %} anos)</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Nacionalidade:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.nacionalidade }}</p>
+                            <p class="form-control-static">{{ form_paciente.nacionalidade }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Raça:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ object.get_raca_display }}</p>
+                            <p class="form-control-static">{{ form_paciente.get_raca_display }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Profissão:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{% if profissao %} {{ object.profissao}} {% endif %} </p>
+                            <p class="form-control-static">{% if profissao %} {{ form_paciente.profissao}} {% endif %} </p>
                         </div>
                     </div>
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Ativo:</label>
                         <div class="col-sm-9">
                             <p class="form-control-static">
-                                {% if object.ativo %} <span class="label label-success">SIM</span> {% else %} <span class="label label-danger">NÃO</span>                                {% endif %}
+                                {% if form_paciente.ativo %} <span class="label label-success">SIM</span> {% else %}
+                                <span
+                                    class="label label-danger">NÃO</span> {% endif %}
                             </p>
                         </div>
                     </div>
@@ -92,37 +95,44 @@
     <div class="col-md-6">
         <div class="panel panel-default">
             <div class="panel-heading">
-                <span class="glyphicon glyphicon-road" aria-hidden="true"></span> &ensp; Endereço
+                <span class="glyphicon glyphicon-road" aria-hidden="true"></span> &ensp; Endereço / Contato
             </div>
             <div class="panel-body">
                 {% if form_endereco %}
                 <div class="form-horizontal">
                     <div class="form-group form-group">
-                        <label class="col-sm-2 control-label">Cidade:</label>
-                        <div class="col-sm-10">
-                            <p class="form-control-static">{{ form_endereco.cidade }}</p>
+                        <label class="col-sm-3 control-label">Cidade:</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">{{ form_endereco.municipio }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
-                        <label class="col-sm-2 control-label">UF:</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 control-label">UF:</label>
+                        <div class="col-sm-9">
                             <p class="form-control-static">{{ form_endereco.uf }}</p>
                         </div>
                     </div>
                     <div class="form-group form-group">
-                        <label class="col-sm-2 control-label">Endereco:</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 control-label">Endereco:</label>
+                        <div class="col-sm-9">
                             <p class="form-control-static">
-                                {{ form_endereco.endereco }}, Nº {{ form_endereco.numero_casa }}
+                                {{ form_endereco.logradouro }}, Nº {{ form_endereco.numero_casa }}
                             </p>
                         </div>
                     </div>
                     <div class="form-group form-group">
-                        <label class="col-sm-2 control-label">Bairro:</label>
-                        <div class="col-sm-10">
+                        <label class="col-sm-3 control-label">Bairro:</label>
+                        <div class="col-sm-9">
                             <p class="form-control-static">{{ form_endereco.bairro }}</p>
                         </div>
                     </div>
+                    <div class="form-group form-group">
+                        <label class="col-sm-3 control-label">DDD / Telefone:</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">{{ form_endereco.fone_ddd }} {{ form_endereco.fone_numero }}</p>
+                        </div>
+                    </div>
+
                 </div>
                 {% else %}
                 <div class="alert alert-warning" role="alert">
