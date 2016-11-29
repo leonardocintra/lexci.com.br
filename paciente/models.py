@@ -48,8 +48,8 @@ class PacienteEndereco(models.Model):
     codigo_municipio = models.IntegerField('Codigo Municipio')
     municipio = models.CharField(max_length=100, blank=True, null=True)
     cep = models.CharField('CEP', max_length=8)
-    fone_ddd = models.CharField('DDD:', max_length=2)
-    fone_numero = models.CharField('Telefone:', max_length=11)
+    fone_ddd = models.CharField('DDD:', max_length=2, blank=True, null=True)
+    fone_numero = models.CharField('Telefone:', max_length=11, blank=True, null=True)
     ponto_de_referencia = models.CharField(max_length=100, blank=True, null=True)
 
     def __str__(self):
