@@ -16,6 +16,7 @@ class Paciente(models.Model):
     raca = models.CharField('Raça', choices=RACA, default='BRA', max_length=3)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
+    profissao = models.CharField(max_length=200, blank=True, null=True)
     ativo = models.BooleanField(default=True)
 
     class Meta:
