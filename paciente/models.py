@@ -62,9 +62,8 @@ class PacienteEndereco(models.Model):
 
 # Signails
 @receiver(signals.post_save, sender=Paciente)
-def salvar_endereco_apos_criacao_do_paciente(sender, instance, created, **kwargs):
+def paciente_post_save(sender, instance, created, **kwargs):
     # salvar o endereco tambem
     if created:
-        paciente = instance   
-        print(paciente.id)
-        print(paciente.nome)
+        print(instance.id)
+        print(instance.nome)
