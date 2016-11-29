@@ -1,49 +1,47 @@
-{% extends "core/base.html" %}
+{% extends "core/base.html" %} {% block content %}
 
-{% block content %}
-    <ol class="breadcrumb">
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li class="active">Pacientes</li>
-    </ol>
-    <div class="page-header">
-            <h1>Pacientes <small>Exibindo pacientes cadastrados</small></h1>
-    </div>
-    <div class="row" style="padding-bottom: 20px;">
-        <a href="{% url 'paciente:paciente_create' %}" class="btn btn-success">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
-            Novo paciente
-        </a>
-    </div>
-    <div class="row">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nome</th>
-                    <th>Data de nascimento</th>
-                    <th>Ativo</th>
-                    <th><span class="glyphicon glyphicon-print" aria-hidden="true"></span></th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for paciente in paciente_list  %}
-                    <tr>
-                        <th>{{ paciente.id }}</th>
-                        <th><a href="#">{{ paciente.nome }}</a></th>
-                        <th>{{ paciente.data_nascimento }}</th>
-                        <th>
-                            {% if paciente.ativo %}
-                                <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
-                            {% else %}
-                                <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-                            {% endif %}
-                        </th>
-                        <th><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></th>
-                    </tr>  
-                {% empty %}
-                    <h2>Nenhum paciente cadastrado ainda</h2>
-                {% endfor %}          
-            </tbody>
-        </table>
-    </div>
+<ol class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li class="active">Pacientes</li>
+</ol>
+<div class="page-header">
+    <h1>Pacientes <small>Exibindo pacientes cadastrados</small></h1>
+</div>
+<div class="row" style="padding-bottom: 20px;">
+    <a href="{% url 'paciente:paciente_create' %}" class="btn btn-success">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo paciente
+    </a>
+</div>
+<div class="row">
+    {% if paciente_list %}
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Nome</th>
+                <th>Data de nascimento</th>
+                <th>Ativo</th>
+                <th><span class="glyphicon glyphicon-print" aria-hidden="true"></span></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for paciente in paciente_list %}
+            <tr>
+                <th>{{ paciente.id }}</th>
+                <th><a href="#">{{ paciente.nome }}</a></th>
+                <th>{{ paciente.data_nascimento }}</th>
+                <th>
+                    {% if paciente.ativo %}
+                    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> {% else %}
+                    <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> {% endif %}
+                </th>
+                <th><a href="#"><span class="glyphicon glyphicon-download" aria-hidden="true"></span></a></th>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <h2>Nenhum paciente cadastrado ainda</h2>
+    {% endif %}
+</div>
 {% endblock content %}
