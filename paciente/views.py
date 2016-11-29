@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.db import transaction
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 
 from .models import Paciente
 from .forms import PacienteForm, EnderecoFormSet
@@ -12,6 +12,16 @@ class ListPaciente(ListView):
     model = Paciente
     template_name = 'paciente/paciente_list.html'
     context_object_name = 'paciente_list'
+
+
+class DetailPaciente(DetailView):
+    
+    model = Paciente
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailPaciente, self).get_context_data(**kwargs)
+        return context
+
 
 
 class CreatePaciente(CreateView):
@@ -54,6 +64,6 @@ class CreatePaciente(CreateView):
         return reverse_lazy('paciente:paciente_list')
 
 
-
+paciente_detail = DetailPaciente.as_view()
 paciente_list = ListPaciente.as_view()
 paciente_create = CreatePaciente.as_view()

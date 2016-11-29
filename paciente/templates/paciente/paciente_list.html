@@ -28,7 +28,7 @@
             {% for paciente in paciente_list %}
             <tr>
                 <th>{{ paciente.id }}</th>
-                <th><a href="#">{{ paciente.nome }}</a></th>
+                <th><a href="{% url 'paciente:paciente_detail' paciente.pk %}">{{ paciente.nome }}</a></th>
                 <th>{{ paciente.data_nascimento }}</th>
                 <th>
                     {% if paciente.ativo %}

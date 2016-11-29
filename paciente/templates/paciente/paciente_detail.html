@@ -1,0 +1,14 @@
+{% extends "core/base.html" %}
+
+{% load paciente_extras %} 
+
+{% block content %}
+<ol class="breadcrumb">
+    <li><a href="{% url 'index' %}">Home</a></li>
+    <li class="active">Pacientes</li>
+</ol>
+<div class="page-header">
+    <h1>{{ object.nome }} <small>{{ object.data_nascimento }} ({% get_idade_paciente object.data_nascimento %} anos) </small></h1>
+
+</div>
+{% endblock content %}
