@@ -49,8 +49,9 @@
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Nascimento:</label>
                         <div class="col-sm-9">
-                            <p class="form-control-static">{{ form_paciente.data_nascimento|date:"d/m/Y" }} ({% get_idade_paciente form_paciente.data_nascimento
-                                %} anos)</p>
+                            <p class="form-control-static">
+                                {{ form_paciente.data_nascimento|date:"d/m/Y" }} ({% get_idade_paciente form_paciente.data_nascimento %} anos)
+                            </p>
                         </div>
                     </div>
                     <div class="form-group form-group">
@@ -76,8 +77,7 @@
                         <div class="col-sm-9">
                             <p class="form-control-static">
                                 {% if form_paciente.ativo %} <span class="label label-success">SIM</span> {% else %}
-                                <span
-                                    class="label label-danger">NÃO</span> {% endif %}
+                                <span class="label label-danger">NÃO</span> {% endif %}
                             </p>
                         </div>
                     </div>
