@@ -41,14 +41,14 @@ class Paciente(models.Model):
 
 class PacienteEndereco(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    logradouro = models.CharField(max_length=100)
+    logradouro = models.CharField(max_length=100, blank=True, null=True)
     numero_casa = models.CharField('Nº casa',max_length=10, blank=True, null=True)
     complemento = models.CharField(max_length=50, blank=True, null=True)
-    bairro = models.CharField(max_length=50)
-    uf = models.CharField('UF', max_length=2)
-    codigo_municipio = models.IntegerField('Codigo Municipio')
+    bairro = models.CharField(max_length=50, blank=True, null=True)
+    uf = models.CharField('UF', max_length=2, blank=True, null=True)
+    codigo_municipio = models.IntegerField('Codigo Municipio', blank=True, null=True)
     municipio = models.CharField(max_length=100, blank=True, null=True)
-    cep = models.CharField('CEP', max_length=8)
+    cep = models.CharField('CEP', max_length=8, blank=True, null=True)
     fone_ddd = models.CharField('DDD:', max_length=2, blank=True, null=True)
     fone_numero = models.CharField('Telefone:', max_length=11, blank=True, null=True)
     ponto_de_referencia = models.CharField(max_length=100, blank=True, null=True)
@@ -66,5 +66,7 @@ class PacienteEndereco(models.Model):
 def paciente_post_save(sender, instance, created, **kwargs):
     # salvar o endereco tambem
     if created:
-        print(instance.id)
-        print(instance.nome)
+        endereco = PacienteEndereco(
+            paciente_id = instance.pk
+        )
+        endereco.save()
