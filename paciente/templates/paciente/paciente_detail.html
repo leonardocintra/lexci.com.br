@@ -113,7 +113,6 @@
                 <span class="glyphicon glyphicon-road" aria-hidden="true"></span> &ensp; Endereço
             </div>
             <div class="panel-body">
-                {% if form_endereco %}
                 <div class="form-horizontal">
                     <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Cidade:</label>
@@ -144,22 +143,12 @@
                         </div>
                     </div>
                 </div>
-                {% else %}
-                <div class="alert alert-warning" role="alert">
-                    <strong>
-                                <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-                            </strong> Insira informações de endereço do colaborador
-                    <a href="#" class="alert-link">clicando aqui.</a>
-                </div>
-                {% endif %}
             </div>
-            {% if form_endereco %}
             <div class="panel-footer">
                 <a href="{% url 'paciente:endereco_update' form_endereco.pk %}" class="btn btn-info right">
                     Editar informações &ensp; <span class="glyphicon glyphicon glyphicon-pencil" aria-hidden="true"></span>
                 </a>
             </div>
-            {% endif %}
         </div>
     </div>
 </div>
