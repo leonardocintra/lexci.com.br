@@ -54,7 +54,7 @@ class PacienteEndereco(models.Model):
     ponto_de_referencia = models.CharField(max_length=100, blank=True, default='')
 
     def __str__(self):
-        return self.paciente.nome + ' - ' + self.municipio
+        return self.paciente.nome + ' | ' + self.municipio + ' - ' + self.uf
 
     class Meta:
         verbose_name = 'Endereço'
