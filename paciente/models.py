@@ -51,6 +51,7 @@ class PacienteEndereco(models.Model):
     cep = models.CharField('CEP', max_length=8, blank=True, default='')
     fone_ddd = models.CharField('DDD:', max_length=2, blank=True, default='')
     fone_numero = models.CharField('Telefone:', max_length=11, blank=True, default='')
+    email = models.EmailField(blank=True, default='')
     ponto_de_referencia = models.CharField(max_length=100, blank=True, default='')
 
     def __str__(self):

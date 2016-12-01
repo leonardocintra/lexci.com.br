@@ -72,7 +72,7 @@ class UpdatePaciente(UpdateView):
 class UpdateEnderecoPaciente(UpdateView):
     model = PacienteEndereco
     template_name = 'paciente/paciente_update.html'
-    fields = ('cep', 'logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', 'codigo_municipio', 'municipio', 'fone_ddd', 'fone_numero', 'ponto_de_referencia')
+    fields = ('cep', 'logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', 'codigo_municipio', 'municipio', 'ponto_de_referencia', 'fone_ddd', 'fone_numero', 'email')
 
     def get_success_url(self):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.object.paciente.pk})
