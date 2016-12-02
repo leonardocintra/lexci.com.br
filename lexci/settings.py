@@ -113,6 +113,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 
+# Autenticacao
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'index'
+AUTH_USER_MODEL = 'accounts.User'
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'accounts.backends.ModelBackend',
+)
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 

@@ -1,4 +1,5 @@
 from django.views.generic import TemplateView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 class IndexView(TemplateView):
     template_name = 'core/index.html'
@@ -12,7 +13,7 @@ class ContactView(TemplateView):
     template_name = 'core/contact.html'
 
 
-class ManagementView(TemplateView):
+class ManagementView(LoginRequiredMixin, TemplateView):
     template_name = 'core/management.html'
 
 

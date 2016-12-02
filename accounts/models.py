@@ -1,49 +1,42 @@
+import re
+
 from django.db import models
-from django.utils.translation import ugettext as _
-from django.contrib.auth.base_user import AbstractBaseUser, BaseUserManager
-from django.contrib.auth.models import PermissionsMixin
+from django.core import validators
+from django.contrib.auth.models import AbstractBaseUser, UserManager, PermissionsMixin
 
 
-class EmailUserManager(BaseUserManager):
+class User(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(
+        'Apelido / Usuario' , max_length=30, unique=True, validators = [
+            validators.RegexValidator(
+                re.compile('^[\w.@+-]+$'),
+                'Informe um nome de usuário válido',
+                'Este valor deve conter apenas letras, numeros e os caracteres: @/./+/-/_.',
+                'invalid'
+            )
+        ], help_text="Um nome curto que será usado para identifica-lo de forma única na plataforma"
+    )
+    name = models.CharField('Nome', max_length=100)
+    email = models.EmailField('E-mail', unique=True)
+    is_staff = models.BooleanField('Equipe', default=False)
+    is_active = models.BooleanField('Ativo', default=True)
+    date_joined = models.DateTimeField('Data de entrada', auto_now_add=True)
+
+    USERNAME_FIELD = 'username'
+    REQUIRED_FIELDS = ['email']
+
+    objects = UserManager()
+
+    class Meta:
+        verbose_name = 'Usuário'
+        verbose_name_plural = 'Usuários'
+
     
-    def create_user(self, *args, **kwargs):
-        email = kwargs["email"]
-        email = self.normalize_email(email)
-        password = kwargs["password"]
-        kwargs.pop("password")
-
-        if not email:
-            raise ValueError(_('Users must have an email address'))
-        
-        user = self.model(**kwargs)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
+    def __str__(self):
+        return self.name or self.username
     
-    def create_superuser(self, *args, **kwargs):
-        user = self.create_user(**kwargs)
-        user.is_superuser = True
-        user.save(using=self._db)
-        return user
-
-
-class MyUser(PermissionsMixin, AbstractBaseUser):
-    email = models.EmailField(
-        verbose_name=_('Email address', 
-        unique=True),
-    )
-    first_name = models.CharField(
-        verbose_name=_('Nome'),
-        max_length=50,
-        blank=True,
-        help_text=_('Inform your name'),
-    )
-    last_name = models.CharField(
-        verbose_name=_('Sobrenome'),
-        max_length=50,
-        blank=False,
-        help_text=_('Inform your last name'),
-    )
-
-    USERNAME_FIELD = 'email'
-    objects = EmailUserManager()
+    def get_full_name(self):
+        return str(self)
+    
+    def get_short_name(self):
+        return str(self).split(" ")[0]

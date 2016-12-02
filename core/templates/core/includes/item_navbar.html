@@ -5,5 +5,5 @@
 {% if user.is_authenticated %}
     <li><a href="{% url 'logout' %}">Sair</a></li>
 {% else %}
-    <li><a href="{% url 'management' %}">Entrar</a></li>
+    <li><a href="{% url 'login' %}">Entrar</a></li>
 {% endif %}
