@@ -12,6 +12,7 @@
   <link rel="icon" href="{% static 'favicon.ico' %}">
 
   <title>Lexci</title>
+  {% load core_extras %}
 
   <!-- Bootstrap core CSS -->
   <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
@@ -201,8 +202,9 @@
 
     <!-- FOOTER -->
     <foote class="text-center">
-      <p>&copy; 2016 Lexi Laboratorio de exames citológicos | Desenvolvido por <a href="https://twitter.com/leonardoncintra"
-          target="_blank">Leonardo Nascimento Cintra</a></p>
+      <p>
+        &copy; 2016 - {% now "Y" %} - Lexi Laboratorio de exames citológicos | Desenvolvido por <a href="https://twitter.com/leonardoncintra" target="_blank">Leonardo Nascimento Cintra</a>
+      </p>
     </footer>
 
   </div>
