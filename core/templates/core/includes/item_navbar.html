@@ -3,6 +3,7 @@
 <li><a href="{% url 'contact' %}">Contato</a></li>
 
 {% if user.is_authenticated %}
+    <li><a href="{% url 'management' %}">Administrativo</a></li>
     <li><a href="{% url 'logout' %}">Sair</a></li>
 {% else %}
     <li><a href="{% url 'login' %}">Entrar</a></li>
