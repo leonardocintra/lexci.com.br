@@ -85,7 +85,11 @@ class UpdateEnderecoPaciente(UpdateView):
 
 def paciente_detail(request, pk):
     form_paciente = get_object_or_404(Paciente, pk=pk)
-    form_endereco = PacienteEndereco.objects.get(paciente_id=pk)
+    try:
+        form_endereco = PacienteEndereco.objects.get(paciente_id=pk)
+    except PacienteEndereco.DoesNotExist:
+        form_endereco = None
+    
     context = {
         'form_paciente': form_paciente,
         'form_endereco': form_endereco

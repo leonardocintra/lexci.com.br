@@ -60,14 +60,3 @@ class PacienteEndereco(models.Model):
     class Meta:
         verbose_name = 'Endereço'
         verbose_name_plural = 'Endereços'
-
-
-# Signails
-@receiver(signals.post_save, sender=Paciente)
-def paciente_post_save(sender, instance, created, **kwargs):
-    # salvar o endereco tambem
-    if created:
-        endereco = PacienteEndereco(
-            paciente_id = instance.pk
-        )
-        endereco.save()
