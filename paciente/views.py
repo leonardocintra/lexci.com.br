@@ -1,11 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView
 
 from .models import Paciente, PacienteEndereco
-from .forms import PacienteForm, EnderecoFormSet
+from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
 
 
 class ListPaciente(ListView):
@@ -81,6 +81,23 @@ class UpdateEnderecoPaciente(UpdateView):
         context = super(UpdateEnderecoPaciente, self).get_context_data(**kwargs)
         context['nome'] = self.object.paciente.nome
         return context
+
+
+def create_endereco(request, paciente_id):
+    if request.method == "POST":
+        form_endereco = EnderecoPacienteForm(request.POST)
+        if form_endereco.is_valid():
+            endereco = form_endereco.save(commit=False)
+            endereco.paciente_id = paciente_id
+            endereco.save()
+            return redirect('paciente:paciente_detail', pk=paciente_id)
+    else:
+        context = {
+            'form_endereco': EnderecoPacienteForm(),
+            'nome': 'colocar o nome aqui',
+            'pk': paciente_id
+        }
+    return render(request, 'paciente/endereco_form.html', context)
 
 
 def paciente_detail(request, pk):
