@@ -1,3 +1,8 @@
 from django.contrib import admin
+from .models import Convenio
 
-# Register your models here.
+class ConvenioAdmin(admin.ModelAdmin):
+    fields = ('descricao', 'slug')
+
+
+admin.site.register(Convenio, ConvenioAdmin)
