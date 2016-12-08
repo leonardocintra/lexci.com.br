@@ -3,6 +3,33 @@
 {% load paciente_extras %}
 {% load widget_tweaks %}
 
+{% block script_header %}
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+
+            $("#btnBuscaCep").click(function(){
+                var cep = $('#id_cep').val().replace("-", "");
+                var urlCep = 'https://viacep.com.br/ws/' + cep + '/json/';
+
+                $.ajax({
+                    url: urlCep,
+                    success: function(result){
+                        $('#id_cep').val(cep);
+                        $('#id_logradouro').val(result.logradouro);
+                        $('#id_bairro').val(result.bairro);
+                        $('#id_uf').val(result.uf);
+                        $('#id_codigo_municipio').val(result.ibge);
+                        $('#id_municipio').val(result.localidade);
+                    }
+                });
+            });
+            
+        });
+    </script>
+{% endblock script_header %}
+
 {% block content %}
 <ol class="breadcrumb">
     <li><a href="{% url 'management' %}">Admin Lexci</a></li>
@@ -24,8 +51,18 @@
         {% for field in form_endereco %}
             <div class="form-group{% if field.errors %} has-error{% endif %}">
                 <label for="{{ field.auto_id }}" class="col-md-3 control-label">{{ field.label }}</label>
-                <div class="col-md-9">
-                    {% render_field field class="form-control" %}
+                <div class="col-md-7">
+                    {% if field.id_for_label == "id_cep" %}
+                        <div class="input-group col-md-5">
+                            {% render_field field class="form-control" %}
+                            <span class="input-group-btn">
+                                <button id="btnBuscaCep" name="btnBuscaCep" class="btn btn-primary" type="button">Buscar CEP</button>
+                            </span>
+                        </div>
+                    {% else %}
+                        {% render_field field class="form-control" %}
+                    {% endif %}
+
                     {% for error in field.errors %}
                         <span class="help-block">{{ error }}</span>
                     {% endfor %}

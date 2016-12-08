@@ -12,7 +12,7 @@ class EnderecoPacienteForm(forms.ModelForm):
 
     class Meta:
         model = PacienteEndereco
-        fields = ('logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', 'codigo_municipio', 'municipio', 'cep', 'fone_ddd', 'fone_numero', 'email', 'ponto_de_referencia')
+        fields = ( 'cep', 'logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', 'codigo_municipio', 'municipio', 'fone_ddd', 'fone_numero', 'email', 'ponto_de_referencia')
 
 
 EnderecoFormSet = inlineformset_factory(
