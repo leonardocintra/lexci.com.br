@@ -1,3 +1,18 @@
 from django.db import models
 
-# Create your models here.
+
+class Medico(models.Model):
+    nome = models.CharField(max_length=200)
+    crm = models.CharField('CRM', max_length=50)
+    telefone = models.CharField('Telefone:', max_length=20)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Médico'
+        verbose_name_plural = 'Médicos'
+        ordering = ['nome']
+    
+    def __str__ (self):
+        return self.nome
+
