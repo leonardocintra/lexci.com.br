@@ -16,7 +16,6 @@ class CreateMedicoView(CreateView):
     model = Medico
     fields = ['nome', 'crm', 'telefone', ]
 
-
     def get_success_url(self):
         return reverse_lazy('medico:medico_list')
 
@@ -28,8 +27,17 @@ class DetailMedicoView(DetailView):
         context = super(DetailMedicoView, self).get_context_data(**kwargs)
         return context
 
+    
+class UpdateMedicoView(UpdateView):
+    model = Medico
+    fields = ['nome', 'crm', 'telefone']
+
+    def get_success_url(self):
+        return reverse_lazy('medico:medico_list')
+
 
 
 medico_list = ListMedicoView.as_view()
 medico_create = CreateMedicoView.as_view()
 medico_detail = DetailMedicoView.as_view()
+medico_update = UpdateMedicoView.as_view()
