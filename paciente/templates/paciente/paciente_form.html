@@ -35,7 +35,7 @@
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
         <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
         {% if nome %}
-            <li><a href="#">{{ nome }}</a></li>
+            <li><a href="{% url 'paciente:paciente_detail' pk %}">{{ nome }}</a></li>
             <li class="active">Editar informações</li>
         {% else %}
             <li class="active">Novo paciente</li>
@@ -45,9 +45,9 @@
     <div class="row">   
         <div class="page-header">
             {% if nome %}
-                <h1><small> paciente </small> {{ nome }} </h1>
+                <h1><i class="fa fa-address-card-o" aria-hidden="true"></i> <small> paciente </small> {{ nome }} </h1>
             {% else %}
-                <h1>Novo paciente</h1>
+                <h1><i class="fa fa-address-card-o" aria-hidden="true"></i> Novo paciente</h1>
             {% endif %}
         </div>
 

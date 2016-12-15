@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView, CreateView, UpdateView
 from django.views.generic.detail import DetailView
@@ -34,6 +34,12 @@ class UpdateMedicoView(UpdateView):
 
     def get_success_url(self):
         return reverse_lazy('medico:medico_list')
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdateMedicoView, self).get_context_data(**kwargs)
+        context['pk'] = self.kwargs['pk']
+        context['nome'] = get_object_or_404(Medico, pk=self.kwargs['pk'])
+        return context
 
 
 

@@ -80,6 +80,7 @@ class UpdateEnderecoPaciente(UpdateView):
     def get_context_data(self, **kwargs):
         context = super(UpdateEnderecoPaciente, self).get_context_data(**kwargs)
         context['nome'] = self.object.paciente.nome
+        context['pk'] = self.object.paciente.pk
         return context
 
 

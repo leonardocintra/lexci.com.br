@@ -34,10 +34,11 @@
 <ol class="breadcrumb">
     <li><a href="{% url 'management' %}">Admin Lexci</a></li>
     <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
-    <li class="active">{{ nome }}</li>
+    <li><a href="{% url 'paciente:paciente_detail' pk %}">{{ nome }}</a></li>
+    <li class="active">Editar informações</li>
 </ol>
 
-<h2>Alterar Dados</h2>
+<h2><i class="fa fa-address-card-o" aria-hidden="true"></i> Alterar Dados</h2>
 <form class="form-horizontal" method="POST">
 
     {% csrf_token %}
