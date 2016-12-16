@@ -126,6 +126,13 @@ AUTHENTICATION_BACKENDS = (
     'accounts.backends.ModelBackend',
 )
 
+# Email
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'emaildevleonardo@gmail.com')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'julianarosarodrigues')
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
 
