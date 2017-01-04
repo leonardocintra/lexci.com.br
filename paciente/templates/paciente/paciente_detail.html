@@ -14,10 +14,10 @@
 </div>
 
 <div class="row">
-    <div class="col-md-8 col-md-offset-4" style="padding-bottom: 40px;">
+    <div class="col-md-9 col-md-offset-3" style="padding-bottom: 40px;">
         <!-- Nav tabs -->
         <ul class="nav nav-tabs" role="tablist">
-            <li role="presentation" class="active"><a href="#pacienteDetail" aria-controls="pacienteDetail" role="tab" data-toggle="tab"><i class="fa fa-address-card-o" aria-hidden="true"></i> Dados do paciente</a></li>
+             <li role="presentation" class="active"><a href="#pacienteDetail" aria-controls="pacienteDetail" role="tab" data-toggle="tab"><i class="fa fa-address-card-o" aria-hidden="true"></i> Dados do paciente</a></li>
             <li role="presentation"><a href="#pacienteExamesRealizados" aria-controls="pacienteExamesRealizados" role="tab" data-toggle="tab"><i class="fa fa-history" aria-hidden="true"></i> Exames realizados</a></li>
             <li role="presentation"><a href="#pacientePendencias" aria-controls="pacientePendencias" role="tab" data-toggle="tab"><i class="fa fa-folder-open" aria-hidden="true"></i> Pendências</a></li>
         </ul>
@@ -31,7 +31,6 @@
         <div role="tabpanel" class="tab-pane active" id="pacienteDetail">
             {% include "paciente/includes/tab_paciente_detail.html" %}
         </div>
-
         <div role="tabpanel" class="tab-pane" id="pacienteExamesRealizados">
             {% include "paciente/includes/tab_paciente_exames_realizados.html" %}
         </div>
