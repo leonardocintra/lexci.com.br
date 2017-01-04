@@ -32,8 +32,12 @@
             {% include "paciente/includes/tab_paciente_detail.html" %}
         </div>
 
-        <div role="tabpanel" class="tab-pane" id="pacienteExamesRealizados">Exames realizados</div>
-        <div role="tabpanel" class="tab-pane" id="pacientePendencias">Pendências</div>
+        <div role="tabpanel" class="tab-pane" id="pacienteExamesRealizados">
+            {% include "paciente/includes/tab_paciente_exames_realizados.html" %}
+        </div>
+        <div role="tabpanel" class="tab-pane" id="pacientePendencias">
+            {% include "paciente/includes/tab_paciente_pendencias.html" %}
+        </div>
     </div>
 </div>
 
