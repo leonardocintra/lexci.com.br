@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^administrativo/$', views.management, name='management'),
     url(r'^paciente/', include('paciente.urls', namespace='paciente')),
     url(r'^medico/', include('medico.urls', namespace='medico')),
+    url(r'^laudo/', include('laudo.urls', namespace='laudo')),
     url(r'^entrar/$', login, {'template_name': 'core/login.html'}, name='login'),
     url(r'^sair/$', logout, {'next_page': 'index'}, name='logout'),
     url(r'^admin/', admin.site.urls),
