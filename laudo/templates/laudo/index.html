@@ -1,1 +1,12 @@
-<h1>Ronaldo</h1>
+{% extends "core/base.html" %} 
+
+{% block content %}
+
+<ol class="breadcrumb">
+    <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+    <li class="active">Laudo</li>
+</ol>
+
+<h1>Laudo aqui</h1>
+
+{% endblock content %}

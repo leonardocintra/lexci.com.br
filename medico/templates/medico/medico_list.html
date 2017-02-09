@@ -1,41 +1,43 @@
-{% extends "core/base.html" %} {% block content %}
+{% extends "core/base.html" %} 
 
-<ol class="breadcrumb">
-    <li><a href="{% url 'index' %}">Home</a></li>
-    <li class="active">Medicos</li>
-</ol>
-<div class="page-header">
-    <h1><i class="fa fa-user-md" aria-hidden="true"></i> Médicos <small>Exibindo médicos cadastrados</small></h1>
-</div>
-<div class="row" style="padding-bottom: 20px;">
-    <a href="{% url 'medico:medico_create' %}" class="btn btn-success">
-        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo medico
-    </a>
-</div>
-<div class="row">
-    {% if medico_list %}
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Nome</th>
-                <th>CRM</th>
-                <th>Telefone</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for medico in medico_list %}
-            <tr>
-                <th>{{ medico.id }}</th>
-                <th><a href="{% url 'medico:medico_detail' medico.pk %}">{{ medico.nome }}</a></th>
-                <th>{{ medico.crm }}</th>
-                <th>{{ medico.telefone }}</th>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    {% else %}
-    <h2>Nenhum médico cadastrado ainda</h2>
-    {% endif %}
-</div>
+{% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+        <li class="active">Medicos</li>
+    </ol>
+
+    <div class="page-header">
+        <h1><i class="fa fa-user-md" aria-hidden="true"></i> Médicos <small>Exibindo médicos cadastrados</small></h1>
+    </div>
+    <div class="row" style="padding-bottom: 20px;">
+        <a href="{% url 'medico:medico_create' %}" class="btn btn-success">
+            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo medico
+        </a>
+    </div>
+    <div class="row">
+        {% if medico_list %}
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>CRM</th>
+                    <th>Telefone</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for medico in medico_list %}
+                <tr>
+                    <th>{{ medico.id }}</th>
+                    <th><a href="{% url 'medico:medico_detail' medico.pk %}">{{ medico.nome }}</a></th>
+                    <th>{{ medico.crm }}</th>
+                    <th>{{ medico.telefone }}</th>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+        <h2>Nenhum médico cadastrado ainda</h2>
+        {% endif %}
+    </div>
 {% endblock content %}
