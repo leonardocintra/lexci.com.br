@@ -10,9 +10,24 @@
         <h1><i class="fa fa-users" aria-hidden="true"></i> Pacientes <small>Exibindo pacientes cadastrados</small></h1>
     </div>
     <div class="row" style="padding-bottom: 20px;">
-        <a href="{% url 'paciente:paciente_create' %}" class="btn btn-success">
-            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo paciente
-        </a>
+        <div class="col-sm-10">
+            <div class="col-sm-2">
+                <a href="{% url 'paciente:paciente_create' %}" class="btn btn-success">
+                    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo paciente
+                </a> 
+            </div>
+            {# texto de pesquisa #}
+            <div class="col-sm-6">
+                <form action="{% url 'paciente:paciente_list' %}" role="search">
+                    <div class="input-group">
+                        <input type="text" name="q" class="form-control" placeholder="Pesquiar um paciente...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-warning" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="row">
         {% if paciente_list %}

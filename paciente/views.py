@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db import transaction
+from django.db import transaction, models
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView
@@ -9,12 +9,26 @@ from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
 
 
 class ListPaciente(ListView):
+    """ Lista os Pacientes cadastrados """
+
     model = Paciente
     template_name = 'paciente/paciente_list.html'
     context_object_name = 'paciente_list'
 
+    def get_queryset(self):
+        """ Queryset - Retorna todos os pacientes ou um paciente Q (pesquisa) """
+        queryset = Paciente.objects.all()
+        q = self.request.GET.get('q', '')
+        if q:
+            queryset = queryset.filter(
+                models.Q(nome__icontains=q)
+            )
+        return queryset
+
 
 class CreatePaciente(CreateView):
+    """ CreatePaciente - Metodo que insere um novo paciente """
+
     form_class = PacienteForm
     model = Paciente
 
