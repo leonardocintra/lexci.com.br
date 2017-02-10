@@ -5,21 +5,6 @@ from medico.models import Medico
 from core.models import Convenio
 
 
-class Laudo(models.Model):
-    """ Laudo - È o laudo em si. Inclui o paciente, medico, convenio o os items que vai nele """
-    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
-    convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE)
-    exames = models.ManyToManyField(ItemExame, on_delete=models.CASCADE)
-
-    class Meta:
-        verbose_name = 'Laudo'
-        verbose_name_plural = 'Laudos'
-    
-    def __str__ (self):
-        return self.paciente.nome
-
-
 class Exame(models.Model):
     """ Exames - tabela que salva os tipos de exames que são inseridos no laudo. """
     descricao = models.CharField('Descrição', max_length=200)
@@ -66,3 +51,19 @@ class ItemExame(models.Model):
 
     def __str__ (self):
         return self.descricao_item
+
+
+
+class Laudo(models.Model):
+    """ Laudo - É o laudo em si. Inclui o paciente, medico, convenio o os items que vai nele """
+    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
+    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
+    convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE)
+    exames = models.ManyToManyField(ItemExame)
+
+    class Meta:
+        verbose_name = 'Laudo'
+        verbose_name_plural = 'Laudos'
+    
+    def __str__ (self):
+        return self.paciente.nome
