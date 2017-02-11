@@ -3,11 +3,12 @@ from .models import Exame, ItemExame, Laudo
 
 
 class ExameAdmin(admin.ModelAdmin):
-    fields = ('descricao', )
+    list_display = ('descricao', 'ativo', )
+    search_fields = ('descricao', )
 
 
 class ItemExameAdmin(admin.ModelAdmin):
-    fields = ('exame', 'descricao_item', )
+    list_display = ('exame', 'descricao_item', 'ativo', )
 
 class LaudoAdmin(admin.ModelAdmin):
     fields = ('paciente', 'medico', 'convenio', 'exames', )
