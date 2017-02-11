@@ -75,3 +75,10 @@ class Laudo(models.Model):
     
     def __str__ (self):
         return self.paciente.nome
+
+
+class ExameLaudo(models.Model):
+    """ ExameLaudo - Aqui é onde amarra os laudos com o exame """
+    laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo')
+    item_exame = models.ForeignKey(ItemExame, on_delete=models.CASCADE, related_name='item_exame')
+    data_cadastro = models.DateTimeField(auto_now_add=True)
