@@ -23,5 +23,6 @@ startdev:
 	@git remote add stage https://git.heroku.com/lexci-stage.git
 	@git remote add prod https://git.heroku.com/lexci.git
 	@pip install -r requirements/development.txt
-	@python manage.py loaddata fixtures/convenio.json
 	@make migrate
+	@python manage.py loaddata fixtures/convenio.json
+	@python manage.py createsuperuser
