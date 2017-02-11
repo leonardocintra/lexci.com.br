@@ -17,4 +17,11 @@ deploy-prod:
 
 migrate:
 	@python manage.py makemigrations
-	@python manage.py migrate	
+	@python manage.py migrate
+
+startdev:
+	@git remote add stage https://git.heroku.com/lexci-stage.git
+	@git remote add prod https://git.heroku.com/lexci.git
+	@pip install -r requirements/development.txt
+	@python manage.py loaddata fixtures/convenio.json
+	@make migrate
