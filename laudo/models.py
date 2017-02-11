@@ -54,7 +54,6 @@ class ItemExame(models.Model):
         return self.descricao_item
 
 
-
 class Laudo(models.Model):
     """ Laudo - É o laudo em si. Inclui o paciente, medico, convenio o os items que vai nele 
         Descrição dos campos:
