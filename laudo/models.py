@@ -62,6 +62,7 @@ class Laudo(models.Model):
             - convenio: tipo de convenio (id)
             - exames: todos os exames realizados 
             - paciente_pode_ver: o laudo é publico ou nao? O Paciente pode consultar o laudo dele on line
+            - ativo: nao sera de costume deletar os laudos. Apenas inativa - los
     """
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
