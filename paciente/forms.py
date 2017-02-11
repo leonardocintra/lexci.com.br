@@ -2,6 +2,7 @@ from django import forms
 from django.forms.models import inlineformset_factory
 from .models import Paciente, PacienteEndereco
 
+
 class PacienteForm(forms.ModelForm):
 
     class Meta:
