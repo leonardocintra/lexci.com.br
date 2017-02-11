@@ -67,6 +67,9 @@ class Laudo(models.Model):
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
     convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE)
     paciente_pode_ver = models.BooleanField(default=False)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
+    ativo = models.BooleanField(default=True)
 
     class Meta:
         verbose_name = 'Laudo'
