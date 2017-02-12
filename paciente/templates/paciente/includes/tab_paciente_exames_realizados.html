@@ -1,1 +1,37 @@
-<h1>Exames realizados</h1>
+<div>
+    {# o form_paciente.id esta no paciente_detail.html. Essa pagina é um include #}
+    <a href="{% url 'laudo:create_laudo' pk=form_paciente.id  %}" class="btn btn-success">Cadastrar Laudo</a>
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+            <th>#</th>
+            <th>Laudo</th>
+            <th>Medico</th>
+            <th>Data</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+            <th scope="row">1</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+            </tr>
+            <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>Thornton</td>
+            <td>@fat</td>
+            </tr>
+            <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>@twitter</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

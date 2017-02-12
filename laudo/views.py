@@ -2,15 +2,15 @@ from django.shortcuts import render
 from django.views.generic import TemplateView, CreateView
 
 
-class IndexView(TemplateView):
+class IndexLaudoView(TemplateView):
     """ Laudo Index - Pagina inicial que o usuario cai quando entra no Laudo. """    
     template_name = "laudo/index.html"
 
 
-class CreateView(CreateView):
-    pass
-    
+class CreateLaudoView(TemplateView):
+    # mudar para CreateView
+    template_name = 'laudo/laudo_form.html'
 
 
-
-index = IndexView.as_view()
+index = IndexLaudoView.as_view()
+create_laudo = CreateLaudoView.as_view()
