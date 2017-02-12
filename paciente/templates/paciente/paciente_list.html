@@ -20,7 +20,7 @@
             <div class="col-sm-6">
                 <form action="{% url 'paciente:paciente_list' %}" role="search">
                     <div class="input-group">
-                        <input type="text" name="q" class="form-control" placeholder="Pesquiar um paciente...">
+                        <input type="text" name="q" class="form-control" placeholder="Buscar paciente por nome ou CPF">
                         <span class="input-group-btn">
                             <button class="btn btn-warning" type="submit"><span class="glyphicon glyphicon-search" aria-hidden="true"></span> Buscar</button>
                         </span>
@@ -60,7 +60,9 @@
             </tbody>
         </table>
         {% else %}
-            <h2>Nenhum paciente cadastrado ainda</h2>
+            <div class="alert alert-warning col-md-4">
+                <strong>Ops!</strong> Nenhum paciente encontrado. Tente novamente.
+            </div>        
         {% endif %}
     </div>
 {% endblock content %}

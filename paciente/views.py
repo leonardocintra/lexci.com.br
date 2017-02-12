@@ -21,7 +21,8 @@ class ListPaciente(ListView):
         q = self.request.GET.get('q', '')
         if q:
             queryset = queryset.filter(
-                models.Q(nome__icontains=q)
+                models.Q(nome__icontains=q) |
+                models.Q(cpf__iexact=q)
             )
         return queryset
 
