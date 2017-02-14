@@ -2,6 +2,7 @@ from datetime import date, datetime
 from django.db import models
 from django.db.models import signals
 from django.dispatch import receiver
+from core.models import Convenio
 from .constants import RACA, SEXO
 
 
@@ -19,6 +20,7 @@ class Paciente(models.Model):
     profissao = models.CharField(max_length=200, blank=True, null=True)
     ativo = models.BooleanField(default=True)
     sexo = models.CharField(max_length=1, choices=SEXO, default='N')
+    convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE, null=True)
 
     class Meta:
         verbose_name = 'Paciente'

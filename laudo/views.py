@@ -30,7 +30,7 @@ class CreateLaudoView(CreateView):
     def get_context_data(self, **kwargs):
         context = super(CreateLaudoView, self).get_context_data(**kwargs)
         context['paciente_id'] = self.kwargs['pk']
-        context['paciente_obj'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
+        context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
         return context
 
     # TO DO: get_success_url

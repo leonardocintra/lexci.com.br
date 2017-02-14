@@ -7,17 +7,17 @@
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
         <li><a href="{% url 'laudo:laudo_index' %}">Laudos</a></li>
-        <li><a href="{% url 'paciente:paciente_detail' paciente_id %}">{{ paciente_obj.nome }}</a></li>
+        <li><a href="{% url 'paciente:paciente_detail' paciente_id %}">{{ paciente.nome }}</a></li>
         <li class="active">Novo laudo</li>
     </ol>
 
     <div class="row">
-        <h3 style="color:darkgray">Laudo de <span class="label label-default">{{ paciente_obj.nome }}</span></h3>
+        <h3 style="color:darkgray">Laudo de <span class="label label-default">{{ paciente.nome }}</span></h3>
         <div class="col-sm-12 col-md-6">
             <div class="form-group">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Paciente:</label>
-                    <strong>{{ paciente_obj.nome }}</strong>
+                    <strong>{{ paciente.nome }}</strong>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Medico:</label>
@@ -33,15 +33,15 @@
             <div class="form-group">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Idade:</label>
-                    <strong>{% get_idade_paciente paciente_obj.data_nascimento %} anos</strong>
+                    <strong>{% get_idade_paciente paciente.data_nascimento %} anos</strong>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Sexo:</label>
-                    <strong>Masculino</strong>
+                    <strong>{{ paciente.get_sexo_display }}</strong>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Código:</label>
-                    <strong>#123858</strong>
+                    <strong>#{{ paciente.pk }}</strong>
                 </div>                                
             </div>
         </div>
