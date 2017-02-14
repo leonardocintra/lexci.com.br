@@ -2,7 +2,7 @@ from datetime import date, datetime
 from django.db import models
 from django.db.models import signals
 from django.dispatch import receiver
-from .constants import RACA
+from .constants import RACA, SEXO
 
 
 class Paciente(models.Model):
@@ -18,6 +18,7 @@ class Paciente(models.Model):
     data_atualizacao = models.DateTimeField(auto_now=True)
     profissao = models.CharField(max_length=200, blank=True, null=True)
     ativo = models.BooleanField(default=True)
+    sexo = models.CharField(max_length=1, choices=SEXO, default='N')
 
     class Meta:
         verbose_name = 'Paciente'
