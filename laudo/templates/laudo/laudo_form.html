@@ -3,7 +3,8 @@
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
-        <li><a href="#">Nome do paciente</a></li>
+        <li><a href="{% url 'laudo:laudo_index' %}">Laudos</a></li>
+        <li><a href="#">Leonardo Nascimento Cintra</a></li>
         <li class="active">Novo laudo</li>
     </ol>
 
@@ -13,15 +14,15 @@
             <div class="form-group">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Paciente:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <strong>Leonardo Nascimento CIntra</strong>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Medico:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <strong>Dr. Ronaldo Soares Lara</strong>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Convenio:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <strong>Unimed</strong>
                 </div>                                
             </div>
         </div>
@@ -29,15 +30,15 @@
             <div class="form-group">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Idade:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Idade">
+                    <strong>27</strong>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Sexo:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <strong>Masculino</strong>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">Código:</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
+                    <strong>#123858</strong>
                 </div>                                
             </div>
         </div>
