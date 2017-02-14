@@ -23,3 +23,9 @@ ESCOLARIDADE = (
     ('EMC', 'Ensino medio completo'),
     ('ESC', 'Ensino superior completo'),    
 )
+
+SEXO = (
+    ('M', 'Masculino'),
+    ('F', 'Feminino'),
+    ('N', 'Não informado')
+)
