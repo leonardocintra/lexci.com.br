@@ -1,5 +1,14 @@
 {% extends "core/base.html" %} 
 
+{% block script_header %}
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function() {
+            $.fm({debug: true});
+        });
+    </script>
+{% endblock script_header %}
+
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
@@ -10,7 +19,7 @@
         <h1><i class="fa fa-user-md" aria-hidden="true"></i> Médicos <small>Exibindo médicos cadastrados</small></h1>
     </div>
     <div class="row" style="padding-bottom: 20px;">
-        <a href="{% url 'medico:medico_create' %}" class="btn btn-success">
+        <a href="{% url 'medico:medico_create' %}" class="fm-create btn btn-success" data-fm-head="Criando Médico" data-fm-callback="reload">
             <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo medico
         </a>
     </div>
@@ -39,5 +48,11 @@
         {% else %}
         <h2>Nenhum médico cadastrado ainda</h2>
         {% endif %}
-    </div>
+    </div>    
+
+    
 {% endblock content %}
+
+{% block script_footer %} 
+    {% include "fm/modal.html" %}
+{% endblock script_footer %}

@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import ListView, CreateView, UpdateView
+from django.views.generic import ListView, UpdateView
 from django.views.generic.detail import DetailView
+from fm.views import AjaxCreateView, AjaxUpdateView
 
 from .models import Medico
 
@@ -12,7 +13,7 @@ class ListMedicoView(ListView):
     context_object_name = 'medico_list'
 
 
-class CreateMedicoView(CreateView):
+class CreateMedicoView(AjaxCreateView):
     model = Medico
     fields = ['nome', 'crm', 'telefone', ]
 
