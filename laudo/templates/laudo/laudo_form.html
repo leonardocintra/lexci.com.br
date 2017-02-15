@@ -2,6 +2,14 @@
 
 {% load paciente_extras %} 
 
+{% block script_header %}
+    <script type="text/javascript">
+        $(function() {
+            $.fm({debug: true});
+        });
+    </script>
+{% endblock script_header %}
+
 {% block content %}
 
     <ol class="breadcrumb">
@@ -42,6 +50,10 @@
                             <option value="{{ item.id }}">{{ item.nome }}</option>
                         {% endfor %}
                     </select>
+                    <br />
+                    <a href="{% url 'medico:medico_create' %}" class="fm-create btn btn-success" data-fm-head="Criando Médico" data-fm-callback="reload">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo medico
+                    </a>
                 </div>
             </div>
         </div>
@@ -138,8 +150,10 @@
             </div>
         </div>
 
-
-
     </div>
 
 {% endblock content %}
+
+{% block script_footer %} 
+    {% include "fm/modal.html" %}
+{% endblock script_footer %}

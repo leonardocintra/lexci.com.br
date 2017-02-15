@@ -6,5 +6,6 @@ urlpatterns = [
     url(r'^novo/$', views.medico_create, name='medico_create'),
     url(r'^(?P<pk>[0-9]+)/$', views.medico_detail, name='medico_detail'),	
     url(r'^(?P<pk>[0-9]+)/editar/$', views.medico_update, name='medico_update'),
+    url(r'^delete/(?P<pk>[0-9]+)/$', views.medico_delete, name='medico_delete'),	
     #url(r'^relatorio/(?P<pk>[0-9]+)/$', reports.medico_write, name='medico_relatorio'),
 ]

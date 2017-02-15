@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import ListView, UpdateView
+from django.views.generic import ListView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
 from fm.views import AjaxCreateView, AjaxUpdateView
 
@@ -43,8 +43,17 @@ class UpdateMedicoView(UpdateView):
         return context
 
 
+class DeleteMedidoView(DeleteView):
+    model = Medico
+
+    def get_success_url(self):
+        return reverse_lazy('medico:medico_list')    
+
+
+
 
 medico_list = ListMedicoView.as_view()
 medico_create = CreateMedicoView.as_view()
 medico_detail = DetailMedicoView.as_view()
 medico_update = UpdateMedicoView.as_view()
+medico_delete = DeleteMedidoView.as_view()
