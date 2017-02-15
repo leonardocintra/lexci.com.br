@@ -1,7 +1,6 @@
 {% extends "core/base.html" %} 
 
 {% block script_header %}
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script type="text/javascript">
         $(function() {
             $.fm({debug: true});
@@ -46,7 +45,7 @@
             </tbody>
         </table>
         {% else %}
-        <h2>Nenhum médico cadastrado ainda</h2>
+            <h2>Nenhum médico cadastrado ainda</h2>
         {% endif %}
     </div>    
 
