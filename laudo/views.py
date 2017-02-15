@@ -3,6 +3,7 @@ from django.views.generic import TemplateView, CreateView
 from .models import Laudo
 from .forms import LaudoForm, PacienteLaudoFormSet
 from paciente.models import Paciente
+from medico.models import Medico
 
 
 class IndexLaudoView(TemplateView):
@@ -31,6 +32,7 @@ class CreateLaudoView(CreateView):
         context = super(CreateLaudoView, self).get_context_data(**kwargs)
         context['paciente_id'] = self.kwargs['pk']
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
+        context['medico'] = Medico.objects.all()
         return context
 
     # TO DO: get_success_url

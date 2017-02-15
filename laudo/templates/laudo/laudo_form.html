@@ -12,7 +12,7 @@
     </ol>
 
     <div class="row">
-        <h3 style="color:darkgray">Laudo de <span class="label label-default">{{ paciente.nome }}</span></h3>
+        <h3 style="color:darkgray"><span class="label label-default">{{ paciente.nome }}</span></h3>
         <div class="col-sm-12 col-md-6">
             <div class="form-group">
                 <div class="form-group">
@@ -20,29 +20,29 @@
                     <strong>{{ paciente.nome }}</strong>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Medico:</label>
-                    <strong>Dr. Ronaldo Soares Lara</strong>
-                </div>
-                <div class="form-group">
                     <label for="exampleInputEmail1">Convenio:</label>
                     <strong>{{ paciente.convenio }}</strong>
                 </div>                                
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Idade:</label>
                     <strong>{% get_idade_paciente paciente.data_nascimento %} anos</strong>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Sexo:</label>
-                    <strong>Feminino</strong>
-                </div>
-                <div class="form-group">
                     <label for="exampleInputEmail1">Código:</label>
                     <strong>#{{ paciente.pk }}</strong>
-                </div>                                
+                </div>                
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-6">
+            <div class="form-group">
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Médido que atendeu:</label>
+                    <select class="form-control">
+                        {% for item in medico  %}
+                            <option value="{{ item.id }}">{{ item.nome }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
             </div>
         </div>
     </div>
