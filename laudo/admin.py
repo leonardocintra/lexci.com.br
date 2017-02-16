@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Exame, ItemExame, Laudo
+from .models import Exame, ItemExame, Laudo, ExameLaudo
 
 
 class ExameAdmin(admin.ModelAdmin):
@@ -10,8 +10,14 @@ class ExameAdmin(admin.ModelAdmin):
 class ItemExameAdmin(admin.ModelAdmin):
     list_display = ('exame', 'descricao_item', 'ativo', )
 
+
+class LaudoExameInline(admin.TabularInline):
+    model = ExameLaudo
+
 class LaudoAdmin(admin.ModelAdmin):
-    fields = ('paciente', 'medico', 'convenio', 'exames', )
+    fields = ('paciente', 'medico', 'paciente_pode_ver', 'ativo', )
+    inlines = [LaudoExameInline]
+
 
 
 admin.site.register(Exame, ExameAdmin)

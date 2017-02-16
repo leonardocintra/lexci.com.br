@@ -1,7 +1,6 @@
 from django.db import models
 from paciente.models import Paciente
 from medico.models import Medico
-from core.models import Convenio
 
 
 class Exame(models.Model):
@@ -66,7 +65,6 @@ class Laudo(models.Model):
     """
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='paciente')
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
-    convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE)
     paciente_pode_ver = models.BooleanField(default=False)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)

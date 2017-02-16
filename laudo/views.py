@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, CreateView
 from .models import Laudo
-from .forms import LaudoForm, PacienteLaudoFormSet
+from .forms import LaudoForm, PacienteLaudoFormSet, ExameLaudoFormSet
 from paciente.models import Paciente
 from medico.models import Medico
 
@@ -23,10 +23,17 @@ class CreateLaudoView(CreateView):
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         paciente_form = PacienteLaudoFormSet
-        return self.render_to_response(self.get_context_data(
-            form=form,
-            paciente_form=paciente_form)
+        exames_form = ExameLaudoFormSet
+        return self.render_to_response(
+            self.get_context_data(
+                form=form,
+                paciente_form=paciente_form,
+                exames_form=exames_form
+            )
         )
+    
+    def post(self, request, *args, **kwargs):
+        pass
     
     def get_context_data(self, **kwargs):
         context = super(CreateLaudoView, self).get_context_data(**kwargs)
