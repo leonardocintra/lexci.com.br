@@ -62,6 +62,35 @@
     {# Inclui os exames que devem ser feito #}
     <div class="row">
         <h3>Descrição dos exames realizados</h3>
+        {% for exame in exames  %}
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{{ exame.descricao }}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {% for item in exameItem %}
+                            {% if exame.id == item.exame.id %}
+                                <div class="checkbox">
+                                    <label>
+                                    <input type="checkbox"> {{ item.descricao_item }}
+                                    </label>
+                                </div>
+                            {% endif %}
+                        {% endfor %}                            
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Novo...">
+                            <span class="input-group-btn">
+                                <button class="btn btn-success" type="button">Salvar</button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+        {% endfor %}
+
+        <!--
         <div class="col-sm-12 col-md-4">
             <div class="panel panel-default">
                 <div class="panel-heading">
@@ -149,6 +178,7 @@
                 </div>
             </div>
         </div>
+        -->
 
     </div>
 

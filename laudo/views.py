@@ -1,9 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, CreateView
-from .models import Laudo
+from .models import Laudo, ItemExame, Exame
 from .forms import LaudoForm, PacienteLaudoFormSet, ExameLaudoFormSet
+
 from paciente.models import Paciente
 from medico.models import Medico
+
 
 
 class IndexLaudoView(TemplateView):
@@ -40,6 +42,8 @@ class CreateLaudoView(CreateView):
         context['paciente_id'] = self.kwargs['pk']
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
         context['medico'] = Medico.objects.all()
+        context['exames'] = Exame.objects.all()
+        context['exameItem'] = ItemExame.objects.all()   
         return context
 
     # TO DO: get_success_url
