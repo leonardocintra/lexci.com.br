@@ -1,7 +1,5 @@
 {% extends "core/base.html" %}
 
-{% load paciente_extras %} 
-
 {% block script_header %}
     <script type="text/javascript">
         $(function() {
@@ -19,65 +17,29 @@
         <li class="active">Novo laudo</li>
     </ol>
 
-    <div class="row">
-        <h3 style="color:darkgray"><span class="label label-default">{{ paciente.nome }}</span></h3>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Paciente:</label>
-                    <strong>{{ paciente.nome }}</strong>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Convenio:</label>
-                    <strong>{{ paciente.convenio }}</strong>
-                </div>                                
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Idade:</label>
-                    <strong>{% get_idade_paciente paciente.data_nascimento %} anos</strong>
-                </div>
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Código:</label>
-                    <strong>#{{ paciente.pk }}</strong>
-                </div>                
-            </div>
-        </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group">
-                <div class="form-group">
-                    <label for="exampleInputEmail1">Médido que atendeu:</label>
-                    <select class="form-control">
-                        {% for item in medico  %}
-                            <option value="{{ item.id }}">{{ item.nome }}</option>
-                        {% endfor %}
-                    </select>
-                    <br />
-                    <a href="{% url 'medico:medico_create' %}" class="fm-create btn btn-success" data-fm-head="Criando Médico" data-fm-callback="reload">
-                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo medico
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    {# Exibe as informações do Paciente#}
+    {% include "laudo/includes/paciente_include.html" %}
 
-    {# Inclui os exames que devem ser feito #}
-    <div class="row">
-        <h3>Descrição dos exames realizados</h3>
-        {% for exame in exames  %}
+    <form method="POST">
+        {% csrf_token %}
+        {# Inclui os exames que devem ser feito #}
+        <div class="row">
+            <h3>Descrição dos exames realizados</h3>
+
+            {{ exame_form.management_form }}
+
+            {% for field in exame_form  %}
             <div class="col-sm-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">{{ exame.descricao }}</h3>
+                        <h3 class="panel-title">EXAME TITTLE</h3>
                     </div>
                     <div class="panel-body">
-                        {% for item in exameItem %}
-                            {% if exame.id == item.exame.id %}
-                                <div class="checkbox">
-                                    <label>
-                                    <input type="checkbox"> {{ item.descricao_item }}
-                                    </label>
-                                </div>
-                            {% endif %}
-                        {% endfor %}                            
+                        <div class="checkbox">
+                            <label>
+                            <input type="checkbox"> TESTE
+                            </label>
+                        </div>                    
                         <div class="input-group">
                             <input type="text" class="form-control" placeholder="Novo...">
                             <span class="input-group-btn">
@@ -87,100 +49,15 @@
                     </div>
                 </div>
             </div>
-                
-        {% endfor %}
-
-        <!--
-        <div class="col-sm-12 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Tipo da Amostra</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Esfregaço Convencional
-                        </label>
-                    </div>                     
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Citologia Líquida
-                        </label>
-                    </div>                              
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Novo...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="button">Salvar</button>
-                        </span>
-                    </div>
-                </div>
-            </div>            
-        </div>
-
-        <div class="col-sm-12 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Adequação da Amostra</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Satisfatoria
-                        </label>
-                    </div>    
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Limitada
-                        </label>
-                    </div>                                     
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Insatisfatória
-                        </label>
-                    </div>                                 
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Novo...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="button">Salvar</button>
-                        </span>
-                    </div>
-                </div>
+            {% endfor %}      
+            {# Botão Salvar #}
+            <div class="text-right">
+                <input type="submit" value="Salvar laudo" class="btn btn-success btn-lg">
             </div>
-        </div>
 
-        <div class="col-sm-12 col-md-4">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Epitélios Representados na Amostra</h3>
-                </div>
-                <div class="panel-body">
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Escamoso
-                        </label>
-                    </div>
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Glandular
-                        </label>
-                    </div>     
-                    <div class="checkbox">
-                        <label>
-                        <input type="checkbox"> Metaplasico
-                        </label>
-                    </div>                             
-                    <div class="input-group">
-                        <input type="text" class="form-control" placeholder="Novo...">
-                        <span class="input-group-btn">
-                            <button class="btn btn-success" type="button">Salvar</button>
-                        </span>
-                    </div>
-                </div>
-            </div>
         </div>
-        -->
+    </form>
 
-    </div>
 
 {% endblock content %}
 
