@@ -2,14 +2,10 @@
 
 <div class="row">
     
-    <h3 style="color:darkgray"><span class="label label-default">{{ paciente.nome }}</span></h3>
+    <h3 style="color:darkgray"><span class="label label-default">#{{ paciente.pk }} - {{ paciente.nome }}</span></h3>
 
     <div class="col-sm-12 col-md-6">
         <div class="form-group">
-            <div class="form-group">
-                <label for="exampleInputEmail1">Paciente:</label>
-                <strong>{{ paciente.nome }}</strong>
-            </div>
             <div class="form-group">
                 <label for="exampleInputEmail1">Convenio:</label>
                 <strong>{{ paciente.convenio }}</strong>
@@ -17,11 +13,7 @@
             <div class="form-group">
                 <label for="exampleInputEmail1">Idade:</label>
                 <strong>{% get_idade_paciente paciente.data_nascimento %} anos</strong>
-            </div>
-            <div class="form-group">
-                <label for="exampleInputEmail1">Código:</label>
-                <strong>#{{ paciente.pk }}</strong>
-            </div>                
+            </div>            
         </div>
     </div>
     
@@ -35,7 +27,7 @@
                     {% endfor %}
                 </select>
                 <br />
-                <a href="{% url 'medico:medico_create' %}" class="fm-create btn btn-success" data-fm-head="Criando Médico" data-fm-callback="reload">
+                <a href="{% url 'medico:medico_create' %}" class="fm-create btn btn-success"                   data-fm-head="Criando Médico" data-fm-callback="reload">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo medico
                 </a>
             </div>
