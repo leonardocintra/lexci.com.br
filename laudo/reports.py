@@ -1,10 +1,12 @@
-import datetime
+from datetime import datetime
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 
+from paciente.models import Paciente
 
-def gerar_laudo(request):
+
+def gerar_laudo(request, pk):
 
     filename = "LEXCI"
     
@@ -15,7 +17,7 @@ def gerar_laudo(request):
 
     write_title(c)
 
-    write_paciente(c)
+    write_paciente(c, pk)
 
     c.setFont('Helvetica-Bold', 16)
     c.drawString(55, 603, 'EXAME CITOPATOLÓGICO CERVICAL UTERINO, (Bethesda 2001)')
@@ -23,6 +25,9 @@ def gerar_laudo(request):
 
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 570, 'Data da coleta: ')
+    c.setFont('Helvetica', 12)
+    c.drawString(130, 570, '{}'.format(str(datetime.now().strftime('%d/%m/%Y - %H:%M h'))))
+    c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 550, 'Data da ultima menstruação: ')
 
 
@@ -36,20 +41,21 @@ def gerar_laudo(request):
     return response
 
 
-def write_paciente(canvas):
+def write_paciente(canvas, pk):
     c = canvas
+    p = Paciente.objects.get(pk=pk)
 
     tamanho_letra = 14
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 670, 'Nome: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(95, 670, 'Maria Tereza Paciente Teste')
+    c.drawString(95, 670, p.nome)
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(450, 670, 'Idade: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(495, 670, '27 anos')
+    c.drawString(495, 670, '{} anos'.format(Paciente.calcula_idade(p.data_nascimento)))
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 650, 'Médico: ')
@@ -64,12 +70,17 @@ def write_paciente(canvas):
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 630, 'Convênio: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(115, 630, 'Unimed')
+    varConvenio = ""
+    if p.convenio:
+        varConvenio = p.convenio.descricao
+    else:
+        varConvenio = ""
+    c.drawString(115, 630, varConvenio)
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(450, 630, 'Código: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(505, 630, '#456866')
+    c.drawString(505, 630, '#{}'.format(p.id))
 
     write_horizontal_line(c, 620)
     return c
