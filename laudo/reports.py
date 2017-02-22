@@ -21,6 +21,12 @@ def gerar_laudo(request):
     c.drawString(55, 603, 'EXAME CITOPATOLÓGICO CERVICAL UTERINO, (Bethesda 2001)')
     write_horizontal_line(c, 595)
 
+    c.setFont('Helvetica-Bold', 12)
+    c.drawString(40, 570, 'Data da coleta: ')
+    c.drawString(40, 550, 'Data da ultima menstruação: ')
+
+
+    write_assinatura_marcio(c)
     write_footer(c)
 
 
@@ -38,7 +44,7 @@ def write_paciente(canvas):
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 670, 'Nome: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(95, 670, 'Leonardo Nascimento Cintra')
+    c.drawString(95, 670, 'Maria Tereza Paciente Teste')
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(450, 670, 'Idade: ')
@@ -68,6 +74,13 @@ def write_paciente(canvas):
     write_horizontal_line(c, 620)
     return c
 
+def write_assinatura_marcio(canvas):
+    c = canvas
+    c.setFont('Helvetica-Oblique', 10)
+    c.drawString(450, 100, 'Dr. Márcio Gimenes França')
+    c.drawString(465, 86, 'Biomédico Citologista')
+    c.drawString(463, 71, 'CRBM 8803/SBCC 768')
+    return c
 
 def write_title(canvas):
     c = canvas
