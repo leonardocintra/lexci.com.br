@@ -4,7 +4,11 @@ from .models import Laudo, ExameLaudo
 from medico.models import Medico
 
 class LaudoForm(forms.ModelForm):
-    medico = forms.ModelChoiceField(queryset=Medico.objects.all(), widget=forms.Select(attrs={'class': 'form-control' }), label='Médico que atendeu', required=True)
+    medico = forms.ModelChoiceField(
+                queryset=Medico.objects.all(), 
+                widget=forms.Select(attrs={'class': 'form-control' }), 
+                label='Médico que atendeu',  
+                required=True)
     
     class Meta:
         model = Laudo
@@ -12,6 +16,10 @@ class LaudoForm(forms.ModelForm):
 
 
 class ExameLaudoForm(forms.ModelForm):
+    item_exame = forms.ModelChoiceField(
+                    queryset=Medico.objects.all(), 
+                    widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-control' }), 
+                    label='Exames')
 
     class Meta:
         model = ExameLaudo

@@ -26,11 +26,11 @@ class CreateLaudoView(CreateView):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)
-        exame_form = ExameLaudoFormSet
+        form_exame = ExameLaudoFormSet
         return self.render_to_response(
             self.get_context_data(
                 form=form,
-                exame_form=exame_form
+                form_exame=form_exame
             )
         )
     
@@ -38,26 +38,26 @@ class CreateLaudoView(CreateView):
         self.object = None
         form_class = self.get_form_class()
         form = self.get_form(form_class)
-        exame_form = ExameLaudoFormSet(self.request.POST)
+        form_exame = ExameLaudoFormSet(self.request.POST)
 
         if (form.is_valid() and exemes_form.is_valid()):
             print('é valido')
-            return self.form_valid(form, exame_form)
+            return self.form_valid(form, form_exame)
         else:
             print('num é valido')
-            return self.form_invalid(form, exame_form)
+            return self.form_invalid(form, form_exame)
 
-    def form_invalid(self, form, exame_form):
+    def form_invalid(self, form, form_exame):
         self.object = form.save()
-        exame_form.instance = self.object
-        exame_form.save()
+        form_exame.instance = self.object
+        form_exame.save()
         return HttpResponseRedirect(self.get_success_url())
     
-    def form_invalid(self, form, exame_form):
+    def form_invalid(self, form, form_exame):
         return self.render_to_response(
             self.get_context_data(
                 form=form, 
-                exame_form=exame_form
+                form_exame=form_exame
             )
         )
     
