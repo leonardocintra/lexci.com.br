@@ -49,6 +49,7 @@ class CreateLaudoView(CreateView):
 
     def form_valid(self, form, form_exame):
         self.object = form.save()
+        form.paciente = self.kwargs['pk'] #ver se isso esta certo
         form_exame.instance = self.object
         form_exame.save()
         return HttpResponseRedirect(self.get_success_url())
