@@ -47,7 +47,7 @@ class CreateLaudoView(CreateView):
             print('num é valido')
             return self.form_invalid(form, form_exame)
 
-    def form_invalid(self, form, form_exame):
+    def form_valid(self, form, form_exame):
         self.object = form.save()
         form_exame.instance = self.object
         form_exame.save()
