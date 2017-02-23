@@ -7,25 +7,25 @@
     <div class="col-sm-12 col-md-6">
         <div class="form-group">
             <div class="form-group">
-                <label for="exampleInputEmail1">Convenio:</label>
+                <label>Convenio:</label>
                 <strong>{{ paciente.convenio }}</strong>
             </div>                                
             <div class="form-group">
-                <label for="exampleInputEmail1">Idade:</label>
+                <label>Idade:</label>
                 <strong>{% get_idade_paciente paciente.data_nascimento %} anos</strong>
-            </div>            
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail1">{{ form.paciente_pode_ver.label }}:</label>
+                {{ form.paciente_pode_ver }}
+            </div>
         </div>
     </div>
     
     <div class="col-sm-12 col-md-6">
         <div class="form-group">
             <div class="form-group">
-                <label for="exampleInputEmail1">Médido que atendeu:</label>
-                <select class="form-control">
-                    {% for item in medico  %}
-                        <option value="{{ item.id }}">{{ item.nome }}</option>
-                    {% endfor %}
-                </select>
+                <label>Médido que atendeu:</label>
+                {{ form.medico }}
                 <br />
                 <a href="{% url 'medico:medico_create' %}" class="fm-create btn btn-success"                   data-fm-head="Criando Médico" data-fm-callback="reload">
                     <span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Novo medico

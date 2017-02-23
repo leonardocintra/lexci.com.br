@@ -24,12 +24,30 @@
         {% csrf_token %}
         {# Inclui os exames que devem ser feito #}
         <div class="row">
+            <div class="col-sm-12">
+                <div class="form-group">
+
+                </div>
+            </div>
             <h3>Descrição dos exames realizados</h3>
 
-            {{ exame_form.management_form }}
 
-            {% for form in exame_form  %}
-            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <!--
             <div class="col-sm-12">
                 <div class="panel panel-default">
@@ -51,7 +69,7 @@
                     </div>
                 </div>
             </div>-->
-            {% endfor %}      
+
             {# Botão Salvar #}
             <div class="text-right">
                 <input type="submit" value="Salvar e Gerar laudo" class="btn btn-success btn-lg">

@@ -65,7 +65,6 @@ class CreateLaudoView(CreateView):
         context = super(CreateLaudoView, self).get_context_data(**kwargs)
         context['paciente_id'] = self.kwargs['pk']
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
-        context['medico'] = Medico.objects.all()
         return context
 
     def get_success_url(self):
