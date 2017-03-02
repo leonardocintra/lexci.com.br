@@ -20,13 +20,39 @@
     <form method="POST">
         {% csrf_token %}
 
+        {% if form.errors %}
+            {% for field in form %}
+                {% for error in field.errors %}
+                    <div class="alert alert-danger">
+                        <strong>{{ error|escape }}</strong>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+            {% for error in form.non_field_errors %}
+                <div class="alert alert-danger">
+                    <strong>{{ error|escape }}</strong>
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% if form.errors %}
+            <strong style="color: red;" >{{ form.errors.as_text }}</strong>
+        {% endif %}
+
         {# Exibe as informações do Paciente#}
         {% include "laudo/includes/paciente_include.html" %}
 
         {# Inclui os exames que devem ser feito #}
         <div class="row">
             <h3>Marque os exames realizados</h3>
-            
+
+
+            {% for field in form_exame %}
+
+                {% for exame in exames %}
+                    {# renderizar cada um #}
+                {% endfor %}
+            {% endfor %}
 
             {# Botão Salvar #}
             <div class="text-right">
@@ -42,27 +68,3 @@
 {% block script_footer %} 
     {% include "fm/modal.html" %}
 {% endblock script_footer %}
-
-
-
-<!--
-<div class="col-sm-12">
-    <div class="panel panel-default">
-        <div class="panel-heading">
-            <h3 class="panel-title"><EX></EX>AME TITTLE</h3>
-        </div>
-        <div class="panel-body">
-            <div class="checkbox">
-                <label>
-                <input type="checkbox"> TESTE
-                </label>
-            </div>                    
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Novo...">
-                <span class="input-group-btn">
-                    <button class="btn btn-success" type="button">Salvar</button>
-                </span>
-            </div>
-        </div>
-    </div>
-</div>-->

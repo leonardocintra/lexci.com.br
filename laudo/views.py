@@ -40,7 +40,7 @@ class CreateLaudoView(CreateView):
         form = self.get_form(form_class)
         form_exame = ExameLaudoFormSet(self.request.POST)
 
-        if (form.is_valid() and exemes_form.is_valid()):
+        if form.is_valid(): #and exemes_form.is_valid()):
             print('é valido')
             return self.form_valid(form, form_exame)
         else:
@@ -49,7 +49,6 @@ class CreateLaudoView(CreateView):
 
     def form_valid(self, form, form_exame):
         self.object = form.save()
-        form.paciente = self.kwargs['pk'] #ver se isso esta certo
         form_exame.instance = self.object
         form_exame.save()
         return HttpResponseRedirect(self.get_success_url())
@@ -66,14 +65,12 @@ class CreateLaudoView(CreateView):
         context = super(CreateLaudoView, self).get_context_data(**kwargs)
         context['paciente_id'] = self.kwargs['pk']
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
+        context['exames'] = Exame.objects.all()
         return context
 
     def get_success_url(self):
         return reverse_lazy('paciente:paciente_list')
     
-
-
-
 
 index = IndexLaudoView.as_view()
 create_laudo = CreateLaudoView.as_view()

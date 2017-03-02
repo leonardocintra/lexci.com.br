@@ -16,18 +16,20 @@ class LaudoForm(forms.ModelForm):
 
 
 class ExameLaudoForm(forms.ModelForm):
-    item_exame = forms.ModelChoiceField(
-                    queryset=Medico.objects.all(), 
-                    widget=forms.CheckboxSelectMultiple(attrs={'class': 'form-control' }), 
-                    label='Exames')
+    item_exame = forms.ModelMultipleChoiceField(
+                    queryset=ExameLaudo.objects.all(), 
+                    widget=forms.CheckboxSelectMultiple())
+    
 
     class Meta:
         model = ExameLaudo
         exclude = ('data_cadastro', )
-    
+
+ 
 ExameLaudoFormSet = inlineformset_factory(
     Laudo,
     ExameLaudo,
+    form=ExameLaudoForm,
     can_delete=False,
     fields=('__all__'),
     extra=1
