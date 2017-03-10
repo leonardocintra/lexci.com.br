@@ -28,7 +28,6 @@ class CreateLaudoView(FormView):
 
     def form_valid(self, form):
         self.object = form.save()
-
         item_exames_ids = self.request.POST.getlist("item_exames")
         form.create_laudo_exames(self.object, item_exames_ids)
 
@@ -47,8 +46,7 @@ class CreateLaudoView(FormView):
         return context
 
     def get_success_url(self):
-        return reverse_lazy('paciente:paciente_list')        
-
+        return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
     
 
 index = IndexLaudoView.as_view()
