@@ -2,48 +2,34 @@
     {# o form_paciente.id esta no paciente_detail.html. Essa pagina é um include #}
     <a href="{% url 'laudo:create_laudo' pk=form_paciente.id  %}" class="btn btn-success">Cadastrar Laudo</a>
 </div>
-
+<br >
 <div>
-    <table class="table">
-        <thead>
-            <tr>
-            <th>#</th>
-            <th>Laudo</th>
-            <th>Medico</th>
-            <th>Data</th>
-            <th></th>
-            <th></th>
-            <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td><a href="#">Detalhes</a> </td>
-                <td><a href="#">Editar</a> </td>
-                <td><a href="#">Imprimir</a> </td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td><a href="#">Detalhes</a> </td>
-                <td><a href="#">Editar</a> </td>
-                <td><a href="#">Imprimir</a> </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td><a href="#">Detalhes</a> </td>
-                <td><a href="#">Editar</a> </td>
-                <td><a href="#">Imprimir</a> </td>
-            </tr>
-        </tbody>
-    </table>
+    {% if laudo %}
+        <table class="table">
+            <thead>
+                <tr>
+                <th>#</th>
+                <th>Medico</th>
+                <th>Data</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for laudo in laudos %}
+                    <tr>
+                        <th scope="row">{{ laudo.id }}</th>
+                        <td>{{ laudo.medico.nome }}</td>
+                        <td>{{ laudo.data_cadastro }}</td>
+                        <td><a href="#">Detalhes</a> </td>
+                        <td><a href="#">Editar</a> </td>
+                        <td><a href="#">Imprimir</a> </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h2>Nenhum laudo foi gerado para esse paciente.</h2>
+    {% endif %}
 </div>

@@ -4,6 +4,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView
 
+from laudo.models import Laudo
 from .models import Paciente, PacienteEndereco
 from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
 
@@ -123,10 +124,13 @@ def paciente_detail(request, pk):
         form_endereco = PacienteEndereco.objects.get(paciente_id=pk)
     except PacienteEndereco.DoesNotExist:
         form_endereco = None
+
+    laudos = Laudo.objects.filter(paciente_id=pk)
     
     context = {
         'form_paciente': form_paciente,
-        'form_endereco': form_endereco
+        'form_endereco': form_endereco,
+        'laudos': laudos
     }
     return render(request, 'paciente/paciente_detail.html', context)
 
