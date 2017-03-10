@@ -13,12 +13,14 @@
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
         <li><a href="{% url 'laudo:laudo_index' %}">Laudos</a></li>
-        <li><a href="{% url 'paciente:paciente_detail' paciente_id %}">{{ paciente.nome }}</a></li>
+        <li><a href="{% url 'paciente:paciente_detail' paciente.id %}">{{ paciente.nome }}</a></li>
         <li class="active">Novo laudo</li>
     </ol>
 
     <form method="POST">
         {% csrf_token %}
+
+        {{ form.paciente.as_hidden }}
 
         {% if form.errors %}
             {% for field in form %}
@@ -46,12 +48,31 @@
         <div class="row">
             <h3>Marque os exames realizados</h3>
 
-
-            {% for field in form_exame %}
-
-                {% for exame in exames %}
-                    {# renderizar cada um #}
-                {% endfor %}
+            {% for exame in exames  %}
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title"><EX></EX>{{ exame }}</h3>    
+                        </div>
+                        <div class="panel-body">
+                            {% for item in item_exame %}
+                                {% if item.exame_id == exame.id %}
+                                    <div class="checkbox">
+                                        <label>
+                                        <input type="checkbox" name="item_exames" value="{{ item.id }}"> {{ item }}
+                                        </label>
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Novo...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="button">Salvar</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             {% endfor %}
 
             {# Botão Salvar #}

@@ -1,37 +1,20 @@
+""" Forms Laudo """
 from django import forms
 from django.forms.models import inlineformset_factory
-from .models import Laudo, ExameLaudo
 from medico.models import Medico
+from .models import Laudo, ExameLaudo
+
 
 class LaudoForm(forms.ModelForm):
-    medico = forms.ModelChoiceField(
-                queryset=Medico.objects.all(), 
-                widget=forms.Select(attrs={'class': 'form-control' }), 
-                label='Médico que atendeu',  
-                required=True)
+    """ LaudoForm - """
+
+    # ninguem esta chamando ainda. (desativei)
     
     class Meta:
         model = Laudo
         exclude = ('data_cadastro', 'data_atualizacao', )
 
-
-class ExameLaudoForm(forms.ModelForm):
-    item_exame = forms.ModelMultipleChoiceField(
-                    queryset=ExameLaudo.objects.all(), 
-                    widget=forms.CheckboxSelectMultiple())
     
-
-    class Meta:
-        model = ExameLaudo
-        exclude = ('data_cadastro', )
-
- 
-ExameLaudoFormSet = inlineformset_factory(
-    Laudo,
-    ExameLaudo,
-    form=ExameLaudoForm,
-    can_delete=False,
-    fields=('__all__'),
-    extra=1
-)
-
+    def create_laudo_exames(self, laudo, item_exames_ids):
+        for item_exame_id in item_exames_ids:
+            ExameLaudo.objects.create(laudo=laudo, item_exame_id=item_exame_id)
