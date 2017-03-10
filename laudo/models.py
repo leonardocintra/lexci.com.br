@@ -83,9 +83,3 @@ class ExameLaudo(models.Model):
     laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo')
     item_exame = models.ForeignKey(ItemExame, on_delete=models.CASCADE, related_name='item_exame')
     data_cadastro = models.DateTimeField(auto_now_add=True)
-
-    class Meta:
-        verbose_name = 'Exame Laudo'
-    
-    def __str__ (self):
-        return self.item_exame.descricao_item
