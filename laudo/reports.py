@@ -4,6 +4,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 
 from paciente.models import Paciente
+from laudo.models import Laudo, ExameLaudo
 
 
 def gerar_laudo(request, pk):
@@ -33,6 +34,8 @@ def gerar_laudo(request, pk):
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 600, 'Data da ultima menstruação: ')
 
+    write_exames(c, laudo)
+
     write_assinatura_marcio(c)
     write_footer(c)
 
@@ -41,6 +44,9 @@ def gerar_laudo(request, pk):
     c.save()
 
     return response
+
+def write_exames(canvas, laudo):
+    c = canvas
 
 
 def write_paciente(canvas, paciente):
