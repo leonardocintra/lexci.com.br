@@ -8,7 +8,7 @@ class ExameAdmin(admin.ModelAdmin):
 
 
 class ItemExameAdmin(admin.ModelAdmin):
-    list_display = ('exame', 'descricao_item', 'ativo', )
+    list_display = ('descricao_item', 'exame', 'ativo', )
 
 
 class LaudoExameInline(admin.TabularInline):
