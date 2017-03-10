@@ -73,6 +73,7 @@ class Laudo(models.Model):
     class Meta:
         verbose_name = 'Laudo'
         verbose_name_plural = 'Laudos'
+        ordering = ['-data_cadastro', ]
     
     def __str__ (self):
         return self.paciente.nome
