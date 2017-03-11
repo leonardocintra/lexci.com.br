@@ -1,7 +1,7 @@
 """
-Admin Core
-Created by: Leonardo Cintra
-Date: Janeiro de 2017
+    Admin Core
+    Created by: Leonardo Cintra
+    Date: Janeiro de 2017
 """
 from django.contrib import admin
 from .models import Convenio

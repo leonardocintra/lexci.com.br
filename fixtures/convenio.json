@@ -1,1 +1,34 @@
-[{"model": "core.convenio", "pk": 1, "fields": {"descricao": "Hospital Regional", "slug": "hospital-regional"}}, {"model": "core.convenio", "pk": 2, "fields": {"descricao": "Particular", "slug": "particular"}}, {"model": "core.convenio", "pk": 3, "fields": {"descricao": "Unimed", "slug": "unimed"}}, {"model": "core.convenio", "pk": 4, "fields": {"descricao": "Sistema Unico de Saude (SUS)", "slug": "sistema-unico-de-saude-sus"}}]
+[
+   {
+      "model":"core.convenio",
+      "pk":1,
+      "fields":{
+         "descricao":"Hospital Regional",
+         "slug":"hospital-regional"
+      }
+   },
+   {
+      "model":"core.convenio",
+      "pk":2,
+      "fields":{
+         "descricao":"Particular",
+         "slug":"particular"
+      }
+   },
+   {
+      "model":"core.convenio",
+      "pk":3,
+      "fields":{
+         "descricao":"Unimed",
+         "slug":"unimed"
+      }
+   },
+   {
+      "model":"core.convenio",
+      "pk":4,
+      "fields":{
+         "descricao":"Sistema Unico de Saude (SUS)",
+         "slug":"sistema-unico-de-saude-sus"
+      }
+   }
+]

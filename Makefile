@@ -15,6 +15,13 @@ deploy-prod:
 	@git push prod master
 	@heroku run python manage.py migrate --remote prod
 
+deploy-full:
+	@git push stage master
+	@heroku run python manage.py migrate --remote stage
+	@git push prod master
+	@heroku run python manage.py migrate --remote prod
+	@python manage.py runserver
+
 migrate:
 	@python manage.py makemigrations
 	@python manage.py migrate
