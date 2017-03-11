@@ -72,10 +72,7 @@ def write_exames(canvas, laudo):
                     exame_atual = item.item_exame.exame.descricao
                 espacamento -= 14
                 c.setFont('Helvetica', 9)
-                c.drawString(40, espacamento, "  - {}".format(item.item_exame.descricao_item))
-                print(espacamento)
-                
-                
+                c.drawString(40, espacamento, "  - {}".format(item.item_exame.descricao_item))                
     return c
 
 
