@@ -4,12 +4,13 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 
 from paciente.models import Paciente
-from laudo.models import Laudo, ExameLaudo
+from laudo.models import Laudo, ExameLaudo, Exame
 
 
-def gerar_laudo(request, pk):
+def gerar_laudo(request, laudo_id, paciente_id):
 
-    p = Paciente.objects.get(pk=pk)
+    p = Paciente.objects.get(pk=paciente_id)
+    laudo = Laudo.objects.filter(pk=laudo_id)
 
     filename = "laudo_{}".format(p.nome)
     
@@ -47,6 +48,25 @@ def gerar_laudo(request, pk):
 
 def write_exames(canvas, laudo):
     c = canvas
+    item_exames = ExameLaudo.objects.filter(laudo=laudo)
+    contador = item_exames.count()
+    exames = Exame.objects.all()
+
+    espacamento = 590
+    exame_atual = ""
+    for exame in exames:
+        for item in item_exames:
+            if item.item_exame.exame.id == exame.id:
+                if exame_atual != item.item_exame.exame.descricao:
+                    espacamento -= 24
+                    c.setFont('Helvetica-Bold', 12)
+                    c.drawString(40, espacamento, item.item_exame.exame.descricao)
+                    exame_atual = item.item_exame.exame.descricao
+                espacamento -= 14
+                c.setFont('Helvetica', 12)
+                c.drawString(40, espacamento, "  - {}".format(item.item_exame.descricao_item))
+                
+    return c
 
 
 def write_paciente(canvas, paciente):

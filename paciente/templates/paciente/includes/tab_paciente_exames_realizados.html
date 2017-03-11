@@ -24,7 +24,7 @@
                         <td>{{ laudo.data_cadastro }}</td>
                         <td><a href="#">Detalhes</a> </td>
                         <td><a href="#">Editar</a> </td>
-                        <td><a href="#">Imprimir</a> </td>
+                        <td><a href="{% url 'laudo:gerar_laudo' laudo_id=laudo.id paciente_id=form_paciente.id %}">Imprimir</a> </td>
                     </tr>
                 {% endfor %}
             </tbody>
