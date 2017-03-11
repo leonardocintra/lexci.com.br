@@ -1,7 +1,7 @@
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import TemplateView, CreateView, FormView
+from django.views.generic import ListView, TemplateView, CreateView, FormView, UpdateView
 
 from paciente.models import Paciente
 from medico.models import Medico
@@ -15,6 +15,7 @@ class IndexLaudoView(TemplateView):
 
 
 class CreateLaudoView(FormView):
+
     """ Gerador do Laudo """
 
     template_name = 'laudo/laudo_form.html'
@@ -47,7 +48,39 @@ class CreateLaudoView(FormView):
 
     def get_success_url(self):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
+
+
+
+
+class ListExameView(ListView):
+    """ Lista os Exames cadastrados """
+
+    modal = Exame
+    template_name = 'exame/exame_list.html'
+    context_object_name = 'exame_list'
+
+    def get_queryset(self):
+        queryset = Exame.objects.all()
+        return queryset
+
+
+class ListItemExameView(ListView):
+    """ Lista os Itens do Exame """
+
+    modal = ItemExame
+    template_name = 'exame/item_exame_list.html'
+    context_object_name = 'item_exame_list'
+
+    def get_queryset(self):
+        queryset = ItemExame.objects.all()
+        return queryset
     
+    def get_context_data(self, **kwargs):
+        context = super(ListItemExameView, self).get_context_data(**kwargs)
+        context['exames'] = Exame.objects.all()
+        return context
 
 index = IndexLaudoView.as_view()
-create_laudo = CreateLaudoView.as_view()    
+create_laudo = CreateLaudoView.as_view()  
+exame_list = ListExameView.as_view()  
+item_exame_list = ListItemExameView.as_view()

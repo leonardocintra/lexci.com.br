@@ -7,7 +7,10 @@
     <li class="active">Laudo</li>
 </ol>
 
-<h1>Laudo aqui</h1>
-<a href="{% url 'laudo:gerar_laudo' 2 %}" class="btn btn-success">GERAR LAUDO - EXEMPLO</a>
+<h2>Gerenciamento dos exames e Itens do Exame</h2>
+
+<a href="{% url 'laudo:exame_list' %}">Gerenciar exames</a>
+<br />
+<a href="{% url 'laudo:item_exame_list' %}">Gerenciar Itens dos exames</a>
 
 {% endblock content %}

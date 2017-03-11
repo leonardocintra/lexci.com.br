@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Descrição</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exame in exame_list %}
+                <tr>
+                    <th scope="row">{{ exame.id }}</th>
+                    <td>{{ exame.descricao }}</td>
+                    <td><a href="#">Editar</a> </td>
+                    <td><a href="#">Excluir</a> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

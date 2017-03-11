@@ -1,0 +1,30 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Exame</th>
+                <th>Descrição item</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for exame in exames %}
+                {% for item in item_exame_list %}
+                    {% if item.exame.id == exame.id %}
+                    <tr>
+                        <th scope="row">{{ item.id }}</th>
+                        <td>{{ exame.descricao }}</td>
+                        <td>{{ item.descricao_item }}</td>
+                        <td><a href="#">Editar</a> </td>
+                        <td><a href="#">Excluir</a> </td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}
