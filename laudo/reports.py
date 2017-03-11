@@ -4,13 +4,15 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
 
 from paciente.models import Paciente
+from medico.models import Medico
 from laudo.models import Laudo, ExameLaudo, Exame
 
 
 def gerar_laudo(request, laudo_id, paciente_id):
 
     p = Paciente.objects.get(pk=paciente_id)
-    laudo = Laudo.objects.filter(pk=laudo_id)
+    laudo = Laudo.objects.get(pk=laudo_id)
+    medico = Medico.objects.get(pk=laudo.medico.id)
 
     filename = "laudo_{}".format(p.nome)
     
@@ -21,7 +23,7 @@ def gerar_laudo(request, laudo_id, paciente_id):
 
     write_title(c)
 
-    write_paciente(c, p)
+    write_paciente(c, p, medico)
 
     write_horizontal_line(c, 670)
     c.setFont('Helvetica-Bold', 16)
@@ -63,13 +65,13 @@ def write_exames(canvas, laudo):
                     c.drawString(40, espacamento, item.item_exame.exame.descricao)
                     exame_atual = item.item_exame.exame.descricao
                 espacamento -= 14
-                c.setFont('Helvetica', 12)
+                c.setFont('Helvetica', 9)
                 c.drawString(40, espacamento, "  - {}".format(item.item_exame.descricao_item))
                 
     return c
 
 
-def write_paciente(canvas, paciente):
+def write_paciente(canvas, paciente, medico):
     c = canvas
     p = paciente
 
@@ -88,7 +90,7 @@ def write_paciente(canvas, paciente):
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 700, 'Médico: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(105, 700, 'Dr. Ronaldo Soares Lara')
+    c.drawString(105, 700, medico.nome)
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(450, 700, 'Sexo: ')
