@@ -1,6 +1,11 @@
 {% extends "core/base.html" %}
 
 {% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+        <li><a href="{% url 'laudo:laudo_index' %}">Gerenciamento Exame</a></li>
+        <li class="active">Exame</li>
+    </ol>
     <table class="table">
         <thead>
             <tr>
