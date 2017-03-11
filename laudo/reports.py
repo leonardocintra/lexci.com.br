@@ -1,6 +1,7 @@
 from datetime import datetime
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
+from reportlab.platypus import PageBreak
 from reportlab.lib.pagesizes import A4
 
 from paciente.models import Paciente
@@ -58,6 +59,11 @@ def write_exames(canvas, laudo):
     exame_atual = ""
     for exame in exames:
         for item in item_exames:
+            if espacamento < 90:
+                espacamento = 820
+                write_footer(c)
+                write_assinatura_marcio(c)
+                c.showPage()
             if item.item_exame.exame.id == exame.id:
                 if exame_atual != item.item_exame.exame.descricao:
                     espacamento -= 24
@@ -67,6 +73,8 @@ def write_exames(canvas, laudo):
                 espacamento -= 14
                 c.setFont('Helvetica', 9)
                 c.drawString(40, espacamento, "  - {}".format(item.item_exame.descricao_item))
+                print(espacamento)
+                
                 
     return c
 
