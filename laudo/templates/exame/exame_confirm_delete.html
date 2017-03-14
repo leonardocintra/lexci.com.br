@@ -1,0 +1,25 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <form action="" method="post">
+        {% csrf_token %}
+        <h3>Tem certeza que deseja excluir esse exame?</h3>
+        <div class="form-group">
+            <h2><small>Excluir:</small> {{ object.descricao }}</h2>
+            <br />
+            <h4>Esse exame contém os seguintes itens que serão excluídos também:</h4>
+            {% for item in items_exame %}
+                <li>{{ item.descricao_item }}</li>                
+            {% endfor %}
+        </div>
+
+        <div class="alert alert-danger">
+            <strong>Atenção!</strong>
+            Após excluir esse exame, também não aparecerá mais nos laudos. 
+            Inclusive nos laudos que ja foram gerados.
+        </div>
+
+        <input type="submit" value="Excluir {{ object.descricao }}" class="btn btn-primary" />
+        <a href="{% url 'laudo:exame_list' %}" class="btn btn-success"> Cancelar </a>
+    </form>
+{% endblock content %}

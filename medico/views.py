@@ -47,7 +47,7 @@ class DeleteMedidoView(DeleteView):
     model = Medico
 
     def get_success_url(self):
-        return reverse_lazy('medico:medico_list')    
+        return reverse_lazy('medico:medico_list')
 
 
 

@@ -2,10 +2,11 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import ListView, TemplateView, CreateView, FormView, UpdateView
+from django.views.generic.edit import DeleteView
 
 from paciente.models import Paciente
 from medico.models import Medico
-from .models import Laudo, ItemExame, Exame
+from .models import Laudo, ItemExame, Exame, ExameLaudo
 from .forms import LaudoForm
 
 
@@ -55,27 +56,34 @@ class CreateLaudoView(FormView):
 class ListExameView(ListView):
     """ Lista os Exames cadastrados """
 
-    modal = Exame
+    model = Exame
     template_name = 'exame/exame_list.html'
     context_object_name = 'exame_list'
 
-    def get_queryset(self):
-        queryset = Exame.objects.all()
-        return queryset
+
+class DeleteExameView(DeleteView):
+    """ Deleta um exame """
+
+    model = Exame
+    template_name = 'exame/exame_confirm_delete.html'
+    success_url = reverse_lazy('laudo:exame_list')
+
+    def get_context_data(self, **kwargs):
+        context = super(DeleteExameView, self).get_context_data(**kwargs)
+        context['items_exame'] = ItemExame.objects.filter(exame=self.kwargs['pk'])
+        return context
 
 
 class ListItemExameView(ListView):
     """ Lista os Itens do Exame """
 
-    modal = ItemExame
+    model = ItemExame
     template_name = 'exame/item_exame_list.html'
     context_object_name = 'item_exame_list'
-
-    def get_queryset(self):
-        queryset = ItemExame.objects.all()
-        return queryset
     
+
     def get_context_data(self, **kwargs):
+        template_name = 'exame/exame_confirm_delete.html'
         context = super(ListItemExameView, self).get_context_data(**kwargs)
         context['exames'] = Exame.objects.all()
         return context
@@ -83,4 +91,5 @@ class ListItemExameView(ListView):
 index = IndexLaudoView.as_view()
 create_laudo = CreateLaudoView.as_view()  
 exame_list = ListExameView.as_view()  
+exame_delete = DeleteExameView.as_view()
 item_exame_list = ListItemExameView.as_view()
