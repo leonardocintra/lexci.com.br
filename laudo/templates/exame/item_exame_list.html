@@ -25,7 +25,7 @@
                         <th scope="row">{{ item.id }}</th>
                         <td>{{ exame.descricao }}</td>
                         <td>{{ item.descricao_item }}</td>
-                        <td><a href="#">Editar</a> </td>
+                        <td><a href="{% url 'laudo:item_exame_update' item.id %}">Editar</a> </td>
                         <td><a href="{% url 'laudo:item_exame_delete' item.id %}">Excluir</a> </td>
                     </tr>
                     {% endif %}

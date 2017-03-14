@@ -96,6 +96,16 @@ class ListItemExameView(ListView):
         context = super(ListItemExameView, self).get_context_data(**kwargs)
         context['exames'] = Exame.objects.all()
         return context
+
+
+class UpdateItemExameView(UpdateExameView):
+    """ Atualiza um item do exame """
+
+    model = ItemExame
+    fields = ['exame', 'descricao_item']
+    template_name = 'exame/item_exame_update_form.html'
+    success_url = reverse_lazy('laudo:item_exame_list')
+
     
 class DeleteItemExameView(DeleteView):
     """ Deleta o item do exame """
@@ -113,3 +123,4 @@ exame_delete = DeleteExameView.as_view()
 exame_update = UpdateExameView.as_view()
 item_exame_list = ListItemExameView.as_view()
 item_exame_delete = DeleteItemExameView.as_view()
+item_exame_update = UpdateItemExameView.as_view()
