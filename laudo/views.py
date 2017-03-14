@@ -1,7 +1,9 @@
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
-from django.views.generic import ListView, TemplateView, CreateView, FormView, UpdateView
+from django.views.generic import (
+    ListView, TemplateView, CreateView, FormView, UpdateView
+)
 from django.views.generic.edit import DeleteView
 
 from paciente.models import Paciente
@@ -16,7 +18,6 @@ class IndexLaudoView(TemplateView):
 
 
 class CreateLaudoView(FormView):
-
     """ Gerador do Laudo """
 
     template_name = 'laudo/laudo_form.html'
