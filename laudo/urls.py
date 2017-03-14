@@ -8,7 +8,8 @@ urlpatterns = [
     
     # Exames
     url(r'^exame/$', views.exame_list, name='exame_list'),
-    url(r'^exame/delete/(?P<pk>[0-9]+)/$', views.exame_delete, name='exame_delete'),	
+    url(r'^exame/delete/(?P<pk>[0-9]+)/$', views.exame_delete, name='exame_delete'),
+    url(r'^exame/update/(?P<pk>[0-9]+)/$', views.exame_update, name='exame_update'),
     
     # Exame Itens
     url(r'^exame/item/$', views.item_exame_list, name='item_exame_list'),

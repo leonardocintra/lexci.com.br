@@ -1,0 +1,20 @@
+{% extends "core/base.html" %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+        <li><a href="{% url 'laudo:laudo_index' %}">Gerenciamento Exame</a></li>
+        <li><a href="{% url 'laudo:exame_list' %}">Exames</a></li>
+        <li class="active">{{ form.descricao.value }}</li>
+    </ol>
+
+    <form action="" method="post">{% csrf_token %}
+        <div class="form-group">
+            <label>{{ form.descricao.label }}</label>
+            {% render_field form.descricao class="form-control" placeholder="Nome da rua" %}
+        </div>
+        <input type="submit" value="Atualizar exame" class="btn btn-primary" />
+    </form>
+{% endblock content %}

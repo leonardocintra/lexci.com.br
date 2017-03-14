@@ -74,6 +74,15 @@ class DeleteExameView(DeleteView):
         return context
 
 
+class UpdateExameView(UpdateView):
+    """ Atualiza um exame """
+
+    model = Exame
+    fields = ['descricao']
+    template_name = 'exame/exame_update_form.html'
+    success_url = reverse_lazy('laudo:exame_list')
+
+
 class ListItemExameView(ListView):
     """ Lista os Itens do Exame """
 
@@ -101,5 +110,6 @@ index = IndexLaudoView.as_view()
 create_laudo = CreateLaudoView.as_view()  
 exame_list = ListExameView.as_view()  
 exame_delete = DeleteExameView.as_view()
+exame_update = UpdateExameView.as_view()
 item_exame_list = ListItemExameView.as_view()
 item_exame_delete = DeleteItemExameView.as_view()
