@@ -2,11 +2,13 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction, models
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, CreateView, UpdateView
-
+from django.views.generic import (
+    ListView, CreateView, UpdateView, DetailView
+)
 from laudo.models import Laudo
 from .models import Paciente, PacienteEndereco
 from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
+
 
 
 class ListPaciente(ListView):
@@ -71,6 +73,8 @@ class CreatePaciente(CreateView):
 
 
 class UpdatePaciente(UpdateView):
+    """ Atualiza dados do paciente"""
+
     model = Paciente
     template_name = 'paciente/paciente_update.html'
     fields = ('nome', 'cartao_sus', 'nome_mae', 'apelido', 'cpf', 'nacionalidade', 
@@ -87,6 +91,8 @@ class UpdatePaciente(UpdateView):
 
 
 class UpdateEnderecoPaciente(UpdateView):
+    """ Atualiza dados de endereço do paciente """
+
     model = PacienteEndereco
     template_name = 'paciente/paciente_update.html'
     fields = ('cep', 'logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', 'codigo_municipio', 'municipio', 'ponto_de_referencia', 'fone_ddd', 'fone_numero', 'email')
@@ -133,6 +139,32 @@ def paciente_detail(request, pk):
         'laudos': laudos
     }
     return render(request, 'paciente/paciente_detail.html', context)
+
+
+def paciente_exame(request, cpf):
+    """ 
+        Aqui é onde o paciente consulta pelo seu CPF os exames dele
+        Aqui é a pagina index.html que tem o button pesquisar pelo CPF
+        Paciente apenas ve os Laudos dele e consegue baixar o Laudo
+    """
+    paciente = get_object_or_404(Paciente, cpf=cpf)
+    try:
+        nome = paciente.nome
+    except Paciente.DoesNotExist:
+        pass
+
+    laudos = Laudo.objects.filter(paciente_id=paciente.id)
+
+    context = {
+        'nome': nome,
+        'laudos': laudos
+    }
+    return render(request, 'paciente/public/paciente_exame_list.html', context)
+    
+
+
+
+
 
 
 paciente_list = ListPaciente.as_view()
