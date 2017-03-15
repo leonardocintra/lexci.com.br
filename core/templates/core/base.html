@@ -67,7 +67,15 @@
 
     <div class="container">
 
-        {% block content %} {% endblock %}
+        {% block messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}">
+                    {{ message }}
+                </div>
+            {% endfor %} 
+        {% endblock %}
+
+        {% block content %} {% endblock content %}
 
         <hr> 
         <!-- Footer -->

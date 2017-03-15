@@ -1,4 +1,5 @@
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
@@ -53,7 +54,6 @@ class CreateLaudoView(FormView):
 
 
 
-
 class ListExameView(ListView):
     """ Lista os Exames cadastrados """
 
@@ -75,13 +75,14 @@ class DeleteExameView(DeleteView):
         return context
 
 
-class UpdateExameView(UpdateView):
+class UpdateExameView(SuccessMessageMixin, UpdateView):
     """ Atualiza um exame """
 
     model = Exame
     fields = ['descricao']
     template_name = 'exame/exame_update_form.html'
     success_url = reverse_lazy('laudo:exame_list')
+    success_message = "Exame atualizado com sucesso!"
 
 
 class ListItemExameView(ListView):
@@ -91,7 +92,6 @@ class ListItemExameView(ListView):
     template_name = 'exame/item_exame_list.html'
     context_object_name = 'item_exame_list'
     
-
     def get_context_data(self, **kwargs):
         template_name = 'exame/exame_confirm_delete.html'
         context = super(ListItemExameView, self).get_context_data(**kwargs)
@@ -99,13 +99,14 @@ class ListItemExameView(ListView):
         return context
 
 
-class UpdateItemExameView(UpdateExameView):
+class UpdateItemExameView(SuccessMessageMixin, UpdateExameView):
     """ Atualiza um item do exame """
 
     model = ItemExame
     fields = ['exame', 'descricao_item']
     template_name = 'exame/item_exame_update_form.html'
     success_url = reverse_lazy('laudo:item_exame_list')
+    success_message = "Item Exame atualizado com sucesso!"
 
     
 class DeleteItemExameView(DeleteView):
