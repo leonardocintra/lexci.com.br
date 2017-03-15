@@ -99,7 +99,7 @@ class ListItemExameView(ListView):
         return context
 
 
-class UpdateItemExameView(SuccessMessageMixin, UpdateExameView):
+class UpdateItemExameView(SuccessMessageMixin, UpdateView):
     """ Atualiza um item do exame """
 
     model = ItemExame
