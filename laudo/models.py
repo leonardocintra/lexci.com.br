@@ -54,12 +54,10 @@ class ItemExame(models.Model):
 
 
 class Laudo(models.Model):
-    """ Laudo - É o laudo em si. Inclui o paciente, medico, convenio o os items que vai nele 
+    """ Laudo - É o laudo em si. Inclui o paciente, medico.
         Descrição dos campos:
             - paciente: é o paciente (id)
             - medico: médico que atendeu (id)
-            - convenio: tipo de convenio (id)
-            - exames: todos os exames realizados 
             - paciente_pode_ver: o laudo é publico ou nao? O Paciente pode consultar o laudo dele on line
             - ativo: nao sera de costume deletar os laudos. Apenas inativa - los
     """

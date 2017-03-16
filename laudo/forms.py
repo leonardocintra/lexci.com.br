@@ -1,14 +1,10 @@
 """ Forms Laudo """
 from django import forms
-from django.forms.models import inlineformset_factory
-from medico.models import Medico
 from .models import Laudo, ExameLaudo
 
 
 class LaudoForm(forms.ModelForm):
     """ LaudoForm - """
-
-    # ninguem esta chamando ainda. (desativei)
     
     class Meta:
         model = Laudo

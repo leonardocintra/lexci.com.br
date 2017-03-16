@@ -3,6 +3,7 @@ from django.forms.models import inlineformset_factory
 from .models import Paciente, PacienteEndereco
 
 
+
 class PacienteExamesForm(forms.ModelForm):
     cpf = forms.CharField(max_length=11)
     

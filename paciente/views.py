@@ -134,19 +134,32 @@ def paciente_detail(request, pk):
     }
     return render(request, 'paciente/paciente_detail.html', context)
 
+    #template_name = 'paciente/public/paciente_exame_list.html'
 
-class ConsultaExameCPFView(DetailView):
-    model = Laudo
-    template_name = 'paciente/public/paciente_exame_list.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(ConsultaExameCPFView, self).get_context_data(**kwargs)
-        context['paciente'] = get_object_or_404(Paciente, cpf=self.kwargs['cpf'])
-        return context
+def paciente_exame(request):
+    cpf = request.GET.get('cpf', '')
+    try:
+        paciente = Paciente.objects.get(cpf=cpf)
+    except Paciente.DoesNotExist:
+        paciente = None
+
+    if paciente:
+        laudos = Laudo.objects.filter(paciente_id=paciente.id)
+    else:
+        laudos = None
+    
+    context =  {
+        'paciente': paciente,
+        'laudos': laudos
+    }
+    return render(request, 'paciente/public/paciente_exame_list.html', context)
+
+
+
 
 
 paciente_list = ListPaciente.as_view()
 paciente_create = CreatePaciente.as_view()
 paciente_update = UpdatePaciente.as_view()
 endereco_update = UpdateEnderecoPaciente.as_view()
-paciente_exame = ConsultaExameCPFView.as_view()
