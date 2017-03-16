@@ -145,7 +145,7 @@ def paciente_exame(request):
         paciente = None
 
     if paciente:
-        laudos = Laudo.objects.filter(paciente_id=paciente.id)
+        laudos = Laudo.objects.filter(paciente_id=paciente.id).filter(paciente_pode_ver=True)
     else:
         laudos = None
     

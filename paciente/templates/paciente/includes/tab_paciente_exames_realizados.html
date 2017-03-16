@@ -11,6 +11,7 @@
                     <th>#</th>
                     <th>Medico</th>
                     <th>Data</th>
+                    <th class="text-center">Paciente vê ?</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -22,6 +23,13 @@
                         <th scope="row">{{ laudo.id }}</th>
                         <td>{{ laudo.medico.nome }}</td>
                         <td>{{ laudo.data_cadastro }}</td>
+                        <td class="text-center">
+                            {% if laudo.paciente_pode_ver %}
+                                <strong class="text-success"> {{ laudo.paciente_pode_ver|yesno|upper }} </strong>
+                            {% else %}
+                                <strong class="text-danger"> {{ laudo.paciente_pode_ver|yesno|upper }} </strong>
+                            {% endif %}
+                        </td>
                         <td><a href="#">Detalhes</a> </td>
                         <td><a href="#">Editar</a> </td>
                         <td><a href="{% url 'laudo:gerar_laudo' laudo_id=laudo.id paciente_id=form_paciente.id %}">Imprimir</a> </td>
