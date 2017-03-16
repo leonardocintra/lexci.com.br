@@ -30,7 +30,7 @@
                                 <strong class="text-danger"> {{ laudo.paciente_pode_ver|yesno|upper }} </strong>
                             {% endif %}
                         </td>
-                        <td><a href="#">Detalhes</a> </td>
+                        <td><a href="{% url 'laudo:laudo_detalhe' pk=laudo.id paciente_id=form_paciente.id %}">Detalhes</a> </td>
                         <td><a href="#">Editar</a> </td>
                         <td><a href="{% url 'laudo:gerar_laudo' laudo_id=laudo.id paciente_id=form_paciente.id %}">Imprimir</a> </td>
                     </tr>

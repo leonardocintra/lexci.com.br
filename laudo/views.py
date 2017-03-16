@@ -8,7 +8,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import (
-    ListView, TemplateView, CreateView, FormView, UpdateView
+    ListView, TemplateView, CreateView, FormView, UpdateView, DetailView
 )
 from django.views.generic.edit import DeleteView
 
@@ -21,6 +21,18 @@ from .forms import LaudoForm
 class IndexLaudoView(TemplateView):
     """ Laudo Index - Pagina inicial que o usuario cai quando entra no Laudo. """    
     template_name = "laudo/index.html"
+
+
+class DetalhesLaudo(DetailView):
+    model = Laudo
+    template_name = 'laudo/laudo_detail.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(DetailView, self).get_context_data(**kwargs)
+        context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
+        context['exames'] = Exame.objects.filter()
+        context['item_exame'] = ItemExame.objects.all()
+        return context
 
 
 class CreateLaudoView(FormView):
@@ -124,7 +136,8 @@ class DeleteItemExameView(DeleteView):
 
 
 index = IndexLaudoView.as_view()
-create_laudo = CreateLaudoView.as_view()  
+create_laudo = CreateLaudoView.as_view() 
+laudo_detalhe = DetalhesLaudo.as_view() 
 exame_list = ListExameView.as_view()  
 exame_delete = DeleteExameView.as_view()
 exame_update = UpdateExameView.as_view()

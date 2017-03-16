@@ -1,0 +1,32 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+        <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
+        <li><a href="{% url 'paciente:paciente_detail' paciente.id %}">{{ paciente.nome }}</a></li>
+        <li class="active">Detalhes do Laudo #{{ laudo.id }} </li>
+    </ol>
+
+    <div class="row">
+        <div class="panel panel-default">
+            <div class="panel-heading">Detalhes do Laudo da paciente {{ paciente.nome }}</div>
+            <div class="panel-body">
+                <h4><small>nome:</small> {{ paciente.nome }}</h4>
+                <h4><small>data laudo:</small>  {{ laudo.data_cadastro }}</h4>
+                <h4><small>médico:</small> {{ laudo.medico.nome }}</h4>
+                <h4><small>exames realizados:</small></h4>
+                {% for exame in exames  %}
+                    <strong> {{ exame }} </strong> <br />
+                    {% for item in item_exame %}
+                        {% if item.exame_id == exame.id %}
+                            {{ item }} <br />
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                <h4><small></small></h4>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
