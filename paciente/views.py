@@ -133,7 +133,6 @@ def paciente_detail(request, pk):
         'laudos': laudos
     }
     return render(request, 'paciente/paciente_detail.html', context)
-
     #template_name = 'paciente/public/paciente_exame_list.html'
 
 

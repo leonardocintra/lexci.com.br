@@ -1,3 +1,5 @@
+# -*- coding: utf-8 -*-
+
 from datetime import datetime
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
