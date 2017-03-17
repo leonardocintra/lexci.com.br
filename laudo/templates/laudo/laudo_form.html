@@ -46,13 +46,19 @@
 
         {# Inclui os exames que devem ser feito #}
         <div class="row">
-            <h3>Marque os exames realizados</h3>
+            <h3>
+                <span class="glyphicon glyphicon-duplicate" aria-hidden="true"></span>
+                Marque os exames realizados
+            </h3>
 
             {% for exame in exames  %}
                 <div class="col-sm-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h3 class="panel-title"><EX></EX>{{ exame }}</h3>    
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                {{ exame }}
+                            </h3>    
                         </div>
                         <div class="panel-body">
                             {% for item in item_exame %}
@@ -67,7 +73,10 @@
                             <div class="input-group">
                                 <input type="text" class="form-control" placeholder="Novo...">
                                 <span class="input-group-btn">
-                                    <button class="btn btn-success" type="button">Salvar</button>
+                                    <button class="btn btn-success" type="button">
+                                        Salvar
+                                        <span class="glyphicon glyphicon-paste" aria-hidden="true"></span>
+                                    </button>
                                 </span>
                             </div>
                         </div>
@@ -77,7 +86,10 @@
 
             {# Botão Salvar #}
             <div class="text-right">
-                <input type="submit" value="Salvar e Gerar laudo" class="btn btn-success btn-lg">
+                <button type="submit" class="btn btn-success btn-lg">
+                    <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                    Salvar Laudo
+                </button>
             </div>
 
         </div>

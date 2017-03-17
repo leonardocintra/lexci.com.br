@@ -37,7 +37,7 @@ def gerar_laudo(request, laudo_id, paciente_id):
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 620, 'Data da coleta: ')
     c.setFont('Helvetica', 12)
-    c.drawString(130, 620, '{}'.format(str(datetime.now().strftime('%d/%m/%Y - %H:%M h'))))
+    c.drawString(130, 620, '{}'.format(str(laudo.data_coleta.strftime('%d/%m/%Y'))))
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 600, 'Data da ultima menstruação:')
     c.setFont('Helvetica', 12)
