@@ -16,10 +16,11 @@ def gerar_laudo(request, laudo_id, paciente_id):
     laudo = Laudo.objects.get(pk=laudo_id)
     medico = Medico.objects.get(pk=laudo.medico.id)
 
-    filename = "laudo_{}".format(str(p.nome))
+    #filename = "laudo_{}".format(p.nome)
+    filename = "laudo_qualquer_miniteste"
     
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="{}.pdf"'.format(str(filename))
+    response['Content-Disposition'] = 'attachment; filename="{}.pdf"'.format(filename)
 
     c = canvas.Canvas(response, pagesize=A4)
 
@@ -86,7 +87,7 @@ def write_paciente(canvas, paciente, medico):
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 720, 'Nome: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(95, 720, 'NOME AQUI {}'.format(p.nome))
+    c.drawString(95, 720, p.nome)
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(450, 720, 'Idade: ')
