@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """
     View Laudo
     Criado por Leonardo Cintra

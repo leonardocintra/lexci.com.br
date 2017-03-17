@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction, models
 from django.core.urlresolvers import reverse_lazy

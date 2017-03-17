@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """ Forms Laudo """
 from django import forms
 from .models import Laudo, ExameLaudo
