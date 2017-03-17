@@ -86,7 +86,7 @@ def write_paciente(canvas, paciente, medico):
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 720, 'Nome: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(95, 720, str(p.nome))
+    c.drawString(95, 720, 'NOME AQUI {}'.format(p.nome))
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(450, 720, 'Idade: ')
