@@ -58,11 +58,13 @@ class Laudo(models.Model):
         Descrição dos campos:
             - paciente: é o paciente (id)
             - medico: médico que atendeu (id)
+            - ultima_menstruacao: gravará a data da ultima menstruação que precisa constar nos laudos
             - paciente_pode_ver: o laudo é publico ou nao? O Paciente pode consultar o laudo dele on line
             - ativo: nao sera de costume deletar os laudos. Apenas inativa - los
     """
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='paciente')
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
+    ultima_menstruacao = models.DateTimeField('Data ultima menstruação')
     paciente_pode_ver = models.BooleanField(default=False)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
