@@ -82,8 +82,6 @@ def write_paciente(canvas, paciente, medico):
     c = canvas
     p = paciente
 
-    #variavel.decode('utf-8')
-
     tamanho_letra = 14
 
     c.setFont('Helvetica', tamanho_letra)
