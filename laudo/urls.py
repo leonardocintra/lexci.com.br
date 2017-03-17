@@ -14,6 +14,7 @@ urlpatterns = [
     
     # Exames
     url(r'^exame/$', views.exame_list, name='exame_list'),
+    url(r'^exame/novo/$', views.exame_create, name='exame_create'),
     url(r'^exame/delete/(?P<pk>[0-9]+)/$', views.exame_delete, name='exame_delete'),
     url(r'^exame/update/(?P<pk>[0-9]+)/$', views.exame_update, name='exame_update'),
     

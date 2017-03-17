@@ -4,12 +4,12 @@
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
         <li><a href="{% url 'laudo:laudo_index' %}">Gerenciamento Exame</a></li>
-        <li class="active">Exame</li>
+        <li class="active">Exames</li>
     </ol>
-    <div class="">
-    </div>
 
     {% include "core/includes/mensagens.html" %}
+
+    <a href="{% url 'laudo:exame_create' %}" class="btn btn-success">Novo exame</a>
 
     <table class="table">
         <thead>

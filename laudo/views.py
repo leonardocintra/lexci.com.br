@@ -81,6 +81,14 @@ class ListExameView(ListView):
     context_object_name = 'exame_list'
 
 
+class CreateExameView(CreateView):
+    """ Criar um novo exame """
+    model = Exame
+    fields = ['descricao']
+    template_name = 'exame/exame_form.html'
+    success_url = reverse_lazy('laudo:exame_list')
+
+
 class DeleteExameView(DeleteView):
     """ Deleta um exame """
 
@@ -140,7 +148,8 @@ class DeleteItemExameView(DeleteView):
 index = IndexLaudoView.as_view()
 create_laudo = CreateLaudoView.as_view() 
 laudo_detalhe = DetalhesLaudo.as_view() 
-exame_list = ListExameView.as_view()  
+exame_list = ListExameView.as_view()
+exame_create = CreateExameView.as_view()
 exame_delete = DeleteExameView.as_view()
 exame_update = UpdateExameView.as_view()
 item_exame_list = ListItemExameView.as_view()
