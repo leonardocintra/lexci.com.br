@@ -19,7 +19,7 @@ def gerar_laudo(request, laudo_id, paciente_id):
     filename = "laudo_{}".format(str(p.nome))
     
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="{}.pdf"'.format(filename)
+    response['Content-Disposition'] = 'attachment; filename="{}.pdf"'.format(str(filename))
 
     c = canvas.Canvas(response, pagesize=A4)
 
