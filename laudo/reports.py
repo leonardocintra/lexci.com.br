@@ -16,8 +16,8 @@ def gerar_laudo(request, laudo_id, paciente_id):
     laudo = Laudo.objects.get(pk=laudo_id)
     medico = Medico.objects.get(pk=laudo.medico.id)
 
-    #filename = "laudo_{}".format(p.nome)
-    filename = "laudo_qualquer_miniteste"
+    nome_sem_acento = remover_acentos(p.nome)
+    filename = "laudo_{}".format(nome_sem_acento)
     
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="{}.pdf"'.format(filename)
@@ -161,4 +161,5 @@ def write_horizontal_line(canvas, vertical_point):
     c.line(20, vertical_point, 580, vertical_point)
     return c
 
-
+def remover_acentos(txt):
+    return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')
