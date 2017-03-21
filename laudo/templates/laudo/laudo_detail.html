@@ -15,6 +15,10 @@
                 <h4><small>nome:</small> {{ paciente.nome }}</h4>
                 <h4><small>data laudo:</small>  {{ laudo.data_cadastro }}</h4>
                 <h4><small>médico:</small> {{ laudo.medico.nome }}</h4>
+                <h4>
+                    <small>paciente pode ver?</small> {{ laudo.paciente_pode_ver|yesno|upper }} 
+                    <a href="{% url 'laudo:laudo_update' laudo.id laudo.paciente.id %}">alterar</a>  
+                </h4>
                 <h4><small>exames realizados:</small></h4>
 
                 {% for exame in exames %}

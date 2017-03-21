@@ -72,6 +72,15 @@ class CreateLaudoView(FormView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
 
 
+class UpdateLaudoView(UpdateView):
+    model = Laudo
+    fields = ['paciente_pode_ver']
+    template_name = 'laudo/laudo_update.html'
+
+    def get_success_url(self):
+        return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk'], 'paciente_id': self.kwargs['paciente_id']})
+
+
 
 class ListExameView(ListView):
     """ Lista os Exames cadastrados """
@@ -163,6 +172,7 @@ class DeleteItemExameView(DeleteView):
 index = IndexLaudoView.as_view()
 create_laudo = CreateLaudoView.as_view() 
 laudo_detalhe = DetalhesLaudo.as_view() 
+laudo_update = UpdateLaudoView.as_view()
 
 exame_list = ListExameView.as_view()
 exame_create = CreateExameView.as_view()
