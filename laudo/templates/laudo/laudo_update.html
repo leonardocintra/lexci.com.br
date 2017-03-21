@@ -5,9 +5,10 @@
         <h3>Update visualização do paciente</h3>
     </div>
 
-    <form action="" method="post">{% csrf_token %}
+    <form action="" method="post">
+        {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Update" />
+        <input type="submit" value="Atualizar" class="btn btn-success" />
     </form>
 
 {% endblock content %}
