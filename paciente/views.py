@@ -10,7 +10,7 @@ from .models import Paciente, PacienteEndereco
 from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
 
 
-class ListPaciente(ListView):
+class PacienteList(ListView):
     """ Lista os Pacientes cadastrados """
 
     model = Paciente
@@ -29,8 +29,8 @@ class ListPaciente(ListView):
         return queryset
 
 
-class CreatePaciente(CreateView):
-    """ CreatePaciente - Metodo que insere um novo paciente """
+class PacienteCreate(CreateView):
+    """ PacienteCreate - Metodo que insere um novo paciente """
 
     form_class = PacienteForm
     model = Paciente
@@ -71,7 +71,7 @@ class CreatePaciente(CreateView):
         return reverse_lazy('paciente:paciente_list')
 
 
-class UpdatePaciente(UpdateView):
+class PacienteUpdate(UpdateView):
     model = Paciente
     template_name = 'paciente/paciente_update.html'
     fields = ('nome', 'cartao_sus', 'nome_mae', 'apelido', 'cpf', 'nacionalidade', 
@@ -81,13 +81,13 @@ class UpdatePaciente(UpdateView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.object.pk})
 
     def get_context_data(self, **kwargs):
-        context = super(UpdatePaciente, self).get_context_data(**kwargs)
+        context = super(PacienteUpdate, self).get_context_data(**kwargs)
         context['nome'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
         context['pk'] = self.kwargs['pk']
         return context
 
 
-class UpdateEnderecoPaciente(UpdateView):
+class EnderecoPaciente(UpdateView):
     model = PacienteEndereco
     template_name = 'paciente/paciente_update.html'
     fields = ('cep', 'logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', 'codigo_municipio', 'municipio', 'ponto_de_referencia', 'fone_ddd', 'fone_numero', 'email')
@@ -96,7 +96,7 @@ class UpdateEnderecoPaciente(UpdateView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.object.paciente.pk})
     
     def get_context_data(self, **kwargs):
-        context = super(UpdateEnderecoPaciente, self).get_context_data(**kwargs)
+        context = super(EnderecoPaciente, self).get_context_data(**kwargs)
         context['nome'] = self.object.paciente.nome
         context['pk'] = self.object.paciente.pk
         return context
@@ -159,7 +159,7 @@ def paciente_exame(request):
 
 
 
-paciente_list = ListPaciente.as_view()
-paciente_create = CreatePaciente.as_view()
-paciente_update = UpdatePaciente.as_view()
-endereco_update = UpdateEnderecoPaciente.as_view()
+paciente_list = PacienteList.as_view()
+paciente_create = PacienteCreate.as_view()
+paciente_update = PacienteUpdate.as_view()
+endereco_update = EnderecoPaciente.as_view()

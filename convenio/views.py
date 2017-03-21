@@ -1,3 +1,11 @@
-from django.shortcuts import render
+"""
+    Convenio - Model
+    Criado por: Leonardo Nascimento Cintra
+    Data: 21/03/2017
+"""
+from django.views.generic.edit import CreateView
+from .models import Convenio
 
-# Create your views here.
+
+class ConvenioCreate(CreateView):
+    pass
