@@ -1,3 +1,4 @@
+""" Laudo Model """
 from django.db import models
 from paciente.models import Paciente
 from medico.models import Medico

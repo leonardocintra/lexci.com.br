@@ -14,7 +14,8 @@ from django.views.generic import (
 from django.views.generic.edit import DeleteView
 from fm.views import AjaxCreateView
 from paciente.models import Paciente
-from .models import Laudo, ItemExame, Exame, ExameLaudo
+from exame.models import Exame, ItemExame
+from .models import Laudo, ExameLaudo
 from .forms import LaudoForm
 
 
@@ -57,7 +58,7 @@ class CreateLaudoView(FormView):
     
     def form_invalid(self, form):
         return self.render_to_response(
-            self.get_context_data(form=form)
+            self.get_context_data(form=UpdateItemExameViewform)
         )
 
     def get_context_data(self, **kwargs):
