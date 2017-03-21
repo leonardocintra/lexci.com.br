@@ -7,14 +7,13 @@
 from django.core.urlresolvers import reverse_lazy
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.views.generic import (
     ListView, TemplateView, CreateView, FormView, UpdateView, DetailView
 )
 from django.views.generic.edit import DeleteView
 from fm.views import AjaxCreateView
 from paciente.models import Paciente
-from medico.models import Medico
 from .models import Laudo, ItemExame, Exame, ExameLaudo
 from .forms import LaudoForm
 
@@ -29,7 +28,7 @@ class DetalhesLaudo(DetailView):
     template_name = 'laudo/laudo_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = super(DetailView, self).get_context_data(**kwargs)
+        context = super(DetalhesLaudo, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
         context['exames'] = Exame.objects.all()
         context['item_exame'] = ItemExame.objects.all()
