@@ -2,7 +2,7 @@ from datetime import date, datetime
 from django.db import models
 from django.db.models import signals
 from django.dispatch import receiver
-from core.models import Convenio
+from convenio.models import Convenio
 from .constants import RACA, SEXO
 
 

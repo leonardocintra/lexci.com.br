@@ -8,6 +8,5 @@ urlpatterns = [
     url(r'^(?P<pk>[0-9]+)/editar/$', views.paciente_update, name='paciente_update'),
     url(r'^(?P<paciente_id>[0-9]+)/novo-endereco/$', views.create_endereco, name='create_endereco'),
     url(r'^(?P<pk>[0-9]+)/editar-endereco/$', views.endereco_update, name='endereco_update'),
-    #url(r'^exames/(?P<cpf>[0-9]+)/$', views.paciente_exame, name='paciente_exame'),
     url(r'^paciente/exames/$', views.paciente_exame, name='paciente_exame'),
 ]

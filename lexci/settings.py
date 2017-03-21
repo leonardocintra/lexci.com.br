@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'medico',
     'laudo',
     'exame',
+    'convenio',
 ]
 
 MIDDLEWARE = [

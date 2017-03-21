@@ -1,6 +1,6 @@
 [
    {
-      "model":"core.convenio",
+      "model":"convenio.convenio",
       "pk":1,
       "fields":{
          "descricao":"Hospital Regional",
@@ -8,7 +8,7 @@
       }
    },
    {
-      "model":"core.convenio",
+      "model":"convenio.convenio",
       "pk":2,
       "fields":{
          "descricao":"Particular",
@@ -16,7 +16,7 @@
       }
    },
    {
-      "model":"core.convenio",
+      "model":"convenio.convenio",
       "pk":3,
       "fields":{
          "descricao":"Unimed",
@@ -24,7 +24,7 @@
       }
    },
    {
-      "model":"core.convenio",
+      "model":"convenio.convenio",
       "pk":4,
       "fields":{
          "descricao":"Sistema Unico de Saude (SUS)",
