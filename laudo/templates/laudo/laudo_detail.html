@@ -16,6 +16,18 @@
                 <h4><small>data laudo:</small>  {{ laudo.data_cadastro }}</h4>
                 <h4><small>médico:</small> {{ laudo.medico.nome }}</h4>
                 <h4><small>exames realizados:</small></h4>
+
+                {% for exame in exames %}
+                    {% for item in exame_laudos %}
+                        {% if item.item_exame.exame.id == exame.id %}
+
+                            <strong> {{ exame }} </strong> <br />
+                            {{ item }} <br />
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+                
+                <!--
                 {% for exame in exames  %}
                     <strong> {{ exame }} </strong> <br />
                     {% for item in item_exame %}
@@ -24,9 +36,15 @@
                         {% endif %}
                     {% endfor %}
                 {% endfor %}
+                -->
                 <h4><small></small></h4>
             </div>
+            <div class="panel-footer">
+                <a href="{% url 'laudo:gerar_laudo' laudo_id=laudo.id paciente_id=paciente.id %}" class="btn btn-info">
+                    <span class="glyphicon glyphicon-print" aria-hidden="true"></span> Imprimir</a>
+            </div>
         </div>
+        
     </div>
 
 {% endblock content %}

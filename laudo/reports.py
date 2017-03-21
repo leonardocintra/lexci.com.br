@@ -56,14 +56,14 @@ def gerar_laudo(request, laudo_id, paciente_id):
 
 def write_exames(canvas, laudo):
     c = canvas
-    item_exames = ExameLaudo.objects.filter(laudo=laudo)
-    contador = item_exames.count()
+    exame_laudos = ExameLaudo.objects.filter(laudo=laudo)
+    contador = exame_laudos.count()
     exames = Exame.objects.all()
 
     espacamento = 590
     exame_atual = ""
     for exame in exames:
-        for item in item_exames:
+        for item in exame_laudos:
             if espacamento < 90:
                 espacamento = 820
                 write_footer(c)
