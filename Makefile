@@ -32,4 +32,5 @@ startdev:
 	@pip install -r requirements/development.txt
 	@make migrate
 	@python manage.py loaddata fixtures/convenio.json
+	@python manage.py loaddata fixtures/exames.json
 	@python manage.py createsuperuser
