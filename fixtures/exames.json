@@ -1,6 +1,6 @@
 [
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":1,
       "fields":{
          "descricao":"TIPO DA AMOSTRA",
@@ -9,7 +9,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":2,
       "fields":{
          "descricao":"EPIT\u00c9LIOS REPRESENTADOS NA AMOSTRA",
@@ -18,7 +18,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":3,
       "fields":{
          "descricao":"ADEQUA\u00c7\u00c3O DA AMOSTRA",
@@ -27,7 +27,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":5,
       "fields":{
          "descricao":"INTERPRETA\u00c7\u00c3O DOS RESULTADOS",
@@ -36,7 +36,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":6,
       "fields":{
          "descricao":"MICROBIOLOGIA",
@@ -45,7 +45,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":7,
       "fields":{
          "descricao":"INFLAMA\u00c7\u00c3O",
@@ -54,7 +54,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":8,
       "fields":{
          "descricao":"OUTROS ACHADOS N\u00c3O NEOPL\u00c1SICOS",
@@ -63,7 +63,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":9,
       "fields":{
          "descricao":"ANORMALIDADES DE C\u00c9LULAS EPITELIAIS",
@@ -72,7 +72,7 @@
       }
    },
    {
-      "model":"laudo.exame",
+      "model":"exame.exame",
       "pk":10,
       "fields":{
          "descricao":"CONCLUS\u00c3O",
@@ -81,7 +81,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":1,
       "fields":{
          "exame":1,
@@ -91,7 +91,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":2,
       "fields":{
          "exame":1,
@@ -101,7 +101,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":3,
       "fields":{
          "exame":2,
@@ -111,7 +111,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":4,
       "fields":{
          "exame":2,
@@ -121,7 +121,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":5,
       "fields":{
          "exame":2,
@@ -131,7 +131,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":6,
       "fields":{
          "exame":3,
@@ -141,7 +141,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":7,
       "fields":{
          "exame":3,
@@ -151,7 +151,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":8,
       "fields":{
          "exame":3,
@@ -161,7 +161,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":11,
       "fields":{
          "exame":5,
@@ -171,7 +171,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":12,
       "fields":{
          "exame":5,
@@ -181,7 +181,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":13,
       "fields":{
          "exame":5,
@@ -191,7 +191,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":14,
       "fields":{
          "exame":5,
@@ -201,7 +201,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":15,
       "fields":{
          "exame":5,
@@ -211,7 +211,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":16,
       "fields":{
          "exame":6,
@@ -221,7 +221,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":17,
       "fields":{
          "exame":6,
@@ -231,7 +231,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":18,
       "fields":{
          "exame":6,
@@ -241,7 +241,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":19,
       "fields":{
          "exame":7,
@@ -251,7 +251,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":20,
       "fields":{
          "exame":7,
@@ -261,7 +261,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":21,
       "fields":{
          "exame":7,
@@ -271,7 +271,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":22,
       "fields":{
          "exame":7,
@@ -281,7 +281,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":23,
       "fields":{
          "exame":8,
@@ -291,7 +291,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":24,
       "fields":{
          "exame":8,
@@ -301,7 +301,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":25,
       "fields":{
          "exame":8,
@@ -311,7 +311,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":26,
       "fields":{
          "exame":8,
@@ -321,7 +321,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":27,
       "fields":{
          "exame":9,
@@ -331,7 +331,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":28,
       "fields":{
          "exame":9,
@@ -341,7 +341,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":29,
       "fields":{
          "exame":10,
@@ -351,7 +351,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":30,
       "fields":{
          "exame":10,
@@ -361,7 +361,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":31,
       "fields":{
          "exame":10,
@@ -371,7 +371,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":32,
       "fields":{
          "exame":10,
@@ -381,7 +381,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":34,
       "fields":{
          "exame":10,
@@ -391,7 +391,7 @@
       }
    },
    {
-      "model":"laudo.itemexame",
+      "model":"exame.itemexame",
       "pk":35,
       "fields":{
          "exame":10,
