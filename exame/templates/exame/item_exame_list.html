@@ -3,7 +3,7 @@
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
-        <li><a href="{% url 'laudo:laudo_index' %}">Gerenciamento Exame</a></li>
+        <li><a href="{% url 'exame:index' %}">Gerenciamento Exame</a></li>
         <li class="active">Item Exame</li>
     </ol>
 
@@ -27,7 +27,7 @@
                         <td>{{ exame.descricao }}</td>
                         <td>{{ item.descricao_item }}</td>
                         <td>
-                            <a href="{% url 'laudo:item_exame_update' item.id %}">
+                            <a href="{% url 'exame:item_exame_update' item.id %}">
                                 <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
                                 Editar
                             </a>

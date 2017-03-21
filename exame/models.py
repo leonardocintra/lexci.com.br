@@ -1,11 +1,18 @@
+"""
+    Exame Model
+    Criado por: Leonardo Nascimento Cintra
+    Data: 21/03/2017
+"""
 from django.db import models
 
+
+
 class Exame(models.Model):
-    """ Exames - tabela que salva os tipos de exames que são inseridos no laudo. 
+    """ Exames - tabela que salva os tipos de exames que são inseridos no laudo.
         Campos:
             - descricao: descreve o nome do exame (titulo)
     """
-    descricao = models.CharField('Descrição', max_length=200)
+    descricao = models.CharField('Descrição', max_length=200, unique=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     ativo = models.BooleanField(default=True)
 
@@ -13,18 +20,15 @@ class Exame(models.Model):
         verbose_name = 'Exame do Laudo'
         verbose_name_plural = 'Exames do Laudo'
         ordering = ['descricao']
-    
+
     def __str__ (self):
         return self.descricao
 
-    class Meta:
-        pass
-
 
 class ItemExame(models.Model):
-    """ ItemExame - Apos cadastrar o exame, cada exam tem os items do tipo de exame realizado 
+    """ ItemExame - Apos cadastrar o exame, cada exam tem os items do tipo de exame realizado
 
-        Ex: 
+        Ex:
         EXAME: TIPO DA AMOSTRA:
         Itens Exame:
             - ESFREGAÇO CONVENCIONAL

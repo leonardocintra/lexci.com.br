@@ -3,13 +3,13 @@
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
-        <li><a href="{% url 'laudo:laudo_index' %}">Gerenciamento Exame</a></li>
+        <li><a href="{% url 'exame:index' %}">Gerenciamento Exame</a></li>
         <li class="active">Exames</li>
     </ol>
 
     {% include "core/includes/mensagens.html" %}
 
-    <a href="{% url 'laudo:exame_create' %}" class="btn btn-success">Novo exame</a>
+    <a href="{% url 'exame:exame_create' %}" class="btn btn-success">Novo exame</a>
 
     <table class="table">
         <thead>
@@ -25,8 +25,8 @@
                 <tr>
                     <th scope="row">{{ exame.id }}</th>
                     <td>{{ exame.descricao }}</td>
-                    <td><a href="{% url 'laudo:exame_update' pk=exame.id %}">Editar</a> </td>
-                    <td><a href="{% url 'laudo:exame_delete' pk=exame.id %}">Excluir</a> </td>
+                    <td><a href="{% url 'exame:exame_update' pk=exame.id %}">Editar</a> </td>
+                    <td><a href="{% url 'exame:exame_delete' pk=exame.id %}">Excluir</a> </td>
                 </tr>
             {% endfor %}
         </tbody>
