@@ -16,7 +16,6 @@
                 <th>Exame</th>
                 <th>Descrição item</th>
                 <th></th>
-                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -27,8 +26,12 @@
                         <th scope="row">{{ item.id }}</th>
                         <td>{{ exame.descricao }}</td>
                         <td>{{ item.descricao_item }}</td>
-                        <td><a href="{% url 'laudo:item_exame_update' item.id %}">Editar</a> </td>
-                        <td><a href="{% url 'laudo:item_exame_delete' item.id %}">Excluir</a> </td>
+                        <td>
+                            <a href="{% url 'laudo:item_exame_update' item.id %}">
+                                <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+                                Editar
+                            </a>
+                        </td>
                     </tr>
                     {% endif %}
                 {% endfor %}

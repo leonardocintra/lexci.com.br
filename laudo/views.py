@@ -120,7 +120,6 @@ class ListItemExameView(ListView):
     context_object_name = 'item_exame_list'
     
     def get_context_data(self, **kwargs):
-        template_name = 'exame/exame_confirm_delete.html'
         context = super(ListItemExameView, self).get_context_data(**kwargs)
         context['exames'] = Exame.objects.all()
         return context
@@ -134,6 +133,11 @@ class UpdateItemExameView(SuccessMessageMixin, UpdateView):
     template_name = 'exame/item_exame_update_form.html'
     success_url = reverse_lazy('laudo:item_exame_list')
     success_message = "Item Exame atualizado com sucesso!"
+
+    def get_context_data(self, **kwargs):
+        context = super(UpdateItemExameView, self).get_context_data(**kwargs)
+        context['pk'] = self.kwargs['pk']
+        return context
 
     
 class DeleteItemExameView(DeleteView):
