@@ -11,6 +11,7 @@ urlpatterns = [
     url(r'^paciente/', include('paciente.urls', namespace='paciente')),
     url(r'^medico/', include('medico.urls', namespace='medico')),
     url(r'^laudo/', include('laudo.urls', namespace='laudo')),
+    url(r'^convenio/', include('convenio.urls', namespace='convenio')),
     url(r'^exame/', include('exame.urls', namespace='exame')),
     url(r'^entrar/$', login, {'template_name': 'core/login.html'}, name='login'),
     url(r'^sair/$', logout, {'next_page': 'index'}, name='logout'),

@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block content %}
+    <div class="page-header">
+        <h2>Convenios</h2>
+    </div>
+
+    <div>
+        <ul>
+        {% for convenio in object_list %}
+            <li>{{ convenio.descricao }}</li>
+        {% empty %}
+            <li>No convenios yet.</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock content %}
