@@ -130,6 +130,11 @@ class CreateItemExameView(AjaxCreateView):
     model = ItemExame
     fields = ['exame', 'descricao_item']
 
+    def get_initial(self):
+        return {
+            "exame" : self.kwargs['exame_id']
+        }
+
 
 class UpdateItemExameView(SuccessMessageMixin, UpdateView):
     """ Atualiza um item do exame """
