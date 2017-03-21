@@ -12,7 +12,7 @@ from django.views.generic import (
     ListView, TemplateView, CreateView, FormView, UpdateView, DetailView
 )
 from django.views.generic.edit import DeleteView
-
+from fm.views import AjaxCreateView
 from paciente.models import Paciente
 from medico.models import Medico
 from .models import Laudo, ItemExame, Exame, ExameLaudo
@@ -87,6 +87,7 @@ class CreateExameView(CreateView):
     fields = ['descricao']
     template_name = 'exame/exame_form.html'
     success_url = reverse_lazy('laudo:exame_list')
+   
 
 
 class DeleteExameView(DeleteView):
@@ -125,6 +126,11 @@ class ListItemExameView(ListView):
         return context
 
 
+class CreateItemExameView(AjaxCreateView):
+    model = ItemExame
+    fields = ['exame', 'descricao_item']
+
+
 class UpdateItemExameView(SuccessMessageMixin, UpdateView):
     """ Atualiza um item do exame """
 
@@ -152,10 +158,13 @@ class DeleteItemExameView(DeleteView):
 index = IndexLaudoView.as_view()
 create_laudo = CreateLaudoView.as_view() 
 laudo_detalhe = DetalhesLaudo.as_view() 
+
 exame_list = ListExameView.as_view()
 exame_create = CreateExameView.as_view()
 exame_delete = DeleteExameView.as_view()
 exame_update = UpdateExameView.as_view()
+
+item_exame_create = CreateItemExameView.as_view()
 item_exame_list = ListItemExameView.as_view()
 item_exame_delete = DeleteItemExameView.as_view()
 item_exame_update = UpdateItemExameView.as_view()

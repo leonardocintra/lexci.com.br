@@ -71,13 +71,7 @@
                                 {% endif %}
                             {% endfor %}
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Novo...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-success" type="button">
-                                        Salvar
-                                        <span class="glyphicon glyphicon-paste" aria-hidden="true"></span>
-                                    </button>
-                                </span>
+                                {% include "laudo/includes/item_exame_include.html" %}
                             </div>
                         </div>
                     </div>

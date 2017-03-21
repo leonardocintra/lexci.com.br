@@ -27,17 +27,6 @@
                     {% endfor %}
                 {% endfor %}
                 
-                <!--
-                {% for exame in exames  %}
-                    <strong> {{ exame }} </strong> <br />
-                    {% for item in item_exame %}
-                        {% if item.exame_id == exame.id %}
-                            {{ item }} <br />
-                        {% endif %}
-                    {% endfor %}
-                {% endfor %}
-                -->
-                <h4><small></small></h4>
             </div>
             <div class="panel-footer">
                 <a href="{% url 'laudo:gerar_laudo' laudo_id=laudo.id paciente_id=paciente.id %}" class="btn btn-info">

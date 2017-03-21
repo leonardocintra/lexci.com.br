@@ -20,6 +20,7 @@ urlpatterns = [
     
     # Exame Itens
     url(r'^exame/item/$', views.item_exame_list, name='item_exame_list'),
+    url(r'^exame/(?P<exame_id>[0-9]+)/novo/item/$', views.item_exame_create, name='item_exame_create'),
     url(r'^exame/delete/item/(?P<pk>[0-9]+)/$', views.item_exame_delete, name='item_exame_delete'),
     url(r'^exame/update/item/(?P<pk>[0-9]+)/$', views.item_exame_update, name='item_exame_update'),
 ]
