@@ -11,11 +11,11 @@ from .models import Exame, ItemExame
 
 
 
-class IndexExameView(TemplateView):
+class ExameIndex(TemplateView):
     """ Exame Index - Pagina inicial que o usuario cai quando entra no Exame. """
     template_name = "exame/index.html"
 
-class ListExameView(ListView):
+class ExameList(ListView):
     """ Lista os Exames cadastrados """
 
     model = Exame
@@ -23,7 +23,7 @@ class ListExameView(ListView):
     context_object_name = 'exame_list'
 
 
-class CreateExameView(CreateView):
+class ExameCreate(CreateView):
     """ Criar um novo exame """
     model = Exame
     fields = ['descricao']
@@ -32,7 +32,7 @@ class CreateExameView(CreateView):
 
 
 
-class DeleteExameView(DeleteView):
+class ExameDelete(DeleteView):
     """ Deleta um exame """
 
     model = Exame
@@ -40,12 +40,12 @@ class DeleteExameView(DeleteView):
     success_url = reverse_lazy('exame:exame_list')
 
     def get_context_data(self, **kwargs):
-        context = super(DeleteExameView, self).get_context_data(**kwargs)
+        context = super(ExameDelete, self).get_context_data(**kwargs)
         context['items_exame'] = ItemExame.objects.filter(exame=self.kwargs['pk'])
         return context
 
 
-class UpdateExameView(SuccessMessageMixin, UpdateView):
+class ExameUpdate(SuccessMessageMixin, UpdateView):
     """ Atualiza um exame """
 
     model = Exame
@@ -55,7 +55,7 @@ class UpdateExameView(SuccessMessageMixin, UpdateView):
     success_message = "Exame atualizado com sucesso!"
 
 
-class ListItemExameView(ListView):
+class ItemExameList(ListView):
     """ Lista os Itens do Exame """
 
     model = ItemExame
@@ -63,12 +63,12 @@ class ListItemExameView(ListView):
     context_object_name = 'item_exame_list'
 
     def get_context_data(self, **kwargs):
-        context = super(ListItemExameView, self).get_context_data(**kwargs)
+        context = super(ItemExameList, self).get_context_data(**kwargs)
         context['exames'] = Exame.objects.all()
         return context
 
 
-class CreateItemExameView(AjaxCreateView):
+class ItemExameCreate(AjaxCreateView):
     model = ItemExame
     fields = ['exame', 'descricao_item']
 
@@ -78,7 +78,7 @@ class CreateItemExameView(AjaxCreateView):
         }
 
 
-class UpdateItemExameView(SuccessMessageMixin, UpdateView):
+class ItemExameUpdate(SuccessMessageMixin, UpdateView):
     """ Atualiza um item do exame """
 
     model = ItemExame
@@ -88,12 +88,12 @@ class UpdateItemExameView(SuccessMessageMixin, UpdateView):
     success_message = "Item Exame atualizado com sucesso!"
 
     def get_context_data(self, **kwargs):
-        context = super(UpdateItemExameView, self).get_context_data(**kwargs)
+        context = super(ItemExameUpdate, self).get_context_data(**kwargs)
         context['pk'] = self.kwargs['pk']
         return context
 
 
-class DeleteItemExameView(DeleteView):
+class ItemExameDelete(DeleteView):
     """ Deleta o item do exame """
 
     model = ItemExame
@@ -101,14 +101,14 @@ class DeleteItemExameView(DeleteView):
     success_url = reverse_lazy('exame:item_exame_list')
 
 
-index = IndexExameView.as_view()
-exame_list = ListExameView.as_view()
-exame_create = CreateExameView.as_view()
-exame_delete = DeleteExameView.as_view()
-exame_update = UpdateExameView.as_view()
+index = ExameIndex.as_view()
+exame_list = ExameList.as_view()
+exame_create = ExameCreate.as_view()
+exame_delete = ExameDelete.as_view()
+exame_update = ExameUpdate.as_view()
 
-item_exame_create = CreateItemExameView.as_view()
-item_exame_list = ListItemExameView.as_view()
-item_exame_delete = DeleteItemExameView.as_view()
-item_exame_update = UpdateItemExameView.as_view()
+item_exame_create = ItemExameCreate.as_view()
+item_exame_list = ItemExameList.as_view()
+item_exame_delete = ItemExameDelete.as_view()
+item_exame_update = ItemExameUpdate.as_view()
 
