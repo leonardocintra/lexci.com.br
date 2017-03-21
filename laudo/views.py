@@ -14,12 +14,12 @@ from .models import Laudo, ExameLaudo
 from .forms import LaudoForm
 
 
-class DetalhesLaudo(DetailView):
+class LudoDetail(DetailView):
     model = Laudo
     template_name = 'laudo/laudo_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = super(DetalhesLaudo, self).get_context_data(**kwargs)
+        context = super(LudoDetail, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
         context['exames'] = Exame.objects.all()
         context['item_exame'] = ItemExame.objects.all()
@@ -27,7 +27,7 @@ class DetalhesLaudo(DetailView):
         return context
 
 
-class CreateLaudoView(FormView):
+class LaudoCreate(FormView):
     """ Gerador do Laudo """
 
     template_name = 'laudo/laudo_form.html'
@@ -52,7 +52,7 @@ class CreateLaudoView(FormView):
         )
 
     def get_context_data(self, **kwargs):
-        context = super(CreateLaudoView, self).get_context_data(**kwargs)
+        context = super(LaudoCreate, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
         context['exames'] = Exame.objects.all()
         context['item_exame'] = ItemExame.objects.all()
@@ -62,7 +62,7 @@ class CreateLaudoView(FormView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
 
 
-class UpdateLaudoView(UpdateView):
+class LaudoUpdate(UpdateView):
     model = Laudo
     fields = ['paciente_pode_ver']
     template_name = 'laudo/laudo_update.html'
@@ -73,6 +73,6 @@ class UpdateLaudoView(UpdateView):
 
 
 
-create_laudo = CreateLaudoView.as_view() 
-laudo_detalhe = DetalhesLaudo.as_view() 
-laudo_update = UpdateLaudoView.as_view()
+create_laudo = LaudoCreate.as_view() 
+laudo_detalhe = LudoDetail.as_view() 
+laudo_update = LaudoUpdate.as_view()
