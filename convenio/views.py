@@ -3,6 +3,7 @@
     Criado por: Leonardo Nascimento Cintra
     Data: 21/03/2017
 """
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.edit import CreateView
 from django.views.generic import ListView
 from django.utils.text import slugify
@@ -15,7 +16,7 @@ class ConvenioList(ListView):
     template_name = "convenio/convenio_list.html"
 
 
-class ConvenioCreate(CreateView):
+class ConvenioCreate(LoginRequiredMixin, CreateView):
     model = Convenio
     fields = ['descricao']
 
