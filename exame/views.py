@@ -4,6 +4,7 @@
     Data: 21/03/2017
 """
 from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from fm.views import AjaxCreateView
@@ -11,11 +12,11 @@ from .models import Exame, ItemExame
 
 
 
-class ExameIndex(TemplateView):
+class ExameIndex(LoginRequiredMixin, TemplateView):
     """ Exame Index - Pagina inicial que o usuario cai quando entra no Exame. """
     template_name = "exame/index.html"
 
-class ExameList(ListView):
+class ExameList(LoginRequiredMixin, ListView):
     """ Lista os Exames cadastrados """
 
     model = Exame
@@ -23,7 +24,7 @@ class ExameList(ListView):
     context_object_name = 'exame_list'
 
 
-class ExameCreate(CreateView):
+class ExameCreate(LoginRequiredMixin, CreateView):
     """ Criar um novo exame """
     model = Exame
     fields = ['descricao']
@@ -32,7 +33,7 @@ class ExameCreate(CreateView):
 
 
 
-class ExameDelete(DeleteView):
+class ExameDelete(LoginRequiredMixin, DeleteView):
     """ Deleta um exame """
 
     model = Exame
@@ -45,7 +46,7 @@ class ExameDelete(DeleteView):
         return context
 
 
-class ExameUpdate(SuccessMessageMixin, UpdateView):
+class ExameUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Atualiza um exame """
 
     model = Exame
@@ -55,7 +56,7 @@ class ExameUpdate(SuccessMessageMixin, UpdateView):
     success_message = "Exame atualizado com sucesso!"
 
 
-class ItemExameList(ListView):
+class ItemExameList(LoginRequiredMixin, ListView):
     """ Lista os Itens do Exame """
 
     model = ItemExame
@@ -78,7 +79,7 @@ class ItemExameCreate(AjaxCreateView):
         }
 
 
-class ItemExameUpdate(SuccessMessageMixin, UpdateView):
+class ItemExameUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Atualiza um item do exame """
 
     model = ItemExame
@@ -93,7 +94,7 @@ class ItemExameUpdate(SuccessMessageMixin, UpdateView):
         return context
 
 
-class ItemExameDelete(DeleteView):
+class ItemExameDelete(LoginRequiredMixin, DeleteView):
     """ Deleta o item do exame """
 
     model = ItemExame

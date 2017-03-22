@@ -3,7 +3,6 @@ from django.views.generic.edit import FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 
-
 from .forms import ContactForm
 
 

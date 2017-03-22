@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import ListView, UpdateView, DeleteView
 from django.views.generic.detail import DetailView
@@ -7,7 +8,7 @@ from fm.views import AjaxCreateView
 from .models import Medico
 
 
-class MedicoList(ListView):
+class MedicoList(LoginRequiredMixin, ListView):
     model = Medico
     template_name = 'medico/medico_list.html'
     context_object_name = 'medico_list'
@@ -21,7 +22,7 @@ class CreateMedico(AjaxCreateView):
         return reverse_lazy('medico:medico_list')
 
 
-class MedicoDetail(DetailView):
+class MedicoDetail(LoginRequiredMixin, DetailView):
     model = Medico
 
     def get_context_data(self, **kwargs):
@@ -29,7 +30,7 @@ class MedicoDetail(DetailView):
         return context
 
     
-class MedicoUpdate(UpdateView):
+class MedicoUpdate(LoginRequiredMixin, UpdateView):
     model = Medico
     fields = ['nome', 'crm', 'telefone']
 
@@ -43,7 +44,7 @@ class MedicoUpdate(UpdateView):
         return context
 
 
-class MedicoDelete(DeleteView):
+class MedicoDelete(LoginRequiredMixin, DeleteView):
     model = Medico
 
     def get_success_url(self):

@@ -1,16 +1,16 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render, get_object_or_404, redirect
 from django.db import transaction, models
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView, DetailView
-
 from laudo.models import Laudo
 from .models import Paciente, PacienteEndereco
 from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
 
 
-class PacienteList(ListView):
+class PacienteList(LoginRequiredMixin, ListView):
     """ Lista os Pacientes cadastrados """
 
     model = Paciente
@@ -29,7 +29,7 @@ class PacienteList(ListView):
         return queryset
 
 
-class PacienteCreate(CreateView):
+class PacienteCreate(LoginRequiredMixin, CreateView):
     """ PacienteCreate - Metodo que insere um novo paciente """
 
     form_class = PacienteForm
@@ -71,7 +71,7 @@ class PacienteCreate(CreateView):
         return reverse_lazy('paciente:paciente_list')
 
 
-class PacienteUpdate(UpdateView):
+class PacienteUpdate(LoginRequiredMixin, UpdateView):
     model = Paciente
     template_name = 'paciente/paciente_update.html'
     fields = ('nome', 'cartao_sus', 'nome_mae', 'apelido', 'cpf', 'nacionalidade', 
@@ -87,7 +87,7 @@ class PacienteUpdate(UpdateView):
         return context
 
 
-class EnderecoPaciente(UpdateView):
+class EnderecoPaciente(LoginRequiredMixin, UpdateView):
     model = PacienteEndereco
     template_name = 'paciente/paciente_update.html'
     fields = ('cep', 'logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', 'codigo_municipio', 'municipio', 'ponto_de_referencia', 'fone_ddd', 'fone_numero', 'email')
@@ -120,6 +120,8 @@ def create_endereco(request, paciente_id):
 
 
 def paciente_detail(request, pk):
+    if not request.user.is_authenticated():
+        return render(request, 'core/index.html')
     form_paciente = get_object_or_404(Paciente, pk=pk)
     try:
         form_endereco = PacienteEndereco.objects.get(paciente_id=pk)
@@ -134,7 +136,6 @@ def paciente_detail(request, pk):
         'laudos': laudos
     }
     return render(request, 'paciente/paciente_detail.html', context)
-    #template_name = 'paciente/public/paciente_exame_list.html'
 
 
 def paciente_exame(request):
