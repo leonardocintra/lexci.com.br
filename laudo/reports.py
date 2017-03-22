@@ -8,7 +8,8 @@ from unicodedata import normalize
 
 from paciente.models import Paciente
 from medico.models import Medico
-from laudo.models import Laudo, ExameLaudo, Exame
+from exame.models import Exame
+from laudo.models import Laudo, ExameLaudo
 
 
 def gerar_laudo(request, laudo_id, paciente_id):
@@ -45,7 +46,7 @@ def gerar_laudo(request, laudo_id, paciente_id):
 
     write_exames(c, laudo)
 
-    write_assinatura_marcio(c)
+    write_assinatura(c, laudo.assinado)
     write_footer(c)
 
     c.setTitle("Laudo de {}".format(p.nome))
@@ -67,7 +68,7 @@ def write_exames(canvas, laudo):
             if espacamento < 90:
                 espacamento = 820
                 write_footer(c)
-                write_assinatura_marcio(c)
+                write_assinatura(c, laudo.assinado)
                 c.showPage()
             if item.item_exame.exame.id == exame.id:
                 if exame_atual != item.item_exame.exame.descricao:
@@ -123,14 +124,6 @@ def write_paciente(canvas, paciente, medico):
     c.drawString(505, 680, '#{}'.format(p.id))
     return c
 
-def write_assinatura_marcio(canvas):
-    c = canvas
-    c.setFont('Helvetica-Oblique', 10)
-    c.drawString(440, 90, 'Dr. Márcio Gimenes França')
-    c.drawString(455, 76, 'Biomédico Citologista')
-    c.drawString(453, 61, 'CRBM 8803/SBCC 768')
-    return c
-
 def write_title(canvas):
     c = canvas
     c.setFont('Helvetica-BoldOblique', 10)
@@ -166,3 +159,22 @@ def write_horizontal_line(canvas, vertical_point):
 
 def remover_acentos(txt):
     return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')
+
+def write_assinatura(canvas, laudo_assinado):
+    """ 
+        Pega a assinatura do Marcio ou Michelle por exempo 
+        Precisa reconfigurar isso para funcionar corretamente
+    """
+    c = canvas
+    c.setFont('Helvetica-Oblique', 10)
+    if laudo_assinado:    
+        c.drawString(440, 90, 'Dr. Márcio Gimenes França')
+        c.drawString(455, 76, 'Biomédico Citologista')
+        c.drawString(453, 61, 'CRBM 8803/SBCC 768')
+    else:
+        c.drawString(450, 90, '-- ATENÇÂO! --')
+        c.setFont('Helvetica-Bold', 10)
+        c.drawString(430, 76, 'LAUDO NÃO ASSINADO')
+        c.setFont('Helvetica-Oblique', 10)
+        c.drawString(443, 61, 'Documento Inválido!')
+    return c
