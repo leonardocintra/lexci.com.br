@@ -12,7 +12,7 @@
                     <th>Medico</th>
                     <th>Data</th>
                     <th class="text-center">Paciente vê ?</th>
-                    <th></th>
+                    <th class="text-center">Assinado ?</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -30,8 +30,14 @@
                                 <strong class="text-danger"> {{ laudo.paciente_pode_ver|yesno|upper }} </strong>
                             {% endif %}
                         </td>
+                        <td class="text-center">
+                            {% if laudo.assinado %}
+                                <strong class="text-success"> {{ laudo.assinado|yesno|upper }} </strong>
+                            {% else %}
+                                <strong class="text-danger"> {{ laudo.assinado|yesno|upper }} </strong>
+                            {% endif %}
+                        </td>
                         <td><a href="{% url 'laudo:laudo_detalhe' pk=laudo.id paciente_id=form_paciente.id %}">Detalhes</a> </td>
-                        <td><a href="#">Editar</a> </td>
                         <td><a href="{% url 'laudo:gerar_laudo' laudo_id=laudo.id paciente_id=form_paciente.id %}">Imprimir</a> </td>
                     </tr>
                 {% endfor %}
