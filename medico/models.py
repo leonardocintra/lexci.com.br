@@ -2,6 +2,7 @@ from django.db import models
 
 
 class Medico(models.Model):
+    """ Model Medico - Medidos 'de fora' que realiza o exame """
     nome = models.CharField(max_length=200)
     crm = models.CharField('CRM', max_length=50, blank=True, null=True)
     telefone = models.CharField('Telefone:', max_length=20, blank=True, null=True)

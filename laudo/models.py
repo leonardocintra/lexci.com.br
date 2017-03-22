@@ -1,8 +1,28 @@
-""" Laudo Model """
+""" 
+    Laudo Model
+    Criado por: Leonardo Nascimento Cintra
+    Data: janeiro/2017
+"""
 from django.db import models
 from paciente.models import Paciente
 from medico.models import Medico
 from exame.models import Exame, ItemExame
+
+
+class AssinadorEletronico(models.Model):
+    """ AssinadorEletronico - São os usuarios que tem permissao para assinar eletronicamente"""
+    nome = models.CharField(max_length=200)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+    data_atualizacao = models.DateTimeField(auto_now=True)
+
+
+    class Meta:
+        verbose_name = 'Assinador'
+        verbose_name_plural = 'Assinadores'
+    
+
+    def __str__ (self):
+        return self.nome
 
 
 class Laudo(models.Model):
@@ -19,6 +39,8 @@ class Laudo(models.Model):
     data_coleta = models.DateTimeField('Data da coleta')
     ultima_menstruacao = models.DateTimeField('Data ultima menstruação')
     paciente_pode_ver = models.BooleanField(default=False)
+    assinado = models.BooleanField(default=False)
+    assinado_por = models.ForeignKey(AssinadorEletronico, on_delete=models.CASCADE, related_name='assinador', null=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
     ativo = models.BooleanField(default=True)
