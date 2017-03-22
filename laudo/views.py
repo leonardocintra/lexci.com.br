@@ -46,10 +46,6 @@ class LaudoCreate(FormView):
 
         return HttpResponseRedirect(self.get_success_url())
 
-    def form_invalid(self, form):
-        return self.render_to_response(
-            self.get_context_data(form=UpdateItemExameViewform)
-        )
 
     def get_context_data(self, **kwargs):
         context = super(LaudoCreate, self).get_context_data(**kwargs)
