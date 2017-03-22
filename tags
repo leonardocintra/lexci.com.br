@@ -5,6 +5,7 @@
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
 !_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 0001_initial.py	accounts/migrations/0001_initial.py	1;"	kind:file	line:1
+0001_initial.py	convenio/migrations/0001_initial.py	1;"	kind:file	line:1
 0001_initial.py	core/migrations/0001_initial.py	1;"	kind:file	line:1
 0001_initial.py	exame/migrations/0001_initial.py	1;"	kind:file	line:1
 0001_initial.py	laudo/migrations/0001_initial.py	1;"	kind:file	line:1
@@ -16,6 +17,7 @@
 0002_auto_20170321_1344.py	exame/migrations/0002_auto_20170321_1344.py	1;"	kind:file	line:1
 0002_laudo_exames.py	laudo/migrations/0002_laudo_exames.py	1;"	kind:file	line:1
 0003_auto_20161123_2003.py	paciente/migrations/0003_auto_20161123_2003.py	1;"	kind:file	line:1
+0003_delete_convenio.py	core/migrations/0003_delete_convenio.py	1;"	kind:file	line:1
 0003_laudo_paciente_pode_ver.py	laudo/migrations/0003_laudo_paciente_pode_ver.py	1;"	kind:file	line:1
 0004_auto_20161128_1640.py	paciente/migrations/0004_auto_20161128_1640.py	1;"	kind:file	line:1
 0004_remove_laudo_exames.py	laudo/migrations/0004_remove_laudo_exames.py	1;"	kind:file	line:1
@@ -37,9 +39,12 @@
 0012_auto_20170316_2239.py	laudo/migrations/0012_auto_20170316_2239.py	1;"	kind:file	line:1
 0013_auto_20161214_0901.py	paciente/migrations/0013_auto_20161214_0901.py	1;"	kind:file	line:1
 0013_auto_20170321_1300.py	laudo/migrations/0013_auto_20170321_1300.py	1;"	kind:file	line:1
+0014_auto_20170321_2116.py	laudo/migrations/0014_auto_20170321_2116.py	1;"	kind:file	line:1
 0014_paciente_sexo.py	paciente/migrations/0014_paciente_sexo.py	1;"	kind:file	line:1
+0015_auto_20170321_2300.py	laudo/migrations/0015_auto_20170321_2300.py	1;"	kind:file	line:1
 0015_paciente_convenio.py	paciente/migrations/0015_paciente_convenio.py	1;"	kind:file	line:1
 0016_remove_paciente_sexo.py	paciente/migrations/0016_remove_paciente_sexo.py	1;"	kind:file	line:1
+0017_auto_20170321_2023.py	paciente/migrations/0017_auto_20170321_2023.py	1;"	kind:file	line:1
 ABC	env/lib/python3.4/abc.py	/^class ABC(metaclass=ABCMeta):$/;"	kind:class	line:234
 ABCMeta	env/lib/python3.4/abc.py	/^class ABCMeta(type):$/;"	kind:class	line:109
 ADJ_ESTERROR	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^ADJ_ESTERROR = 0x0008$/;"	kind:variable	line:255
@@ -124,11 +129,13 @@ AT_NON_BOUNDARY	env/lib/python3.4/sre_constants.py	/^AT_NON_BOUNDARY = "at_non_b
 AT_UNICODE	env/lib/python3.4/sre_constants.py	/^AT_UNICODE = {$/;"	kind:variable	line:175
 AT_UNI_BOUNDARY	env/lib/python3.4/sre_constants.py	/^AT_UNI_BOUNDARY = "at_uni_boundary"$/;"	kind:variable	line:75
 AT_UNI_NON_BOUNDARY	env/lib/python3.4/sre_constants.py	/^AT_UNI_NON_BOUNDARY = "at_uni_non_boundary"$/;"	kind:variable	line:76
-AUTHENTICATION_BACKENDS	lexci/settings.py	/^AUTHENTICATION_BACKENDS = ($/;"	kind:variable	line:136
-AUTH_PASSWORD_VALIDATORS	lexci/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:106
-AUTH_USER_MODEL	lexci/settings.py	/^AUTH_USER_MODEL = 'accounts.User'$/;"	kind:variable	line:135
-AboutView	core/views.py	/^class AboutView(TemplateView):$/;"	kind:class	line:14
+AUTHENTICATION_BACKENDS	lexci/settings.py	/^AUTHENTICATION_BACKENDS = ($/;"	kind:variable	line:137
+AUTH_PASSWORD_VALIDATORS	lexci/settings.py	/^AUTH_PASSWORD_VALIDATORS = [$/;"	kind:variable	line:107
+AUTH_USER_MODEL	lexci/settings.py	/^AUTH_USER_MODEL = 'accounts.User'$/;"	kind:variable	line:136
+AboutView	core/views.py	/^class AboutView(TemplateView):$/;"	kind:class	line:13
 AccountsConfig	accounts/apps.py	/^class AccountsConfig(AppConfig):$/;"	kind:class	line:4
+AssinadorEletronico	laudo/models.py	/^class AssinadorEletronico(models.Model):$/;"	kind:class	line:12
+AssinadorEletronicoAdmin	laudo/admin.py	/^class AssinadorEletronicoAdmin(admin.ModelAdmin):$/;"	kind:class	line:12
 BASE_DIR	lexci/settings.py	/^BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))$/;"	kind:variable	line:11
 BIGCHARSET	env/lib/python3.4/sre_constants.py	/^BIGCHARSET = "bigcharset"$/;"	kind:variable	line:36
 BIG_ENDIAN	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^BIG_ENDIAN = __BIG_ENDIAN$/;"	kind:variable	line:316
@@ -338,7 +345,7 @@ CO_FUTURE_UNICODE_LITERALS	env/lib/python3.4/__future__.py	/^CO_FUTURE_UNICODE_L
 CO_FUTURE_WITH_STATEMENT	env/lib/python3.4/__future__.py	/^CO_FUTURE_WITH_STATEMENT  = 0x8000   # with statement$/;"	kind:variable	line:71
 CO_GENERATOR_ALLOWED	env/lib/python3.4/__future__.py	/^CO_GENERATOR_ALLOWED = 0        # generators (obsolete, was 0x1000)$/;"	kind:variable	line:68
 CO_NESTED	env/lib/python3.4/__future__.py	/^CO_NESTED            = 0x0010   # nested_scopes$/;"	kind:variable	line:67
-CRISPY_TEMPLATE_PACK	lexci/settings.py	/^CRISPY_TEMPLATE_PACK = 'bootstrap3'$/;"	kind:variable	line:162
+CRISPY_TEMPLATE_PACK	lexci/settings.py	/^CRISPY_TEMPLATE_PACK = 'bootstrap3'$/;"	kind:variable	line:163
 CSIGNAL	env/lib/python3.4/plat-x86_64-linux-gnu/TYPES.py	/^CSIGNAL = 0x000000ff$/;"	kind:variable	line:87
 C_BUILTIN	env/lib/python3.4/imp.py	/^C_BUILTIN = 6$/;"	kind:variable	line:41
 C_EXTENSION	env/lib/python3.4/imp.py	/^C_EXTENSION = 3$/;"	kind:variable	line:38
@@ -462,19 +469,18 @@ Completer	env/lib/python3.4/rlcompleter.py	/^class Completer:$/;"	kind:class	lin
 CompressionError	env/lib/python3.4/tarfile.py	/^class CompressionError(TarError):$/;"	kind:class	line:274
 ContStr	env/lib/python3.4/tokenize.py	/^ContStr = group(StringPrefix + r"'[^\\n'\\\\]*(?:\\\\.[^\\n'\\\\]*)*" +$/;"	kind:variable	line:163
 ContactForm	core/forms.py	/^class ContactForm(forms.Form):$/;"	kind:class	line:6
-ContactView	core/views.py	/^class ContactView(FormView):$/;"	kind:class	line:18
+ContactView	core/views.py	/^class ContactView(FormView):$/;"	kind:class	line:17
 Container	env/lib/python3.4/_collections_abc.py	/^class Container(metaclass=ABCMeta):$/;"	kind:class	line:143
-Convenio	core/models.py	/^class Convenio(models.Model):$/;"	kind:class	line:3
-ConvenioAdmin	core/admin.py	/^class ConvenioAdmin(admin.ModelAdmin):$/;"	kind:class	line:9
+Convenio	convenio/models.py	/^class Convenio(models.Model):$/;"	kind:class	line:3
+ConvenioAdmin	convenio/admin.py	/^class ConvenioAdmin(admin.ModelAdmin):$/;"	kind:class	line:9
+ConvenioConfig	convenio/apps.py	/^class ConvenioConfig(AppConfig):$/;"	kind:class	line:4
+ConvenioCreate	convenio/views.py	/^class ConvenioCreate(LoginRequiredMixin, CreateView):$/;"	kind:class	line:19
+ConvenioList	convenio/views.py	/^class ConvenioList(ListView):$/;"	kind:class	line:13
 CoreConfig	core/apps.py	/^class CoreConfig(AppConfig):$/;"	kind:class	line:4
 Counter	env/lib/python3.4/collections/__init__.py	/^class Counter(dict):$/;"	kind:class	line:406
-CreateExameView	exame/views.py	/^class CreateExameView(CreateView):$/;"	kind:class	line:26
-CreateItemExameView	exame/views.py	/^class CreateItemExameView(AjaxCreateView):$/;"	kind:class	line:71
-CreateLaudoView	laudo/views.py	/^class CreateLaudoView(FormView):$/;"	kind:class	line:30
-CreateMedicoView	medico/views.py	/^class CreateMedicoView(AjaxCreateView):$/;"	kind:class	line:16
-CreatePaciente	paciente/views.py	/^class CreatePaciente(CreateView):$/;"	kind:class	line:32
+CreateMedico	medico/views.py	/^class CreateMedico(AjaxCreateView):$/;"	kind:class	line:17
 CurrentTimeNode	core/templatetags/core_extras.py	/^class CurrentTimeNode(template.Node):$/;"	kind:class	line:18
-DATABASES	lexci/settings.py	/^DATABASES = {$/;"	kind:variable	line:88
+DATABASES	lexci/settings.py	/^DATABASES = {$/;"	kind:variable	line:89
 DEBUG	env/lib/python3.4/re.py	/^DEBUG = sre_compile.SRE_FLAG_DEBUG # dump pattern after compilation$/;"	kind:variable	line:149
 DEBUG	lexci/settings.py	/^DEBUG = True$/;"	kind:variable	line:22
 DEBUG_BUILD	env/lib/python3.4/importlib/_bootstrap.py	/^    DEBUG_BUILD = False  # Changed in _setup()$/;"	kind:variable	line:1399
@@ -518,20 +524,15 @@ DVD_STRUCT_MANUFACT	env/lib/python3.4/plat-x86_64-linux-gnu/CDROM.py	/^DVD_STRUC
 DVD_STRUCT_PHYSICAL	env/lib/python3.4/plat-x86_64-linux-gnu/CDROM.py	/^DVD_STRUCT_PHYSICAL = 0x00$/;"	kind:variable	line:181
 DVD_WRITE_STRUCT	env/lib/python3.4/plat-x86_64-linux-gnu/CDROM.py	/^DVD_WRITE_STRUCT = 0x5391$/;"	kind:variable	line:44
 Decnumber	env/lib/python3.4/tokenize.py	/^Decnumber = r'(?:0+|[1-9][0-9]*)'$/;"	kind:variable	line:123
-DeleteExameView	exame/views.py	/^class DeleteExameView(DeleteView):$/;"	kind:class	line:35
-DeleteItemExameView	exame/views.py	/^class DeleteItemExameView(DeleteView):$/;"	kind:class	line:96
-DeleteMedidoView	medico/views.py	/^class DeleteMedidoView(DeleteView):$/;"	kind:class	line:46
-DetailMedicoView	medico/views.py	/^class DetailMedicoView(DetailView):$/;"	kind:class	line:24
-DetalhesLaudo	laudo/views.py	/^class DetalhesLaudo(DetailView):$/;"	kind:class	line:17
 Double	env/lib/python3.4/tokenize.py	/^Double = r'[^"\\\\]*(?:\\\\.[^"\\\\]*)*"'$/;"	kind:variable	line:137
 Double3	env/lib/python3.4/tokenize.py	/^Double3 = r'[^"\\\\]*(?:(?:\\\\.|"(?!""))[^"\\\\]*)*"""'$/;"	kind:variable	line:141
 DynamicClassAttribute	env/lib/python3.4/types.py	/^class DynamicClassAttribute:$/;"	kind:class	line:103
 ELLIPSIS	env/lib/python3.4/token.py	/^ELLIPSIS = 51$/;"	kind:variable	line:64
-EMAIL_HOST	lexci/settings.py	/^EMAIL_HOST = 'smtp.gmail.com'$/;"	kind:variable	line:143
-EMAIL_HOST_PASSWORD	lexci/settings.py	/^EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'julianarosarodrigues')$/;"	kind:variable	line:146
-EMAIL_HOST_USER	lexci/settings.py	/^EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'emaildevleonardo@gmail.com')$/;"	kind:variable	line:145
-EMAIL_PORT	lexci/settings.py	/^EMAIL_PORT = 587$/;"	kind:variable	line:144
-EMAIL_USE_TLS	lexci/settings.py	/^EMAIL_USE_TLS = True$/;"	kind:variable	line:142
+EMAIL_HOST	lexci/settings.py	/^EMAIL_HOST = 'smtp.gmail.com'$/;"	kind:variable	line:144
+EMAIL_HOST_PASSWORD	lexci/settings.py	/^EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD', 'julianarosarodrigues')$/;"	kind:variable	line:147
+EMAIL_HOST_USER	lexci/settings.py	/^EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER', 'emaildevleonardo@gmail.com')$/;"	kind:variable	line:146
+EMAIL_PORT	lexci/settings.py	/^EMAIL_PORT = 587$/;"	kind:variable	line:145
+EMAIL_USE_TLS	lexci/settings.py	/^EMAIL_USE_TLS = True$/;"	kind:variable	line:143
 ENABLE_USER_SITE	env/lib/python3.4/site.py	/^ENABLE_USER_SITE = None$/;"	kind:variable	line:81
 ENCODING	env/lib/python3.4/tarfile.py	/^    ENCODING = "utf-8"$/;"	kind:variable	line:144
 ENCODING	env/lib/python3.4/tarfile.py	/^    ENCODING = sys.getfilesystemencoding()$/;"	kind:variable	line:146
@@ -549,6 +550,7 @@ EXTENSION_SUFFIXES	env/lib/python3.4/importlib/_bootstrap.py	/^EXTENSION_SUFFIXE
 EmptyHeaderError	env/lib/python3.4/tarfile.py	/^class EmptyHeaderError(HeaderError):$/;"	kind:class	line:283
 EncodedFile	env/lib/python3.4/codecs.py	/^def EncodedFile(file, data_encoding, file_encoding=None, errors='strict'):$/;"	kind:function	line:900
 EnderecoFormSet	paciente/forms.py	/^EnderecoFormSet = inlineformset_factory($/;"	kind:variable	line:26
+EnderecoPaciente	paciente/views.py	/^class EnderecoPaciente(LoginRequiredMixin, UpdateView):$/;"	kind:class	line:90
 EnderecoPacienteForm	paciente/forms.py	/^class EnderecoPacienteForm(forms.ModelForm):$/;"	kind:class	line:17
 Enhance	env/bin/enhancer.py	/^class Enhance(Frame):$/;"	kind:class	line:22
 Error	env/lib/python3.4/copy.py	/^class Error(Exception):$/;"	kind:class	line:56
@@ -557,7 +559,12 @@ ExFileObject	env/lib/python3.4/tarfile.py	/^class ExFileObject(io.BufferedReader
 Exame	exame/models.py	/^class Exame(models.Model):$/;"	kind:class	line:10
 ExameAdmin	exame/admin.py	/^class ExameAdmin(admin.ModelAdmin):$/;"	kind:class	line:5
 ExameConfig	exame/apps.py	/^class ExameConfig(AppConfig):$/;"	kind:class	line:4
-ExameLaudo	laudo/models.py	/^class ExameLaudo(models.Model):$/;"	kind:class	line:35
+ExameCreate	exame/views.py	/^class ExameCreate(LoginRequiredMixin, CreateView):$/;"	kind:class	line:27
+ExameDelete	exame/views.py	/^class ExameDelete(LoginRequiredMixin, DeleteView):$/;"	kind:class	line:36
+ExameIndex	exame/views.py	/^class ExameIndex(LoginRequiredMixin, TemplateView):$/;"	kind:class	line:15
+ExameLaudo	laudo/models.py	/^class ExameLaudo(models.Model):$/;"	kind:class	line:59
+ExameList	exame/views.py	/^class ExameList(LoginRequiredMixin, ListView):$/;"	kind:class	line:19
+ExameUpdate	exame/views.py	/^class ExameUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):$/;"	kind:class	line:49
 ExecError	env/lib/python3.4/shutil.py	/^class ExecError(OSError):$/;"	kind:class	line:53
 ExecutionLoader	env/lib/python3.4/importlib/abc.py	/^class ExecutionLoader(InspectLoader):$/;"	kind:class	line:233
 Expfloat	env/lib/python3.4/tokenize.py	/^Expfloat = r'[0-9]+' + Exponent$/;"	kind:variable	line:127
@@ -1060,15 +1067,18 @@ IncrementalEncoder	env/lib/python3.4/encodings/utf_8.py	/^class IncrementalEncod
 IncrementalEncoder	env/lib/python3.4/encodings/utf_8_sig.py	/^class IncrementalEncoder(codecs.IncrementalEncoder):$/;"	kind:class	line:26
 IncrementalEncoder	env/lib/python3.4/encodings/uu_codec.py	/^class IncrementalEncoder(codecs.IncrementalEncoder):$/;"	kind:class	line:73
 IncrementalEncoder	env/lib/python3.4/encodings/zlib_codec.py	/^class IncrementalEncoder(codecs.IncrementalEncoder):$/;"	kind:class	line:27
-IndexExameView	exame/views.py	/^class IndexExameView(TemplateView):$/;"	kind:class	line:14
 IndexView	accounts/views.py	/^class IndexView(LoginRequiredMixin, TemplateView):$/;"	kind:class	line:11
-IndexView	core/views.py	/^class IndexView(TemplateView):$/;"	kind:class	line:10
+IndexView	core/views.py	/^class IndexView(TemplateView):$/;"	kind:class	line:9
 InspectLoader	env/lib/python3.4/importlib/abc.py	/^class InspectLoader(Loader):$/;"	kind:class	line:181
 Interval	env/bin/explode.py	/^class Interval(object):$/;"	kind:class	line:16
 Intnumber	env/lib/python3.4/tokenize.py	/^Intnumber = group(Hexnumber, Binnumber, Octnumber, Decnumber)$/;"	kind:variable	line:124
 InvalidHeaderError	env/lib/python3.4/tarfile.py	/^class InvalidHeaderError(HeaderError):$/;"	kind:class	line:292
 ItemExame	exame/models.py	/^class ItemExame(models.Model):$/;"	kind:class	line:28
 ItemExameAdmin	exame/admin.py	/^class ItemExameAdmin(admin.ModelAdmin):$/;"	kind:class	line:11
+ItemExameCreate	exame/views.py	/^class ItemExameCreate(AjaxCreateView):$/;"	kind:class	line:72
+ItemExameDelete	exame/views.py	/^class ItemExameDelete(LoginRequiredMixin, DeleteView):$/;"	kind:class	line:97
+ItemExameList	exame/views.py	/^class ItemExameList(LoginRequiredMixin, ListView):$/;"	kind:class	line:59
+ItemExameUpdate	exame/views.py	/^class ItemExameUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):$/;"	kind:class	line:82
 ItemsView	env/lib/python3.4/_collections_abc.py	/^class ItemsView(MappingView, Set):$/;"	kind:class	line:481
 Iterable	env/lib/python3.4/_collections_abc.py	/^class Iterable(metaclass=ABCMeta):$/;"	kind:class	line:76
 Iterator	env/lib/python3.4/_collections_abc.py	/^class Iterator(Iterable):$/;"	kind:class	line:93
@@ -1076,7 +1086,7 @@ JUMP	env/lib/python3.4/sre_constants.py	/^JUMP = "jump"$/;"	kind:variable	line:4
 K	env/lib/python3.4/functools.py	/^    class K(object):$/;"	kind:class	line:211
 KeyedRef	env/lib/python3.4/weakref.py	/^class KeyedRef(ref):$/;"	kind:class	line:280
 KeysView	env/lib/python3.4/_collections_abc.py	/^class KeysView(MappingView, Set):$/;"	kind:class	line:466
-LANGUAGE_CODE	lexci/settings.py	/^LANGUAGE_CODE = 'pt-br'$/;"	kind:variable	line:151
+LANGUAGE_CODE	lexci/settings.py	/^LANGUAGE_CODE = 'pt-br'$/;"	kind:variable	line:152
 LBRACE	env/lib/python3.4/token.py	/^LBRACE = 25$/;"	kind:variable	line:38
 LEFTSHIFT	env/lib/python3.4/token.py	/^LEFTSHIFT = 33$/;"	kind:variable	line:46
 LEFTSHIFTEQUAL	env/lib/python3.4/token.py	/^LEFTSHIFTEQUAL = 44$/;"	kind:variable	line:57
@@ -1091,22 +1101,21 @@ LITTLE_ENDIAN	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^LITTLE_ENDIAN = __
 LITTLE_ENDIAN	env/lib/python3.4/plat-x86_64-linux-gnu/TYPES.py	/^LITTLE_ENDIAN = __LITTLE_ENDIAN$/;"	kind:variable	line:127
 LNKTYPE	env/lib/python3.4/tarfile.py	/^LNKTYPE = b"1"                  # link (inside tarfile)$/;"	kind:variable	line:83
 LOG4	env/lib/python3.4/random.py	/^LOG4 = _log(4.0)$/;"	kind:variable	line:56
-LOGIN_REDIRECT_URL	lexci/settings.py	/^LOGIN_REDIRECT_URL = 'index'$/;"	kind:variable	line:134
-LOGIN_URL	lexci/settings.py	/^LOGIN_URL = 'login'$/;"	kind:variable	line:133
+LOGIN_REDIRECT_URL	lexci/settings.py	/^LOGIN_REDIRECT_URL = 'index'$/;"	kind:variable	line:135
+LOGIN_URL	lexci/settings.py	/^LOGIN_URL = 'login'$/;"	kind:variable	line:134
 LPAR	env/lib/python3.4/token.py	/^LPAR = 7$/;"	kind:variable	line:20
 LSQB	env/lib/python3.4/token.py	/^LSQB = 9$/;"	kind:variable	line:22
 LambdaType	env/lib/python3.4/types.py	/^LambdaType = type(lambda: None)         # Same as FunctionType$/;"	kind:variable	line:13
-Laudo	laudo/models.py	/^class Laudo(models.Model):$/;"	kind:class	line:8
+Laudo	laudo/models.py	/^class Laudo(models.Model):$/;"	kind:class	line:28
 LaudoAdmin	laudo/admin.py	/^class LaudoAdmin(admin.ModelAdmin):$/;"	kind:class	line:8
 LaudoConfig	laudo/apps.py	/^class LaudoConfig(AppConfig):$/;"	kind:class	line:4
+LaudoCreate	laudo/views.py	/^class LaudoCreate(FormView):$/;"	kind:class	line:30
 LaudoExameInline	laudo/admin.py	/^class LaudoExameInline(admin.TabularInline):$/;"	kind:class	line:5
 LaudoForm	laudo/forms.py	/^class LaudoForm(forms.ModelForm):$/;"	kind:class	line:7
-ListExameView	exame/views.py	/^class ListExameView(ListView):$/;"	kind:class	line:18
-ListItemExameView	exame/views.py	/^class ListItemExameView(ListView):$/;"	kind:class	line:58
-ListMedicoView	medico/views.py	/^class ListMedicoView(ListView):$/;"	kind:class	line:10
-ListPaciente	paciente/views.py	/^class ListPaciente(ListView):$/;"	kind:class	line:13
+LaudoUpdate	laudo/views.py	/^class LaudoUpdate(UpdateView):$/;"	kind:class	line:61
 Loader	env/lib/python3.4/importlib/abc.py	/^class Loader(metaclass=abc.ABCMeta):$/;"	kind:class	line:115
 LockType	env/lib/python3.4/_dummy_thread.py	/^class LockType(object):$/;"	kind:class	line:88
+LudoDetail	laudo/views.py	/^class LudoDetail(DetailView):$/;"	kind:class	line:17
 MAGIC	env/lib/python3.4/sre_constants.py	/^MAGIC = 20031017$/;"	kind:variable	line:16
 MAGIC_NUMBER	env/lib/python3.4/importlib/_bootstrap.py	/^MAGIC_NUMBER = (3310).to_bytes(2, 'little') + b'\\r\\n'$/;"	kind:variable	line:427
 MARK	env/lib/python3.4/sre_constants.py	/^MARK = "mark"$/;"	kind:variable	line:50
@@ -1126,8 +1135,8 @@ MCAST_LEAVE_GROUP	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MCAST_LEAVE_GR
 MCAST_LEAVE_SOURCE_GROUP	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MCAST_LEAVE_SOURCE_GROUP = 47$/;"	kind:variable	line:600
 MCAST_MSFILTER	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MCAST_MSFILTER = 48$/;"	kind:variable	line:601
 MCAST_UNBLOCK_SOURCE	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MCAST_UNBLOCK_SOURCE = 44$/;"	kind:variable	line:597
-MESSAGE_TAGS	lexci/settings.py	/^MESSAGE_TAGS = {$/;"	kind:variable	line:124
-MIDDLEWARE	lexci/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:54
+MESSAGE_TAGS	lexci/settings.py	/^MESSAGE_TAGS = {$/;"	kind:variable	line:125
+MIDDLEWARE	lexci/settings.py	/^MIDDLEWARE = [$/;"	kind:variable	line:55
 MINEQUAL	env/lib/python3.4/token.py	/^MINEQUAL = 37$/;"	kind:variable	line:50
 MINUS	env/lib/python3.4/token.py	/^MINUS = 15$/;"	kind:variable	line:28
 MIN_REPEAT	env/lib/python3.4/sre_constants.py	/^MIN_REPEAT = "min_repeat"$/;"	kind:variable	line:53
@@ -1144,26 +1153,31 @@ MOD_OFFSET	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MOD_OFFSET = ADJ_OFFS
 MOD_STATUS	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MOD_STATUS = ADJ_STATUS$/;"	kind:variable	line:268
 MOD_TAI	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MOD_TAI = ADJ_TAI$/;"	kind:variable	line:272
 MOD_TIMECONST	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^MOD_TIMECONST = ADJ_TIMECONST$/;"	kind:variable	line:269
-ManagementView	core/views.py	/^class ManagementView(LoginRequiredMixin, TemplateView):$/;"	kind:class	line:30
+ManagementView	core/views.py	/^class ManagementView(LoginRequiredMixin, TemplateView):$/;"	kind:class	line:29
 Mapping	env/lib/python3.4/_collections_abc.py	/^class Mapping(Sized, Iterable, Container):$/;"	kind:class	line:403
 MappingProxyType	env/lib/python3.4/types.py	/^MappingProxyType = type(type.__dict__)$/;"	kind:variable	line:15
 MappingView	env/lib/python3.4/_collections_abc.py	/^class MappingView(Sized):$/;"	kind:class	line:454
 Medico	medico/models.py	/^class Medico(models.Model):$/;"	kind:class	line:4
 MedicoAdmin	medico/admin.py	/^class MedicoAdmin(admin.ModelAdmin):$/;"	kind:class	line:9
 MedicoConfig	medico/apps.py	/^class MedicoConfig(AppConfig):$/;"	kind:class	line:4
+MedicoDelete	medico/views.py	/^class MedicoDelete(LoginRequiredMixin, DeleteView):$/;"	kind:class	line:47
+MedicoDetail	medico/views.py	/^class MedicoDetail(LoginRequiredMixin, DetailView):$/;"	kind:class	line:25
 MedicoForm	medico/forms.py	/^class MedicoForm(forms.ModelForm):$/;"	kind:class	line:5
+MedicoList	medico/views.py	/^class MedicoList(LoginRequiredMixin, ListView):$/;"	kind:class	line:11
+MedicoUpdate	medico/views.py	/^class MedicoUpdate(LoginRequiredMixin, UpdateView):$/;"	kind:class	line:33
 MemberDescriptorType	env/lib/python3.4/types.py	/^MemberDescriptorType = type(FunctionType.__globals__)$/;"	kind:variable	line:41
 Meta	accounts/forms.py	/^    class Meta:$/;"	kind:class	line:14
 Meta	accounts/forms.py	/^    class Meta:$/;"	kind:class	line:7
 Meta	accounts/models.py	/^    class Meta:$/;"	kind:class	line:30
-Meta	core/models.py	/^    class Meta:$/;"	kind:class	line:7
+Meta	convenio/models.py	/^    class Meta:$/;"	kind:class	line:7
 Meta	exame/models.py	/^    class Meta:$/;"	kind:class	line:19
 Meta	exame/models.py	/^    class Meta:$/;"	kind:class	line:48
 Meta	laudo/forms.py	/^    class Meta:$/;"	kind:class	line:10
-Meta	laudo/models.py	/^    class Meta:$/;"	kind:class	line:26
-Meta	laudo/models.py	/^    class Meta:$/;"	kind:class	line:41
+Meta	laudo/models.py	/^    class Meta:$/;"	kind:class	line:19
+Meta	laudo/models.py	/^    class Meta:$/;"	kind:class	line:50
+Meta	laudo/models.py	/^    class Meta:$/;"	kind:class	line:65
 Meta	medico/forms.py	/^    class Meta:$/;"	kind:class	line:7
-Meta	medico/models.py	/^    class Meta:$/;"	kind:class	line:11
+Meta	medico/models.py	/^    class Meta:$/;"	kind:class	line:12
 Meta	paciente/forms.py	/^    class Meta:$/;"	kind:class	line:13
 Meta	paciente/forms.py	/^    class Meta:$/;"	kind:class	line:19
 Meta	paciente/models.py	/^    class Meta:$/;"	kind:class	line:24
@@ -1171,8 +1185,10 @@ Meta	paciente/models.py	/^    class Meta:$/;"	kind:class	line:62
 MetaPathFinder	env/lib/python3.4/importlib/abc.py	/^class MetaPathFinder(Finder):$/;"	kind:class	line:39
 MethodType	env/lib/python3.4/types.py	/^MethodType = type(_C()._m)$/;"	kind:variable	line:24
 Migration	accounts/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:11
+Migration	convenio/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	core/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	core/migrations/0002_auto_20161208_2111.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	core/migrations/0003_delete_convenio.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	exame/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
 Migration	exame/migrations/0002_auto_20170321_1344.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	laudo/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
@@ -1188,6 +1204,8 @@ Migration	laudo/migrations/0010_auto_20170309_2311.py	/^class Migration(migratio
 Migration	laudo/migrations/0011_laudo_ultima_menstruacao.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
 Migration	laudo/migrations/0012_auto_20170316_2239.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
 Migration	laudo/migrations/0013_auto_20170321_1300.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	laudo/migrations/0014_auto_20170321_2116.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
+Migration	laudo/migrations/0015_auto_20170321_2300.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
 Migration	medico/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	medico/migrations/0002_auto_20161215_1015.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	paciente/migrations/0001_initial.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
@@ -1206,6 +1224,7 @@ Migration	paciente/migrations/0013_auto_20161214_0901.py	/^class Migration(migra
 Migration	paciente/migrations/0014_paciente_sexo.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
 Migration	paciente/migrations/0015_paciente_convenio.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
 Migration	paciente/migrations/0016_remove_paciente_sexo.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:8
+Migration	paciente/migrations/0017_auto_20170321_2023.py	/^class Migration(migrations.Migration):$/;"	kind:class	line:9
 ModelBackend	accounts/backends.py	/^class ModelBackend(BaseModelBackend):$/;"	kind:class	line:5
 ModuleSpec	env/lib/python3.4/importlib/_bootstrap.py	/^class ModuleSpec:$/;"	kind:class	line:753
 ModuleType	env/lib/python3.4/site.py	/^    ModuleType = type(os)$/;"	kind:variable	line:90
@@ -1309,10 +1328,13 @@ P_WAIT	env/lib/python3.4/os.py	/^    P_WAIT = 0$/;"	kind:variable	line:793
 Paciente	paciente/models.py	/^class Paciente(models.Model):$/;"	kind:class	line:9
 PacienteAdmin	paciente/admin.py	/^class PacienteAdmin(admin.ModelAdmin):$/;"	kind:class	line:5
 PacienteConfig	paciente/apps.py	/^class PacienteConfig(AppConfig):$/;"	kind:class	line:4
+PacienteCreate	paciente/views.py	/^class PacienteCreate(LoginRequiredMixin, CreateView):$/;"	kind:class	line:32
 PacienteEndereco	paciente/models.py	/^class PacienteEndereco(models.Model):$/;"	kind:class	line:44
 PacienteEnderecoAdmin	paciente/admin.py	/^class PacienteEnderecoAdmin(admin.ModelAdmin):$/;"	kind:class	line:8
 PacienteExamesForm	paciente/forms.py	/^class PacienteExamesForm(forms.ModelForm):$/;"	kind:class	line:7
 PacienteForm	paciente/forms.py	/^class PacienteForm(forms.ModelForm):$/;"	kind:class	line:11
+PacienteList	paciente/views.py	/^class PacienteList(LoginRequiredMixin, ListView):$/;"	kind:class	line:13
+PacienteUpdate	paciente/views.py	/^class PacienteUpdate(LoginRequiredMixin, UpdateView):$/;"	kind:class	line:74
 PaintCanvas	env/bin/painter.py	/^class PaintCanvas(Canvas):$/;"	kind:class	line:24
 PathEntryFinder	env/lib/python3.4/importlib/abc.py	/^class PathEntryFinder(Finder):$/;"	kind:class	line:71
 PathFinder	env/lib/python3.4/importlib/_bootstrap.py	/^class PathFinder:$/;"	kind:class	line:1841
@@ -1345,7 +1367,7 @@ REQUIRED_FIELDS	accounts/models.py	/^    REQUIRED_FIELDS = ['email']$/;"	kind:va
 RIGHTSHIFT	env/lib/python3.4/token.py	/^RIGHTSHIFT = 34$/;"	kind:variable	line:47
 RIGHTSHIFTEQUAL	env/lib/python3.4/token.py	/^RIGHTSHIFTEQUAL = 45$/;"	kind:variable	line:58
 RLock	env/lib/python3.4/functools.py	/^    class RLock:$/;"	kind:class	line:27
-ROOT_URLCONF	lexci/settings.py	/^ROOT_URLCONF = 'lexci.urls'$/;"	kind:variable	line:64
+ROOT_URLCONF	lexci/settings.py	/^ROOT_URLCONF = 'lexci.urls'$/;"	kind:variable	line:65
 RPAR	env/lib/python3.4/token.py	/^RPAR = 8$/;"	kind:variable	line:21
 RSQB	env/lib/python3.4/token.py	/^RSQB = 10$/;"	kind:variable	line:23
 RTLD_BINDING_MASK	env/lib/python3.4/plat-x86_64-linux-gnu/DLFCN.py	/^RTLD_BINDING_MASK = 0x3$/;"	kind:variable	line:79
@@ -1369,7 +1391,7 @@ SCHED_OTHER	env/lib/python3.4/plat-x86_64-linux-gnu/TYPES.py	/^SCHED_OTHER = 0$/
 SCHED_RR	env/lib/python3.4/plat-x86_64-linux-gnu/TYPES.py	/^SCHED_RR = 2$/;"	kind:variable	line:86
 SEARCH_ERROR	env/lib/python3.4/imp.py	/^SEARCH_ERROR = 0$/;"	kind:variable	line:35
 SECRET_KEY	lexci/settings.py	/^SECRET_KEY = 'g)l75z^&_t&(n8b6w+tke1u%o4j5f6m^dm)8!#qofw40dfz$_m'$/;"	kind:variable	line:19
-SECURE_PROXY_SSL_HEADER	lexci/settings.py	/^SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')$/;"	kind:variable	line:100
+SECURE_PROXY_SSL_HEADER	lexci/settings.py	/^SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')$/;"	kind:variable	line:101
 SEEK_CUR	env/lib/python3.4/io.py	/^SEEK_CUR = 1$/;"	kind:variable	line:66
 SEEK_CUR	env/lib/python3.4/os.py	/^SEEK_CUR = 1$/;"	kind:variable	line:206
 SEEK_END	env/lib/python3.4/io.py	/^SEEK_END = 2$/;"	kind:variable	line:67
@@ -1416,8 +1438,8 @@ SRE_INFO_LITERAL	env/lib/python3.4/sre_constants.py	/^SRE_INFO_LITERAL = 2 # ent
 SRE_INFO_PREFIX	env/lib/python3.4/sre_constants.py	/^SRE_INFO_PREFIX = 1 # has prefix$/;"	kind:variable	line:214
 STAR	env/lib/python3.4/token.py	/^STAR = 16$/;"	kind:variable	line:29
 STAREQUAL	env/lib/python3.4/token.py	/^STAREQUAL = 38$/;"	kind:variable	line:51
-STATIC_ROOT	lexci/settings.py	/^STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')$/;"	kind:variable	line:169
-STATIC_URL	lexci/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:168
+STATIC_ROOT	lexci/settings.py	/^STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')$/;"	kind:variable	line:170
+STATIC_URL	lexci/settings.py	/^STATIC_URL = '\/static\/'$/;"	kind:variable	line:169
 STA_CLK	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^STA_CLK = 0x8000$/;"	kind:variable	line:290
 STA_CLOCKERR	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^STA_CLOCKERR = 0x1000$/;"	kind:variable	line:287
 STA_DEL	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^STA_DEL = 0x0020$/;"	kind:variable	line:280
@@ -1754,13 +1776,13 @@ SubPattern	env/lib/python3.4/sre_parse.py	/^class SubPattern:$/;"	kind:class	lin
 SubsequentHeaderError	env/lib/python3.4/tarfile.py	/^class SubsequentHeaderError(HeaderError):$/;"	kind:class	line:295
 SystemRandom	env/lib/python3.4/random.py	/^class SystemRandom(Random):$/;"	kind:class	line:639
 T	env/lib/python3.4/encodings/punycode.py	/^def T(j, bias):$/;"	kind:function	line:70
-TEMPLATES	lexci/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:66
+TEMPLATES	lexci/settings.py	/^TEMPLATES = [$/;"	kind:variable	line:67
 TILDE	env/lib/python3.4/token.py	/^TILDE = 31$/;"	kind:variable	line:44
 TIMEOUT_MAX	env/lib/python3.4/_dummy_thread.py	/^TIMEOUT_MAX = 2**31$/;"	kind:variable	line:20
 TIMER_ABSTIME	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^TIMER_ABSTIME = 1$/;"	kind:variable	line:248
 TIMER_ABSTIME	env/lib/python3.4/plat-x86_64-linux-gnu/TYPES.py	/^TIMER_ABSTIME = 1$/;"	kind:variable	line:106
 TIME_UTC	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^TIME_UTC = 1$/;"	kind:variable	line:298
-TIME_ZONE	lexci/settings.py	/^TIME_ZONE = 'America\/Sao_Paulo'$/;"	kind:variable	line:153
+TIME_ZONE	lexci/settings.py	/^TIME_ZONE = 'America\/Sao_Paulo'$/;"	kind:variable	line:154
 TMP_MAX	env/lib/python3.4/tempfile.py	/^    TMP_MAX = 10000$/;"	kind:variable	line:195
 TWOPI	env/lib/python3.4/random.py	/^TWOPI = 2.0*_pi$/;"	kind:variable	line:55
 TYPES.py	env/lib/python3.4/plat-x86_64-linux-gnu/TYPES.py	1;"	kind:file	line:1
@@ -1812,17 +1834,11 @@ UIO_MAXIOV	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^UIO_MAXIOV = 1024$/;"
 USERNAME_FIELD	accounts/models.py	/^    USERNAME_FIELD = 'username'$/;"	kind:variable	line:25
 USER_BASE	env/lib/python3.4/site.py	/^USER_BASE = None$/;"	kind:variable	line:84
 USER_SITE	env/lib/python3.4/site.py	/^USER_SITE = None$/;"	kind:variable	line:83
-USE_I18N	lexci/settings.py	/^USE_I18N = True$/;"	kind:variable	line:155
-USE_L10N	lexci/settings.py	/^USE_L10N = True$/;"	kind:variable	line:157
-USE_TZ	lexci/settings.py	/^USE_TZ = True$/;"	kind:variable	line:159
+USE_I18N	lexci/settings.py	/^USE_I18N = True$/;"	kind:variable	line:156
+USE_L10N	lexci/settings.py	/^USE_L10N = True$/;"	kind:variable	line:158
+USE_TZ	lexci/settings.py	/^USE_TZ = True$/;"	kind:variable	line:160
 USTAR_FORMAT	env/lib/python3.4/tarfile.py	/^USTAR_FORMAT = 0                # POSIX.1-1988 (ustar) format$/;"	kind:variable	line:99
 Untokenizer	env/lib/python3.4/tokenize.py	/^class Untokenizer:$/;"	kind:class	line:223
-UpdateEnderecoPaciente	paciente/views.py	/^class UpdateEnderecoPaciente(UpdateView):$/;"	kind:class	line:90
-UpdateExameView	exame/views.py	/^class UpdateExameView(SuccessMessageMixin, UpdateView):$/;"	kind:class	line:48
-UpdateItemExameView	exame/views.py	/^class UpdateItemExameView(SuccessMessageMixin, UpdateView):$/;"	kind:class	line:81
-UpdateLaudoView	laudo/views.py	/^class UpdateLaudoView(UpdateView):$/;"	kind:class	line:65
-UpdateMedicoView	medico/views.py	/^class UpdateMedicoView(UpdateView):$/;"	kind:class	line:32
-UpdatePaciente	paciente/views.py	/^class UpdatePaciente(UpdateView):$/;"	kind:class	line:74
 UpdatePasswordTestCase	accounts/tests/test_view.py	/^class UpdatePasswordTestCase(TestCase):$/;"	kind:class	line:64
 UpdatePasswordView	accounts/views.py	/^class UpdatePasswordView(LoginRequiredMixin, FormView):$/;"	kind:class	line:32
 UpdateUserTestCase	accounts/tests/test_view.py	/^class UpdateUserTestCase(TestCase):$/;"	kind:class	line:33
@@ -1843,7 +1859,7 @@ ValuesView	env/lib/python3.4/_collections_abc.py	/^class ValuesView(MappingView)
 WHITESPACE	env/lib/python3.4/sre_parse.py	/^WHITESPACE = set(" \\t\\n\\r\\v\\f")$/;"	kind:variable	line:26
 WRAPPER_ASSIGNMENTS	env/lib/python3.4/functools.py	/^WRAPPER_ASSIGNMENTS = ('__module__', '__name__', '__qualname__', '__doc__',$/;"	kind:variable	line:40
 WRAPPER_UPDATES	env/lib/python3.4/functools.py	/^WRAPPER_UPDATES = ('__dict__',)$/;"	kind:variable	line:42
-WSGI_APPLICATION	lexci/settings.py	/^WSGI_APPLICATION = 'lexci.wsgi.application'$/;"	kind:variable	line:82
+WSGI_APPLICATION	lexci/settings.py	/^WSGI_APPLICATION = 'lexci.wsgi.application'$/;"	kind:variable	line:83
 WarningMessage	env/lib/python3.4/warnings.py	/^class WarningMessage(object):$/;"	kind:class	line:277
 WeakKeyDictionary	env/lib/python3.4/weakref.py	/^class WeakKeyDictionary(collections.MutableMapping):$/;"	kind:class	line:301
 WeakMethod	env/lib/python3.4/weakref.py	/^class WeakMethod(ref):$/;"	kind:class	line:35
@@ -2532,6 +2548,8 @@ __init__	env/lib/python3.4/weakref.py	/^    def __init__(self, obj, func, *args,
 __init__.py	accounts/__init__.py	1;"	kind:file	line:1
 __init__.py	accounts/migrations/__init__.py	1;"	kind:file	line:1
 __init__.py	accounts/tests/__init__.py	1;"	kind:file	line:1
+__init__.py	convenio/__init__.py	1;"	kind:file	line:1
+__init__.py	convenio/migrations/__init__.py	1;"	kind:file	line:1
 __init__.py	core/__init__.py	1;"	kind:file	line:1
 __init__.py	core/migrations/__init__.py	1;"	kind:file	line:1
 __init__.py	core/templatetags/__init__.py	1;"	kind:file	line:1
@@ -2747,15 +2765,16 @@ __slots__	env/lib/python3.4/weakref.py	/^    __slots__ = "_func_ref", "_meth_typ
 __slots__	env/lib/python3.4/weakref.py	/^    __slots__ = "key",$/;"	kind:variable	line:290
 __slots__	env/lib/python3.4/weakref.py	/^    __slots__ = ()$/;"	kind:variable	line:474
 __str__	accounts/models.py	/^    def __str__(self):$/;"	kind:member	line:35
-__str__	core/models.py	/^    def __str__ (self):$/;"	kind:member	line:12
+__str__	convenio/models.py	/^    def __str__ (self):$/;"	kind:member	line:12
 __str__	env/lib/python3.4/collections/__init__.py	/^    def __str__(self): return str(self.data)$/;"	kind:member	line:1027
 __str__	env/lib/python3.4/collections/__main__.py	/^    def __str__(self):$/;"	kind:member	line:18
 __str__	env/lib/python3.4/warnings.py	/^    def __str__(self):$/;"	kind:member	line:291
 __str__	exame/models.py	/^    def __str__ (self):$/;"	kind:member	line:24
 __str__	exame/models.py	/^    def __str__ (self):$/;"	kind:member	line:53
-__str__	laudo/models.py	/^    def __str__ (self):$/;"	kind:member	line:31
-__str__	laudo/models.py	/^    def __str__ (self):$/;"	kind:member	line:44
-__str__	medico/models.py	/^    def __str__ (self):$/;"	kind:member	line:16
+__str__	laudo/models.py	/^    def __str__ (self):$/;"	kind:member	line:24
+__str__	laudo/models.py	/^    def __str__ (self):$/;"	kind:member	line:55
+__str__	laudo/models.py	/^    def __str__ (self):$/;"	kind:member	line:68
+__str__	medico/models.py	/^    def __str__ (self):$/;"	kind:member	line:17
 __str__	paciente/models.py	/^    def __str__ (self):$/;"	kind:member	line:29
 __str__	paciente/models.py	/^    def __str__(self):$/;"	kind:member	line:59
 __sub__	env/lib/python3.4/_collections_abc.py	/^    def __sub__(self, other):$/;"	kind:member	line:258
@@ -3159,7 +3178,7 @@ aRepr	env/lib/python3.4/reprlib.py	/^aRepr = Repr()$/;"	kind:variable	line:156
 abc.py	env/lib/python3.4/abc.py	1;"	kind:file	line:1
 abc.py	env/lib/python3.4/collections/abc.py	1;"	kind:file	line:1
 abc.py	env/lib/python3.4/importlib/abc.py	1;"	kind:file	line:1
-about	core/views.py	/^about = AboutView.as_view()$/;"	kind:variable	line:35
+about	core/views.py	/^about = AboutView.as_view()$/;"	kind:variable	line:34
 abs	env/lib/python3.4/operator.py	/^def abs(a):$/;"	kind:function	line:71
 abs__file__	env/lib/python3.4/site.py	/^def abs__file__():$/;"	kind:function	line:100
 absolute_import	env/lib/python3.4/__future__.py	/^absolute_import = _Feature((2, 5, 0, "alpha", 1),$/;"	kind:variable	line:116
@@ -3192,7 +3211,7 @@ addsitedir	env/lib/python3.4/site.py	/^def addsitedir(sitedir, known_paths=None)
 addsitepackages	env/lib/python3.4/site.py	/^def addsitepackages(known_paths, sys_prefix=sys.prefix, exec_prefix=sys.exec_prefix):$/;"	kind:function	line:209
 addusersitepackages	env/lib/python3.4/site.py	/^def addusersitepackages(known_paths):$/;"	kind:function	line:309
 admin.py	accounts/admin.py	1;"	kind:file	line:1
-admin.py	core/admin.py	1;"	kind:file	line:1
+admin.py	convenio/admin.py	1;"	kind:file	line:1
 admin.py	exame/admin.py	1;"	kind:file	line:1
 admin.py	laudo/admin.py	1;"	kind:file	line:1
 admin.py	medico/admin.py	1;"	kind:file	line:1
@@ -3218,17 +3237,20 @@ append	env/lib/python3.4/sre_parse.py	/^    def append(self, code):$/;"	kind:mem
 application	lexci/wsgi.py	/^application = DjangoWhiteNoise(application)$/;"	kind:variable	line:18
 application	lexci/wsgi.py	/^application = get_wsgi_application()$/;"	kind:variable	line:17
 apps.py	accounts/apps.py	1;"	kind:file	line:1
+apps.py	convenio/apps.py	1;"	kind:file	line:1
 apps.py	core/apps.py	1;"	kind:file	line:1
 apps.py	exame/apps.py	1;"	kind:file	line:1
 apps.py	laudo/apps.py	1;"	kind:file	line:1
 apps.py	medico/apps.py	1;"	kind:file	line:1
 apps.py	paciente/apps.py	1;"	kind:file	line:1
 ascii.py	env/lib/python3.4/encodings/ascii.py	1;"	kind:file	line:1
+assinado	laudo/models.py	/^    assinado = models.BooleanField(default=False)$/;"	kind:variable	line:44
+assinado_por	laudo/models.py	/^    assinado_por = models.ForeignKey(AssinadorEletronico, on_delete=models.CASCADE, related_name='assinador', default=1)$/;"	kind:variable	line:45
 atexit	env/lib/python3.4/weakref.py	/^    def atexit(self):$/;"	kind:member	line:530
 atexit	env/lib/python3.4/weakref.py	/^    def atexit(self, value):$/;"	kind:member	line:536
 ativo	exame/models.py	/^    ativo = models.BooleanField(default=True)$/;"	kind:variable	line:17
 ativo	exame/models.py	/^    ativo = models.BooleanField(default=True)$/;"	kind:variable	line:46
-ativo	laudo/models.py	/^    ativo = models.BooleanField(default=True)$/;"	kind:variable	line:24
+ativo	laudo/models.py	/^    ativo = models.BooleanField(default=True)$/;"	kind:variable	line:48
 ativo	paciente/models.py	/^    ativo = models.BooleanField(default=True)$/;"	kind:variable	line:21
 atof	env/lib/python3.4/locale.py	/^def atof(string, func=float):$/;"	kind:function	line:304
 atoi	env/lib/python3.4/locale.py	/^def atoi(str):$/;"	kind:function	line:317
@@ -3478,11 +3500,11 @@ complete	env/lib/python3.4/rlcompleter.py	/^    def complete(self, text, state):
 concat	env/lib/python3.4/operator.py	/^def concat(a, b):$/;"	kind:function	line:142
 constants.py	paciente/constants.py	1;"	kind:file	line:1
 constructor	env/lib/python3.4/copyreg.py	/^def constructor(object):$/;"	kind:function	line:22
-contact	core/views.py	/^contact = ContactView.as_view()$/;"	kind:variable	line:36
+contact	core/views.py	/^contact = ContactView.as_view()$/;"	kind:variable	line:35
 contains	env/lib/python3.4/operator.py	/^def contains(a, b):$/;"	kind:function	line:149
-context_object_name	exame/views.py	/^    context_object_name = 'exame_list'$/;"	kind:variable	line:23
-context_object_name	exame/views.py	/^    context_object_name = 'item_exame_list'$/;"	kind:variable	line:63
-context_object_name	medico/views.py	/^    context_object_name = 'medico_list'$/;"	kind:variable	line:13
+context_object_name	exame/views.py	/^    context_object_name = 'exame_list'$/;"	kind:variable	line:24
+context_object_name	exame/views.py	/^    context_object_name = 'item_exame_list'$/;"	kind:variable	line:64
+context_object_name	medico/views.py	/^    context_object_name = 'medico_list'$/;"	kind:variable	line:14
 context_object_name	paciente/views.py	/^    context_object_name = 'paciente_list'$/;"	kind:variable	line:18
 convenio	paciente/models.py	/^    convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE, null=True)$/;"	kind:variable	line:22
 convert	env/bin/pilconvert.py	/^convert = None$/;"	kind:variable	line:53
@@ -3559,28 +3581,30 @@ cpf	paciente/models.py	/^    cpf = models.CharField('CPF', unique=True, max_leng
 create	env/lib/python3.4/importlib/_bootstrap.py	/^    def create(self):$/;"	kind:member	line:1099
 create_endereco	paciente/views.py	/^def create_endereco(request, paciente_id):$/;"	kind:function	line:105
 create_gnu_header	env/lib/python3.4/tarfile.py	/^    def create_gnu_header(self, info, encoding, errors):$/;"	kind:member	line:824
-create_laudo	laudo/views.py	/^create_laudo = CreateLaudoView.as_view() $/;"	kind:variable	line:76
+create_laudo	laudo/views.py	/^create_laudo = LaudoCreate.as_view() $/;"	kind:variable	line:72
 create_laudo_exames	laudo/forms.py	/^    def create_laudo_exames(self, laudo, item_exames_ids):$/;"	kind:member	line:15
 create_module	env/lib/python3.4/importlib/abc.py	/^    def create_module(self, spec):$/;"	kind:member	line:119
 create_pax_global_header	env/lib/python3.4/tarfile.py	/^    def create_pax_global_header(cls, pax_headers):$/;"	kind:member	line:888
 create_pax_header	env/lib/python3.4/tarfile.py	/^    def create_pax_header(self, info, encoding):$/;"	kind:member	line:838
 create_ustar_header	env/lib/python3.4/tarfile.py	/^    def create_ustar_header(self, info, encoding, errors):$/;"	kind:member	line:811
 createfontdatachunk.py	env/bin/createfontdatachunk.py	1;"	kind:file	line:1
-crm	medico/models.py	/^    crm = models.CharField('CRM', max_length=50, blank=True, null=True)$/;"	kind:variable	line:6
+crm	medico/models.py	/^    crm = models.CharField('CRM', max_length=50, blank=True, null=True)$/;"	kind:variable	line:7
 curdir	env/lib/python3.4/ntpath.py	/^curdir = '.'$/;"	kind:variable	line:24
 curdir	env/lib/python3.4/posixpath.py	/^curdir = '.'$/;"	kind:variable	line:29
 currency	env/lib/python3.4/locale.py	/^def currency(val, symbol=True, grouping=False, international=False):$/;"	kind:function	line:255
 data	env/lib/python3.4/heapq.py	/^    data = [1, 3, 5, 7, 9, 2, 4, 6, 8, 0]$/;"	kind:variable	line:467
-data_atualizacao	laudo/models.py	/^    data_atualizacao = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:23
-data_atualizacao	medico/models.py	/^    data_atualizacao = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:9
+data_atualizacao	laudo/models.py	/^    data_atualizacao = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:16
+data_atualizacao	laudo/models.py	/^    data_atualizacao = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:47
+data_atualizacao	medico/models.py	/^    data_atualizacao = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:10
 data_atualizacao	paciente/models.py	/^    data_atualizacao = models.DateTimeField(auto_now=True)$/;"	kind:variable	line:19
 data_cadastro	exame/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:16
 data_cadastro	exame/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:45
-data_cadastro	laudo/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:22
-data_cadastro	laudo/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:39
-data_cadastro	medico/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:8
+data_cadastro	laudo/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:15
+data_cadastro	laudo/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:46
+data_cadastro	laudo/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:63
+data_cadastro	medico/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:9
 data_cadastro	paciente/models.py	/^    data_cadastro = models.DateTimeField(auto_now_add=True)$/;"	kind:variable	line:18
-data_coleta	laudo/models.py	/^    data_coleta = models.DateTimeField('Data da coleta')$/;"	kind:variable	line:19
+data_coleta	laudo/models.py	/^    data_coleta = models.DateTimeField('Data da coleta')$/;"	kind:variable	line:41
 data_encoding	env/lib/python3.4/codecs.py	/^    data_encoding = 'unknown'$/;"	kind:variable	line:765
 data_nascimento	paciente/models.py	/^    data_nascimento = models.DateField()$/;"	kind:variable	line:16
 date_joined	accounts/models.py	/^    date_joined = models.DateTimeField('Data de entrada', auto_now_add=True)$/;"	kind:variable	line:23
@@ -3912,8 +3936,10 @@ defpath	env/lib/python3.4/posixpath.py	/^defpath = ':\/bin:\/usr\/bin'$/;"	kind:
 deleter	env/lib/python3.4/types.py	/^    def deleter(self, fdel):$/;"	kind:member	line:155
 delitem	env/lib/python3.4/operator.py	/^def delitem(a, b):$/;"	kind:function	line:161
 dependencies	accounts/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:15
-dependencies	core/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
-dependencies	core/migrations/0002_auto_20161208_2111.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	convenio/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
+dependencies	core/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	core/migrations/0002_auto_20161208_2111.py	/^    dependencies = [$/;"	kind:variable	line:9
+dependencies	core/migrations/0003_delete_convenio.py	/^    dependencies = [$/;"	kind:variable	line:9
 dependencies	exame/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:13
 dependencies	exame/migrations/0002_auto_20170321_1344.py	/^    dependencies = [$/;"	kind:variable	line:10
 dependencies	laudo/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:13
@@ -3929,6 +3955,8 @@ dependencies	laudo/migrations/0010_auto_20170309_2311.py	/^    dependencies = [$
 dependencies	laudo/migrations/0011_laudo_ultima_menstruacao.py	/^    dependencies = [$/;"	kind:variable	line:11
 dependencies	laudo/migrations/0012_auto_20170316_2239.py	/^    dependencies = [$/;"	kind:variable	line:11
 dependencies	laudo/migrations/0013_auto_20170321_1300.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	laudo/migrations/0014_auto_20170321_2116.py	/^    dependencies = [$/;"	kind:variable	line:11
+dependencies	laudo/migrations/0015_auto_20170321_2300.py	/^    dependencies = [$/;"	kind:variable	line:11
 dependencies	medico/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:12
 dependencies	medico/migrations/0002_auto_20161215_1015.py	/^    dependencies = [$/;"	kind:variable	line:10
 dependencies	paciente/migrations/0001_initial.py	/^    dependencies = [$/;"	kind:variable	line:13
@@ -3947,8 +3975,9 @@ dependencies	paciente/migrations/0013_auto_20161214_0901.py	/^    dependencies =
 dependencies	paciente/migrations/0014_paciente_sexo.py	/^    dependencies = [$/;"	kind:variable	line:10
 dependencies	paciente/migrations/0015_paciente_convenio.py	/^    dependencies = [$/;"	kind:variable	line:11
 dependencies	paciente/migrations/0016_remove_paciente_sexo.py	/^    dependencies = [$/;"	kind:variable	line:10
+dependencies	paciente/migrations/0017_auto_20170321_2023.py	/^    dependencies = [$/;"	kind:variable	line:11
 dereference	env/lib/python3.4/tarfile.py	/^    dereference = False         # If true, add content of linked file to the$/;"	kind:variable	line:1381
-descricao	core/models.py	/^    descricao = models.CharField(max_length=100)$/;"	kind:variable	line:4
+descricao	convenio/models.py	/^    descricao = models.CharField(max_length=100)$/;"	kind:variable	line:4
 descricao	exame/models.py	/^    descricao = models.CharField('Descrição', max_length=200, unique=True)$/;"	kind:variable	line:15
 descricao_item	exame/models.py	/^    descricao_item = models.CharField('Descrição', max_length=300)$/;"	kind:variable	line:44
 description	env/bin/pilprint.py	/^def description(filepath, image):$/;"	kind:function	line:28
@@ -4339,13 +4368,12 @@ encoding_table	env/lib/python3.4/encodings/mac_turkish.py	/^encoding_table=codec
 encoding_table	env/lib/python3.4/encodings/palmos.py	/^encoding_table=codecs.charmap_build(decoding_table)$/;"	kind:variable	line:308
 encoding_table	env/lib/python3.4/encodings/ptcp154.py	/^encoding_table=codecs.charmap_build(decoding_table)$/;"	kind:variable	line:312
 encoding_table	env/lib/python3.4/encodings/tis_620.py	/^encoding_table=codecs.charmap_build(decoding_table)$/;"	kind:variable	line:307
-endereco_update	paciente/views.py	/^endereco_update = UpdateEnderecoPaciente.as_view()/;"	kind:variable	line:165
+endereco_update	paciente/views.py	/^endereco_update = EnderecoPaciente.as_view()/;"	kind:variable	line:166
 endpats	env/lib/python3.4/tokenize.py	/^endpats = {"'": Single, '"': Double,$/;"	kind:variable	line:173
 endswith	env/lib/python3.4/collections/__init__.py	/^    def endswith(self, suffix, start=0, end=_sys.maxsize):$/;"	kind:member	line:1096
 enhancer.py	env/bin/enhancer.py	1;"	kind:file	line:1
 environ	env/lib/python3.4/os.py	/^    environ = {}$/;"	kind:variable	line:484
 environ	env/lib/python3.4/os.py	/^environ = _createenviron()$/;"	kind:variable	line:718
-epylint	env/bin/epylint	1;"	kind:file	line:1
 eq	env/lib/python3.4/operator.py	/^def eq(a, b):$/;"	kind:function	line:35
 error	env/lib/python3.4/_dummy_thread.py	/^error = RuntimeError$/;"	kind:variable	line:27
 error	env/lib/python3.4/copy.py	/^error = Error   # backward compatibility$/;"	kind:variable	line:58
@@ -4361,11 +4389,11 @@ euc_jp.py	env/lib/python3.4/encodings/euc_jp.py	1;"	kind:file	line:1
 euc_kr.py	env/lib/python3.4/encodings/euc_kr.py	1;"	kind:file	line:1
 exact_type	env/lib/python3.4/tokenize.py	/^    def exact_type(self):$/;"	kind:member	line:103
 exame	exame/models.py	/^    exame = models.ForeignKey(Exame, on_delete=models.CASCADE, related_name='exame')$/;"	kind:variable	line:43
-exame_create	exame/views.py	/^exame_create = CreateExameView.as_view()$/;"	kind:variable	line:106
-exame_delete	exame/views.py	/^exame_delete = DeleteExameView.as_view()$/;"	kind:variable	line:107
-exame_list	exame/views.py	/^exame_list = ListExameView.as_view()$/;"	kind:variable	line:105
-exame_update	exame/views.py	/^exame_update = UpdateExameView.as_view()$/;"	kind:variable	line:108
-exclude	laudo/forms.py	/^        exclude = ('data_cadastro', 'data_atualizacao', )$/;"	kind:variable	line:12
+exame_create	exame/views.py	/^exame_create = ExameCreate.as_view()$/;"	kind:variable	line:107
+exame_delete	exame/views.py	/^exame_delete = ExameDelete.as_view()$/;"	kind:variable	line:108
+exame_list	exame/views.py	/^exame_list = ExameList.as_view()$/;"	kind:variable	line:106
+exame_update	exame/views.py	/^exame_update = ExameUpdate.as_view()$/;"	kind:variable	line:109
+exclude	laudo/forms.py	/^        exclude = ('data_cadastro', 'data_atualizacao', 'assinado_por', )$/;"	kind:variable	line:12
 exclude	medico/admin.py	/^    exclude = ('data_cadastro', 'data_atualizacao', )$/;"	kind:variable	line:11
 exclude	paciente/forms.py	/^        exclude = ('data_cadastro', 'data_atualizacao', )$/;"	kind:variable	line:15
 exec	env/lib/python3.4/importlib/_bootstrap.py	/^    def exec(self, module):$/;"	kind:member	line:1132
@@ -4417,6 +4445,9 @@ field	laudo/migrations/0011_laudo_ultima_menstruacao.py	/^            field=mode
 field	laudo/migrations/0012_auto_20170316_2239.py	/^            field=models.DateTimeField(default=django.utils.timezone.now, verbose_name='Data da coleta'),$/;"	kind:variable	line:19
 field	laudo/migrations/0012_auto_20170316_2239.py	/^            field=models.DateTimeField(verbose_name='Data ultima menstruação'),$/;"	kind:variable	line:25
 field	laudo/migrations/0013_auto_20170321_1300.py	/^            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='item_exame', to='exame.ItemExame'),$/;"	kind:variable	line:23
+field	laudo/migrations/0014_auto_20170321_2116.py	/^            field=models.BooleanField(default=False),$/;"	kind:variable	line:32
+field	laudo/migrations/0014_auto_20170321_2116.py	/^            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, related_name='assinador', to='laudo.AssinadorEletronico'),$/;"	kind:variable	line:37
+field	laudo/migrations/0015_auto_20170321_2300.py	/^            field=models.ForeignKey(default=1, on_delete=django.db.models.deletion.CASCADE, related_name='assinador', to='laudo.AssinadorEletronico'),$/;"	kind:variable	line:19
 field	medico/migrations/0002_auto_20161215_1015.py	/^            field=models.CharField(blank=True, max_length=20, null=True, verbose_name='Telefone:'),$/;"	kind:variable	line:23
 field	medico/migrations/0002_auto_20161215_1015.py	/^            field=models.CharField(blank=True, max_length=50, null=True, verbose_name='CRM'),$/;"	kind:variable	line:18
 field	paciente/migrations/0002_auto_20161122_2100.py	/^            field=models.BooleanField(default=True),$/;"	kind:variable	line:19
@@ -4457,27 +4488,32 @@ field	paciente/migrations/0013_auto_20161214_0901.py	/^            field=models.
 field	paciente/migrations/0013_auto_20161214_0901.py	/^            field=models.CharField(max_length=2, verbose_name='UF'),$/;"	kind:variable	line:48
 field	paciente/migrations/0014_paciente_sexo.py	/^            field=models.CharField(choices=[('M', 'Masculino'), ('F', 'Feminino'), ('N', 'Não informado')], default='N', max_length=1),$/;"	kind:variable	line:18
 field	paciente/migrations/0015_paciente_convenio.py	/^            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='core.Convenio'),$/;"	kind:variable	line:20
+field	paciente/migrations/0017_auto_20170321_2023.py	/^            field=models.ForeignKey(null=True, on_delete=django.db.models.deletion.CASCADE, to='convenio.Convenio'),$/;"	kind:variable	line:19
 fields	accounts/forms.py	/^        fields = ['username', 'email', 'name', 'is_active', 'is_staff']$/;"	kind:variable	line:16
 fields	accounts/forms.py	/^        fields = ['username', 'email']$/;"	kind:variable	line:9
 fields	accounts/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:22
 fields	accounts/views.py	/^    fields = ['name', 'email', ]$/;"	kind:variable	line:25
-fields	core/admin.py	/^    fields = ('descricao', 'slug')$/;"	kind:variable	line:11
-fields	core/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
+fields	convenio/admin.py	/^    fields = ('descricao', 'slug')$/;"	kind:variable	line:11
+fields	convenio/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
+fields	convenio/views.py	/^    fields = ['descricao']$/;"	kind:variable	line:21
+fields	core/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:17
 fields	exame/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:19
 fields	exame/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:28
-fields	exame/views.py	/^    fields = ['descricao']$/;"	kind:variable	line:29
-fields	exame/views.py	/^    fields = ['descricao']$/;"	kind:variable	line:52
-fields	exame/views.py	/^    fields = ['exame', 'descricao_item']$/;"	kind:variable	line:73
-fields	exame/views.py	/^    fields = ['exame', 'descricao_item']$/;"	kind:variable	line:85
+fields	exame/views.py	/^    fields = ['descricao']$/;"	kind:variable	line:30
+fields	exame/views.py	/^    fields = ['descricao']$/;"	kind:variable	line:53
+fields	exame/views.py	/^    fields = ['exame', 'descricao_item']$/;"	kind:variable	line:74
+fields	exame/views.py	/^    fields = ['exame', 'descricao_item']$/;"	kind:variable	line:86
+fields	laudo/admin.py	/^    fields = ('nome', )$/;"	kind:variable	line:13
 fields	laudo/admin.py	/^    fields = ('paciente', 'medico', 'paciente_pode_ver', 'ultima_menstruacao', 'data_coleta', 'ativo', )$/;"	kind:variable	line:9
 fields	laudo/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:22
 fields	laudo/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:31
 fields	laudo/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:46
 fields	laudo/migrations/0005_examelaudo.py	/^            fields=[$/;"	kind:variable	line:18
-fields	laudo/views.py	/^    fields = ['paciente_pode_ver']$/;"	kind:variable	line:67
+fields	laudo/migrations/0014_auto_20170321_2116.py	/^            fields=[$/;"	kind:variable	line:18
+fields	laudo/views.py	/^    fields = ['paciente_pode_ver']$/;"	kind:variable	line:63
 fields	medico/migrations/0001_initial.py	/^            fields=[$/;"	kind:variable	line:18
-fields	medico/views.py	/^    fields = ['nome', 'crm', 'telefone', ]$/;"	kind:variable	line:18
-fields	medico/views.py	/^    fields = ['nome', 'crm', 'telefone']$/;"	kind:variable	line:34
+fields	medico/views.py	/^    fields = ['nome', 'crm', 'telefone', ]$/;"	kind:variable	line:19
+fields	medico/views.py	/^    fields = ['nome', 'crm', 'telefone']$/;"	kind:variable	line:35
 fields	paciente/admin.py	/^    fields = ('logradouro', 'municipio', 'uf')$/;"	kind:variable	line:9
 fields	paciente/admin.py	/^    fields = ('nome', 'cartao_sus', 'nome_mae', 'apelido', 'cpf', 'nacionalidade', 'data_nascimento', 'raca', 'profissao', 'ativo')$/;"	kind:variable	line:6
 fields	paciente/forms.py	/^        fields = ('cep', 'logradouro', 'numero_casa', 'complemento', 'bairro', 'uf', $/;"	kind:variable	line:21
@@ -4543,13 +4579,13 @@ force_global_eggs_after_local_site_packages	env/lib/python3.4/site.py	/^def forc
 form	accounts/admin.py	/^    form = UserAdminForm$/;"	kind:variable	line:14
 form_class	accounts/views.py	/^    form_class = PasswordChangeForm$/;"	kind:variable	line:35
 form_class	accounts/views.py	/^    form_class = UserAdminCreationForm$/;"	kind:variable	line:18
-form_class	core/views.py	/^    form_class = ContactForm$/;"	kind:variable	line:20
+form_class	core/views.py	/^    form_class = ContactForm$/;"	kind:variable	line:19
 form_class	laudo/views.py	/^    form_class = LaudoForm$/;"	kind:variable	line:35
 form_class	paciente/views.py	/^    form_class = PacienteForm$/;"	kind:variable	line:35
-form_invalid	laudo/views.py	/^    def form_invalid(self, form):$/;"	kind:member	line:49
 form_invalid	paciente/views.py	/^    def form_invalid(self, form, endereco_form):$/;"	kind:member	line:61
 form_valid	accounts/views.py	/^    def form_valid(self, form):$/;"	kind:member	line:42
-form_valid	core/views.py	/^    def form_valid(self, form):$/;"	kind:member	line:22
+form_valid	convenio/views.py	/^    def form_valid(self, form):$/;"	kind:member	line:23
+form_valid	core/views.py	/^    def form_valid(self, form):$/;"	kind:member	line:21
 form_valid	laudo/views.py	/^    def form_valid(self, form):$/;"	kind:member	line:42
 form_valid	paciente/views.py	/^    def form_valid(self, form, endereco_form):$/;"	kind:member	line:55
 format	env/lib/python3.4/collections/__init__.py	/^    def format(self, *args, **kwds):$/;"	kind:member	line:1104
@@ -4595,7 +4631,7 @@ generate_integers	env/lib/python3.4/encodings/punycode.py	/^def generate_integer
 generate_tokens	env/lib/python3.4/tokenize.py	/^def generate_tokens(readline):$/;"	kind:function	line:628
 generators	env/lib/python3.4/__future__.py	/^generators = _Feature((2, 2, 0, "alpha", 1),$/;"	kind:variable	line:108
 genericpath.py	env/lib/python3.4/genericpath.py	1;"	kind:file	line:1
-gerar_laudo	laudo/reports.py	/^def gerar_laudo(request, laudo_id, paciente_id):$/;"	kind:function	line:14
+gerar_laudo	laudo/reports.py	/^def gerar_laudo(request, laudo_id, paciente_id):$/;"	kind:function	line:15
 get	env/lib/python3.4/_collections_abc.py	/^    def get(self, key, default=None):$/;"	kind:member	line:419
 get	env/lib/python3.4/collections/__init__.py	/^    def get(self, key, default=None):$/;"	kind:member	line:816
 get	env/lib/python3.4/sre_parse.py	/^    def get(self):$/;"	kind:member	line:220
@@ -4615,13 +4651,13 @@ get_code	env/lib/python3.4/importlib/_bootstrap.py	/^    def get_code(self, full
 get_code	env/lib/python3.4/importlib/_bootstrap.py	/^    def get_code(self, fullname):$/;"	kind:member	line:1822
 get_code	env/lib/python3.4/importlib/abc.py	/^    def get_code(self, fullname):$/;"	kind:member	line:198
 get_code	env/lib/python3.4/importlib/abc.py	/^    def get_code(self, fullname):$/;"	kind:member	line:251
-get_context_data	exame/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:42
-get_context_data	exame/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:65
-get_context_data	exame/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:90
+get_context_data	exame/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:43
+get_context_data	exame/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:66
+get_context_data	exame/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:91
 get_context_data	laudo/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:21
-get_context_data	laudo/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:54
-get_context_data	medico/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:27
-get_context_data	medico/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:39
+get_context_data	laudo/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:50
+get_context_data	medico/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:28
+get_context_data	medico/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:40
 get_context_data	paciente/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:66
 get_context_data	paciente/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:83
 get_context_data	paciente/views.py	/^    def get_context_data(self, **kwargs):$/;"	kind:member	line:98
@@ -4637,7 +4673,7 @@ get_full_name	accounts/models.py	/^    def get_full_name(self):$/;"	kind:member	
 get_idade_paciente	paciente/templatetags/paciente_extras.py	/^def get_idade_paciente(data_nascimento):$/;"	kind:function	line:7
 get_ident	env/lib/python3.4/_dummy_thread.py	/^def get_ident():$/;"	kind:function	line:65
 get_info	env/lib/python3.4/tarfile.py	/^    def get_info(self):$/;"	kind:member	line:773
-get_initial	exame/views.py	/^    def get_initial(self):$/;"	kind:member	line:75
+get_initial	exame/views.py	/^    def get_initial(self):$/;"	kind:member	line:76
 get_initial	laudo/views.py	/^    def get_initial(self):$/;"	kind:member	line:37
 get_magic	env/lib/python3.4/imp.py	/^def get_magic():$/;"	kind:function	line:58
 get_object	accounts/views.py	/^    def get_object(self):$/;"	kind:member	line:28
@@ -4650,12 +4686,12 @@ get_source	env/lib/python3.4/importlib/_bootstrap.py	/^    def get_source(self, 
 get_source	env/lib/python3.4/importlib/_bootstrap.py	/^    def get_source(self, fullname):$/;"	kind:member	line:1736
 get_source	env/lib/python3.4/importlib/_bootstrap.py	/^    def get_source(self, fullname):$/;"	kind:member	line:1819
 get_source	env/lib/python3.4/importlib/abc.py	/^    def get_source(self, fullname):$/;"	kind:member	line:212
-get_success_url	core/views.py	/^    def get_success_url(self):$/;"	kind:member	line:26
-get_success_url	laudo/views.py	/^    def get_success_url(self):$/;"	kind:member	line:61
-get_success_url	laudo/views.py	/^    def get_success_url(self):$/;"	kind:member	line:70
-get_success_url	medico/views.py	/^    def get_success_url(self):$/;"	kind:member	line:20
-get_success_url	medico/views.py	/^    def get_success_url(self):$/;"	kind:member	line:36
-get_success_url	medico/views.py	/^    def get_success_url(self):$/;"	kind:member	line:49
+get_success_url	core/views.py	/^    def get_success_url(self):$/;"	kind:member	line:25
+get_success_url	laudo/views.py	/^    def get_success_url(self):$/;"	kind:member	line:57
+get_success_url	laudo/views.py	/^    def get_success_url(self):$/;"	kind:member	line:66
+get_success_url	medico/views.py	/^    def get_success_url(self):$/;"	kind:member	line:21
+get_success_url	medico/views.py	/^    def get_success_url(self):$/;"	kind:member	line:37
+get_success_url	medico/views.py	/^    def get_success_url(self):$/;"	kind:member	line:50
 get_success_url	paciente/views.py	/^    def get_success_url(self):$/;"	kind:member	line:70
 get_success_url	paciente/views.py	/^    def get_success_url(self):$/;"	kind:member	line:80
 get_success_url	paciente/views.py	/^    def get_success_url(self):$/;"	kind:member	line:95
@@ -4906,17 +4942,19 @@ imp.py	env/lib/python3.4/imp.py	1;"	kind:file	line:1
 import_module	env/lib/python3.4/importlib/__init__.py	/^def import_module(name, package=None):$/;"	kind:function	line:91
 imul	env/lib/python3.4/operator.py	/^def imul(a, b):$/;"	kind:function	line:324
 index	accounts/views.py	/^index = IndexView.as_view()$/;"	kind:variable	line:49
-index	core/views.py	/^index = IndexView.as_view()$/;"	kind:variable	line:34
+index	convenio/views.py	/^index = ConvenioList.as_view()/;"	kind:variable	line:29
+index	core/views.py	/^index = IndexView.as_view()$/;"	kind:variable	line:33
 index	env/lib/python3.4/_collections_abc.py	/^    def index(self, value):$/;"	kind:member	line:650
 index	env/lib/python3.4/collections/__init__.py	/^    def index(self, item, *args): return self.data.index(item, *args)$/;"	kind:member	line:1004
 index	env/lib/python3.4/collections/__init__.py	/^    def index(self, sub, start=0, end=_sys.maxsize):$/;"	kind:member	line:1106
 index	env/lib/python3.4/operator.py	/^def index(a):$/;"	kind:function	line:87
-index	exame/views.py	/^index = IndexExameView.as_view()$/;"	kind:variable	line:104
+index	exame/views.py	/^index = ExameIndex.as_view()$/;"	kind:variable	line:105
 indexOf	env/lib/python3.4/operator.py	/^def indexOf(a, b):$/;"	kind:function	line:169
 infile	env/bin/explode.py	/^infile = sys.argv[1]$/;"	kind:variable	line:74
 init_module_attrs	env/lib/python3.4/importlib/_bootstrap.py	/^    def init_module_attrs(self, module, *, _override=False, _force_name=True):$/;"	kind:member	line:1019
 initial	accounts/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:13
-initial	core/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+initial	convenio/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
+initial	core/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:9
 initial	exame/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:11
 initial	laudo/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:11
 initial	medico/migrations/0001_initial.py	/^    initial = True$/;"	kind:variable	line:10
@@ -5008,7 +5046,6 @@ iso8859_6.py	env/lib/python3.4/encodings/iso8859_6.py	1;"	kind:file	line:1
 iso8859_7.py	env/lib/python3.4/encodings/iso8859_7.py	1;"	kind:file	line:1
 iso8859_8.py	env/lib/python3.4/encodings/iso8859_8.py	1;"	kind:file	line:1
 iso8859_9.py	env/lib/python3.4/encodings/iso8859_9.py	1;"	kind:file	line:1
-isort	env/bin/isort	1;"	kind:file	line:1
 isreg	env/lib/python3.4/tarfile.py	/^    def isreg(self):$/;"	kind:member	line:1353
 isspace	env/lib/python3.4/collections/__init__.py	/^    def isspace(self): return self.data.isspace()$/;"	kind:member	line:1115
 issparse	env/lib/python3.4/tarfile.py	/^    def issparse(self):$/;"	kind:member	line:1369
@@ -5019,11 +5056,11 @@ issym	env/lib/python3.4/tarfile.py	/^    def issym(self):$/;"	kind:member	line:1
 istitle	env/lib/python3.4/collections/__init__.py	/^    def istitle(self): return self.data.istitle()$/;"	kind:member	line:1116
 isub	env/lib/python3.4/operator.py	/^def isub(a, b):$/;"	kind:function	line:344
 isupper	env/lib/python3.4/collections/__init__.py	/^    def isupper(self): return self.data.isupper()$/;"	kind:member	line:1117
-item_exame	laudo/models.py	/^    item_exame = models.ForeignKey(ItemExame, on_delete=models.CASCADE, related_name='item_exame')$/;"	kind:variable	line:38
-item_exame_create	exame/views.py	/^item_exame_create = CreateItemExameView.as_view()$/;"	kind:variable	line:110
-item_exame_delete	exame/views.py	/^item_exame_delete = DeleteItemExameView.as_view()$/;"	kind:variable	line:112
-item_exame_list	exame/views.py	/^item_exame_list = ListItemExameView.as_view()$/;"	kind:variable	line:111
-item_exame_update	exame/views.py	/^item_exame_update = UpdateItemExameView.as_view()$/;"	kind:variable	line:113
+item_exame	laudo/models.py	/^    item_exame = models.ForeignKey(ItemExame, on_delete=models.CASCADE, related_name='item_exame')$/;"	kind:variable	line:62
+item_exame_create	exame/views.py	/^item_exame_create = ItemExameCreate.as_view()$/;"	kind:variable	line:111
+item_exame_delete	exame/views.py	/^item_exame_delete = ItemExameDelete.as_view()$/;"	kind:variable	line:113
+item_exame_list	exame/views.py	/^item_exame_list = ItemExameList.as_view()$/;"	kind:variable	line:112
+item_exame_update	exame/views.py	/^item_exame_update = ItemExameUpdate.as_view()$/;"	kind:variable	line:114
 itemgetter	env/lib/python3.4/operator.py	/^class itemgetter:$/;"	kind:class	line:249
 items	env/lib/python3.4/_collections_abc.py	/^    def items(self):$/;"	kind:member	line:438
 items	env/lib/python3.4/collections/__init__.py	/^    items = MutableMapping.items$/;"	kind:variable	line:171
@@ -5052,9 +5089,9 @@ koi8_r.py	env/lib/python3.4/encodings/koi8_r.py	1;"	kind:file	line:1
 koi8_u.py	env/lib/python3.4/encodings/koi8_u.py	1;"	kind:file	line:1
 kwlist	env/lib/python3.4/keyword.py	/^kwlist = [$/;"	kind:variable	line:15
 latin_1.py	env/lib/python3.4/encodings/latin_1.py	1;"	kind:file	line:1
-laudo	laudo/models.py	/^    laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo')$/;"	kind:variable	line:37
-laudo_detalhe	laudo/views.py	/^laudo_detalhe = DetalhesLaudo.as_view() $/;"	kind:variable	line:77
-laudo_update	laudo/views.py	/^laudo_update = UpdateLaudoView.as_view()/;"	kind:variable	line:78
+laudo	laudo/models.py	/^    laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo')$/;"	kind:variable	line:61
+laudo_detalhe	laudo/views.py	/^laudo_detalhe = LudoDetail.as_view() $/;"	kind:variable	line:73
+laudo_update	laudo/views.py	/^laudo_update = LaudoUpdate.as_view()/;"	kind:variable	line:74
 le	env/lib/python3.4/operator.py	/^def le(a, b):$/;"	kind:function	line:31
 le16toh	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^def le16toh(x): return (x)$/;"	kind:function	line:346
 le16toh	env/lib/python3.4/plat-x86_64-linux-gnu/IN.py	/^def le16toh(x): return __bswap_16 (x)$/;"	kind:function	line:370
@@ -5143,19 +5180,19 @@ makelink	env/lib/python3.4/tarfile.py	/^    def makelink(self, tarinfo, targetpa
 makepath	env/lib/python3.4/site.py	/^def makepath(*paths):$/;"	kind:function	line:92
 makeunknown	env/lib/python3.4/tarfile.py	/^    def makeunknown(self, tarinfo, targetpath):$/;"	kind:member	line:2138
 manage.py	manage.py	1;"	kind:file	line:1
-management	core/views.py	/^management = ManagementView.as_view()/;"	kind:variable	line:37
+management	core/views.py	/^management = ManagementView.as_view()/;"	kind:variable	line:36
 managers	accounts/migrations/0001_initial.py	/^            managers=[$/;"	kind:variable	line:40
 mappingproxy	env/lib/python3.4/_collections_abc.py	/^mappingproxy = type(type.__dict__)$/;"	kind:variable	line:52
 match	env/lib/python3.4/re.py	/^def match(pattern, string, flags=0):$/;"	kind:function	line:157
 match	env/lib/python3.4/sre_parse.py	/^    def match(self, char, skip=1):$/;"	kind:member	line:214
 maybe	env/lib/python3.4/tokenize.py	/^def maybe(*choices): return group(*choices) + '?'$/;"	kind:function	line:111
 mbcs.py	env/lib/python3.4/encodings/mbcs.py	1;"	kind:file	line:1
-medico	laudo/models.py	/^    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)$/;"	kind:variable	line:18
-medico_create	medico/views.py	/^medico_create = CreateMedicoView.as_view()$/;"	kind:variable	line:56
-medico_delete	medico/views.py	/^medico_delete = DeleteMedidoView.as_view()/;"	kind:variable	line:59
-medico_detail	medico/views.py	/^medico_detail = DetailMedicoView.as_view()$/;"	kind:variable	line:57
-medico_list	medico/views.py	/^medico_list = ListMedicoView.as_view()$/;"	kind:variable	line:55
-medico_update	medico/views.py	/^medico_update = UpdateMedicoView.as_view()$/;"	kind:variable	line:58
+medico	laudo/models.py	/^    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)$/;"	kind:variable	line:40
+medico_create	medico/views.py	/^medico_create = CreateMedico.as_view()$/;"	kind:variable	line:57
+medico_delete	medico/views.py	/^medico_delete = MedicoDelete.as_view()/;"	kind:variable	line:60
+medico_detail	medico/views.py	/^medico_detail = MedicoDetail.as_view()$/;"	kind:variable	line:58
+medico_list	medico/views.py	/^medico_list = MedicoList.as_view()$/;"	kind:variable	line:56
+medico_update	medico/views.py	/^medico_update = MedicoUpdate.as_view()$/;"	kind:variable	line:59
 merge	env/lib/python3.4/heapq.py	/^def merge(*iterables):$/;"	kind:function	line:349
 message	core/forms.py	/^    message = forms.CharField(label='Mensagem', widget=forms.Textarea(attrs={'class': 'form-control'}), max_length=300 )$/;"	kind:variable	line:10
 methodcaller	env/lib/python3.4/operator.py	/^class methodcaller:$/;"	kind:class	line:269
@@ -5172,25 +5209,27 @@ model	accounts/forms.py	/^        model = User$/;"	kind:variable	line:15
 model	accounts/forms.py	/^        model = User$/;"	kind:variable	line:8
 model	accounts/views.py	/^    model = User$/;"	kind:variable	line:16
 model	accounts/views.py	/^    model = User$/;"	kind:variable	line:23
-model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:21
-model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:28
-model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:38
-model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:51
-model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:61
-model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:72
-model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:84
-model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:99
+model	convenio/views.py	/^    model = Convenio$/;"	kind:variable	line:15
+model	convenio/views.py	/^    model = Convenio$/;"	kind:variable	line:20
+model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:22
+model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:29
+model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:39
+model	exame/views.py	/^    model = Exame$/;"	kind:variable	line:52
+model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:100
+model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:62
+model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:73
+model	exame/views.py	/^    model = ItemExame$/;"	kind:variable	line:85
 model	laudo/admin.py	/^    model = ExameLaudo$/;"	kind:variable	line:6
 model	laudo/forms.py	/^        model = Laudo$/;"	kind:variable	line:11
 model	laudo/views.py	/^    model = Laudo$/;"	kind:variable	line:18
 model	laudo/views.py	/^    model = Laudo$/;"	kind:variable	line:34
-model	laudo/views.py	/^    model = Laudo$/;"	kind:variable	line:66
+model	laudo/views.py	/^    model = Laudo$/;"	kind:variable	line:62
 model	medico/forms.py	/^        model = Medico$/;"	kind:variable	line:8
-model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:11
-model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:17
-model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:25
-model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:33
-model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:47
+model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:12
+model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:18
+model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:26
+model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:34
+model	medico/views.py	/^    model = Medico$/;"	kind:variable	line:48
 model	paciente/forms.py	/^        model = Paciente$/;"	kind:variable	line:14
 model	paciente/forms.py	/^        model = PacienteEndereco$/;"	kind:variable	line:20
 model	paciente/views.py	/^    model = Paciente$/;"	kind:variable	line:16
@@ -5211,6 +5250,9 @@ model_name	laudo/migrations/0012_auto_20170316_2239.py	/^            model_name=
 model_name	laudo/migrations/0012_auto_20170316_2239.py	/^            model_name='laudo',$/;"	kind:variable	line:23
 model_name	laudo/migrations/0013_auto_20170321_1300.py	/^            model_name='examelaudo',$/;"	kind:variable	line:21
 model_name	laudo/migrations/0013_auto_20170321_1300.py	/^            model_name='itemexame',$/;"	kind:variable	line:17
+model_name	laudo/migrations/0014_auto_20170321_2116.py	/^            model_name='laudo',$/;"	kind:variable	line:30
+model_name	laudo/migrations/0014_auto_20170321_2116.py	/^            model_name='laudo',$/;"	kind:variable	line:35
+model_name	laudo/migrations/0015_auto_20170321_2300.py	/^            model_name='laudo',$/;"	kind:variable	line:17
 model_name	medico/migrations/0002_auto_20161215_1015.py	/^            model_name='medico',$/;"	kind:variable	line:16
 model_name	medico/migrations/0002_auto_20161215_1015.py	/^            model_name='medico',$/;"	kind:variable	line:21
 model_name	paciente/migrations/0002_auto_20161122_2100.py	/^            model_name='paciente',$/;"	kind:variable	line:17
@@ -5254,8 +5296,9 @@ model_name	paciente/migrations/0013_auto_20161214_0901.py	/^            model_na
 model_name	paciente/migrations/0014_paciente_sexo.py	/^            model_name='paciente',$/;"	kind:variable	line:16
 model_name	paciente/migrations/0015_paciente_convenio.py	/^            model_name='paciente',$/;"	kind:variable	line:18
 model_name	paciente/migrations/0016_remove_paciente_sexo.py	/^            model_name='paciente',$/;"	kind:variable	line:16
+model_name	paciente/migrations/0017_auto_20170321_2023.py	/^            model_name='paciente',$/;"	kind:variable	line:17
 models.py	accounts/models.py	1;"	kind:file	line:1
-models.py	core/models.py	1;"	kind:file	line:1
+models.py	convenio/models.py	1;"	kind:file	line:1
 models.py	exame/models.py	1;"	kind:file	line:1
 models.py	laudo/models.py	1;"	kind:file	line:1
 models.py	medico/models.py	1;"	kind:file	line:1
@@ -5278,10 +5321,13 @@ nacionalidade	paciente/models.py	/^    nacionalidade = models.CharField(max_leng
 name	accounts/apps.py	/^    name = 'accounts'$/;"	kind:variable	line:5
 name	accounts/migrations/0001_initial.py	/^            name='User',$/;"	kind:variable	line:21
 name	accounts/models.py	/^    name = models.CharField('Nome', max_length=100)$/;"	kind:variable	line:19
+name	convenio/apps.py	/^    name = 'convenio'$/;"	kind:variable	line:5
+name	convenio/migrations/0001_initial.py	/^            name='Convenio',$/;"	kind:variable	line:17
 name	core/apps.py	/^    name = 'core'$/;"	kind:variable	line:5
 name	core/forms.py	/^    name = forms.CharField(label='Nome', max_length=100, widget=forms.TextInput(attrs={'class': 'form-control'}))$/;"	kind:variable	line:7
-name	core/migrations/0001_initial.py	/^            name='Convenio',$/;"	kind:variable	line:17
-name	core/migrations/0002_auto_20161208_2111.py	/^            name='convenio',$/;"	kind:variable	line:16
+name	core/migrations/0001_initial.py	/^            name='Convenio',$/;"	kind:variable	line:16
+name	core/migrations/0002_auto_20161208_2111.py	/^            name='convenio',$/;"	kind:variable	line:15
+name	core/migrations/0003_delete_convenio.py	/^            name='Convenio',$/;"	kind:variable	line:16
 name	env/lib/python3.4/hmac.py	/^    def name(self):$/;"	kind:member	line:87
 name	env/lib/python3.4/os.py	/^    name = 'ce'$/;"	kind:variable	line:85
 name	env/lib/python3.4/os.py	/^    name = 'nt'$/;"	kind:variable	line:65
@@ -5313,6 +5359,10 @@ name	laudo/migrations/0013_auto_20170321_1300.py	/^            name='Exame',$/;"
 name	laudo/migrations/0013_auto_20170321_1300.py	/^            name='ItemExame',$/;"	kind:variable	line:29
 name	laudo/migrations/0013_auto_20170321_1300.py	/^            name='exame',$/;"	kind:variable	line:18
 name	laudo/migrations/0013_auto_20170321_1300.py	/^            name='item_exame',$/;"	kind:variable	line:22
+name	laudo/migrations/0014_auto_20170321_2116.py	/^            name='AssinadorEletronico',$/;"	kind:variable	line:17
+name	laudo/migrations/0014_auto_20170321_2116.py	/^            name='assinado',$/;"	kind:variable	line:31
+name	laudo/migrations/0014_auto_20170321_2116.py	/^            name='assinado_por',$/;"	kind:variable	line:36
+name	laudo/migrations/0015_auto_20170321_2300.py	/^            name='assinado_por',$/;"	kind:variable	line:18
 name	medico/apps.py	/^    name = 'medico'$/;"	kind:variable	line:5
 name	medico/migrations/0001_initial.py	/^            name='Medico',$/;"	kind:variable	line:17
 name	medico/migrations/0002_auto_20161215_1015.py	/^            name='crm',$/;"	kind:variable	line:17
@@ -5360,6 +5410,7 @@ name	paciente/migrations/0013_auto_20161214_0901.py	/^            name='uf',$/;"
 name	paciente/migrations/0014_paciente_sexo.py	/^            name='sexo',$/;"	kind:variable	line:17
 name	paciente/migrations/0015_paciente_convenio.py	/^            name='convenio',$/;"	kind:variable	line:19
 name	paciente/migrations/0016_remove_paciente_sexo.py	/^            name='sexo',$/;"	kind:variable	line:17
+name	paciente/migrations/0017_auto_20170321_2023.py	/^            name='convenio',$/;"	kind:variable	line:18
 namedtuple	env/lib/python3.4/collections/__init__.py	/^def namedtuple(typename, field_names, verbose=False, rename=False):$/;"	kind:function	line:301
 nameprep	env/lib/python3.4/encodings/idna.py	/^def nameprep(label):$/;"	kind:function	line:14
 ne	env/lib/python3.4/operator.py	/^def ne(a, b):$/;"	kind:function	line:39
@@ -5378,7 +5429,8 @@ next	env/bin/player.py	/^    def next(self):$/;"	kind:member	line:47
 next	env/lib/python3.4/tarfile.py	/^    def next(self):$/;"	kind:member	line:2233
 nlargest	env/lib/python3.4/heapq.py	/^def nlargest(n, iterable):$/;"	kind:function	line:195
 nlargest	env/lib/python3.4/heapq.py	/^def nlargest(n, iterable, key=None):$/;"	kind:function	line:427
-nome	medico/models.py	/^    nome = models.CharField(max_length=200)$/;"	kind:variable	line:5
+nome	laudo/models.py	/^    nome = models.CharField(max_length=200)$/;"	kind:variable	line:14
+nome	medico/models.py	/^    nome = models.CharField(max_length=200)$/;"	kind:variable	line:6
 nome	paciente/models.py	/^    nome = models.CharField(max_length=200)$/;"	kind:variable	line:10
 nome_mae	paciente/models.py	/^    nome_mae = models.CharField('Nome da mãe', max_length=150, blank=True, null=True)$/;"	kind:variable	line:12
 normalize	env/lib/python3.4/locale.py	/^def normalize(localename):$/;"	kind:function	line:373
@@ -5419,8 +5471,10 @@ open	env/lib/python3.4/tarfile.py	/^open = TarFile.open$/;"	kind:variable	line:2
 open	env/lib/python3.4/tokenize.py	/^def open(filename):$/;"	kind:function	line:434
 opengroup	env/lib/python3.4/sre_parse.py	/^    def opengroup(self, name=None):$/;"	kind:member	line:72
 operations	accounts/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:19
-operations	core/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
-operations	core/migrations/0002_auto_20161208_2111.py	/^    operations = [$/;"	kind:variable	line:14
+operations	convenio/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
+operations	core/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:14
+operations	core/migrations/0002_auto_20161208_2111.py	/^    operations = [$/;"	kind:variable	line:13
+operations	core/migrations/0003_delete_convenio.py	/^    operations = [$/;"	kind:variable	line:14
 operations	exame/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:16
 operations	exame/migrations/0002_auto_20170321_1344.py	/^    operations = [$/;"	kind:variable	line:14
 operations	laudo/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:19
@@ -5436,6 +5490,8 @@ operations	laudo/migrations/0010_auto_20170309_2311.py	/^    operations = [$/;"	
 operations	laudo/migrations/0011_laudo_ultima_menstruacao.py	/^    operations = [$/;"	kind:variable	line:15
 operations	laudo/migrations/0012_auto_20170316_2239.py	/^    operations = [$/;"	kind:variable	line:15
 operations	laudo/migrations/0013_auto_20170321_1300.py	/^    operations = [$/;"	kind:variable	line:15
+operations	laudo/migrations/0014_auto_20170321_2116.py	/^    operations = [$/;"	kind:variable	line:15
+operations	laudo/migrations/0015_auto_20170321_2300.py	/^    operations = [$/;"	kind:variable	line:15
 operations	medico/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:15
 operations	medico/migrations/0002_auto_20161215_1015.py	/^    operations = [$/;"	kind:variable	line:14
 operations	paciente/migrations/0001_initial.py	/^    operations = [$/;"	kind:variable	line:16
@@ -5454,12 +5510,14 @@ operations	paciente/migrations/0013_auto_20161214_0901.py	/^    operations = [$/
 operations	paciente/migrations/0014_paciente_sexo.py	/^    operations = [$/;"	kind:variable	line:14
 operations	paciente/migrations/0015_paciente_convenio.py	/^    operations = [$/;"	kind:variable	line:16
 operations	paciente/migrations/0016_remove_paciente_sexo.py	/^    operations = [$/;"	kind:variable	line:14
+operations	paciente/migrations/0017_auto_20170321_2023.py	/^    operations = [$/;"	kind:variable	line:15
 operator.py	env/lib/python3.4/operator.py	1;"	kind:file	line:1
 opt_flags	env/bin/python-config	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:33
 opt_flags	env/lib/python3.4/config-3.4m-x86_64-linux-gnu/python-config.py	/^opt_flags = [flag for (flag, val) in opts]$/;"	kind:variable	line:30
 options	accounts/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:36
-options	core/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:23
-options	core/migrations/0002_auto_20161208_2111.py	/^            options={'ordering': ['descricao'], 'verbose_name': 'Convenio', 'verbose_name_plural': 'Convenios'},$/;"	kind:variable	line:17
+options	convenio/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:23
+options	core/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:22
+options	core/migrations/0002_auto_20161208_2111.py	/^            options={'ordering': ['descricao'], 'verbose_name': 'Convenio', 'verbose_name_plural': 'Convenios'},$/;"	kind:variable	line:16
 options	env/bin/pilconvert.py	/^options = {}$/;"	kind:variable	line:55
 options	exame/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:35
 options	exame/migrations/0002_auto_20170321_1344.py	/^            options={'ordering': ['descricao'], 'verbose_name': 'Exame do Laudo', 'verbose_name_plural': 'Exames do Laudo'},$/;"	kind:variable	line:17
@@ -5467,15 +5525,16 @@ options	laudo/migrations/0001_initial.py	/^            options={$/;"	kind:variab
 options	laudo/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:52
 options	laudo/migrations/0009_auto_20170309_2243.py	/^            options={'verbose_name': 'Exame Laudo'},$/;"	kind:variable	line:17
 options	laudo/migrations/0010_auto_20170309_2311.py	/^            options={'ordering': ['-data_cadastro'], 'verbose_name': 'Laudo', 'verbose_name_plural': 'Laudos'},$/;"	kind:variable	line:17
+options	laudo/migrations/0014_auto_20170321_2116.py	/^            options={$/;"	kind:variable	line:24
 options	medico/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:26
 options	paciente/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:30
 options	paciente/migrations/0001_initial.py	/^            options={$/;"	kind:variable	line:53
 or_	env/lib/python3.4/operator.py	/^def or_(a, b):$/;"	kind:function	line:112
-ordering	core/models.py	/^        ordering = ['descricao']$/;"	kind:variable	line:10
+ordering	convenio/models.py	/^        ordering = ['descricao']$/;"	kind:variable	line:10
 ordering	exame/models.py	/^        ordering = ['descricao']$/;"	kind:variable	line:22
 ordering	exame/models.py	/^        ordering = ['descricao_item']$/;"	kind:variable	line:51
-ordering	laudo/models.py	/^        ordering = ['-data_cadastro', ]$/;"	kind:variable	line:29
-ordering	medico/models.py	/^        ordering = ['nome']$/;"	kind:variable	line:14
+ordering	laudo/models.py	/^        ordering = ['-data_cadastro', ]$/;"	kind:variable	line:53
+ordering	medico/models.py	/^        ordering = ['nome']$/;"	kind:variable	line:15
 ordering	paciente/models.py	/^        ordering = ['nome']$/;"	kind:variable	line:27
 os.py	env/lib/python3.4/os.py	1;"	kind:file	line:1
 outfile	env/bin/explode.py	/^    outfile = file + "%03d" + ext$/;"	kind:variable	line:84
@@ -5485,15 +5544,15 @@ p	env/bin/pilfont.py	/^            p = BdfFontFile.BdfFontFile(fp)$/;"	kind:vari
 p	env/bin/pilfont.py	/^            p = PcfFontFile.PcfFontFile(fp)$/;"	kind:variable	line:46
 p	env/bin/pilprint.py	/^            p = subprocess.Popen(printerArgs, stdin=subprocess.PIPE)$/;"	kind:variable	line:82
 p	env/lib/python3.4/collections/__main__.py	/^p = Point(x=10, y=20)$/;"	kind:variable	line:9
-paciente	laudo/models.py	/^    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='paciente')$/;"	kind:variable	line:17
+paciente	laudo/models.py	/^    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='paciente')$/;"	kind:variable	line:39
 paciente	paciente/models.py	/^    paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)$/;"	kind:variable	line:45
-paciente_create	paciente/views.py	/^paciente_create = CreatePaciente.as_view()$/;"	kind:variable	line:163
+paciente_create	paciente/views.py	/^paciente_create = PacienteCreate.as_view()$/;"	kind:variable	line:164
 paciente_detail	paciente/views.py	/^def paciente_detail(request, pk):$/;"	kind:function	line:122
-paciente_exame	paciente/views.py	/^def paciente_exame(request):$/;"	kind:function	line:140
+paciente_exame	paciente/views.py	/^def paciente_exame(request):$/;"	kind:function	line:141
 paciente_extras.py	paciente/templatetags/paciente_extras.py	1;"	kind:file	line:1
-paciente_list	paciente/views.py	/^paciente_list = ListPaciente.as_view()$/;"	kind:variable	line:162
-paciente_pode_ver	laudo/models.py	/^    paciente_pode_ver = models.BooleanField(default=False)$/;"	kind:variable	line:21
-paciente_update	paciente/views.py	/^paciente_update = UpdatePaciente.as_view()$/;"	kind:variable	line:164
+paciente_list	paciente/views.py	/^paciente_list = PacienteList.as_view()$/;"	kind:variable	line:163
+paciente_pode_ver	laudo/models.py	/^    paciente_pode_ver = models.BooleanField(default=False)$/;"	kind:variable	line:43
+paciente_update	paciente/views.py	/^paciente_update = PacienteUpdate.as_view()$/;"	kind:variable	line:165
 paint	env/bin/painter.py	/^    def paint(self, event):$/;"	kind:member	line:43
 painter.py	env/bin/painter.py	1;"	kind:file	line:1
 palmos.py	env/lib/python3.4/encodings/palmos.py	1;"	kind:file	line:1
@@ -5551,7 +5610,7 @@ posixpath.py	env/lib/python3.4/posixpath.py	1;"	kind:file	line:1
 post	paciente/views.py	/^    def post(self, request, *args, **kwargs):$/;"	kind:member	line:45
 pow	env/lib/python3.4/operator.py	/^def pow(a, b):$/;"	kind:function	line:120
 prepare_class	env/lib/python3.4/types.py	/^def prepare_class(name, bases=(), kwds=None):$/;"	kind:function	line:54
-prepopulated_fields	core/admin.py	/^    prepopulated_fields = {'slug': ('descricao', )}$/;"	kind:variable	line:12
+prepopulated_fields	convenio/admin.py	/^    prepopulated_fields = {'slug': ('descricao', )}$/;"	kind:variable	line:12
 preserve_default	laudo/migrations/0006_auto_20170211_1257.py	/^            preserve_default=False,$/;"	kind:variable	line:30
 preserve_default	laudo/migrations/0011_laudo_ultima_menstruacao.py	/^            preserve_default=False,$/;"	kind:variable	line:20
 preserve_default	laudo/migrations/0012_auto_20170316_2239.py	/^            preserve_default=False,$/;"	kind:variable	line:20
@@ -5570,9 +5629,6 @@ punycode_decode	env/lib/python3.4/encodings/punycode.py	/^def punycode_decode(te
 punycode_encode	env/lib/python3.4/encodings/punycode.py	/^def punycode_encode(text):$/;"	kind:function	line:117
 purge	env/lib/python3.4/re.py	/^def purge():$/;"	kind:function	line:225
 push	env/bin/pildriver.py	/^    def push(self, item):$/;"	kind:member	line:71
-pylint	env/bin/pylint	1;"	kind:file	line:1
-pylint-gui	env/bin/pylint-gui	1;"	kind:file	line:1
-pyreverse	env/bin/pyreverse	1;"	kind:file	line:1
 python-config	env/bin/python-config	1;"	kind:file	line:1
 python-config.py	env/lib/python3.4/config-3.4m-x86_64-linux-gnu/python-config.py	1;"	kind:file	line:1
 pyver	env/bin/python-config	/^pyver = sysconfig.get_config_var('VERSION')$/;"	kind:variable	line:30
@@ -5639,7 +5695,7 @@ remove	env/lib/python3.4/weakref.py	/^        def remove(wr, selfref=ref(self)):
 remove_extension	env/lib/python3.4/copyreg.py	/^def remove_extension(module, name, code):$/;"	kind:function	line:176
 removedirs	env/lib/python3.4/os.py	/^def removedirs(name):$/;"	kind:function	line:242
 removeduppaths	env/lib/python3.4/site.py	/^def removeduppaths():$/;"	kind:function	line:113
-remover_acentos	laudo/reports.py	/^def remover_acentos(txt):$/;"	kind:function	line:167
+remover_acentos	laudo/reports.py	/^def remover_acentos(txt):$/;"	kind:function	line:160
 renames	env/lib/python3.4/os.py	/^def renames(old, new):$/;"	kind:function	line:264
 render	core/templatetags/core_extras.py	/^	def render(self, context):$/;"	kind:member	line:22
 repair	env/bin/painter.py	/^    def repair(self, box):$/;"	kind:member	line:53
@@ -5790,7 +5846,7 @@ singledispatch	env/lib/python3.4/functools.py	/^def singledispatch(func):$/;"	ki
 site.py	env/lib/python3.4/site.py	1;"	kind:file	line:1
 site_packages	env/bin/activate_this.py	/^    site_packages = os.path.join(base, 'Lib', 'site-packages')$/;"	kind:variable	line:20
 site_packages	env/bin/activate_this.py	/^    site_packages = os.path.join(base, 'lib', 'python%s' % sys.version[:3], 'site-packages')$/;"	kind:variable	line:22
-slug	core/models.py	/^    slug = models.SlugField('Identificador', max_length=100)$/;"	kind:variable	line:5
+slug	convenio/models.py	/^    slug = models.SlugField('Identificador', max_length=100)$/;"	kind:variable	line:5
 softspace	env/lib/python3.4/tempfile.py	/^    def softspace(self):$/;"	kind:member	line:766
 sort	env/lib/python3.4/collections/__init__.py	/^    def sort(self, *args, **kwds): self.data.sort(*args, **kwds)$/;"	kind:member	line:1006
 sort	env/lib/python3.4/heapq.py	/^    sort = []$/;"	kind:variable	line:470
@@ -5841,16 +5897,16 @@ sub	env/lib/python3.4/operator.py	/^def sub(a, b):$/;"	kind:function	line:128
 sub	env/lib/python3.4/re.py	/^def sub(pattern, repl, string, count=0, flags=0):$/;"	kind:function	line:172
 subn	env/lib/python3.4/re.py	/^def subn(pattern, repl, string, count=0, flags=0):$/;"	kind:function	line:181
 subtract	env/lib/python3.4/collections/__init__.py	/^    def subtract(*args, **kwds):$/;"	kind:member	line:566
-success_message	exame/views.py	/^    success_message = "Exame atualizado com sucesso!"$/;"	kind:variable	line:55
-success_message	exame/views.py	/^    success_message = "Item Exame atualizado com sucesso!"$/;"	kind:variable	line:88
+success_message	exame/views.py	/^    success_message = "Exame atualizado com sucesso!"$/;"	kind:variable	line:56
+success_message	exame/views.py	/^    success_message = "Item Exame atualizado com sucesso!"$/;"	kind:variable	line:89
 success_url	accounts/views.py	/^    success_url = reverse_lazy('accounts:index')$/;"	kind:variable	line:26
 success_url	accounts/views.py	/^    success_url = reverse_lazy('accounts:index')$/;"	kind:variable	line:34
 success_url	accounts/views.py	/^    success_url = reverse_lazy('index')$/;"	kind:variable	line:19
-success_url	exame/views.py	/^    success_url = reverse_lazy('exame:exame_list')$/;"	kind:variable	line:31
-success_url	exame/views.py	/^    success_url = reverse_lazy('exame:exame_list')$/;"	kind:variable	line:40
-success_url	exame/views.py	/^    success_url = reverse_lazy('exame:exame_list')$/;"	kind:variable	line:54
-success_url	exame/views.py	/^    success_url = reverse_lazy('exame:item_exame_list')$/;"	kind:variable	line:101
-success_url	exame/views.py	/^    success_url = reverse_lazy('exame:item_exame_list')$/;"	kind:variable	line:87
+success_url	exame/views.py	/^    success_url = reverse_lazy('exame:exame_list')$/;"	kind:variable	line:32
+success_url	exame/views.py	/^    success_url = reverse_lazy('exame:exame_list')$/;"	kind:variable	line:41
+success_url	exame/views.py	/^    success_url = reverse_lazy('exame:exame_list')$/;"	kind:variable	line:55
+success_url	exame/views.py	/^    success_url = reverse_lazy('exame:item_exame_list')$/;"	kind:variable	line:102
+success_url	exame/views.py	/^    success_url = reverse_lazy('exame:item_exame_list')$/;"	kind:variable	line:88
 supports_bytes_environ	env/lib/python3.4/os.py	/^supports_bytes_environ = (name != 'nt')$/;"	kind:variable	line:728
 supports_dir_fd	env/lib/python3.4/os.py	/^    supports_dir_fd = _set$/;"	kind:variable	line:138
 supports_effective_ids	env/lib/python3.4/os.py	/^    supports_effective_ids = _set$/;"	kind:variable	line:142
@@ -5859,7 +5915,6 @@ supports_follow_symlinks	env/lib/python3.4/os.py	/^    supports_follow_symlinks 
 supports_unicode_filenames	env/lib/python3.4/ntpath.py	/^supports_unicode_filenames = (hasattr(sys, "getwindowsversion") and$/;"	kind:variable	line:559
 supports_unicode_filenames	env/lib/python3.4/posixpath.py	/^supports_unicode_filenames = (sys.platform == 'darwin')$/;"	kind:variable	line:428
 swapcase	env/lib/python3.4/collections/__init__.py	/^    def swapcase(self): return self.__class__(self.data.swapcase())$/;"	kind:member	line:1151
-symilar	env/bin/symilar	1;"	kind:file	line:1
 symlink_exception	env/lib/python3.4/tarfile.py	/^symlink_exception = (AttributeError, NotImplementedError)$/;"	kind:variable	line:57
 symmetric_difference	env/lib/python3.4/_weakrefset.py	/^    def symmetric_difference(self, other):$/;"	kind:member	line:174
 symmetric_difference_update	env/lib/python3.4/_weakrefset.py	/^    def symmetric_difference_update(self, other):$/;"	kind:member	line:180
@@ -5875,7 +5930,7 @@ tb	env/lib/python3.4/types.py	/^    tb = None; del tb$/;"	kind:variable	line:37
 tb	env/lib/python3.4/types.py	/^    tb = sys.exc_info()[2]$/;"	kind:variable	line:34
 tearDown	accounts/tests/test_view.py	/^    def tearDown(self):$/;"	kind:member	line:41
 tearDown	accounts/tests/test_view.py	/^    def tearDown(self):$/;"	kind:member	line:73
-telefone	medico/models.py	/^    telefone = models.CharField('Telefone:', max_length=20, blank=True, null=True)$/;"	kind:variable	line:7
+telefone	medico/models.py	/^    telefone = models.CharField('Telefone:', max_length=20, blank=True, null=True)$/;"	kind:variable	line:8
 tell	env/lib/python3.4/sre_parse.py	/^    def tell(self):$/;"	kind:member	line:233
 tell	env/lib/python3.4/tarfile.py	/^    def tell(self):$/;"	kind:member	line:503
 tell	env/lib/python3.4/tarfile.py	/^    def tell(self):$/;"	kind:member	line:649
@@ -5888,22 +5943,23 @@ template_name	accounts/views.py	/^    template_name = 'accounts\/index.html'$/;"
 template_name	accounts/views.py	/^    template_name = 'accounts\/register.html'$/;"	kind:variable	line:17
 template_name	accounts/views.py	/^    template_name = 'accounts\/update_password.html'$/;"	kind:variable	line:33
 template_name	accounts/views.py	/^    template_name = 'accounts\/update_user.html'$/;"	kind:variable	line:24
-template_name	core/views.py	/^    template_name = 'core\/about.html'$/;"	kind:variable	line:15
-template_name	core/views.py	/^    template_name = 'core\/contact.html'$/;"	kind:variable	line:19
-template_name	core/views.py	/^    template_name = 'core\/index.html'$/;"	kind:variable	line:11
-template_name	core/views.py	/^    template_name = 'core\/management.html'$/;"	kind:variable	line:31
-template_name	exame/views.py	/^    template_name = "exame\/index.html"$/;"	kind:variable	line:16
-template_name	exame/views.py	/^    template_name = 'exame\/exame_confirm_delete.html'$/;"	kind:variable	line:39
-template_name	exame/views.py	/^    template_name = 'exame\/exame_form.html'$/;"	kind:variable	line:30
-template_name	exame/views.py	/^    template_name = 'exame\/exame_list.html'$/;"	kind:variable	line:22
-template_name	exame/views.py	/^    template_name = 'exame\/exame_update_form.html'$/;"	kind:variable	line:53
-template_name	exame/views.py	/^    template_name = 'exame\/item_exame_confirm_delete.html'$/;"	kind:variable	line:100
-template_name	exame/views.py	/^    template_name = 'exame\/item_exame_list.html'$/;"	kind:variable	line:62
-template_name	exame/views.py	/^    template_name = 'exame\/item_exame_update_form.html'$/;"	kind:variable	line:86
+template_name	convenio/views.py	/^    template_name = "convenio\/convenio_list.html"$/;"	kind:variable	line:16
+template_name	core/views.py	/^    template_name = 'core\/about.html'$/;"	kind:variable	line:14
+template_name	core/views.py	/^    template_name = 'core\/contact.html'$/;"	kind:variable	line:18
+template_name	core/views.py	/^    template_name = 'core\/index.html'$/;"	kind:variable	line:10
+template_name	core/views.py	/^    template_name = 'core\/management.html'$/;"	kind:variable	line:30
+template_name	exame/views.py	/^    template_name = "exame\/index.html"$/;"	kind:variable	line:17
+template_name	exame/views.py	/^    template_name = 'exame\/exame_confirm_delete.html'$/;"	kind:variable	line:40
+template_name	exame/views.py	/^    template_name = 'exame\/exame_form.html'$/;"	kind:variable	line:31
+template_name	exame/views.py	/^    template_name = 'exame\/exame_list.html'$/;"	kind:variable	line:23
+template_name	exame/views.py	/^    template_name = 'exame\/exame_update_form.html'$/;"	kind:variable	line:54
+template_name	exame/views.py	/^    template_name = 'exame\/item_exame_confirm_delete.html'$/;"	kind:variable	line:101
+template_name	exame/views.py	/^    template_name = 'exame\/item_exame_list.html'$/;"	kind:variable	line:63
+template_name	exame/views.py	/^    template_name = 'exame\/item_exame_update_form.html'$/;"	kind:variable	line:87
 template_name	laudo/views.py	/^    template_name = 'laudo\/laudo_detail.html'$/;"	kind:variable	line:19
 template_name	laudo/views.py	/^    template_name = 'laudo\/laudo_form.html'$/;"	kind:variable	line:33
-template_name	laudo/views.py	/^    template_name = 'laudo\/laudo_update.html'$/;"	kind:variable	line:68
-template_name	medico/views.py	/^    template_name = 'medico\/medico_list.html'$/;"	kind:variable	line:12
+template_name	laudo/views.py	/^    template_name = 'laudo\/laudo_update.html'$/;"	kind:variable	line:64
+template_name	medico/views.py	/^    template_name = 'medico\/medico_list.html'$/;"	kind:variable	line:13
 template_name	paciente/views.py	/^    template_name = 'paciente\/paciente_list.html'$/;"	kind:variable	line:17
 template_name	paciente/views.py	/^    template_name = 'paciente\/paciente_update.html'$/;"	kind:variable	line:76
 template_name	paciente/views.py	/^    template_name = 'paciente\/paciente_update.html'$/;"	kind:variable	line:92
@@ -5915,6 +5971,7 @@ test_update_user_error	accounts/tests/test_view.py	/^    def test_update_user_er
 test_update_user_ok	accounts/tests/test_view.py	/^    def test_update_user_ok(self):$/;"	kind:member	line:44
 test_view.py	accounts/tests/test_view.py	1;"	kind:file	line:1
 tests.py	accounts/tests.py	1;"	kind:file	line:1
+tests.py	convenio/tests.py	1;"	kind:file	line:1
 tests.py	core/tests.py	1;"	kind:file	line:1
 tests.py	exame/tests.py	1;"	kind:file	line:1
 tests.py	laudo/tests.py	1;"	kind:file	line:1
@@ -5944,7 +6001,7 @@ truth	env/lib/python3.4/operator.py	/^def truth(a):$/;"	kind:function	line:57
 tuple_iterator	env/lib/python3.4/_collections_abc.py	/^tuple_iterator = type(iter(()))$/;"	kind:variable	line:45
 types.py	env/lib/python3.4/types.py	1;"	kind:file	line:1
 uf	paciente/models.py	/^    uf = models.CharField('UF', max_length=2)$/;"	kind:variable	line:50
-ultima_menstruacao	laudo/models.py	/^    ultima_menstruacao = models.DateTimeField('Data ultima menstruação')$/;"	kind:variable	line:20
+ultima_menstruacao	laudo/models.py	/^    ultima_menstruacao = models.DateTimeField('Data ultima menstruação')$/;"	kind:variable	line:42
 undefined.py	env/lib/python3.4/encodings/undefined.py	1;"	kind:file	line:1
 unicode_escape.py	env/lib/python3.4/encodings/unicode_escape.py	1;"	kind:file	line:1
 unicode_internal.py	env/lib/python3.4/encodings/unicode_internal.py	1;"	kind:file	line:1
@@ -5971,12 +6028,14 @@ update_wrapper	env/lib/python3.4/functools.py	/^def update_wrapper(wrapper,$/;"	
 updatecache	env/lib/python3.4/linecache.py	/^def updatecache(filename, module_globals=None):$/;"	kind:function	line:69
 upper	env/lib/python3.4/collections/__init__.py	/^    def upper(self): return self.__class__(self.data.upper())$/;"	kind:member	line:1155
 urlpatterns	accounts/urls.py	/^urlpatterns = [$/;"	kind:variable	line:4
+urlpatterns	convenio/urls.py	/^urlpatterns = [$/;"	kind:variable	line:10
 urlpatterns	exame/urls.py	/^urlpatterns = [$/;"	kind:variable	line:10
 urlpatterns	laudo/urls.py	/^urlpatterns = [$/;"	kind:variable	line:9
 urlpatterns	lexci/urls.py	/^urlpatterns = [$/;"	kind:variable	line:6
 urlpatterns	medico/urls.py	/^urlpatterns = [$/;"	kind:variable	line:4
 urlpatterns	paciente/urls.py	/^urlpatterns = [$/;"	kind:variable	line:4
 urls.py	accounts/urls.py	1;"	kind:file	line:1
+urls.py	convenio/urls.py	1;"	kind:file	line:1
 urls.py	exame/urls.py	1;"	kind:file	line:1
 urls.py	laudo/urls.py	1;"	kind:file	line:1
 urls.py	lexci/urls.py	1;"	kind:file	line:1
@@ -6011,26 +6070,29 @@ verbose	env/bin/pildriver.py	/^    verbose = 0$/;"	kind:variable	line:58
 verbose	env/bin/pilfile.py	/^        verbose = 1$/;"	kind:variable	line:57
 verbose_name	accounts/apps.py	/^    verbose_name = 'Contas de usuários'$/;"	kind:variable	line:6
 verbose_name	accounts/models.py	/^        verbose_name = 'Usuário'$/;"	kind:variable	line:31
-verbose_name	core/models.py	/^        verbose_name = 'Convenio'$/;"	kind:variable	line:8
+verbose_name	convenio/models.py	/^        verbose_name = 'Convenio'$/;"	kind:variable	line:8
 verbose_name	exame/models.py	/^        verbose_name = 'Exame do Laudo'$/;"	kind:variable	line:20
 verbose_name	exame/models.py	/^        verbose_name = 'Item exame'$/;"	kind:variable	line:49
-verbose_name	laudo/models.py	/^        verbose_name = 'Exame Laudo'$/;"	kind:variable	line:42
-verbose_name	laudo/models.py	/^        verbose_name = 'Laudo'$/;"	kind:variable	line:27
-verbose_name	medico/models.py	/^        verbose_name = 'Médico'$/;"	kind:variable	line:12
+verbose_name	laudo/models.py	/^        verbose_name = 'Assinador'$/;"	kind:variable	line:20
+verbose_name	laudo/models.py	/^        verbose_name = 'Exame Laudo'$/;"	kind:variable	line:66
+verbose_name	laudo/models.py	/^        verbose_name = 'Laudo'$/;"	kind:variable	line:51
+verbose_name	medico/models.py	/^        verbose_name = 'Médico'$/;"	kind:variable	line:13
 verbose_name	paciente/models.py	/^        verbose_name = 'Endereço'$/;"	kind:variable	line:63
 verbose_name	paciente/models.py	/^        verbose_name = 'Paciente'$/;"	kind:variable	line:25
 verbose_name_plural	accounts/models.py	/^        verbose_name_plural = 'Usuários'$/;"	kind:variable	line:32
-verbose_name_plural	core/models.py	/^        verbose_name_plural = 'Convenios'$/;"	kind:variable	line:9
+verbose_name_plural	convenio/models.py	/^        verbose_name_plural = 'Convenios'$/;"	kind:variable	line:9
 verbose_name_plural	exame/models.py	/^        verbose_name_plural = 'Exames do Laudo'$/;"	kind:variable	line:21
 verbose_name_plural	exame/models.py	/^        verbose_name_plural = 'Itens dos Exame'$/;"	kind:variable	line:50
-verbose_name_plural	laudo/models.py	/^        verbose_name_plural = 'Laudos'$/;"	kind:variable	line:28
-verbose_name_plural	medico/models.py	/^        verbose_name_plural = 'Médicos'$/;"	kind:variable	line:13
+verbose_name_plural	laudo/models.py	/^        verbose_name_plural = 'Assinadores'$/;"	kind:variable	line:21
+verbose_name_plural	laudo/models.py	/^        verbose_name_plural = 'Laudos'$/;"	kind:variable	line:52
+verbose_name_plural	medico/models.py	/^        verbose_name_plural = 'Médicos'$/;"	kind:variable	line:14
 verbose_name_plural	paciente/models.py	/^        verbose_name_plural = 'Endereços'/;"	kind:variable	line:64
 verbose_name_plural	paciente/models.py	/^        verbose_name_plural = 'Pacientes'$/;"	kind:variable	line:26
 verify	env/bin/pilfile.py	/^        verify = 1$/;"	kind:variable	line:61
 version	env/lib/python3.4/tarfile.py	/^version     = "0.9.0"$/;"	kind:variable	line:32
 viewer.py	env/bin/viewer.py	1;"	kind:file	line:1
 views.py	accounts/views.py	1;"	kind:file	line:1
+views.py	convenio/views.py	1;"	kind:file	line:1
 views.py	core/views.py	1;"	kind:file	line:1
 views.py	exame/views.py	1;"	kind:file	line:1
 views.py	laudo/views.py	1;"	kind:file	line:1
@@ -6063,12 +6125,12 @@ write	env/lib/python3.4/codecs.py	/^    def write(self, object):$/;"	kind:member
 write	env/lib/python3.4/tarfile.py	/^    def write(self, s):$/;"	kind:member	line:323
 write	env/lib/python3.4/tarfile.py	/^    def write(self, s):$/;"	kind:member	line:425
 write	env/lib/python3.4/tempfile.py	/^    def write(self, s):$/;"	kind:member	line:780
-write_assinatura_marcio	laudo/reports.py	/^def write_assinatura_marcio(canvas):$/;"	kind:function	line:126
-write_exames	laudo/reports.py	/^def write_exames(canvas, laudo):$/;"	kind:function	line:57
-write_footer	laudo/reports.py	/^def write_footer(canvas):$/;"	kind:function	line:150
-write_horizontal_line	laudo/reports.py	/^def write_horizontal_line(canvas, vertical_point):$/;"	kind:function	line:160
-write_paciente	laudo/reports.py	/^def write_paciente(canvas, paciente, medico):$/;"	kind:function	line:84
-write_title	laudo/reports.py	/^def write_title(canvas):$/;"	kind:function	line:134
+write_assinatura	laudo/reports.py	/^def write_assinatura(canvas, laudo_assinado):$/;"	kind:function	line:163
+write_exames	laudo/reports.py	/^def write_exames(canvas, laudo):$/;"	kind:function	line:58
+write_footer	laudo/reports.py	/^def write_footer(canvas):$/;"	kind:function	line:143
+write_horizontal_line	laudo/reports.py	/^def write_horizontal_line(canvas, vertical_point):$/;"	kind:function	line:153
+write_paciente	laudo/reports.py	/^def write_paciente(canvas, paciente, medico):$/;"	kind:function	line:85
+write_title	laudo/reports.py	/^def write_title(canvas):$/;"	kind:function	line:127
 writelines	env/lib/python3.4/codecs.py	/^    def writelines(self, list):$/;"	kind:member	line:376
 writelines	env/lib/python3.4/codecs.py	/^    def writelines(self, list):$/;"	kind:member	line:716
 writelines	env/lib/python3.4/codecs.py	/^    def writelines(self, list):$/;"	kind:member	line:832

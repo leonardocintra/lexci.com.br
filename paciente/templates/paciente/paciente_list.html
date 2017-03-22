@@ -1,5 +1,7 @@
 {% extends "core/base.html" %} 
 
+{% load pagination %}
+
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
@@ -30,22 +32,30 @@
         </div>
     </div>
     <div class="row">
+        
+        
+         
+        <h5>
+            <span class="glyphicon glyphicon-list" aria-hidden="true"></span> 
+            Quantidade de pacientes cadastradas: <span class="label label-default">{{ total_pacientes }}</span>
+        </h5>
+
         {% if paciente_list %}
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>#</th>
+                    <th></th>
                     <th>Nome</th>
-                    <th>Data de nascimento</th>
+                    <th>CPF</th>
                     <th>Ativo</th>
                 </tr>
             </thead>
             <tbody>
             {% for paciente in paciente_list %}
                 <tr>
-                    <th>{{ paciente.id }}</th>
+                    <th>#{{ paciente.id }}</th>
                     <th><a href="{% url 'paciente:paciente_detail' paciente.pk %}">{{ paciente.nome }}</a></th>
-                    <th>{{ paciente.data_nascimento }}</th>
+                    <th>{{ paciente.cpf }}</th>
                     <th>
                         {% if paciente.ativo %}
                             <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> 
@@ -57,6 +67,9 @@
             {% endfor %}
             </tbody>
         </table>
+
+        {% pagination request paginator page_obj %}
+
         {% else %}
             <div class="alert alert-warning col-md-4">
                 <strong>Ops!</strong> Nenhum paciente encontrado. Tente novamente.

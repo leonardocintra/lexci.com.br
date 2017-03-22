@@ -1,10 +1,15 @@
 # -*- coding: utf-8 -*-
+"""
+    View Paciente
+    Criado por: Leonardo Nascimento Cintra
+    Data: janeiro/2017
+"""
 from django.shortcuts import render, get_object_or_404, redirect
-from django.db import transaction, models
+from django.db import models
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
-from django.views.generic import ListView, CreateView, UpdateView, DetailView
+from django.views.generic import ListView, CreateView, UpdateView
 from laudo.models import Laudo
 from .models import Paciente, PacienteEndereco
 from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
@@ -16,17 +21,24 @@ class PacienteList(LoginRequiredMixin, ListView):
     model = Paciente
     template_name = 'paciente/paciente_list.html'
     context_object_name = 'paciente_list'
+    paginate_by = 5
 
     def get_queryset(self):
         """ Queryset - Retorna todos os pacientes ou um paciente Q (pesquisa) """
         queryset = Paciente.objects.all()
         q = self.request.GET.get('q', '')
         if q:
-            queryset = queryset.filter(    
+            queryset = queryset.filter(
                 models.Q(nome__icontains=q) |
                 models.Q(cpf__iexact=q)
             )
         return queryset
+    
+    def get_context_data(self, **kwargs):
+        context = super(PacienteList, self).get_context_data(**kwargs)
+        context['total_pacientes'] = Paciente.objects.all().count()
+        return context
+
 
 
 class PacienteCreate(LoginRequiredMixin, CreateView):
