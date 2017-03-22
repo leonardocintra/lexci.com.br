@@ -6,7 +6,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-    """
     dependencies = [
         ('paciente', '0017_auto_20170321_2023'),
         ('core', '0002_auto_20161208_2111'),
@@ -17,4 +16,3 @@ class Migration(migrations.Migration):
             name='Convenio',
         ),
     ]
-    """

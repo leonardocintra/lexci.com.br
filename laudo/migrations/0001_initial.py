@@ -45,7 +45,7 @@ class Migration(migrations.Migration):
             name='Laudo',
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('convenio', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='core.Convenio')),
+                ('convenio', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='convenio.Convenio')),
                 ('medico', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='medico.Medico')),
                 ('paciente', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='paciente.Paciente')),
             ],

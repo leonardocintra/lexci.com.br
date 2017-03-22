@@ -6,7 +6,6 @@ from django.db import migrations
 
 
 class Migration(migrations.Migration):
-    """
     dependencies = [
         ('core', '0001_initial'),
     ]
@@ -17,4 +16,3 @@ class Migration(migrations.Migration):
             options={'ordering': ['descricao'], 'verbose_name': 'Convenio', 'verbose_name_plural': 'Convenios'},
         ),
     ]
-    """
