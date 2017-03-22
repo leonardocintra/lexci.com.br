@@ -9,7 +9,7 @@ class LaudoForm(forms.ModelForm):
     
     class Meta:
         model = Laudo
-        exclude = ('data_cadastro', 'data_atualizacao', )
+        exclude = ('data_cadastro', 'data_atualizacao', 'assinado_por', )
 
     
     def create_laudo_exames(self, laudo, item_exames_ids):
