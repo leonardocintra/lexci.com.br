@@ -33,5 +33,6 @@ startdev:
 	@make migrate
 	@python manage.py loaddata fixtures/convenio.json
 	@python manage.py loaddata fixtures/exames.json
+	@python manage.py loaddata fixtures/paciente-teste.json
 	@python manage.py createsuperuser
 	@python manage.py runserver
