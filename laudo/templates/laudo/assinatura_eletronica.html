@@ -1,5 +1,12 @@
 {% extends "core/base.html" %} 
 
 {% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+        <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
+        <li><a href="{% url 'paciente:paciente_detail' paciente.id %}">{{ paciente.nome }}</a></li>
+        <li><a href="{% url 'laudo:laudo_detalhe' pk=pk paciente_id=paciente.id %}">Detalhes do Laudo #{{ pk }} </a></li>
+        <li class="active">Assinar eletronicamente </li>
+    </ol>
 
 {% endblock content %}

@@ -67,8 +67,18 @@ class LaudoUpdate(UpdateView):
         return reverse_lazy('laudo:laudo_detalhe', kwargs={
             'pk': self.kwargs['pk'], 'paciente_id': self.kwargs['paciente_id']})
 
+    
+class LaudoAssinatura(TemplateView):
+    template_name = 'laudo/assinatura_eletronica.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(LaudoAssinatura, self).get_context_data(**kwargs)
+        context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
+        return context
+
 
 
 create_laudo = LaudoCreate.as_view() 
 laudo_detalhe = LudoDetail.as_view() 
 laudo_update = LaudoUpdate.as_view()
+laudo_assinatura = LaudoAssinatura.as_view()
