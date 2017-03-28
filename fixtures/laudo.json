@@ -1,14 +1,5 @@
 [
    {
-      "model":"laudo.assinadoreletronico",
-      "pk":1,
-      "fields":{
-         "nome":"NENHUM",
-         "data_cadastro":"2017-03-22T02:01:14.723Z",
-         "data_atualizacao":"2017-03-22T02:01:14.723Z"
-      }
-   },
-   {
       "model":"laudo.laudo",
       "pk":1,
       "fields":{
