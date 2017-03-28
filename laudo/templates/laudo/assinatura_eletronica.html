@@ -1,16 +1,36 @@
 {% extends "core/base.html" %} 
 
+{% load widget_tweaks %} 
+
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
         <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
         <li><a href="{% url 'paciente:paciente_detail' paciente.id %}">{{ paciente.nome }}</a></li>
-        <li><a href="{% url 'laudo:laudo_detalhe' pk=pk paciente_id=paciente.id %}">Detalhes do Laudo #{{ pk }} </a></li>
+        <li><a href="#">Detalhes do Laudo #{{ laudo.id }} </a></li>
         <li class="active">Assinar eletronicamente </li>
     </ol>
 
     <div class="page-header">
-        <h4>Assinar eletronicamente laudo #{{ pk }} <small>{{ paciente.nome }}</small></h4>
+        <h4>Assinar eletronicamente laudo #{{ laudo.id }} <small>{{ paciente.nome }}</small></h4>
         <h3>{{ user.name }}</h3>
+
+        {% if user.name %}
+            <form class="form-horizontal" method="POST">
+                {% csrf_token %} 
+
+                {# na view ja vem o id do usuario logado #}
+
+                <input type="submit" value="Assinar" class="btn btn-success" />
+            </form>
+        {% else %}
+            <div class="alert alert-warning">
+                <strong>Usuário sem permissão</strong> 
+                Você não tem permissão para assinar laudos eletronicamente.
+            </div>
+        {% endif %}
+
+        
+
     </div>
 {% endblock content %}

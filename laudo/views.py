@@ -6,12 +6,12 @@
 """
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, FormView, UpdateView, DetailView, CreateView
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame
 from .models import Laudo, ExameLaudo, AssinadorEletronico
-from .forms import LaudoForm
+from .forms import LaudoForm, AssinarLaudoEletronicoForm
 
 
 class LudoDetail(DetailView):
@@ -68,13 +68,33 @@ class LaudoUpdate(UpdateView):
             'pk': self.kwargs['pk'], 'paciente_id': self.kwargs['paciente_id']})
 
     
-class LaudoAssinatura(TemplateView):
+class LaudoAssinatura(FormView):
     template_name = 'laudo/assinatura_eletronica.html'
+    model = Laudo
+    form_class = AssinarLaudoEletronicoForm
+
+    def get_initial(self):
+        return {
+            "assinado_por": self.request.user.id
+        }
+
+    def form_valid(self, form):
+        laudo = get_object_or_404(Laudo, pk=self.kwargs['pk'])
+        assinador = get_object_or_404(AssinadorEletronico, user=self.request.user.id)
+        laudo.assinado_por = assinador
+        laudo.assinado = True
+        laudo.save()
+        return HttpResponseRedirect(self.get_success_url())
+
 
     def get_context_data(self, **kwargs):
         context = super(LaudoAssinatura, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
+        context['laudo'] = get_object_or_404(Laudo, pk=self.kwargs['pk'])
         return context
+    
+    def get_success_url(self):
+        return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['paciente_id']})
 
 
 

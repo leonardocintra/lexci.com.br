@@ -15,4 +15,11 @@ class LaudoForm(forms.ModelForm):
         """ Create Laudo By Lucas Magunun """
         for item_exame_id in item_exames_ids:
             ExameLaudo.objects.create(laudo=laudo, item_exame_id=item_exame_id)
-            
+
+
+class AssinarLaudoEletronicoForm(forms.ModelForm):
+    """ Form Assinar Laudo Eletronico """
+
+    class Meta:
+        model = Laudo
+        fields = ('assinado_por', )

@@ -22,6 +22,9 @@ class AssinadorEletronico(models.Model):
         """ Assinador Eletronico Meta """
         verbose_name = 'Assinador'
         verbose_name_plural = 'Assinadores'
+    
+    def __str__(self):
+        return '{} - {}'.format(self.user.username, self.user.name)
 
 
 class Laudo(models.Model):
@@ -42,7 +45,7 @@ class Laudo(models.Model):
     paciente_pode_ver = models.BooleanField(default=False)
     assinado = models.BooleanField(default=False)
     assinado_por = models.ForeignKey(AssinadorEletronico, on_delete=models.CASCADE, 
-        related_name='assinador', default=1
+        related_name='assinador', blank=True, null=True
     )
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
