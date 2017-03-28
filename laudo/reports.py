@@ -168,7 +168,9 @@ def write_assinatura(canvas, laudo_assinado):
     c = canvas
     c.setFont('Helvetica-Oblique', 10)
     if laudo_assinado:    
+        c.setFont('Helvetica-Bold', 10)
         c.drawString(440, 90, 'Dr. Márcio Gimenes França')
+        c.setFont('Helvetica-Oblique', 10)
         c.drawString(455, 76, 'Biomédico Citologista')
         c.drawString(453, 61, 'CRBM 8803/SBCC 768')
     else:
