@@ -75,11 +75,6 @@ class LaudoAssinatura(TemplateView):
         context = super(LaudoAssinatura, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
         return context
-    
-class AssinadorEletronico(CreateView):
-    """ AssinadorEletronico - Create """
-    model = AssinadorEletronico
-    fields = ['user']
 
 
 
