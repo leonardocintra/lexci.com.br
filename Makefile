@@ -31,8 +31,9 @@ startdev:
 	@git remote add prod https://git.heroku.com/lexci.git
 	@pip install -r requirements/development.txt
 	@make migrate
+	@python manage.py loaddata fixtures/medico.json
 	@python manage.py loaddata fixtures/convenio.json
-	@python manage.py loaddata fixtures/exames.json
 	@python manage.py loaddata fixtures/paciente-teste.json
+	@python manage.py loaddata fixtures/exames.json	
 	@python manage.py createsuperuser
 	@python manage.py runserver

@@ -7,10 +7,10 @@
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
-from django.views.generic import TemplateView, FormView, UpdateView, DetailView
+from django.views.generic import TemplateView, FormView, UpdateView, DetailView, CreateView
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame
-from .models import Laudo, ExameLaudo
+from .models import Laudo, ExameLaudo, AssinadorEletronico
 from .forms import LaudoForm
 
 
@@ -75,6 +75,11 @@ class LaudoAssinatura(TemplateView):
         context = super(LaudoAssinatura, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
         return context
+    
+class AssinadorEletronico(CreateView):
+    """ AssinadorEletronico - Create """
+    model = AssinadorEletronico
+    fields = ['user']
 
 
 

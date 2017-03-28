@@ -3,6 +3,8 @@
     Criado por: Leonardo Nascimento Cintra
     Data: janeiro/2017
 """
+from django.conf import settings
+from django.contrib.auth.models import User
 from django.db import models
 from paciente.models import Paciente
 from medico.models import Medico
@@ -11,18 +13,15 @@ from exame.models import Exame, ItemExame
 
 class AssinadorEletronico(models.Model):
     """ AssinadorEletronico - São os usuarios que tem permissao para assinar eletronicamente"""
-    nome = models.CharField(max_length=200)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
 
 
     class Meta:
+        """ Assinador Eletronico Meta """
         verbose_name = 'Assinador'
         verbose_name_plural = 'Assinadores'
-    
-
-    def __str__ (self):
-        return self.nome
 
 
 class Laudo(models.Model):
@@ -42,7 +41,9 @@ class Laudo(models.Model):
     ultima_menstruacao = models.DateTimeField('Data ultima menstruação')
     paciente_pode_ver = models.BooleanField(default=False)
     assinado = models.BooleanField(default=False)
-    assinado_por = models.ForeignKey(AssinadorEletronico, on_delete=models.CASCADE, related_name='assinador', default=1)
+    assinado_por = models.ForeignKey(AssinadorEletronico, on_delete=models.CASCADE, 
+        related_name='assinador', default=1
+    )
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
     ativo = models.BooleanField(default=True)
@@ -59,7 +60,9 @@ class Laudo(models.Model):
 class ExameLaudo(models.Model):
     """ ExameLaudo - Aqui é onde amarra os laudos com o exame """
     laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo')
-    item_exame = models.ForeignKey(ItemExame, on_delete=models.CASCADE, related_name='item_exame')
+    item_exame = models.ForeignKey(ItemExame, on_delete=models.CASCADE, 
+        related_name='item_exame'
+    )
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:
