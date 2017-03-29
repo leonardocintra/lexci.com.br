@@ -9,6 +9,7 @@ from django.db import models
 from paciente.models import Paciente
 from medico.models import Medico
 from exame.models import Exame, ItemExame
+from cloudinary.models import CloudinaryField
 
 
 class AssinadorEletronico(models.Model):
@@ -25,6 +26,7 @@ class AssinadorEletronico(models.Model):
     registro_federal = models.CharField('Descrição dos regitro', max_length=200, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
+    foto_assinatura = CloudinaryField('Imagem', blank=True, null=True)
 
 
     class Meta:

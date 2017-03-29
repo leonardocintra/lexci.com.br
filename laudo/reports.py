@@ -169,9 +169,9 @@ def write_assinatura(canvas, laudo):
     c.setFont('Helvetica-Oblique', 10)
 
     if laudo.assinado:
-        assinador = AssinadorEletronico.objects.get(pk=laudo.assinado_por.id)
-        
-        #c.drawImage('media/{}'.format(assinador.foto_assinatura), 440, 95, 120, 40)
+        assinador = AssinadorEletronico.objects.get(pk=laudo.assinado_por.id)        
+        if assinador.foto_assinatura:
+            c.drawImage('{}'.format(assinador.foto_assinatura.url), 440, 95, 120, 40)
         c.setFont('Helvetica-Bold', 10)
         c.drawString(440, 90, assinador.nome_exibir)
         c.setFont('Helvetica-Oblique', 10)

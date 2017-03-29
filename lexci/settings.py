@@ -130,6 +130,14 @@ MESSAGE_TAGS = {
     message_constants.ERROR: 'danger',
 }
 
+
+# Cloudinary
+CLOUDINARY = {
+  'cloud_name': os.environ.get('CLOUD_NAME', 'leonardocintra'),
+  'api_key': os.environ.get('API_KEY', '182946961533113'),
+  'api_secret': os.environ.get('API_SECRET', 'LAIVTLNHtG5x-TTdUmHgaE3CnsM')
+}
+
 # Autenticacao
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'index'
