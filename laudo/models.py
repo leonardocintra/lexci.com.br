@@ -25,6 +25,7 @@ class AssinadorEletronico(models.Model):
     registro_federal = models.CharField('Descrição dos regitro', max_length=200, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
+    foto_assinatura = models.ImageField('Assinatura', null=True, upload_to='laudo/media/')
 
 
     class Meta:

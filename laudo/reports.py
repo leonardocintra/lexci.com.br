@@ -13,7 +13,7 @@ from laudo.models import Laudo, ExameLaudo, AssinadorEletronico
 
 
 def gerar_laudo(request, laudo_id, paciente_id):
-
+    
     p = Paciente.objects.get(pk=paciente_id)
     laudo = Laudo.objects.get(pk=laudo_id)
     medico = Medico.objects.get(pk=laudo.medico.id)
@@ -170,6 +170,11 @@ def write_assinatura(canvas, laudo):
 
     if laudo.assinado:
         assinador = AssinadorEletronico.objects.get(pk=laudo.assinado_por.id)
+
+        print(assinador.foto_assinatura)
+
+        if assinador.foto_assinatura:
+            c.drawImage("lexci/media/{}".format(assinador.foto_assinatura), 440, 95, 120, 40)
 
         c.setFont('Helvetica-Bold', 10)
         c.drawString(440, 90, assinador.nome_exibir)
