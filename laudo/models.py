@@ -12,7 +12,13 @@ from exame.models import Exame, ItemExame
 
 
 class AssinadorEletronico(models.Model):
-    """ AssinadorEletronico - São os usuarios que tem permissao para assinar eletronicamente"""
+    """ 
+        AssinadorEletronico - São os usuarios que tem permissao para assinar eletronicamente
+        Descrição dos campos:
+            - nome_exibir: O nome do assinador, pois no usuario nao fica o nome com os tratamentos. Ex: Dr. Marcio ...
+            - profissao: É a descrição da profissao do assinador, ex: Biomedico Citologico
+            - registro_federal: é o CRM ou registro junto ao orgão federal, ex: CRBM 8803/SBCC 768
+    """
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     nome_exibir = models.CharField('Nome', max_length=200, blank=True)
     profissao = models.CharField('Profissão', max_length=200, blank=True)
