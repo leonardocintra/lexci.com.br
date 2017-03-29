@@ -68,7 +68,7 @@ def write_exames(canvas, laudo):
             if espacamento < 90:
                 espacamento = 820
                 write_footer(c)
-                write_assinatura(c, laudo.assinado)
+                write_assinatura(c, laudo)
                 c.showPage()
             if item.item_exame.exame.id == exame.id:
                 if exame_atual != item.item_exame.exame.descricao:
