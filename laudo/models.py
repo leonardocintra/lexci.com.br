@@ -14,6 +14,9 @@ from exame.models import Exame, ItemExame
 class AssinadorEletronico(models.Model):
     """ AssinadorEletronico - São os usuarios que tem permissao para assinar eletronicamente"""
     user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    nome_exibir = models.CharField('Nome', max_length=200, blank=True)
+    profissao = models.CharField('Profissão', max_length=200, blank=True)
+    registro_federal = models.CharField('Descrição dos regitro', max_length=200, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
 
