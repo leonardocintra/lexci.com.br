@@ -15,6 +15,7 @@ urlpatterns = [
     url(r'^laudo/', include('laudo.urls', namespace='laudo')),
     url(r'^convenio/', include('convenio.urls', namespace='convenio')),
     url(r'^exame/', include('exame.urls', namespace='exame')),
+    url(r'^conta/', include('accounts.urls', namespace='accounts')),
     url(r'^entrar/$', login, {'template_name': 'core/login.html'}, name='login'),
     url(r'^sair/$', logout, {'next_page': 'index'}, name='logout'),
     url(r'^admin/', admin.site.urls),

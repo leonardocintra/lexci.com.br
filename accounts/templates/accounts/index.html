@@ -1,12 +1,13 @@
-{% extends "base.html" %}
+{% extends "core/base.html" %}
 
 {% block title %}
     Minha Conta
 {% endblock %}
 
-{% block container %}
+{% block content %}
     <ol class="breadcrumb">
-        <li><a href="#">Início</a></li>
+        <li><a href="{% url 'index' %}">Pagina Inicial</a></li>
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
         <li class="active">Minha Conta</li>
     </ol>
 
@@ -16,7 +17,6 @@
                 <a href="{% url 'accounts:index' %}" class="list-group-item active">Minha Conta</a>
                 <a href="{% url 'accounts:update_user' %}" class="list-group-item">Alterar Dados</a>
                 <a href="{% url 'accounts:update_password' %}" class="list-group-item">Alterar Senha</a>
-                <a href="{% url 'checkout:order_list' %}" class="list-group-item">Meus pedidos</a>
             </div>
         </div>
         <div class="col-md-8">
