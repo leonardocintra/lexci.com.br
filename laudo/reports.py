@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
+import os
 from datetime import datetime
+from django.conf import settings
 from django.http import HttpResponse
 from reportlab.pdfgen import canvas
 from reportlab.platypus import PageBreak
@@ -170,12 +172,11 @@ def write_assinatura(canvas, laudo):
 
     if laudo.assinado:
         assinador = AssinadorEletronico.objects.get(pk=laudo.assinado_por.id)
-
-        print(assinador.foto_assinatura)
-
         if assinador.foto_assinatura:
-            c.drawImage("lexci/media/{}".format(assinador.foto_assinatura), 440, 95, 120, 40)
-
+            c.drawImage("{}/media/{}".format(
+                os.path.join(settings.PROJECT_ROOT), 
+                assinador.foto_assinatura), 440, 95, 120, 40
+            )
         c.setFont('Helvetica-Bold', 10)
         c.drawString(440, 90, assinador.nome_exibir)
         c.setFont('Helvetica-Oblique', 10)
