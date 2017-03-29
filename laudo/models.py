@@ -57,6 +57,7 @@ class Laudo(models.Model):
     assinado_por = models.ForeignKey(AssinadorEletronico, on_delete=models.CASCADE, 
         related_name='assinador', blank=True, null=True
     )
+    data_assinatura = models.DateTimeField(auto_now_add=False, auto_now=False, null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     data_atualizacao = models.DateTimeField(auto_now=True)
     ativo = models.BooleanField(default=True)

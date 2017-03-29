@@ -8,6 +8,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, FormView, UpdateView, DetailView, CreateView
+from django.utils import timezone
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame
 from .models import Laudo, ExameLaudo, AssinadorEletronico
@@ -83,6 +84,7 @@ class LaudoAssinatura(FormView):
         assinador = get_object_or_404(AssinadorEletronico, user=self.request.user.id)
         laudo.assinado_por = assinador
         laudo.assinado = True
+        laudo.data_assinatura = timezone.now()
         laudo.save()
         return HttpResponseRedirect(self.get_success_url())
 
