@@ -10,19 +10,33 @@
 
     <div class="row">
         <div class="panel panel-default">
-            <div class="panel-heading">Detalhes do Laudo da paciente {{ object.paciente.nome }}</div>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-paste" aria-hidden="true"></span>
+                Detalhes do Laudo da paciente {{ object.paciente.nome }}
+            </div>
             <div class="panel-body">
                 <h4><small>nome:</small> {{ object.paciente.nome }}</h4>
                 <h4><small>data laudo:</small>  {{ laudo.data_cadastro }}</h4>
                 <h4><small>médico:</small> {{ laudo.medico.nome }}</h4>
                 <h4>
-                    <small>paciente pode ver?</small> {{ laudo.paciente_pode_ver|yesno|upper }} 
+                    <small>paciente pode ver?</small> 
+                        <span class="label label-{% if laudo.paciente_pode_ver %}success{% else %}danger{% endif %}">{{ laudo.paciente_pode_ver|yesno|upper }}</span>
                     <a href="{% url 'laudo:laudo_update' laudo.id object.paciente.id %}">alterar</a>  
                 </h4>
                 {% if laudo.assinado %}
-                    <h5><span class="label label-success">Laudo assinado por {{ laudo.assinado_por.nome_exibir }} em {{ laudo.data_assinatura }}</span></h5>
+                    <h5>
+                        <span class="label label-success">
+                            <span class="glyphicon glyphicon-ok-circle" aria-hidden="true"></span>
+                            Laudo assinado por {{ laudo.assinado_por.nome_exibir }} em {{ laudo.data_assinatura }}
+                        </span>
+                    </h5>
                 {% else %}
-                    <h5><span class="label label-danger">Esse laudo ainda não foi assinado eletronicamente</h5>
+                    <h5>
+                        <span class="label label-danger">
+                            <span class="glyphicon glyphicon-remove-circle" aria-hidden="true"></span>
+                            Esse laudo ainda não foi assinado eletronicamente
+                        </span>
+                    </h5>
                 {% endif %}
 
                 
@@ -44,7 +58,10 @@
         </div>
 
         <div class="panel panel-primary">
-            <div class="panel-heading">Exames realizados {{ object.paciente.nome }}</div>
+            <div class="panel-heading">
+                <span class="glyphicon glyphicon-save-file" aria-hidden="true"></span>
+                Exames realizados {{ object.paciente.nome }}
+            </div>
             <div class="panel-body">
 
                 {% for exame in exames %}
