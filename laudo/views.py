@@ -100,7 +100,7 @@ class LaudoAssinatura(FormView):
 
 
 def laudos_pendentes(request):
-    laudos = Laudo.objects.all()
+    laudos = Laudo.objects.all().filter(assinado=False)
     context = {
         'laudos': laudos
     }
