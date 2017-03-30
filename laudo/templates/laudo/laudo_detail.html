@@ -45,7 +45,7 @@
             <div class="panel-body">
 
                 {% for exame in exames %}
-                    <strong>{{ exame.descricao }}</strong>
+                    <strong>{{ exame.descricao }}</strong>              
                     {% for item in exame_laudo %}
                         {% if exame.id == item.item_exame.exame.id %}
                             <li> {{ item }} </li>   

@@ -21,9 +21,18 @@ class LaudoDetail(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(LaudoDetail, self).get_context_data(**kwargs)
-        context['exames'] = Exame.objects.all()
-        context['exame_laudo'] = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
+
+        exames = []
+        exame_laudo = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
+        
+        for item in exame_laudo:
+            exames.append(item.item_exame.exame.id)
+
+        context['exames'] = Exame.objects.filter(pk__in=exames)
+        context['exame_laudo'] = exame_laudo
+
         return context
+
 
 
 class LaudoCreate(FormView):
