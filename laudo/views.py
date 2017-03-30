@@ -15,12 +15,12 @@ from .models import Laudo, ExameLaudo, AssinadorEletronico
 from .forms import LaudoForm, AssinarLaudoEletronicoForm
 
 
-class LudoDetail(DetailView):
+class LaudoDetail(DetailView):
     model = Laudo
     template_name = 'laudo/laudo_detail.html'
 
     def get_context_data(self, **kwargs):
-        context = super(LudoDetail, self).get_context_data(**kwargs)
+        context = super(LaudoDetail, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
         context['exames'] = Exame.objects.all()
         context['exame_laudo'] = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
@@ -108,6 +108,6 @@ def laudos_pendentes(request):
 
 
 create_laudo = LaudoCreate.as_view() 
-laudo_detalhe = LudoDetail.as_view() 
+laudo_detalhe = LaudoDetail.as_view() 
 laudo_update = LaudoUpdate.as_view()
 laudo_assinatura = LaudoAssinatura.as_view()
