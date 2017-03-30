@@ -23,8 +23,7 @@ class LudoDetail(DetailView):
         context = super(LudoDetail, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
         context['exames'] = Exame.objects.all()
-        context['item_exame'] = ItemExame.objects.all()
-        context['exame_laudos'] = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
+        context['exame_laudo'] = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         return context
 
 

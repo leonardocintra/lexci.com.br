@@ -39,6 +39,23 @@
                 {% endif %}
             </div>
         </div>
+
+        <div class="panel panel-success">
+            <div class="panel-heading">Exames realizados {{ paciente.nome }}</div>
+            <div class="panel-body">
+
+                {% for exame in exames %}
+                    {% for item in exame_laudo %}
+                        {% if exame.id == item.item_exame.exame.id %}
+                            <strong>{{ exame.descricao }}</strong>
+                            <li> {{ item }} </li>   
+                        {% endif %}                        
+                    {% endfor %}
+                {% endfor %}
+
+                <br/>
+            </div>
+        </div>
         
     </div>
 
