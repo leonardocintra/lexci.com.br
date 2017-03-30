@@ -99,6 +99,14 @@ class LaudoAssinatura(FormView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['paciente_id']})
 
 
+def laudos_pendentes(request):
+    laudos = Laudo.objects.all()
+    context = {
+        'laudos': laudos
+    }
+    return render(request, 'laudo/laudos_pendentes.html', context)
+
+
 
 create_laudo = LaudoCreate.as_view() 
 laudo_detalhe = LudoDetail.as_view() 
