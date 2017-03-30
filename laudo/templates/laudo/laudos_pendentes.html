@@ -45,7 +45,7 @@
                                 <strong class="text-danger"> {{ laudo.assinado|yesno|upper }} </strong>
                             {% endif %}
                         </td>
-                        <td><a href="{% url 'laudo:laudo_detalhe' pk=laudo.id paciente_id=laudo.paciente.id %}">Detalhes</a> </td>
+                        <td><a href="{% url 'laudo:laudo_detalhe' pk=laudo.id %}">Detalhes</a> </td>
                         <td><a href="{% url 'laudo:gerar_laudo' laudo_id=laudo.id paciente_id=laudo.paciente.id %}">Imprimir</a> </td>
                     </tr>
                 {% endfor %}

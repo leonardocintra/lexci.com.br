@@ -12,10 +12,10 @@ from exame.models import Exame
 from laudo.models import Laudo, ExameLaudo, AssinadorEletronico
 
 
-def gerar_laudo(request, laudo_id, paciente_id):
+def gerar_laudo(request, laudo_id):
     
-    p = Paciente.objects.get(pk=paciente_id)
     laudo = Laudo.objects.get(pk=laudo_id)
+    p = Paciente.objects.get(pk=laudo.paciente.id)
     medico = Medico.objects.get(pk=laudo.medico.id)
 
     nome_sem_acento = remover_acentos(p.nome)
