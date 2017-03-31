@@ -72,6 +72,21 @@ class LaudoUpdate(LoginRequiredMixin, UpdateView):
     def get_success_url(self):
         return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
 
+
+class ExameLaudoUpdate(LoginRequiredMixin, UpdateView):
+    model = ExameLaudo
+    template_name = 'laudo/exame_laudo_update.html'
+    fields = ['laudo', 'item_exame', ]
+
+    def get_context_data(self, **kwargs):
+        context = super(ExameLaudoUpdate, self).get_context_data(**kwargs)
+        context['laudo'] = Laudo.objects.get(pk=self.kwargs['pk'])
+        # Precisa listar todos os exames e itens exames pra dar PÒST
+        context['exames_todos'] = Exame.objects.all()
+        context['item_exame_todos'] = ItemExame.objects.all()
+        context['exame_laudo'] = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
+        return context
+
     
 class LaudoAssinatura(LoginRequiredMixin, FormView):
     template_name = 'laudo/assinatura_eletronica.html'
@@ -116,3 +131,4 @@ create_laudo = LaudoCreate.as_view()
 laudo_detalhe = LaudoDetail.as_view() 
 laudo_update = LaudoUpdate.as_view()
 laudo_assinatura = LaudoAssinatura.as_view()
+exame_laudo_update = ExameLaudoUpdate.as_view()
