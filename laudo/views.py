@@ -2,8 +2,9 @@
 """
     View Laudo
     Criado por Leonardo Cintra
-    Data: 02/2017
+    Data: fevereiro/2017
 """
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
@@ -15,7 +16,7 @@ from .models import Laudo, ExameLaudo, AssinadorEletronico
 from .forms import LaudoForm, AssinarLaudoEletronicoForm
 
 
-class LaudoDetail(DetailView):
+class LaudoDetail(LoginRequiredMixin, DetailView):
     model = Laudo
     template_name = 'laudo/laudo_detail.html'
 
@@ -24,18 +25,15 @@ class LaudoDetail(DetailView):
 
         exames = []
         exame_laudo = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
-        
         for item in exame_laudo:
             exames.append(item.item_exame.exame.id)
-
         context['exames'] = Exame.objects.filter(pk__in=exames)
         context['exame_laudo'] = exame_laudo
-
         return context
 
 
 
-class LaudoCreate(FormView):
+class LaudoCreate(LoginRequiredMixin, FormView):
     """ Gerador do Laudo """
 
     template_name = 'laudo/laudo_form.html'
@@ -66,17 +64,16 @@ class LaudoCreate(FormView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
 
 
-class LaudoUpdate(UpdateView):
+class LaudoUpdate(LoginRequiredMixin, UpdateView):
     model = Laudo
     fields = ['paciente_pode_ver']
     template_name = 'laudo/laudo_update.html'
 
     def get_success_url(self):
-        return reverse_lazy('laudo:laudo_detalhe', kwargs={
-            'pk': self.kwargs['pk'], 'paciente_id': self.kwargs['paciente_id']})
+        return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
 
     
-class LaudoAssinatura(FormView):
+class LaudoAssinatura(LoginRequiredMixin, FormView):
     template_name = 'laudo/assinatura_eletronica.html'
     model = Laudo
     form_class = AssinarLaudoEletronicoForm
@@ -98,8 +95,8 @@ class LaudoAssinatura(FormView):
 
     def get_context_data(self, **kwargs):
         context = super(LaudoAssinatura, self).get_context_data(**kwargs)
-        context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['paciente_id'])
-        context['laudo'] = get_object_or_404(Laudo, pk=self.kwargs['pk'])
+        context['laudo'] = Laudo.objects.get(pk=self.kwargs['pk'])
+        context['assinador'] = AssinadorEletronico.objects.filter(user=self.request.user)
         return context
     
     def get_success_url(self):
