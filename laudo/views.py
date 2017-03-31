@@ -80,11 +80,16 @@ class ExameLaudoUpdate(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(ExameLaudoUpdate, self).get_context_data(**kwargs)
-        context['laudo'] = Laudo.objects.get(pk=self.kwargs['pk'])
-        # Precisa listar todos os exames e itens exames pra dar PÒST
+        # Precisa listar todos os exames e itens exames pra dar POST
         context['exames_todos'] = Exame.objects.all()
-        context['item_exame_todos'] = ItemExame.objects.all()
-        context['exame_laudo'] = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
+        context['laudo'] = Laudo.objects.get(pk=self.kwargs['pk'])
+
+        items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
+        context['exame_laudo'] = items_exame_marcados        
+        exames_feitos = []
+        for item in items_exame_marcados:
+            exames_feitos.append(item.item_exame.id)
+        context['item_exame_todos'] = ItemExame.objects.exclude(pk__in=exames_feitos)        
         return context
 
     
