@@ -92,6 +92,9 @@ class ExameLaudoUpdate(LoginRequiredMixin, UpdateView):
         context['item_exame_todos'] = ItemExame.objects.exclude(pk__in=exames_feitos)        
         return context
 
+    def get_success_url(self):
+        return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
+
     
 class LaudoAssinatura(LoginRequiredMixin, FormView):
     template_name = 'laudo/assinatura_eletronica.html'
@@ -120,7 +123,8 @@ class LaudoAssinatura(LoginRequiredMixin, FormView):
         return context
     
     def get_success_url(self):
-        return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['paciente_id']})
+        laudo = Laudo.objects.get(pk=self.kwargs['pk'])
+        return reverse_lazy('paciente:paciente_detail', kwargs={'pk': laudo.paciente.id })
 
 
 def laudos_pendentes(request):
