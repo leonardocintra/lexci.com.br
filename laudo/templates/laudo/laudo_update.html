@@ -1,5 +1,13 @@
 {% extends "core/base.html" %}
 
+{% block script_header %}
+    <script type="text/javascript">
+        $(function() {
+            $.fm({debug: true});
+        });
+    </script>
+{% endblock script_header %}
+
 {% block content %}
     <ol class="breadcrumb">
         <li><a href="{% url 'management' %}">Admin Lexci</a></li>
@@ -14,7 +22,8 @@
 
     <form action="" method="post">
         {% csrf_token %}
-        {{ form.as_p }}
+        {# Exibe as informações do Paciente#}
+        {% include "laudo/includes/paciente_include.html" %}
 
 
         {% for exame in exames_todos  %}
@@ -64,3 +73,7 @@
     </form>
 
 {% endblock content %}
+
+{% block script_footer %} 
+    {% include "fm/modal.html" %}
+{% endblock script_footer %}

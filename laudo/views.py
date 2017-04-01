@@ -65,7 +65,7 @@ class LaudoCreate(LoginRequiredMixin, FormView):
 
 class LaudoUpdate(LoginRequiredMixin, UpdateView):
     model = Laudo
-    fields = ['paciente_pode_ver']
+    fields = ['paciente_pode_ver', 'medico', 'ultima_menstruacao', 'data_coleta', ]
     template_name = 'laudo/laudo_update.html'
 
     def form_valid(self, form):
@@ -76,9 +76,11 @@ class LaudoUpdate(LoginRequiredMixin, UpdateView):
 
     def get_context_data(self, **kwargs):
         context = super(LaudoUpdate, self).get_context_data(**kwargs)
+        laudo = Laudo.objects.get(pk=self.kwargs['pk'])
+        context['laudo'] = laudo
+        context['paciente'] = Paciente.objects.get(pk=laudo.paciente.id)
         # Precisa listar todos os exames e itens exames pra dar POST
         context['exames_todos'] = Exame.objects.all()
-        context['laudo'] = Laudo.objects.get(pk=self.kwargs['pk'])
         items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         context['exame_marcados'] = items_exame_marcados
         exames_feitos = []
