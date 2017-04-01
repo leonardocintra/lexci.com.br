@@ -13,7 +13,7 @@ from django.utils import timezone
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame
 from .models import Laudo, ExameLaudo, AssinadorEletronico
-from .forms import LaudoForm, AssinarLaudoEletronicoForm
+from .forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
 
 
 class LaudoDetail(LoginRequiredMixin, DetailView):
@@ -35,9 +35,8 @@ class LaudoDetail(LoginRequiredMixin, DetailView):
 
 class LaudoCreate(LoginRequiredMixin, FormView):
     """ Gerador do Laudo """
-
-    template_name = 'laudo/laudo_form.html'
     model = Laudo
+    template_name = 'laudo/laudo_form.html'
     form_class = LaudoForm
 
     def get_initial(self):
@@ -69,31 +68,36 @@ class LaudoUpdate(LoginRequiredMixin, UpdateView):
     fields = ['paciente_pode_ver']
     template_name = 'laudo/laudo_update.html'
 
-    def get_success_url(self):
-        return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
-
-
-class ExameLaudoUpdate(LoginRequiredMixin, UpdateView):
-    model = ExameLaudo
-    template_name = 'laudo/exame_laudo_update.html'
-    fields = ['laudo', 'item_exame', ]
+    def form_valid(self, form):
+        self.object = form.save()
+        item_exames_ids = self.request.POST.getlist("item_exames")
+        self.update_laudo_exames(self.object, item_exames_ids)
+        return HttpResponseRedirect(self.get_success_url())
 
     def get_context_data(self, **kwargs):
-        context = super(ExameLaudoUpdate, self).get_context_data(**kwargs)
+        context = super(LaudoUpdate, self).get_context_data(**kwargs)
         # Precisa listar todos os exames e itens exames pra dar POST
         context['exames_todos'] = Exame.objects.all()
         context['laudo'] = Laudo.objects.get(pk=self.kwargs['pk'])
-
         items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
-        context['exame_laudo'] = items_exame_marcados        
+        context['exame_marcados'] = items_exame_marcados
         exames_feitos = []
         for item in items_exame_marcados:
             exames_feitos.append(item.item_exame.id)
-        context['item_exame_todos'] = ItemExame.objects.exclude(pk__in=exames_feitos)        
+        context['item_exame_todos'] = ItemExame.objects.all()
         return context
 
     def get_success_url(self):
         return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
+    
+    def update_laudo_exames(self, laudo, item_exames_ids):
+        """ Update Exames By Magunun modificado por Leonardo  """
+        # deletar tudo e re-criar
+        ExameLaudo.objects.filter(laudo_id=laudo.id).delete()
+        # salva novos dados
+        for item_exame_id in item_exames_ids:
+            ExameLaudo.objects.create(laudo=laudo, item_exame_id=item_exame_id)
+
 
     
 class LaudoAssinatura(LoginRequiredMixin, FormView):
@@ -140,4 +144,3 @@ create_laudo = LaudoCreate.as_view()
 laudo_detalhe = LaudoDetail.as_view() 
 laudo_update = LaudoUpdate.as_view()
 laudo_assinatura = LaudoAssinatura.as_view()
-exame_laudo_update = ExameLaudoUpdate.as_view()

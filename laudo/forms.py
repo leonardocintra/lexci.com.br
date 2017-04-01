@@ -23,3 +23,19 @@ class AssinarLaudoEletronicoForm(forms.ModelForm):
     class Meta:
         model = Laudo
         fields = ('assinado_por', )
+
+
+class ExameLaudoForm(forms.ModelForm):
+    """ Form utilizado apenas para corrigir/alterar os exames feito pela paciente """
+
+    class Meta:
+        model = ExameLaudo
+        exclude = ('data_cadastro', )
+    
+    def update_laudo_exames(self, laudo, item_exames_ids):
+        """ Update Exames By Magunun modificado por Leonardo  """
+        # deletar tudo e re-criar
+        ExameLaudo.objects.filter(laudo_id=laudo.id).delete()
+        # salva novos dados
+        for item_exame_id in item_exames_ids:
+            ExameLaudo.objects.create(laudo=laudo, item_exame_id=item_exame_id)

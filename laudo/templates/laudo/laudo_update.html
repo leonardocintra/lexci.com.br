@@ -1,14 +1,67 @@
 {% extends "core/base.html" %}
 
 {% block content %}
+    <ol class="breadcrumb">
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+        <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
+        <li><a href="{% url 'paciente:paciente_detail' laudo.paciente.id %}">{{ laudo.paciente.nome }}</a></li>
+        <li><a href="{% url 'laudo:laudo_detalhe' laudo.id %}">Laudo #{{ laudo.id }}</a></li>
+        <li class="active">Detalhes do Laudo #{{ laudo.id }} </li>
+    </ol>
     <div class="page-header">
-        <h3>Update visualização do paciente</h3>
+        <h3>Corrigir exame de {{ laudo.paciente.nome }} <small>Laudo #{{ laudo.id }}</small> </h3>
+        <h4><small>Pagina em desenvolvimento!!!</small></h4>
     </div>
 
     <form action="" method="post">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" value="Atualizar" class="btn btn-success" />
+
+
+        {% for exame in exames_todos  %}
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            {{ exame }}
+                        </h3>    
+                    </div>
+                    <div class="panel-body">
+
+                        
+                        {% for item in item_exame_todos %}
+                            {% if item.exame_id == exame.id %}
+
+                                <div class="checkbox">
+                                    <label>
+                                        <input 
+                                            type="checkbox" 
+                                            name="item_exames" 
+                                            value="{{ item.id }}"
+                                            {% for item_marcado in exame_marcados %}
+                                                {% if item_marcado.item_exame_id == item.id %}
+                                                    checked
+                                                {% endif %}
+                                            {% endfor %}
+                                        > 
+                                        {{ item }}
+                                    </label>
+                                </div>   
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+
+        {# Botão Salvar #}
+        <div class="text-right">
+            <button type="submit" class="btn btn-success btn-lg">
+                <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
+                Atualizar Laudo
+            </button>
+        </div>
     </form>
 
 {% endblock content %}
