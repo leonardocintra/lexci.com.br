@@ -372,16 +372,6 @@
    },
    {
       "model":"exame.itemexame",
-      "pk":32,
-      "fields":{
-         "exame":10,
-         "descricao_item":"ESFREGA\u00c7O INFLAMAT\u00d3RIO MODERADO",
-         "data_cadastro":"2017-03-11T15:49:24.775Z",
-         "ativo":true
-      }
-   },
-   {
-      "model":"exame.itemexame",
       "pk":34,
       "fields":{
          "exame":10,
