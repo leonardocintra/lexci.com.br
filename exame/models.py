@@ -19,7 +19,7 @@ class Exame(models.Model):
     class Meta:
         verbose_name = 'Exame do Laudo'
         verbose_name_plural = 'Exames do Laudo'
-        ordering = ['descricao']
+        #ordering = ['descricao']
 
     def __str__ (self):
         return self.descricao
