@@ -21,7 +21,6 @@
                         <th>Medico</th>
                         <th>Data</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -30,7 +29,6 @@
                             <th scope="row">{{ laudo.id }}</th>
                             <td>{{ laudo.medico.nome }}</td>
                             <td>{{ laudo.data_cadastro }}</td>
-                            <td><a href="#">Detalhes</a> </td>
                             <td><a href="{% url 'laudo:gerar_laudo' laudo.id %}">Imprimir</a> </td>
                         </tr>
                     {% endfor %}
