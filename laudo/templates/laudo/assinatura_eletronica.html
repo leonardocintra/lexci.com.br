@@ -23,6 +23,10 @@
                 {% csrf_token %} 
 
                 {# na view ja vem o id do usuario logado #}
+                <div class="form-group">
+                    <label>{{ form.paciente_pode_ver.label }}:</label>
+                    {{ form.paciente_pode_ver }}
+                </div>
 
                 <input type="submit" value="Assinar" class="btn btn-success" />
             </form>

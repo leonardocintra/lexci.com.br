@@ -9,7 +9,7 @@ class LaudoForm(forms.ModelForm):
 
     class Meta:
         model = Laudo
-        exclude = ('data_cadastro', 'data_atualizacao', 'assinado_por', )
+        exclude = ('data_cadastro', 'data_atualizacao', 'assinado_por', 'paciente_pode_ver', )
 
     def create_laudo_exames(self, laudo, item_exames_ids):
         """ Create Laudo By Lucas Magunun """
@@ -22,7 +22,7 @@ class AssinarLaudoEletronicoForm(forms.ModelForm):
 
     class Meta:
         model = Laudo
-        fields = ('assinado_por', )
+        fields = ('assinado_por', 'paciente_pode_ver', )
 
 
 class ExameLaudoForm(forms.ModelForm):
