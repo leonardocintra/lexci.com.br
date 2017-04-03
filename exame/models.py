@@ -15,11 +15,12 @@ class Exame(models.Model):
     descricao = models.CharField('Descrição', max_length=200, unique=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     ativo = models.BooleanField(default=True)
+    ordem_exibicao = models.IntegerField(default=0)
 
     class Meta:
         verbose_name = 'Exame do Laudo'
         verbose_name_plural = 'Exames do Laudo'
-        #ordering = ['descricao']
+        ordering = ['ordem_exibicao', ]
 
     def __str__ (self):
         return self.descricao

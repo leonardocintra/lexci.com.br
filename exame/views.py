@@ -50,7 +50,7 @@ class ExameUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Atualiza um exame """
 
     model = Exame
-    fields = ['descricao']
+    fields = ['descricao', 'ordem_exibicao', ]
     template_name = 'exame/exame_update_form.html'
     success_url = reverse_lazy('exame:exame_list')
     success_message = "Exame atualizado com sucesso!"

@@ -15,6 +15,7 @@
         <thead>
             <tr>
                 <th>#</th>
+                <th>Ordem</th>
                 <th>Descrição</th>
                 <th></th>
                 <th></th>
@@ -24,6 +25,7 @@
             {% for exame in exame_list %}
                 <tr>
                     <th scope="row">{{ exame.id }}</th>
+                    <td>{{ exame.ordem_exibicao }}</td>
                     <td>{{ exame.descricao }}</td>
                     <td><a href="{% url 'exame:exame_update' pk=exame.id %}">Editar</a> </td>
                     <td><a href="{% url 'exame:exame_delete' pk=exame.id %}">Excluir</a> </td>
