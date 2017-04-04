@@ -1,4 +1,16 @@
-{% load paciente_extras %} 
+{% load static %}
+
+{% load paciente_extras %}
+
+{% block script_header %} 
+    <script src="{% static 'js/jquery-mask.js' %}"></script>
+    <script>
+        $(document).ready(function(){
+            $('#id_ultima_menstruacao').mask('00/00/0000');
+            $('#id_data_coleta').mask('00/00/0000');
+        });
+    </script>
+{% endblock script_header %}
 
 <div class="row">   
 
