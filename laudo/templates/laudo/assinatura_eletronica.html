@@ -12,22 +12,15 @@
     </ol>
 
     <div class="page-header">
-        <h4>Assinar eletronicamente laudo #{{ laudo.id }} <small>{{ laudo.paciente.nome }}</small></h4>
+        <h3>Assinar eletronicamente laudo #{{ laudo.id }} <small>{{ laudo.paciente.nome }}</small></h3>
     </div>
 
     <div class="row">
-         <h3><small>usuario atual: </small>{{ user.name }}</h3>
-
         {% if assinador %}
+            <h3><small>usuario atual: </small>{{ user.name }}</h3>
             <form class="form-horizontal" method="POST">
                 {% csrf_token %} 
-
                 {# na view ja vem o id do usuario logado #}
-                <div class="form-group">
-                    <label>{{ form.paciente_pode_ver.label }}:</label>
-                    {{ form.paciente_pode_ver }}
-                </div>
-
                 <input type="submit" value="Assinar" class="btn btn-success" />
             </form>
         {% else %}

@@ -116,7 +116,7 @@ class LaudoAssinatura(LoginRequiredMixin, FormView):
         laudo = get_object_or_404(Laudo, pk=self.kwargs['pk'])
         assinador = get_object_or_404(AssinadorEletronico, user=self.request.user.id)
         laudo.assinado_por = assinador
-        laudo.paciente_pode_ver = form.cleaned_data['paciente_pode_ver']
+        laudo.paciente_pode_ver = True
         laudo.assinado = True
         laudo.data_assinatura = timezone.now()
         laudo.save()

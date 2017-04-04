@@ -11,7 +11,7 @@
         <br >
         <div>
             {% if laudos %}
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                         <tr>
                             <th>#</th>
@@ -25,7 +25,11 @@
                     </thead>
                     <tbody>
                         {% for laudo in laudos %}
-                            <tr>
+                            {% if laudo.assinado %}
+                                <tr class="success">
+                            {% else %}
+                                <tr class="warning">
+                            {% endif %}
                                 <th scope="row">{{ laudo.id }}</th>
                                 <td>{{ laudo.medico.nome }}</td>
                                 <td>{{ laudo.data_cadastro }}</td>

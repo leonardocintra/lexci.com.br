@@ -22,7 +22,7 @@ class AssinarLaudoEletronicoForm(forms.ModelForm):
 
     class Meta:
         model = Laudo
-        fields = ('assinado_por', 'paciente_pode_ver', )
+        fields = ('assinado_por', )
 
 
 class ExameLaudoForm(forms.ModelForm):
