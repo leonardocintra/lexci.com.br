@@ -85,3 +85,15 @@ class ExameLaudo(models.Model):
     
     def __str__ (self):
         return self.item_exame.descricao_item
+
+
+class TipoExame(models.Model):
+    """ TipoExame - Define o tipo de exame """
+    descricao = models.CharField('Descrição', max_length=200)
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Tipo Exame'
+    
+    def __str__ (self):
+        return self.descricao

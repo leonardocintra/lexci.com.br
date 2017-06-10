@@ -4,7 +4,7 @@
     Data: janeiro/2017
 """
 from django.contrib import admin
-from .models import Laudo, ExameLaudo, AssinadorEletronico
+from .models import Laudo, ExameLaudo, AssinadorEletronico, TipoExame
 
 
 class LaudoExameInline(admin.TabularInline):
@@ -19,6 +19,13 @@ class LaudoAdmin(admin.ModelAdmin):
 
 class AssinadorEletronicoAdmin(admin.ModelAdmin):
     """ Assinador Eletronico Admin """
+    pass
+
+class TipoExameAdmin(admin.ModelAdmin):
+    model = TipoExame
+    fields = ('descricao', )
+
 
 admin.site.register(Laudo, LaudoAdmin)
 admin.site.register(AssinadorEletronico, AssinadorEletronicoAdmin)
+admin.site.register(TipoExame, TipoExameAdmin)
