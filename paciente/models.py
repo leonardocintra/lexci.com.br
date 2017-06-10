@@ -19,6 +19,7 @@ class Paciente(models.Model):
     data_atualizacao = models.DateTimeField(auto_now=True)
     profissao = models.CharField(max_length=200, blank=True, null=True)
     ativo = models.BooleanField(default=True)
+    sexo = models.CharField('Sexo', choices=SEXO, default='N', max_length=1)
     convenio = models.ForeignKey(Convenio, on_delete=models.CASCADE, null=True)
 
     class Meta:

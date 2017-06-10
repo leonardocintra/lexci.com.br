@@ -46,6 +46,20 @@
                         </div>
                     </div>
                     <div class="form-group form-group">
+                        <label class="col-sm-3 control-label">Sexo:</label>
+                        <div class="col-sm-9">
+                            <p class="form-control-static">
+                                {% if form_paciente.sexo == "M" %}
+                                    <i class="fa fa-mars"></i> Masculino
+                                {% elif form_paciente.sexo == "F" %}
+                                    <i class="fa fa-venus"></i> Feminino
+                                {% else %}
+                                    Não informado
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="form-group form-group">
                         <label class="col-sm-3 control-label">Nacionalidade:</label>
                         <div class="col-sm-9">
                             <p class="form-control-static">{{ form_paciente.nacionalidade }}</p>
