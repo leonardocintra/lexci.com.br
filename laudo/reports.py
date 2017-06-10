@@ -105,7 +105,7 @@ def write_paciente(canvas, paciente, medico):
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(450, 700, 'Sexo: ')
     c.setFont('Helvetica-Bold', tamanho_letra)
-    c.drawString(495, 700, 'FEMININO')
+    c.drawString(490, 700, p.get_sexo_display())
 
     c.setFont('Helvetica', tamanho_letra)
     c.drawString(45, 680, 'Convênio: ')
