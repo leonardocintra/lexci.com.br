@@ -13,7 +13,6 @@ from laudo.models import Laudo, ExameLaudo, AssinadorEletronico
 
 
 def gerar_laudo(request, laudo_id):
-    
     laudo = Laudo.objects.get(pk=laudo_id)
     p = Paciente.objects.get(pk=laudo.paciente.id)
     medico = Medico.objects.get(pk=laudo.medico.id)
@@ -130,9 +129,9 @@ def write_title(canvas):
     c.drawImage("core/static/images/logolexci.png", 90, 760, 120, 40)
     c.drawString(350, 820, 'LABORATÓRIO DE EXAMES CITOLÓGICOS')
     c.drawString(320, 805, 'Rua Coronel Timóteo 91 - Bairro Centro - Ibiraci - MG')
-    c.drawString(330, 790, '(35) 3544-1044 / (35) 9.9991-8888 / (16) 99408-0682')
+    c.drawString(375, 790, '(35) 9.9991-8888 / (16) 99408-0682')
     c.setFont('Helvetica-Oblique', 8)
-    c.drawString(360, 775, 'e-mail: atendimento@lexci.com.br / marcio@lexci.com.br')
+    c.drawString(350, 775, 'e-mail: atendimento@lexci.com.br / marcio@lexci.com.br')
     c.setFont('Helvetica-BoldOblique', 10)
     c.drawString(355, 760, 'Responsável: Dr Márcio Gimenes França')
     c.drawString(340, 745, 'CRBM 8803 Inscrição: 16/3453 CNES: 9088148')
