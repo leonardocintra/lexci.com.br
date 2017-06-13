@@ -7,8 +7,8 @@ from django.db import models
 
 
 
-class TipoExame(models.Model):
-    """ TipoExame - tabela que salva os tipos de exames que são inseridos no laudo.
+class Exame(models.Model):
+    """ Exames - tabela que salva os tipos de exames que são inseridos no laudo.
         Campos:
             - descricao: descreve o nome do exame (titulo)
     """
@@ -41,7 +41,7 @@ class ItemExame(models.Model):
             - LIMITADA
             - INSATISFATÓRIA
     """
-    exame = models.ForeignKey(TipoExame, on_delete=models.CASCADE, related_name='exame')
+    exame = models.ForeignKey(Exame, on_delete=models.CASCADE, related_name='exame')
     descricao_item = models.CharField('Descrição', max_length=300)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     ativo = models.BooleanField(default=True)

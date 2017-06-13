@@ -8,7 +8,7 @@ from unicodedata import normalize
 
 from paciente.models import Paciente
 from medico.models import Medico
-from exame.models import TipoExame
+from exame.models import Exame
 from laudo.models import Laudo, ExameLaudo, AssinadorEletronico
 
 
@@ -58,7 +58,7 @@ def write_exames(canvas, laudo):
     c = canvas
     exame_laudos = ExameLaudo.objects.filter(laudo=laudo)
     contador = exame_laudos.count()
-    exames = TipoExame.objects.all()
+    exames = Exame.objects.all()
 
     espacamento = 590
     exame_atual = ""
