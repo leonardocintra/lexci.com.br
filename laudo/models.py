@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.db import models
 from paciente.models import Paciente
 from medico.models import Medico
-from exame.models import Exame, ItemExame
+from exame.models import ItemExame
 from cloudinary.models import CloudinaryField
 
 

@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, FormView, UpdateView, DetailView, CreateView
 from django.utils import timezone
 from paciente.models import Paciente
-from exame.models import Exame, ItemExame
+from exame.models import TipoExame, ItemExame
 from .models import Laudo, ExameLaudo, AssinadorEletronico
 from .forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
 
@@ -27,7 +27,7 @@ class LaudoDetail(LoginRequiredMixin, DetailView):
         exame_laudo = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         for item in exame_laudo:
             exames.append(item.item_exame.exame.id)
-        context['exames'] = Exame.objects.filter(pk__in=exames)
+        context['tipo_exame'] = TipoExame.objects.filter(pk__in=exames)
         context['exame_laudo'] = exame_laudo
         return context
 
@@ -55,7 +55,7 @@ class LaudoCreate(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super(LaudoCreate, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
-        context['exames'] = Exame.objects.all()
+        context['exames'] = TipoExame.objects.all()
         context['item_exame'] = ItemExame.objects.all()
         return context
 
@@ -80,7 +80,7 @@ class LaudoUpdate(LoginRequiredMixin, UpdateView):
         context['laudo'] = laudo
         context['paciente'] = Paciente.objects.get(pk=laudo.paciente.id)
         # Precisa listar todos os exames e itens exames pra dar POST
-        context['exames_todos'] = Exame.objects.all()
+        context['exames_todos'] = TipoExame.objects.all()
         items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         context['exame_marcados'] = items_exame_marcados
         exames_feitos = []

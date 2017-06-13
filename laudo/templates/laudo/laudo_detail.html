@@ -63,7 +63,7 @@
             </div>
             <div class="panel-body">
                 <ul class="list-unstyled">
-                    {% for exame in exames %}
+                    {% for exame in tipo_exame %}
                         <strong style="color: green"> {{ exame.descricao }}</strong>              
                         {% for item in exame_laudo %}
                             {% if exame.id == item.item_exame.exame.id %}

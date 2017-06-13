@@ -8,48 +8,48 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.views.generic import ListView, CreateView, UpdateView, DeleteView, TemplateView
 from fm.views import AjaxCreateView
-from .models import Exame, ItemExame
+from .models import TipoExame, ItemExame
 
 
 
 class ExameIndex(LoginRequiredMixin, TemplateView):
-    """ Exame Index - Pagina inicial que o usuario cai quando entra no Exame. """
+    """ Exame Index - Pagina inicial que o usuario cai quando entra no TipoExame. """
     template_name = "exame/index.html"
 
-class ExameList(LoginRequiredMixin, ListView):
+class TipoExameList(LoginRequiredMixin, ListView):
     """ Lista os Exames cadastrados """
 
-    model = Exame
+    model = TipoExame
     template_name = 'exame/exame_list.html'
     context_object_name = 'exame_list'
 
 
-class ExameCreate(LoginRequiredMixin, CreateView):
+class TipoExameCreate(LoginRequiredMixin, CreateView):
     """ Criar um novo exame """
-    model = Exame
+    model = TipoExame
     fields = ['descricao']
     template_name = 'exame/exame_form.html'
     success_url = reverse_lazy('exame:exame_list')
 
 
 
-class ExameDelete(LoginRequiredMixin, DeleteView):
+class TipoExameDelete(LoginRequiredMixin, DeleteView):
     """ Deleta um exame """
 
-    model = Exame
+    model = TipoExame
     template_name = 'exame/exame_confirm_delete.html'
     success_url = reverse_lazy('exame:exame_list')
 
     def get_context_data(self, **kwargs):
-        context = super(ExameDelete, self).get_context_data(**kwargs)
+        context = super(TipoExameDelete, self).get_context_data(**kwargs)
         context['items_exame'] = ItemExame.objects.filter(exame=self.kwargs['pk'])
         return context
 
 
-class ExameUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class TipoExameUpdate(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     """ Atualiza um exame """
 
-    model = Exame
+    model = TipoExame
     fields = ['descricao', 'ordem_exibicao', ]
     template_name = 'exame/exame_update_form.html'
     success_url = reverse_lazy('exame:exame_list')
@@ -65,7 +65,7 @@ class ItemExameList(LoginRequiredMixin, ListView):
 
     def get_context_data(self, **kwargs):
         context = super(ItemExameList, self).get_context_data(**kwargs)
-        context['exames'] = Exame.objects.all()
+        context['exames'] = TipoExame.objects.all()
         return context
 
 
@@ -103,10 +103,10 @@ class ItemExameDelete(LoginRequiredMixin, DeleteView):
 
 
 index = ExameIndex.as_view()
-exame_list = ExameList.as_view()
-exame_create = ExameCreate.as_view()
-exame_delete = ExameDelete.as_view()
-exame_update = ExameUpdate.as_view()
+exame_list = TipoExameList.as_view()
+exame_create = TipoExameCreate.as_view()
+exame_delete = TipoExameDelete.as_view()
+exame_update = TipoExameUpdate.as_view()
 
 item_exame_create = ItemExameCreate.as_view()
 item_exame_list = ItemExameList.as_view()
