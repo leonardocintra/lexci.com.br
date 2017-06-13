@@ -16,6 +16,7 @@
             <tr>
                 <th>#</th>
                 <th>Ordem</th>
+                <th>Tipo Exame</th>
                 <th>Descrição</th>
                 <th></th>
                 <th></th>
@@ -26,6 +27,7 @@
                 <tr>
                     <th scope="row">{{ exame.id }}</th>
                     <td>{{ exame.ordem_exibicao }}</td>
+                    <td>{{ exame.get_nome_display }}</td>
                     <td>{{ exame.descricao }}</td>
                     <td><a href="{% url 'exame:exame_update' pk=exame.id %}">Editar</a> </td>
                     <td><a href="{% url 'exame:exame_delete' pk=exame.id %}">Excluir</a> </td>

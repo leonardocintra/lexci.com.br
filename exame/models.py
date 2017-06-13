@@ -10,7 +10,8 @@ from django.db import models
 class Exame(models.Model):
     """ Exames - tabela que salva os tipos de exames que são inseridos no laudo.
         Campos:
-            - descricao: descreve o nome do exame (titulo)
+            - nome: nome do exame
+            - descricao: descreve o nome do tipo de exame
     """
     NOME_EXAME = (
         (1, 'EXAME CITOPATOLÓGICO CERVICAL UTERINO'),
