@@ -4,7 +4,7 @@ from .models import Exame, ItemExame
 
 class ExameAdmin(admin.ModelAdmin):
     """ Exame Admin """
-    list_display = ('descricao', 'ativo', )
+    list_display = ('nome', 'descricao', 'ativo', )
     search_fields = ('descricao', )
 
 

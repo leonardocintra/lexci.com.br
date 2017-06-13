@@ -12,6 +12,12 @@ class Exame(models.Model):
         Campos:
             - descricao: descreve o nome do exame (titulo)
     """
+    NOME_EXAME = (
+        (1, 'EXAME CITOPATOLÓGICO CERVICAL UTERINO'),
+        (2, 'Urina Rotina - Método Convencional'),
+        (3, 'Glicose / Colesterol'),
+    )
+    nome = models.IntegerField(choices=NOME_EXAME, default=1)
     descricao = models.CharField('Descrição', max_length=200, unique=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     ativo = models.BooleanField(default=True)
