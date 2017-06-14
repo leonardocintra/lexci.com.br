@@ -55,7 +55,7 @@ class LaudoCreate(LoginRequiredMixin, FormView):
     def get_context_data(self, **kwargs):
         context = super(LaudoCreate, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
-        context['exames'] = Exame.objects.all()
+        context['exames'] = Exame.objects.filter(nome=1)
         context['item_exame'] = ItemExame.objects.all()
         return context
 
@@ -80,7 +80,7 @@ class LaudoUpdate(LoginRequiredMixin, UpdateView):
         context['laudo'] = laudo
         context['paciente'] = Paciente.objects.get(pk=laudo.paciente.id)
         # Precisa listar todos os exames e itens exames pra dar POST
-        context['exames_todos'] = Exame.objects.all()
+        context['exames_todos'] = Exame.objects.filter(nome=1)
         items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         context['exame_marcados'] = items_exame_marcados
         exames_feitos = []
