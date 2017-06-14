@@ -12,8 +12,8 @@ from django.views.generic import TemplateView, FormView, UpdateView, DetailView,
 from django.utils import timezone
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame
-from .models import Laudo, ExameLaudo, AssinadorEletronico
-from .forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
+from laudo.models import Laudo, ExameLaudo, AssinadorEletronico
+from laudo.forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
 
 
 class LaudoDetail(LoginRequiredMixin, DetailView):
@@ -48,9 +48,7 @@ class LaudoCreate(LoginRequiredMixin, FormView):
         self.object = form.save()
         item_exames_ids = self.request.POST.getlist("item_exames")
         form.create_laudo_exames(self.object, item_exames_ids)
-
         return HttpResponseRedirect(self.get_success_url())
-
 
     def get_context_data(self, **kwargs):
         context = super(LaudoCreate, self).get_context_data(**kwargs)

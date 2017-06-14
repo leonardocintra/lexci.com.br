@@ -85,3 +85,20 @@ class ExameLaudo(models.Model):
     
     def __str__ (self):
         return self.item_exame.descricao_item
+
+
+class ExameUrinaRotina(models.Model):
+    """ ExameUrinaRotina - Grava dados do exame de Urina Rotina que são dados separados """
+    laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo_urina_rotina')
+    ph_urina = models.DecimalField('Ph', max_digits=9, decimal_places=2)
+    leucocitos = models.DecimalField('Leucócitos', max_digits=9, decimal_places=2)
+    hemacias = models.DecimalField('Hemácias', max_digits=9, decimal_places=2)
+    cilindros = models.CharField(max_length=100)
+    cristais = models.CharField(max_length=100)
+    parasitas = models.CharField(max_length=100)
+    observacao = models.TextField('Observação')
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = 'Exame Urina Rotina'
+        verbose_name_plural = 'Exames Urina Rotina'

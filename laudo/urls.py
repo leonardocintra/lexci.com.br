@@ -4,15 +4,19 @@
     Data: 21/03/2017
 """
 from django.conf.urls import url
-from . import views, reports
+from laudo.views import laudo, urina_rotina
+from laudo import reports
 
 urlpatterns = [
-    url(r'^pendentes/$', views.laudos_pendentes, name='laudos_pendentes'),
-    url(r'^novo/paciente/(?P<pk>[0-9]+)/$', views.create_laudo, name='create_laudo'),
-    url(r'^(?P<pk>[0-9]+)/$', views.laudo_detalhe, name='laudo_detalhe'),
-    url(r'^(?P<pk>[0-9]+)/update/$', views.laudo_update, name='laudo_update'),
-    url(r'^(?P<pk>[0-9]+)/assinatura/$', views.laudo_assinatura, name='laudo_assinatura'),
+    url(r'^pendentes/$', laudo.laudos_pendentes, name='laudos_pendentes'),
+    url(r'^novo/paciente/(?P<pk>[0-9]+)/$', laudo.create_laudo, name='create_laudo'),
+    url(r'^(?P<pk>[0-9]+)/$', laudo.laudo_detalhe, name='laudo_detalhe'),
+    url(r'^(?P<pk>[0-9]+)/update/$', laudo.laudo_update, name='laudo_update'),
+    url(r'^(?P<pk>[0-9]+)/assinatura/$', laudo.laudo_assinatura, name='laudo_assinatura'),
 
     # Imprimir o laudo
     url(r'^(?P<laudo_id>[0-9]+)/imprimir/$', reports.gerar_laudo, name='gerar_laudo'),
+
+    # Exames Urina Rotina
+    url(r'^novo/(?P<pk_exame>[0-9]+)/paciente/(?P<pk>[0-9]+)/$', urina_rotina.create_urina_rotina, name='create_urina_rotina'),
 ]
