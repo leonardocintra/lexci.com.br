@@ -91,13 +91,13 @@ class ExameUrinaRotina(models.Model):
     """ ExameUrinaRotina - Grava dados do exame de Urina Rotina que são dados separados """
     laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo_urina_rotina')
     volume = models.DecimalField(max_digits=9, decimal_places=2, default=0)
-    ph_urina = models.DecimalField('Ph', max_digits=9, decimal_places=2)
-    leucocitos = models.DecimalField('Leucócitos', max_digits=9, decimal_places=2)
-    hemacias = models.DecimalField('Hemácias', max_digits=9, decimal_places=2)
-    cilindros = models.CharField(max_length=100)
-    cristais = models.CharField(max_length=100)
-    parasitas = models.CharField(max_length=100)
-    observacao = models.TextField('Observação')
+    ph_urina = models.DecimalField('Ph', max_digits=9, decimal_places=2, default=0)
+    leucocitos = models.DecimalField('Leucócitos', max_digits=9, decimal_places=2, default=0)
+    hemacias = models.DecimalField('Hemácias', max_digits=9, decimal_places=2, default=0)
+    cilindros = models.CharField(max_length=100, null=True, blank=True)
+    cristais = models.CharField(max_length=100, null=True, blank=True)
+    parasitas = models.CharField(max_length=100, null=True, blank=True)
+    observacao = models.TextField('Observação', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:

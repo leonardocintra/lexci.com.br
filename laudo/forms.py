@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 """ Forms Laudo """
 from django import forms
-from .models import Laudo, ExameLaudo
+from django.forms import inlineformset_factory
+from .models import Laudo, ExameLaudo, ExameUrinaRotina
 
 
 class LaudoForm(forms.ModelForm):
@@ -39,3 +40,12 @@ class ExameLaudoForm(forms.ModelForm):
         # salva novos dados
         for item_exame_id in item_exames_ids:
             ExameLaudo.objects.create(laudo=laudo, item_exame_id=item_exame_id)
+        
+
+class ExameUrinaRotinaForm(forms.ModelForm):
+     
+     class Meta:
+         model = ExameUrinaRotina
+         exclude = ()
+
+ExameUrinaRotinaFormSet = inlineformset_factory(Laudo, ExameUrinaRotina, form=ExameUrinaRotinaForm, extra=1)
