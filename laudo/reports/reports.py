@@ -4,7 +4,6 @@ from django.http import HttpResponse
 from reportlab.pdfgen import canvas
 from reportlab.platypus import PageBreak
 from reportlab.lib.pagesizes import A4
-from unicodedata import normalize
 
 from paciente.models import Paciente
 from medico.models import Medico
@@ -123,7 +122,6 @@ def write_paciente(canvas, paciente, medico):
     c.setFont('Helvetica-Bold', tamanho_letra)
     c.drawString(505, 680, '#{}'.format(p.id))
     return c
-
 
 
 def write_assinatura(canvas, laudo):
