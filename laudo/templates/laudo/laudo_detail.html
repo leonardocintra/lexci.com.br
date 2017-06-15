@@ -73,6 +73,17 @@
                         {% endfor %}
                         <br />
                     {% endfor %}
+
+                    {% for exame in exames_urina_rotina %}
+                        Volume: {{ exame.volume }} <br />
+                        Ph: {{ exame.ph_urina }} <br />
+                        Leucócitos: {{ exame.leucocitos }} <br />
+                        Hemácias: {{ exame.hemacias }} <br />
+                        Cilindros: {{ exame.cilindros }} <br />
+                        Cristais: {{ exame.cristais }} <br />
+                        Parasitas: {{ exame.parasitas }} <br />
+                        Observação: {{ exame.observacao }} <br />
+                    {% endfor %}
                 </ul>
 
                 <br />

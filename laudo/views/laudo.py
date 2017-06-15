@@ -12,7 +12,7 @@ from django.views.generic import TemplateView, FormView, UpdateView, DetailView,
 from django.utils import timezone
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame
-from laudo.models import Laudo, ExameLaudo, AssinadorEletronico
+from laudo.models import Laudo, ExameLaudo, AssinadorEletronico, ExameUrinaRotina
 from laudo.forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
 
 
@@ -30,7 +30,8 @@ class LaudoDetail(LoginRequiredMixin, DetailView):
             exames.append(item.item_exame.exame.id)
         context['exames'] = Exame.objects.filter(pk__in=exames)
         context['exame_laudo'] = exame_laudo
-        context['tipo_exame'] = tipo_exame
+        context['tipo_exame'] = 'Descrever esse campo'
+        context['exames_urina_rotina'] = ExameUrinaRotina.objects.filter(laudo_id=self.kwargs['pk'])
         return context
 
 
@@ -49,9 +50,7 @@ class LaudoCreate(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         self.object = form.save()
         item_exames_ids = self.request.POST.getlist("item_exames")
-        print('----------------')
         print(item_exames_ids)
-        print('----------------')
         form.create_laudo_exames(self.object, item_exames_ids)
         return HttpResponseRedirect(self.get_success_url())
 
