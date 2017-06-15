@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView, FormView
 
+from paciente.models import Paciente
 from exame.models import Exame, ItemExame
 from laudo.models import Laudo, ExameLaudo, ExameUrinaRotina
 from laudo.forms import LaudoForm
