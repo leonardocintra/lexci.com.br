@@ -90,6 +90,7 @@ class ExameLaudo(models.Model):
 class ExameUrinaRotina(models.Model):
     """ ExameUrinaRotina - Grava dados do exame de Urina Rotina que são dados separados """
     laudo = models.ForeignKey(Laudo, on_delete=models.CASCADE, related_name='laudo_urina_rotina')
+    volume = models.DecimalField(max_digits=9, decimal_places=2, default=0)
     ph_urina = models.DecimalField('Ph', max_digits=9, decimal_places=2)
     leucocitos = models.DecimalField('Leucócitos', max_digits=9, decimal_places=2)
     hemacias = models.DecimalField('Hemácias', max_digits=9, decimal_places=2)

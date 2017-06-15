@@ -44,7 +44,6 @@ class UrinaRotinaCreate(LoginRequiredMixin, FormView):
         context = super(UrinaRotinaCreate, self).get_context_data(**kwargs)
         context['paciente'] = get_object_or_404(Paciente, pk=self.kwargs['pk'])
         context['exames'] = Exame.objects.filter(nome=2)
-        context['exames_urina'] = ExameUrinaRotina.objects.all()
         context['item_exame'] = ItemExame.objects.all()
         return context
     
