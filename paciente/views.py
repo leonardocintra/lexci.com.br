@@ -10,6 +10,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpResponseRedirect
 from django.views.generic import ListView, CreateView, UpdateView
+
 from laudo.models import Laudo
 from .models import Paciente, PacienteEndereco
 from .forms import PacienteForm, EnderecoPacienteForm, EnderecoFormSet
@@ -151,6 +152,7 @@ def paciente_detail(request, pk):
 
 
 def paciente_exame(request):
+    """ Tela publica - que o paciente pode consultar seus exames realizados. """
     cpf = request.GET.get('cpf', '')
     try:
         paciente = Paciente.objects.get(cpf=cpf)

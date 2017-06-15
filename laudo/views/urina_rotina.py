@@ -15,9 +15,6 @@ from laudo.models import Laudo, ExameLaudo, ExameUrinaRotina
 from laudo.forms import LaudoForm
 
 
-class UrinaRotinaDetail(LoginRequiredMixin, DetailView):
-    pass
-
 class UrinaRotinaCreate(LoginRequiredMixin, FormView):
     """ Gerador do Laudo de Urina Rortina """
     model = Laudo
@@ -55,4 +52,4 @@ class UrinaRotinaCreate(LoginRequiredMixin, FormView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
 
 
-create_urina_rotina = UrinaRotinaCreate.as_view()
+urina_rotina_create = UrinaRotinaCreate.as_view()

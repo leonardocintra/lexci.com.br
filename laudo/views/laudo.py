@@ -26,9 +26,11 @@ class LaudoDetail(LoginRequiredMixin, DetailView):
         exames = []
         exame_laudo = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         for item in exame_laudo:
+            tipo_exame = item.item_exame.exame.get_nome_display()
             exames.append(item.item_exame.exame.id)
         context['exames'] = Exame.objects.filter(pk__in=exames)
         context['exame_laudo'] = exame_laudo
+        context['tipo_exame'] = tipo_exame
         return context
 
 

@@ -18,5 +18,5 @@ urlpatterns = [
     url(r'^(?P<laudo_id>[0-9]+)/imprimir/$', reports.gerar_laudo, name='gerar_laudo'),
 
     # Exames Urina Rotina
-    url(r'^novo/(?P<pk_exame>[0-9]+)/paciente/(?P<pk>[0-9]+)/$', urina_rotina.create_urina_rotina, name='create_urina_rotina'),
+    url(r'^novo/(?P<pk_exame>[0-9]+)/paciente/(?P<pk>[0-9]+)/$', urina_rotina.urina_rotina_create, name='urina_rotina_create'),
 ]
