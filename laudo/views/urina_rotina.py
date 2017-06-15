@@ -31,7 +31,15 @@ class UrinaRotinaCreate(LoginRequiredMixin, FormView):
     
     def form_valid(self, form):
         self.object = form.save()
-        item_exames_ids = self.request.POST.getlist("item_exames")
+        exames = Exame.objects.filter(nome=2)
+        item_exame = []
+        # percorre todos os exames para pegar os dados igual consta no template
+        for item in exames:
+            item_add = self.request.POST.get('item_{}'.format(item.descricao.replace(" ", "_").lower()))
+            if item_add != None:
+                item_exame.append(item_add)
+        item_exames_ids = item_exame
+        print(item_exames_ids)
         form.create_laudo_exames(self.object, item_exames_ids)
         return HttpResponseRedirect(self.get_success_url())
     

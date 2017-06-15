@@ -47,6 +47,9 @@ class LaudoCreate(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         self.object = form.save()
         item_exames_ids = self.request.POST.getlist("item_exames")
+        print('----------------')
+        print(item_exames_ids)
+        print('----------------')
         form.create_laudo_exames(self.object, item_exames_ids)
         return HttpResponseRedirect(self.get_success_url())
 
