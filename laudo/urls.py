@@ -5,7 +5,7 @@
 """
 from django.conf.urls import url
 from laudo.views import laudo, urina_rotina
-from laudo import reports
+from laudo.reports import reports
 
 urlpatterns = [
     url(r'^pendentes/$', laudo.laudos_pendentes, name='laudos_pendentes'),

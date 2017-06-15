@@ -10,6 +10,7 @@ from paciente.models import Paciente
 from medico.models import Medico
 from exame.models import Exame
 from laudo.models import Laudo, ExameLaudo, AssinadorEletronico
+from laudo.reports import base_report
 
 
 def gerar_laudo(request, laudo_id):
@@ -17,7 +18,7 @@ def gerar_laudo(request, laudo_id):
     p = Paciente.objects.get(pk=laudo.paciente.id)
     medico = Medico.objects.get(pk=laudo.medico.id)
 
-    nome_sem_acento = remover_acentos(p.nome)
+    nome_sem_acento = base_report.remover_acentos(p.nome)
     filename = "laudo_{}".format(nome_sem_acento)
     
     response = HttpResponse(content_type='application/pdf')
@@ -25,14 +26,14 @@ def gerar_laudo(request, laudo_id):
 
     c = canvas.Canvas(response, pagesize=A4)
 
-    write_title(c)
+    base_report.write_title(c)
 
     write_paciente(c, p, medico)
 
-    write_horizontal_line(c, 670)
+    base_report.write_horizontal_line(c, 670)
     c.setFont('Helvetica-Bold', 16)
     c.drawString(55, 650, 'EXAME CITOPATOLÓGICO CERVICAL UTERINO, (Bethesda 2001)')
-    write_horizontal_line(c, 640)
+    base_report.write_horizontal_line(c, 640)
 
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 620, 'Data da coleta: ')
@@ -46,7 +47,7 @@ def gerar_laudo(request, laudo_id):
     write_exames(c, laudo)
 
     write_assinatura(c, laudo)
-    write_footer(c)
+    base_report.write_footer(c)
 
     c.setTitle("Laudo de {}".format(p.nome))
     c.showPage()
@@ -123,43 +124,7 @@ def write_paciente(canvas, paciente, medico):
     c.drawString(505, 680, '#{}'.format(p.id))
     return c
 
-def write_title(canvas):
-    organizador = 20
 
-    c = canvas
-    c.setFont('Helvetica-BoldOblique', 10)
-    c.drawImage("core/static/images/logolexci.png", 90, 760, 120, 40)
-    c.drawString(340 - organizador, 820, 'LABORATÓRIO DE EXAMES CITOLÓGICOS')
-    c.drawString(285 - organizador, 805, 'Rua Marechal Floriano Peixoto 295 – Bairro Centro – Ibiraci – MG')
-    c.drawString(360 - organizador, 790, '(35) 9.9991-8888 / (16) 99408-0682')
-    c.setFont('Helvetica-Oblique', 8)
-    c.drawString(340 - organizador, 775, 'e-mail: atendimento@lexci.com.br / marcio@lexci.com.br')
-    c.setFont('Helvetica-BoldOblique', 10)
-    c.drawString(345 - organizador, 760, 'Responsável: Dr Márcio Gimenes França')
-    c.drawString(330 - organizador, 745, 'CRBM 8803 Inscrição: 16/3453 CNES: 9088148')
-    write_horizontal_line(c, 740)
-    return c
-
-
-def write_footer(canvas):
-    c = canvas
-    write_horizontal_line(c, 35)
-    c.setFont('Helvetica-Oblique', 10)
-    c.drawString(20, 25, 'Laudo segundo o Sistema Bethesda, (The 2001 Bethesda System Terminology, November 5, 2003 Bethesda Maryland USA).')
-    c.drawString(20, 15, 'Membro da sociedade brasileira de citologia clínica')
-
-    return c
-
-
-def write_horizontal_line(canvas, vertical_point):
-    """ Desenha a linha horizontal (traço)"""
-    c = canvas
-    c.setFontSize(9)
-    c.line(20, vertical_point, 580, vertical_point)
-    return c
-
-def remover_acentos(txt):
-    return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')
 
 def write_assinatura(canvas, laudo):
     """ 
