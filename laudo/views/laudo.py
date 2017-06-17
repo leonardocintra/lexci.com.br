@@ -22,15 +22,15 @@ class LaudoDetail(LoginRequiredMixin, DetailView):
 
     def get_context_data(self, **kwargs):
         context = super(LaudoDetail, self).get_context_data(**kwargs)
-
         exames = []
         exame_laudo = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         for item in exame_laudo:
-            tipo_exame = item.item_exame.exame.get_nome_display()
             exames.append(item.item_exame.exame.id)
         context['exames'] = Exame.objects.filter(pk__in=exames)
         context['exame_laudo'] = exame_laudo
-        context['tipo_exame'] = get_tipo_exame_laudo(self.kwargs['pk'])
+        tipo_exame = get_tipo_exame_laudo(self.kwargs['pk'])
+        context['descricao_tipo_exame'] = get_descricao_tipo_exame_laudo(tipo_exame)
+        context['id_tipo_exame'] = get_id_tipo_exame_laudo(tipo_exame)
         context['exames_urina_rotina'] = ExameUrinaRotina.objects.filter(laudo_id=self.kwargs['pk'])
         return context
 
@@ -157,10 +157,18 @@ def get_tipo_exame_laudo(laudo_id):
         urina_rotina = ExameUrinaRotina.objects.filter(laudo_id=laudo_id)[:1]
         if urina_rotina:
             id_tipo_exame = 2 #exame urina rotina é 2
+    return id_tipo_exame
 
+
+def get_descricao_tipo_exame_laudo(value):
     for k, v in NOME_EXAME.__iter__():
-        if k == id_tipo_exame:
+        if k == value:
             return v
+
+def get_id_tipo_exame_laudo(value):
+    for k, v in NOME_EXAME.__iter__():
+        if k == value:
+            return k
 
 
 create_laudo = LaudoCreate.as_view() 
