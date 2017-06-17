@@ -111,3 +111,7 @@ def write_assinatura(canvas, laudo):
         c.setFont('Helvetica-Oblique', 10)
         c.drawString(443, 61, 'Documento Inválido!')
     return c
+
+
+def get_tamanho_palavra(word):
+    return len(word)

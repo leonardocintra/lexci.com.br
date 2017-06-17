@@ -33,6 +33,7 @@ class Exame(models.Model):
         return self.descricao
 
 
+
 class ItemExame(models.Model):
     """ ItemExame - Apos cadastrar o exame, cada exam tem os items do tipo de exame realizado
 
@@ -60,3 +61,25 @@ class ItemExame(models.Model):
 
     def __str__ (self):
         return self.descricao_item
+
+
+
+class SubExame(models.Model):
+    descricao = models.CharField('Descrição', max_length=200)
+
+    class Meta:
+        verbose_name = "Sub Exame"
+        verbose_name_plural = "Sub Exames"
+    
+    def __str__ (self):
+        return self.descricao
+
+
+class SubExameItem(models.Model):
+    sub_exame = models.ForeignKey(SubExame, on_delete=models.CASCADE, related_name='sub_exame')
+    exame = models.ForeignKey(Exame, on_delete=models.CASCADE, related_name='exame_sub_exame_item')
+    data_cadastro = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Sub Item dos Exame"
+        verbose_name_plural = "Sub Itens dos Exames"
