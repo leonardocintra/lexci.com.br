@@ -5,7 +5,7 @@
 """
 from django.conf.urls import url
 from laudo.views import laudo, urina_rotina
-from laudo.reports import reports, report_urina_rotina
+from laudo.reports import reports
 
 urlpatterns = [
     # Laudos pendentes de assinatura e revisão
@@ -22,6 +22,5 @@ urlpatterns = [
     url(r'^detalhe/(?P<pk>[0-9]+)/$', laudo.laudo_detalhe, name='laudo_detalhe'),
 
     # Imprimir o laudo
-    url(r'^imprimir/citopatologico-cervical-uterino/(?P<laudo_id>[0-9]+)/$', reports.gerar_laudo, name='gerar_laudo'),
-    url(r'^imprimir/urina-rotina/(?P<laudo_id>[0-9]+)/$', report_urina_rotina.gerar_laudo_urina_rotina, name='gerar_laudo_urina_rotina'),
+    url(r'^imprimir/(?P<laudo_id>[0-9]+)/$', reports.gerar_laudo, name='gerar_laudo'),
 ]

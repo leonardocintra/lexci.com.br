@@ -1,5 +1,8 @@
 from reportlab.pdfgen import canvas
 from unicodedata import normalize
+from laudo.models import AssinadorEletronico
+
+from paciente.models import Paciente
 
 
 def write_title(canvas):
@@ -38,4 +41,73 @@ def write_horizontal_line(canvas, vertical_point):
 
 
 def remover_acentos(txt):
-    return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')     
+    return normalize('NFKD', txt).encode('ASCII','ignore').decode('ASCII')
+
+
+def write_paciente(canvas, paciente, medico):
+    c = canvas
+    p = paciente
+
+    tamanho_letra = 14
+
+    c.setFont('Helvetica', tamanho_letra)
+    c.drawString(45, 720, 'Nome: ')
+    c.setFont('Helvetica-Bold', tamanho_letra)
+    c.drawString(95, 720, p.nome)
+
+    c.setFont('Helvetica', tamanho_letra)
+    c.drawString(450, 720, 'Idade: ')
+    c.setFont('Helvetica-Bold', tamanho_letra)
+    c.drawString(495, 720, '{} anos'.format(Paciente.calcula_idade(p.data_nascimento)))
+
+    c.setFont('Helvetica', tamanho_letra)
+    c.drawString(45, 700, 'Médico: ')
+    c.setFont('Helvetica-Bold', tamanho_letra)
+    c.drawString(105, 700, medico.nome)
+
+    c.setFont('Helvetica', tamanho_letra)
+    c.drawString(450, 700, 'Sexo: ')
+    c.setFont('Helvetica-Bold', tamanho_letra)
+    c.drawString(490, 700, p.get_sexo_display())
+
+    c.setFont('Helvetica', tamanho_letra)
+    c.drawString(45, 680, 'Convênio: ')
+    c.setFont('Helvetica-Bold', tamanho_letra)
+    varConvenio = ""
+    if p.convenio:
+        varConvenio = p.convenio.descricao
+    else:
+        varConvenio = ""
+    c.drawString(115, 680, varConvenio)
+
+    c.setFont('Helvetica', tamanho_letra)
+    c.drawString(450, 680, 'Código: ')
+    c.setFont('Helvetica-Bold', tamanho_letra)
+    c.drawString(505, 680, '#{}'.format(p.id))
+    return c
+
+
+def write_assinatura(canvas, laudo):
+    """ 
+        Pega a assinatura do Marcio ou Michelle por exempo 
+        Precisa reconfigurar isso para funcionar corretamente
+    """
+    c = canvas
+    c.setFont('Helvetica-Oblique', 10)
+
+    if laudo.assinado:
+        assinador = AssinadorEletronico.objects.get(pk=laudo.assinado_por.id)        
+        if assinador.foto_assinatura:
+            c.drawImage('{}'.format(assinador.foto_assinatura.url), 440, 95, 120, 40)
+        c.setFont('Helvetica-Bold', 10)
+        c.drawString(440, 90, assinador.nome_exibir)
+        c.setFont('Helvetica-Oblique', 10)
+        c.drawString(455, 76, assinador.profissao)
+        c.drawString(453, 61, assinador.registro_federal)
+    else:
+        c.drawString(450, 90, '-- ATENÇÂO! --')
+        c.setFont('Helvetica-Bold', 10)
+        c.drawString(430, 76, 'LAUDO NÃO ASSINADO')
+        c.setFont('Helvetica-Oblique', 10)
+        c.drawString(443, 61, 'Documento Inválido!')
+    return c
