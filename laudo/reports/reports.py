@@ -17,7 +17,7 @@ def gerar_laudo(request, laudo_id):
     p = Paciente.objects.get(pk=laudo.paciente.id)
     medico = Medico.objects.get(pk=laudo.medico.id)
 
-    nome_sem_acento = base_report.remover_acentos(p.nome)
+    nome_sem_acento = base_report.remover_acentos(p.nome).replace(" ", "_")
     filename = "laudo_{}".format(nome_sem_acento)
     
     response = HttpResponse(content_type='application/pdf')

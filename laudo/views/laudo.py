@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404, render
 from django.views.generic import TemplateView, FormView, UpdateView, DetailView, CreateView
 from django.utils import timezone
 from paciente.models import Paciente
-from exame.models import Exame, ItemExame
+from exame.models import Exame, ItemExame, NOME_EXAME
 from laudo.models import Laudo, ExameLaudo, AssinadorEletronico, ExameUrinaRotina
 from laudo.forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
 
@@ -30,7 +30,7 @@ class LaudoDetail(LoginRequiredMixin, DetailView):
             exames.append(item.item_exame.exame.id)
         context['exames'] = Exame.objects.filter(pk__in=exames)
         context['exame_laudo'] = exame_laudo
-        context['tipo_exame'] = 'Descrever esse campo'
+        context['tipo_exame'] = get_tipo_exame_laudo(self.kwargs['pk'])
         context['exames_urina_rotina'] = ExameUrinaRotina.objects.filter(laudo_id=self.kwargs['pk'])
         return context
 
@@ -50,7 +50,6 @@ class LaudoCreate(LoginRequiredMixin, FormView):
     def form_valid(self, form):
         self.object = form.save()
         item_exames_ids = self.request.POST.getlist("item_exames")
-        print(item_exames_ids)
         form.create_laudo_exames(self.object, item_exames_ids)
         return HttpResponseRedirect(self.get_success_url())
 
@@ -63,6 +62,7 @@ class LaudoCreate(LoginRequiredMixin, FormView):
 
     def get_success_url(self):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
+
 
 
 class LaudoUpdate(LoginRequiredMixin, UpdateView):
@@ -136,13 +136,31 @@ class LaudoAssinatura(LoginRequiredMixin, FormView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': laudo.paciente.id })
 
 
+
 def laudos_pendentes(request):
+    """ Exibir os laudos pendentes de assinatura/validação. """
     laudos = Laudo.objects.all().filter(assinado=False)
     context = {
         'laudos': laudos
     }
     return render(request, 'laudo/laudos_pendentes.html', context)
 
+
+def get_tipo_exame_laudo(laudo_id):
+    """ Retorna descrição do tipo de exame que é o laudo"""
+    exame_laudo = ExameLaudo.objects.filter(laudo_id=laudo_id)[:1]
+    id_tipo_exame = 0
+    if exame_laudo:
+        for item in exame_laudo:
+            id_tipo_exame = item.item_exame.exame.nome
+    else:
+        urina_rotina = ExameUrinaRotina.objects.filter(laudo_id=laudo_id)[:1]
+        if urina_rotina:
+            id_tipo_exame = 2 #exame urina rotina é 2
+
+    for k, v in NOME_EXAME.__iter__():
+        if k == id_tipo_exame:
+            return v
 
 
 create_laudo = LaudoCreate.as_view() 

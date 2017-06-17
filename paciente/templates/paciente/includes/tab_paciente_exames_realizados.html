@@ -6,7 +6,7 @@
     <div class="panel-body">
         <div>
             {# o form_paciente.id esta no paciente_detail.html. Essa pagina é um include #}
-            <a href="{% url 'laudo:create_laudo' pk=form_paciente.id  %}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Cadastrar Laudo</a>
+            <a href="{% url 'laudo:create_laudo' pk_exame=1 pk=form_paciente.id  %}" class="btn btn-success"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>  Cadastrar Laudo</a>
             <a href="{% url 'laudo:urina_rotina_create' pk_exame=2 pk=form_paciente.id %}" class="btn btn-success"><span class="glyphicon glyphicon-tint" aria-hidden="true"></span>  Exame Urina Rotina</a>
         </div>
         <br >

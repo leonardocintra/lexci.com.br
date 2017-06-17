@@ -5,20 +5,20 @@
 """
 from django.db import models
 
-
+NOME_EXAME = (
+    (1, 'EXAME CITOPATOLÓGICO CERVICAL UTERINO, (Bethesda 2001)'),
+    (2, 'Urina Rotina - Método Convencional'),
+    (3, 'Glicose / Colesterol'),
+)
 
 class Exame(models.Model):
     """ Exames - tabela que salva os tipos de exames que são inseridos no laudo.
         Campos:
             - nome: nome do exame
             - descricao: descreve o nome do tipo de exame
+            - ordem_exibicao: é a ordem que deve aparecer nos detalhes e impressão do report
     """
-    NOME_EXAME = (
-        (1, 'EXAME CITOPATOLÓGICO CERVICAL UTERINO'),
-        (2, 'Urina Rotina - Método Convencional'),
-        (3, 'Glicose / Colesterol'),
-    )
-    nome = models.IntegerField(choices=NOME_EXAME, default=1)
+    nome = models.IntegerField(choices=NOME_EXAME, default=1) # default = 1 pois foi o primeiro antes da Michelle solicitar alteração para novos exames
     descricao = models.CharField('Descrição', max_length=200, unique=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
     ativo = models.BooleanField(default=True)

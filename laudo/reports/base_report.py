@@ -1,6 +1,7 @@
 from reportlab.pdfgen import canvas
 from unicodedata import normalize
 
+
 def write_title(canvas):
     organizador = 20
 
