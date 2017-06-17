@@ -19,7 +19,7 @@ from laudo.forms import LaudoForm, ExameUrinaRotinaFormSet
 class UrinaRotinaCreate(LoginRequiredMixin, FormView):
     """ Gerador do Laudo de Urina Rortina """
     model = Laudo
-    template_name = 'urina_rotina/urina_rotina_form.html'
+    template_name = 'laudo/urina_rotina/urina_rotina_form.html'
     form_class = LaudoForm
 
     def get_initial(self):
