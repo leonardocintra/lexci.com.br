@@ -1,3 +1,5 @@
+{% load paciente_extras %}
+
 <div class="panel panel-primary">
     <div class="panel-heading">
          <span class="glyphicon glyphicon-check" aria-hidden="true"></span> &ensp; Exames da paciente {{ laudo.paciente.nome }}
@@ -17,6 +19,7 @@
                         <tr>
                             <th>#</th>
                             <th>Medico</th>
+                            <th>Tipo Exame</th>
                             <th>Data</th>
                             <th class="text-center">Paciente vê ?</th>
                             <th class="text-center">Assinado ?</th>
@@ -33,6 +36,7 @@
                             {% endif %}
                                 <th scope="row">{{ laudo.id }}</th>
                                 <td>{{ laudo.medico.nome }}</td>
+                                <td>{% get_tipo_exame laudo.id %}</td>
                                 <td>{{ laudo.data_cadastro }}</td>
                                 <td class="text-center">
                                     {% if laudo.paciente_pode_ver %}
