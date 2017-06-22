@@ -37,7 +37,7 @@ def __write_exames(canvas, laudo):
     subitem_exames = SubExameItem.objects.all()
 
 
-    # Dados exame Carcterísticas Fisicas                    
+    # Dados exame Carcterísticas Fisicas (sub_item.sub_exame.id == 1)
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 590, 'Caracteristicas Físicas')
     
@@ -68,7 +68,7 @@ def __write_exames(canvas, laudo):
     c.drawString(180, espacamento, str(exames_urina_rotina.ph_urina))
 
 
-    # Dados exames Caracteristicas Quimica
+    # Dados exames Caracteristicas Quimica (sub_item.sub_exame.id == 2)
     espacamento -= 25
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, espacamento, 'Caracteristicas Química')
@@ -87,7 +87,7 @@ def __write_exames(canvas, laudo):
                         exame_atual = item.item_exame.exame.descricao
 
 
-    # Análise microscópica do sedimento:
+    # Análise microscópica do sedimento (sub_item.sub_exame.id == 3)
     espacamento -= 25
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, espacamento, 'Análise microscópica do sedimento')
@@ -121,18 +121,18 @@ def __write_exames(canvas, laudo):
     c.setFont('Helvetica-Bold', 11)
     c.drawString(50, espacamento, 'Cilindros:')
     c.setFont('Helvetica', 11)
-    c.drawString(180, espacamento, str(exames_urina_rotina.cilindros))
+    c.drawString(180, espacamento, exames_urina_rotina.cilindros)
 
     espacamento -= 15
     c.setFont('Helvetica-Bold', 11)
     c.drawString(50, espacamento, 'Cristais:')
     c.setFont('Helvetica', 11)
-    c.drawString(180, espacamento, str(exames_urina_rotina.cristais))
+    c.drawString(180, espacamento, exames_urina_rotina.cristais)
 
     espacamento -= 15
     c.setFont('Helvetica-Bold', 11)
     c.drawString(50, espacamento, 'Parasitas:')
     c.setFont('Helvetica', 11)
-    c.drawString(180, espacamento, str(exames_urina_rotina.parasitas))
+    c.drawString(180, espacamento, exames_urina_rotina.parasitas)
 
     return c

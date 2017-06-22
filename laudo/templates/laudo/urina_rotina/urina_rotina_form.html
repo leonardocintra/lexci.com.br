@@ -39,10 +39,10 @@
         {% endif %}
 
         {% if form.errors %}
-            <strong style="color: red;" >{{ form.errors.as_text }}</strong>
+            <strong style="color: red;">{{ form.errors.as_text }}</strong>
         {% endif %}
 
-        {# Exibe as informações do Paciente#}
+        {# Exibe as informações do Paciente #}
         {% include "laudo/includes/paciente_include.html" %}
 
         {# Inclui os exames que devem ser feito #}
@@ -52,30 +52,95 @@
                 Marque os exames realizados
             </h3>
 
-            {% for exame in exames  %}
-                <div class="col-sm-12">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">
-                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                                {{ exame }}
-                            </h3>    
-                        </div>
-                        <div class="panel-body">
-                            {% for item in item_exame %}
-                                {% if item.exame_id == exame.id %}
-                                    <div class="radio-inline">
-                                        <label>
-                                            <input type="radio" name="item_{{ exame.descricao|replace_nome_exame }}" value="{{ item.id }}"> {{ item }}
-                                        </label>
-                                    </div>
-                                {% endif %}
+            {{ exames_urina_rotina.management_form }}
+            
+
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            Características Físicas
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            {% for exame in exames_caracteristicas_fisicas %}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ exame }}</label>
+                                    {% for item in item_exame_caracteristicas_fisicas %}
+                                        {% if item.exame_id == exame.id %}
+                                            <div class="radio-inline">
+                                                <label>
+                                                    <input type="radio" name="item_{{ exame.descricao|replace_nome_exame }}" value="{{ item.id }}"> {{ item }}
+                                                </label>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
                 </div>
-            {% endfor %}
-            
+            </div>
+
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            Características Químicas
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            {% for exame in exames_caracteristicas_quimicas %}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ exame }}</label>
+                                    {% for item in item_exame_caracteristicas_quimicas %}
+                                        {% if item.exame_id == exame.id %}
+                                            <div class="radio-inline">
+                                                <label>
+                                                    <input type="radio" name="item_{{ exame.descricao|replace_nome_exame }}" value="{{ item.id }}"> {{ item }}
+                                                </label>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                            Análise microscópica do sedimento
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="form-horizontal">
+                            {% for exame in exames_analises_microscopica_do_sedimento %}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ exame }}</label>
+                                    {% for item in item_exame_analises_microscopica_do_sedimento %}
+                                        {% if item.exame_id == exame.id %}
+                                            <div class="radio-inline">
+                                                <label>
+                                                    <input type="radio" name="item_{{ exame.descricao|replace_nome_exame }}" value="{{ item.id }}"> {{ item }}
+                                                </label>
+                                            </div>
+                                        {% endif %}
+                                    {% endfor %}
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="col-sm-12">
                 <div class="panel panel-default">
@@ -86,9 +151,6 @@
                         </h3>
                     </div>
                     <div class="panel-body">
-
-                        {{ exames_urina_rotina.management_form }}
-
                         <div class="form-horizontal">
                             {% for form in exames_urina_rotina.forms %}
                                 {% for field in form.visible_fields %}
@@ -108,7 +170,7 @@
 
             {# Botão Salvar #}
             <div class="text-right">
-                <button type="submit" class="btn btn-success btn-lg">
+                <button type="submit" class="btn btn-success btn-lg" disabled>
                     <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
                     Salvar Laudo
                 </button>
