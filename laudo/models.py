@@ -100,6 +100,34 @@ class ExameUrinaRotina(models.Model):
     observacao = models.TextField('Observação', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
+    @property
+    def get_cilindros(self):
+        if self.cilindros:
+            return self.cilindros
+        else:
+            return ""
+
+    @property
+    def get_cristais(self):
+        if self.cristais:
+            return self.cristais
+        else:
+            return ""
+    
+    @property
+    def get_parasitas(self):
+        if self.parasitas:
+            return self.parasitas
+        else:
+            return ""
+    
+    @property
+    def get_observacao(self):
+        if self.observacao:
+            return self.observacao
+        else:
+            return ""
+
     class Meta:
         verbose_name = 'Exame Urina Rotina'
         verbose_name_plural = 'Exames Urina Rotina'
