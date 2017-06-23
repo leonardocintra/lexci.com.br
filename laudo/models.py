@@ -94,10 +94,10 @@ class ExameUrinaRotina(models.Model):
     ph_urina = models.DecimalField('Ph', max_digits=9, decimal_places=2, default=0)
     leucocitos = models.DecimalField('Leucócitos', max_digits=9, decimal_places=2, default=0)
     hemacias = models.DecimalField('Hemácias', max_digits=9, decimal_places=2, default=0)
-    cilindros = models.CharField(max_length=100, default='', blank=True)
-    cristais = models.CharField(max_length=100, default='', blank=True)
-    parasitas = models.CharField(max_length=100, default='', blank=True)
-    observacao = models.TextField('Observação', default='', blank=True)
+    cilindros = models.CharField(max_length=100, null=True, blank=True)
+    cristais = models.CharField(max_length=100, null=True, blank=True)
+    parasitas = models.CharField(max_length=100, null=True, blank=True)
+    observacao = models.TextField('Observação', null=True, blank=True)
     data_cadastro = models.DateTimeField(auto_now_add=True)
 
     class Meta:
