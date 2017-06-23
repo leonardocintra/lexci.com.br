@@ -16,6 +16,14 @@ from laudo.models import Laudo, ExameLaudo, AssinadorEletronico, ExameUrinaRotin
 from laudo.forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
 
 
+"""
+                    ******  ATENÇÃO!! *****
+    ==========================================================
+    RENOMEAR ESSA VIEW PARA citopatologico_cervical_uterino.py
+    ==========================================================
+"""
+
+
 class LaudoDetail(LoginRequiredMixin, DetailView):
     model = Laudo
     template_name = 'laudo/laudo_detail.html'

@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse_lazy
 from django.db import transaction
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
-from django.views.generic import DetailView, FormView
+from django.views.generic import DetailView, FormView, UpdateView
 
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame, SubExame, SubExameItem
@@ -75,6 +75,16 @@ class UrinaRotinaCreate(LoginRequiredMixin, FormView):
         return reverse_lazy('paciente:paciente_detail', kwargs={'pk': self.kwargs['pk']})
 
 
+class UrinaRotinaUpdate(LoginRequiredMixin, UpdateView):
+    model = Laudo
+    fields = ['paciente_pode_ver', 'medico', 'ultima_menstruacao', 'data_coleta', ]
+    template_name = 'laudo/urina_rotina/urina_rotina_update.html'
+
+
+    def get_success_url(self):
+        return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
+
+
 
 def get_exames_generic(sub_exame_id, exames):
     """ 
@@ -107,3 +117,4 @@ def get_exames_item_generic(sub_exame_id):
 
 
 urina_rotina_create = UrinaRotinaCreate.as_view()
+urina_rotina_update = UrinaRotinaUpdate.as_view()
