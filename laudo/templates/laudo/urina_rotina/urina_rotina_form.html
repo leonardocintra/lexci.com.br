@@ -65,6 +65,14 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">
+
+                            {% for form in exames_urina_rotina.forms %}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ form.volume.label }}</label>
+                                    {{ form.volume }}
+                                </div>
+                            {% endfor %}
+
                             {% for exame in exames_caracteristicas_fisicas %}
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">{{ exame }}</label>
@@ -77,6 +85,13 @@
                                             </div>
                                         {% endif %}
                                     {% endfor %}
+                                </div>
+                            {% endfor %}
+
+                            {% for form in exames_urina_rotina.forms %}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ form.ph_urina.label }}</label>
+                                    {{ form.ph_urina }}
                                 </div>
                             {% endfor %}
                         </div>
@@ -123,6 +138,18 @@
                     </div>
                     <div class="panel-body">
                         <div class="form-horizontal">
+
+                            {% for form in exames_urina_rotina.forms %}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ form.leucocitos.label }}</label>
+                                    {{ form.leucocitos }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ form.hemacias.label }}</label>
+                                    {{ form.hemacias }}
+                                </div>
+                            {% endfor %}
+
                             {% for exame in exames_analises_microscopica_do_sedimento %}
                                 <div class="form-group">
                                     <label class="col-sm-2 control-label">{{ exame }}</label>
@@ -137,31 +164,20 @@
                                     {% endfor %}
                                 </div>
                             {% endfor %}
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <div class="col-sm-12">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                            Para preenchimento manual
-                        </h3>
-                    </div>
-                    <div class="panel-body">
-                        <div class="form-horizontal">
                             {% for form in exames_urina_rotina.forms %}
-                                {% for field in form.visible_fields %}
-                                    <div class="form-group">
-                                        <label for="inputEmail3" class="col-sm-2 control-label">{{ field.label|capfirst }}</label>
-                                        <div class="col-sm-4">
-                                            {{ field }}
-                                        </div>
-                                    </div>
-                                    {{ field.errors.as_ul }}
-                                {% endfor %}
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ form.cilindros.label }}</label>
+                                    {{ form.cilindros }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ form.cristais.label }}</label>
+                                    {{ form.cristais }}
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">{{ form.parasitas.label }}</label>
+                                    {{ form.parasitas }}
+                                </div>
                             {% endfor %}
                         </div>
                     </div>
@@ -170,7 +186,7 @@
 
             {# Botão Salvar #}
             <div class="text-right">
-                <button type="submit" class="btn btn-success btn-lg" disabled>
+                <button type="submit" class="btn btn-success btn-lg">
                     <span class="glyphicon glyphicon-floppy-saved" aria-hidden="true"></span>
                     Salvar Laudo
                 </button>
