@@ -121,18 +121,24 @@ def __write_exames(canvas, laudo):
     c.setFont('Helvetica-Bold', 11)
     c.drawString(50, espacamento, 'Cilindros:')
     c.setFont('Helvetica', 11)
-    c.drawString(180, espacamento, exames_urina_rotina.cilindros)
+    c.drawString(180, espacamento, str(exames_urina_rotina.cilindros))
 
     espacamento -= 15
     c.setFont('Helvetica-Bold', 11)
     c.drawString(50, espacamento, 'Cristais:')
     c.setFont('Helvetica', 11)
-    c.drawString(180, espacamento, exames_urina_rotina.cristais)
+    c.drawString(180, espacamento, str(exames_urina_rotina.cristais))
 
     espacamento -= 15
     c.setFont('Helvetica-Bold', 11)
     c.drawString(50, espacamento, 'Parasitas:')
     c.setFont('Helvetica', 11)
-    c.drawString(180, espacamento, exames_urina_rotina.parasitas)
+    c.drawString(180, espacamento, str(exames_urina_rotina.parasitas))
+
+    espacamento -= 30
+    c.setFont('Helvetica-Bold', 11)
+    c.drawString(50, espacamento, 'Observação:')
+    c.setFont('Helvetica', 11)
+    c.drawString(180, espacamento, str(exames_urina_rotina.observacao))
 
     return c
