@@ -1,7 +1,12 @@
 {% extends "core/base.html" %}
 
 {% block content %}
-    <h1>Pagina em desenvolvimento <small>Aguarde! ;)</small></h1>
-    <a href="{% url 'paciente:paciente_list' %}" class="btn btn-info">Voltar para a listagem de pacientes</a>
+    <ol class="breadcrumb">
+        <li><a href="{% url 'management' %}">Admin Lexci</a></li>
+        <li><a href="{% url 'paciente:paciente_list' %}">Pacientes</a></li>
+        <li><a href="{% url 'paciente:paciente_detail' laudo.paciente.id %}">{{ laudo.paciente.nome }}</a></li>
+        <li><a href="#">Laudo #{{ laudo.id }}</a></li>
+        <li class="active">Detalhes do Laudo #{{ laudo.id }} </li>
+    </ol>
 
 {% endblock content %}

@@ -80,6 +80,18 @@ class UrinaRotinaUpdate(LoginRequiredMixin, UpdateView):
     fields = ['paciente_pode_ver', 'medico', 'ultima_menstruacao', 'data_coleta', ]
     template_name = 'laudo/urina_rotina/urina_rotina_update.html'
 
+    def form_valid(self, form):
+        self.object = form.save()
+    
+    def get_context_data(self, **kwargs):
+        context = super(UrinaRotinaUpdate, self).get_context_data(**kwargs)
+        laudo = Laudo.objects.get(pk=self.kwargs['pk'])
+        exames = Exame.objects.filter(nome=2)
+
+        context['laudo'] = laudo
+        context['paciente'] = Paciente.objects.get(pk=laudo.paciente.id)
+        context['exames'] = exames
+        return context
 
     def get_success_url(self):
         return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
