@@ -20,6 +20,7 @@ from laudo.forms import LaudoForm, AssinarLaudoEletronicoForm, ExameLaudoForm
                     ******  ATENÇÃO!! *****
     ==========================================================
     RENOMEAR ESSA VIEW PARA citopatologico_cervical_uterino.py
+    - migrar os Create e Update para o arquivo citopatologico_cervical_uterino.py
     ==========================================================
 """
 
@@ -93,9 +94,6 @@ class LaudoUpdate(LoginRequiredMixin, UpdateView):
         context['exames_todos'] = Exame.objects.filter(nome=1)
         items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
         context['exame_marcados'] = items_exame_marcados
-        exames_feitos = []
-        for item in items_exame_marcados:
-            exames_feitos.append(item.item_exame.id)
         context['item_exame_todos'] = ItemExame.objects.all()
         return context
 

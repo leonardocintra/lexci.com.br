@@ -87,10 +87,22 @@ class UrinaRotinaUpdate(LoginRequiredMixin, UpdateView):
         context = super(UrinaRotinaUpdate, self).get_context_data(**kwargs)
         laudo = Laudo.objects.get(pk=self.kwargs['pk'])
         exames = Exame.objects.filter(nome=2)
+        items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
 
         context['laudo'] = laudo
         context['paciente'] = Paciente.objects.get(pk=laudo.paciente.id)
-        context['exames'] = exames
+        context['exame_todos'] = exames
+        context['exames_marcados'] = items_exame_marcados
+
+        # 1 = Caracteristica Fisica | exames é os exames de Urina Rotina (pk=2)
+        context['exames_caracteristicas_fisicas'] = get_exames_generic(1, exames)
+        context['item_exame_caracteristicas_fisicas'] = get_exames_item_generic(1)
+        # 2 = Caracteristica Quimica | exames é os exames de Urina Rotina (pk=2)
+        context['exames_caracteristicas_quimicas'] = get_exames_generic(2, exames)
+        context['item_exame_caracteristicas_quimicas'] = get_exames_item_generic(2)
+        # 3 = Análise microscópica do sedimento | exames é os exames de Urina Rotina (pk=2)
+        context['exames_analises_microscopica_do_sedimento'] = get_exames_generic(3, exames)
+        context['item_exame_analises_microscopica_do_sedimento'] = get_exames_item_generic(3)
         return context
 
     def get_success_url(self):
