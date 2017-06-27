@@ -16,6 +16,7 @@
 
     <form action="" method="post">
         {% csrf_token %}
+
         {# Exibe as informações do Paciente#}
         {% include "laudo/includes/paciente_include.html" %}
 
@@ -44,7 +45,16 @@
                                     {% if item.exame_id == exame.id %}
                                         <div class="radio-inline">
                                             <label>
-                                                <input type="radio" name="item_{{ exame.descricao|replace_nome_exame }}" value="{{ item.id }}"> {{ item }}
+                                                <input 
+                                                    type="radio" 
+                                                    name="item_{{ exame.descricao|replace_nome_exame }}" 
+                                                    value="{{ item.id }}"
+                                                    {% for item_marcado in exames_marcados %}
+                                                        {% if item.id == item_marcado.item_exame.id %}
+                                                            checked="checked"
+                                                        {% endif %}
+                                                    {% endfor %}
+                                                > {{ item }}
                                             </label>
                                         </div>
                                     {% endif %}
@@ -60,6 +70,110 @@
                         {% endfor %}
                     </div>
                 </div>
+
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                Características Químicas
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+                                {% for exame in exames_caracteristicas_quimicas %}
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ exame }}</label>
+                                        {% for item in item_exame_caracteristicas_quimicas %}
+                                            {% if item.exame_id == exame.id %}
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input 
+                                                            type="radio" 
+                                                            name="item_{{ exame.descricao|replace_nome_exame }}" 
+                                                            value="{{ item.id }}"
+                                                            {% for item_marcado in exames_marcados %}
+                                                                {% if item.id == item_marcado.item_exame.id %}
+                                                                    checked="checked"
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        > {{ item }}
+                                                    </label>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
+                                Análise microscópica do sedimento
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div class="form-horizontal">
+
+                                {% for form in exames_urina_rotina.forms %}
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ form.leucocitos.label }}</label>
+                                        {{ form.leucocitos }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ form.hemacias.label }}</label>
+                                        {{ form.hemacias }}
+                                    </div>
+                                {% endfor %}
+
+                                {% for exame in exames_analises_microscopica_do_sedimento %}
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ exame }}</label>
+                                        {% for item in item_exame_analises_microscopica_do_sedimento %}
+                                            {% if item.exame_id == exame.id %}
+                                                <div class="radio-inline">
+                                                    <label>
+                                                        <input 
+                                                            type="radio" 
+                                                            name="item_{{ exame.descricao|replace_nome_exame }}" 
+                                                            value="{{ item.id }}"
+                                                            {% for item_marcado in exames_marcados %}
+                                                                {% if item.id == item_marcado.item_exame.id %}
+                                                                    checked="checked"
+                                                                {% endif %}
+                                                            {% endfor %}
+                                                        > {{ item }}
+                                                    </label>
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </div>
+                                {% endfor %}
+
+                                {% for form in exames_urina_rotina.forms %}
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ form.cilindros.label }}</label>
+                                        {{ form.cilindros }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ form.cristais.label }}</label>
+                                        {{ form.cristais }}
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">{{ form.parasitas.label }}</label>
+                                        {{ form.parasitas }}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 

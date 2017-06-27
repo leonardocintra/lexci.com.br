@@ -82,7 +82,7 @@ class UrinaRotinaUpdate(LoginRequiredMixin, UpdateView):
 
     def form_valid(self, form):
         self.object = form.save()
-    
+
     def get_context_data(self, **kwargs):
         context = super(UrinaRotinaUpdate, self).get_context_data(**kwargs)
         laudo = Laudo.objects.get(pk=self.kwargs['pk'])
@@ -91,7 +91,6 @@ class UrinaRotinaUpdate(LoginRequiredMixin, UpdateView):
 
         context['laudo'] = laudo
         context['paciente'] = Paciente.objects.get(pk=laudo.paciente.id)
-        context['exame_todos'] = exames
         context['exames_marcados'] = items_exame_marcados
 
         # 1 = Caracteristica Fisica | exames é os exames de Urina Rotina (pk=2)
