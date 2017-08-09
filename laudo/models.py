@@ -50,7 +50,7 @@ class Laudo(models.Model):
             - assinado_por: é o ID do usuario que assinou
     """
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='paciente')
-    medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
+    medico = models.ForeignKey(Medico, on_delete=models.SET_NULL, null=True)
     data_coleta = models.DateTimeField('Data da coleta', null=True, blank=True)
     ultima_menstruacao = models.DateTimeField('Data ultima menstruação')
     paciente_pode_ver = models.BooleanField(default=False)
