@@ -16,6 +16,7 @@ class ExameIndex(LoginRequiredMixin, TemplateView):
     """ Exame Index - Pagina inicial que o usuario cai quando entra no Exame. """
     template_name = "exame/index.html"
 
+
 class ExameList(LoginRequiredMixin, ListView):
     """ Lista os Exames cadastrados """
 
@@ -30,7 +31,6 @@ class ExameCreate(LoginRequiredMixin, CreateView):
     fields = ['descricao']
     template_name = 'exame/exame_form.html'
     success_url = reverse_lazy('exame:exame_list')
-
 
 
 class ExameDelete(LoginRequiredMixin, DeleteView):

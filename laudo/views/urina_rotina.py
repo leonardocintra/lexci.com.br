@@ -13,7 +13,7 @@ from django.views.generic import DetailView, FormView, UpdateView
 from paciente.models import Paciente
 from exame.models import Exame, ItemExame, SubExame, SubExameItem
 from laudo.models import Laudo, ExameLaudo, ExameUrinaRotina
-from laudo.forms import LaudoForm, ExameUrinaRotinaFormSet
+from laudo.forms import LaudoForm, ExameUrinaRotinaFormSet, ExameUrinaRotinaForm
 
 
 class UrinaRotinaCreate(LoginRequiredMixin, FormView):
@@ -81,18 +81,37 @@ class UrinaRotinaUpdate(LoginRequiredMixin, UpdateView):
     template_name = 'laudo/urina_rotina/urina_rotina_update.html'
 
     def form_valid(self, form):
+        context = self.get_context_data()
+        form_urina_rotina = context['form_urina_rotina']
+        exames = context['exames']
+        # salva o laudo
         self.object = form.save()
+        item_exame = []
+        # percorre todos os exames para pegar os dados igual consta no template
+        for item in exames:
+            item_add = self.request.POST.get('item_{}'.format(item.descricao.replace(" ", "_").lower()))
+            if item_add != None:
+                item_exame.append(item_add)
+        item_exames_ids = item_exame
+        self.update_laudo_exames(self.object, item_exames_ids)
+        # salva urina rotina
+        if form_urina_rotina.is_valid():
+            print('--- Graças a Deus ---')
+            form_urina_rotina.instance = self.object
+            form_urina_rotina.save()
+        else:
+            print('----- form nao é valido nao sei pq caralio  -------')
+        return HttpResponseRedirect(self.get_success_url())
 
     def get_context_data(self, **kwargs):
         context = super(UrinaRotinaUpdate, self).get_context_data(**kwargs)
         laudo = Laudo.objects.get(pk=self.kwargs['pk'])
         exames = Exame.objects.filter(nome=2)
         items_exame_marcados = ExameLaudo.objects.filter(laudo_id=self.kwargs['pk'])
-
+        context['exames'] = exames
         context['laudo'] = laudo
         context['paciente'] = Paciente.objects.get(pk=laudo.paciente.id)
         context['exames_marcados'] = items_exame_marcados
-
         # 1 = Caracteristica Fisica | exames é os exames de Urina Rotina (pk=2)
         context['exames_caracteristicas_fisicas'] = get_exames_generic(1, exames)
         context['item_exame_caracteristicas_fisicas'] = get_exames_item_generic(1)
@@ -102,11 +121,23 @@ class UrinaRotinaUpdate(LoginRequiredMixin, UpdateView):
         # 3 = Análise microscópica do sedimento | exames é os exames de Urina Rotina (pk=2)
         context['exames_analises_microscopica_do_sedimento'] = get_exames_generic(3, exames)
         context['item_exame_analises_microscopica_do_sedimento'] = get_exames_item_generic(3)
+        if self.request.POST:
+            context['form_urina_rotina'] = ExameUrinaRotinaFormSet(self.request.POST, instance=self.object)
+            context['form_urina_rotina'].full_clean()
+        else:
+            context['form_urina_rotina'] = ExameUrinaRotinaFormSet(instance=self.object)
         return context
 
     def get_success_url(self):
         return reverse_lazy('laudo:laudo_detalhe', kwargs={'pk': self.kwargs['pk']})
 
+    def update_laudo_exames(self, laudo, item_exames_ids):
+        """ Update Exames By Magunun modificado por Leonardo  """
+        # deletar tudo e re-criar
+        ExameLaudo.objects.filter(laudo_id=laudo.id).delete()
+        # salva novos dados
+        for item_exame_id in item_exames_ids:
+            ExameLaudo.objects.create(laudo=laudo, item_exame_id=item_exame_id)
 
 
 def get_exames_generic(sub_exame_id, exames):
