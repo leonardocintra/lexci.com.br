@@ -44,16 +44,16 @@ class Paciente(models.Model):
 
 class PacienteEndereco(models.Model):
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE)
-    logradouro = models.CharField(max_length=100)
+    logradouro = models.CharField(max_length=100, null=True, blank=True)
     numero_casa = models.CharField('Nº casa',max_length=10, blank=True, default='')
     complemento = models.CharField(max_length=50, blank=True, default='')
     bairro = models.CharField(max_length=50, blank=True, default='')
-    uf = models.CharField('UF', max_length=2)
+    uf = models.CharField('UF', max_length=2, null=True, blank=True)
     codigo_municipio = models.IntegerField('Codigo Municipio', blank=True, null=True)
-    municipio = models.CharField(max_length=100)
+    municipio = models.CharField(max_length=100, null=True, blank=True)
     cep = models.CharField('CEP', max_length=8, blank=True, default='')
     fone_ddd = models.CharField('DDD:', max_length=2, blank=True, default='')
-    fone_numero = models.CharField('Telefone:', max_length=11) # Michele disse que esse campo é Obrigatorio
+    fone_numero = models.CharField('Telefone:', max_length=11, null=True, blank=True)
     email = models.EmailField(blank=True, default='')
     ponto_de_referencia = models.CharField(max_length=100, blank=True, default='')
 
