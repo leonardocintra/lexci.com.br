@@ -51,7 +51,7 @@ class Laudo(models.Model):
     """
     paciente = models.ForeignKey(Paciente, on_delete=models.CASCADE, related_name='paciente')
     medico = models.ForeignKey(Medico, on_delete=models.CASCADE)
-    data_coleta = models.DateTimeField('Data da coleta')
+    data_coleta = models.DateTimeField('Data da coleta', null=True, blank=True)
     ultima_menstruacao = models.DateTimeField('Data ultima menstruação')
     paciente_pode_ver = models.BooleanField(default=False)
     assinado = models.BooleanField(default=False)
