@@ -23,12 +23,12 @@ def write_laudo(canvas, laudo):
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 620, 'Data da coleta: ')
     c.setFont('Helvetica', 12)
-    if laudo.data_coleta:
-        c.drawString(130, 620, '{}'.format(str(laudo.data_coleta.strftime('%d/%m/%Y'))))
+    c.drawString(130, 620, '{}'.format(str(laudo.data_coleta.strftime('%d/%m/%Y'))))
     c.setFont('Helvetica-Bold', 12)
     c.drawString(40, 600, 'Data da ultima menstruação:')
     c.setFont('Helvetica', 12)
-    c.drawString(209, 600, '{}'.format(str(laudo.ultima_menstruacao.strftime('%d/%m/%Y'))))
+    if laudo.ultima_menstruacao:
+        c.drawString(209, 600, '{}'.format(str(laudo.ultima_menstruacao.strftime('%d/%m/%Y'))))
 
     __write_exames(c, laudo)
 
