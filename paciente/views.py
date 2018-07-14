@@ -22,7 +22,7 @@ class PacienteList(LoginRequiredMixin, ListView):
     model = Paciente
     template_name = 'paciente/paciente_list.html'
     context_object_name = 'paciente_list'
-    paginate_by = 5
+    paginate_by = 20
 
     def get_queryset(self):
         """ Queryset - Retorna todos os pacientes ou um paciente Q (pesquisa) """
