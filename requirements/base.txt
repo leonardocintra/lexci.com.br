@@ -5,7 +5,7 @@ django-crispy-forms==1.6.1
 django-fm==0.2.5
 django-widget-tweaks==1.4.1
 gunicorn==19.7.1
-reportlab==3.3.0
+reportlab==3.5.0
 six==1.10.0
 urllib3==1.19.1
-whitenoise==3.2.2
+whitenoise==3.3.1
