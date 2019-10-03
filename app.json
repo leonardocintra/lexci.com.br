@@ -2,7 +2,7 @@
     "name": "Lexci - Laboratorio",
     "description": "Aplicação do site da Lexci",
     "image": "heroku/python",
-    "repository": "https://leonardoncintra@bitbucket.org/leonardoncintra/lexci.git",
+    "repository": "",
     "keywords": ["python", "django" ],
     "addons": [ "heroku-postgresql" ],
     "environments": {
