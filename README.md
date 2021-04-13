@@ -12,6 +12,8 @@ Seus profissionais são altamente capacitados e possuem grande experiência na �
 O Lexci está estrategicamente instalado na cidade de Ibiraci-MG, atuando em toda região de Passos, no Sudoeste Mineiro, e ainda está apto a levar os benefícios de seus serviços ao Noroeste Paulista e Triângulo Mineiro.
 
 
+Migrado para Github em 13/04/2021
+
 ## Instalation
 Se o cloudinary estiver com pau, instalar
 
