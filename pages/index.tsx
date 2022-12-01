@@ -1,6 +1,4 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
 
 export default function Home() {
   return (
@@ -11,7 +9,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
+      <main className='text-center'>
+        <br />
+        <br />
         <h1>
           Bem vindo ao Lexci
         </h1>
@@ -26,7 +26,7 @@ export default function Home() {
         </div>
       </main>
 
-      <footer>
+      <footer className='text-center'>
         2019 - 2022 | Desenvolvido by Leonardo Cintra | @leonardocintra
       </footer>
     </div>
