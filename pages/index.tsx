@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Footer from './footer/Footer'
-import Inicio from './Inicio/Inicio'
-import Worklab from './worklab/Worklab'
+import Inicio from './inicio/Inicio'
 
 export default function Home() {
   return (
