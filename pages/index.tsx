@@ -1,10 +1,9 @@
 import Head from "next/head";
-import Footer from "../components/footer/Footer";
 import Inicio from "./inicio/Inicio";
 
 export default function Home() {
   return (
-    <div>
+    <div className="">
       <Head>
         <title>Lexci - Laboratorio</title>
         <meta name="description" content="Site de consulta de exame da Lexci" />
@@ -12,8 +11,7 @@ export default function Home() {
       </Head>
 
       <Inicio />
-      
-      <Footer />
+
     </div>
   );
 }
