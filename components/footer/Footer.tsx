@@ -1,7 +1,7 @@
 export default function Footer() {
   return (
     <div className="container border-t-4 mt-5 py-4 max-w-5xl">
-      <footer className="text-gray-400">
+      <footer className="text-pink-800 bg-blue-300 p-8 rounded-3xl opacity-80">
         <div className="flex justify-center flex-col sm:flex-row items-center text-gray-900 text-lg space-x-2">
           <h2 className="text-lg font-semibold">Laboratório Lexci</h2>
           <h2> CNPJ 02.312.477/0001-38</h2>
@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="flex justify-center mt-2 text-blue-700 italic">
           <h4 className="text-sm">Todos os direitos reservados</h4>
         </div>
-        <div className="flex flex-col sm:flex-row justify-center items-center space-x-2 mt-4">
+        <div className="flex flex-col text-center md:flex-row items-center justify-center space-x-2 mt-4">
           2016 - 2023
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -17,7 +17,7 @@ export default function Footer() {
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
-            className="w-6 h-6 mr-2"
+            className="w-6 h-6 mx-2"
           >
             <path
               strokeLinecap="round"

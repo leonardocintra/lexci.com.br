@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Inicio from "./inicio/Inicio";
+import Main from "./inicio/main";
 
 export default function Home() {
   return (
@@ -10,8 +11,13 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Inicio />
+      {/* <div className="bg-red-400 flex items-center justify-center">
+        <video autoPlay loop muted className="rounded-3xl m-2">
+          <source src="video/video.mp4" type="video/mp4" />
+        </video>
+      </div> */}
 
+      <Main></Main>
     </div>
   );
 }
