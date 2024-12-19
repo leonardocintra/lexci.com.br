@@ -1,5 +1,9 @@
 {
   "name": "lexci",
+  "author": {
+    "name": "Leonardo Nascimento Cintra",
+    "email": "leonardo.ncintra@outlook.com"
+  },
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -14,8 +18,8 @@
     "@types/react-dom": "18.3.1",
     "bootstrap": "^5.2.3",
     "eslint": "9.13.0",
-    "eslint-config-next": "15.0.0",
-    "next": "15.0.0",
+    "eslint-config-next": "15.1.2",
+    "next": "15.1.2",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "typescript": "5.6.3"

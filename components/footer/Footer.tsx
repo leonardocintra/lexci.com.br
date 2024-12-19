@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <div className="container border-t-4 mt-5 py-4 max-w-5xl">
@@ -25,7 +27,7 @@ export default function Footer() {
               d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0V12a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 12V5.25"
             />
           </svg>
-          Desenvolvido por Leonardo Cintra | @leonardocintra
+          Desenvolvido por <Link className="underline font-semibold" href={"https://www.leonardocintra.com.br/"}> Leonardo Cintra </Link>
         </div>
       </footer>
     </div>
