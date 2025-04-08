@@ -1,6 +1,6 @@
-import Footer from "../../components/footer/Footer";
-import Logo from "../../components/header/banner";
-import Worklab from "../../components/worklab/Worklab";
+import Footer from "../../components/Footer";
+import Logo from "../../components/Logo";
+import Worklab from "../../components/Worklab";
 
 export default function Main() {
   return (

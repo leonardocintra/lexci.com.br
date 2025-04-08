@@ -4,7 +4,7 @@
     "name": "Leonardo Nascimento Cintra",
     "email": "leonardo.ncintra@outlook.com"
   },
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -14,14 +14,14 @@
   },
   "dependencies": {
     "@types/node": "18.11.10",
-    "@types/react": "18.3.1",
-    "@types/react-dom": "18.3.1",
+    "@types/react": "19.1.0",
+    "@types/react-dom": "19.1.0",
     "bootstrap": "^5.2.3",
     "eslint": "9.13.0",
     "eslint-config-next": "15.1.2",
-    "next": "15.1.2",
-    "react": "18.3.1",
-    "react-dom": "18.3.1",
+    "next": "15.2.4",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "typescript": "5.6.3"
   },
   "devDependencies": {
